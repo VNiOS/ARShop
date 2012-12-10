@@ -37,6 +37,11 @@
 		C33504C316759AEF00E4139A /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = C33504BC16759AEF00E4139A /* FMDatabasePool.m */; };
 		C33504C416759AEF00E4139A /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C33504BE16759AEF00E4139A /* FMDatabaseQueue.m */; };
 		C33504C516759AEF00E4139A /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C33504C016759AEF00E4139A /* FMResultSet.m */; };
+		C33504D316759CC000E4139A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C33504D216759CC000E4139A /* libsqlite3.dylib */; };
+		C33504D616759CC900E4139A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33504D516759CC900E4139A /* CoreLocation.framework */; };
+		C33504D816759CD500E4139A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33504D716759CD500E4139A /* CoreMotion.framework */; };
+		C33504DA16759D2200E4139A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33504D916759D2200E4139A /* MapKit.framework */; };
+		C33504DC16759D3700E4139A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33504DB16759D3700E4139A /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +97,11 @@
 		C33504BE16759AEF00E4139A /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
 		C33504BF16759AEF00E4139A /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		C33504C016759AEF00E4139A /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		C33504D216759CC000E4139A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		C33504D516759CC900E4139A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C33504D716759CD500E4139A /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		C33504D916759D2200E4139A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C33504DB16759D3700E4139A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +109,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C33504DC16759D3700E4139A /* AVFoundation.framework in Frameworks */,
+				C33504DA16759D2200E4139A /* MapKit.framework in Frameworks */,
+				C33504D816759CD500E4139A /* CoreMotion.framework in Frameworks */,
+				C33504D616759CC900E4139A /* CoreLocation.framework in Frameworks */,
+				C33504D316759CC000E4139A /* libsqlite3.dylib in Frameworks */,
 				C32034FB16757ADB00CA3D8C /* UIKit.framework in Frameworks */,
 				C32034FD16757ADB00CA3D8C /* Foundation.framework in Frameworks */,
 				C32034FF16757ADB00CA3D8C /* CoreGraphics.framework in Frameworks */,
@@ -132,6 +147,11 @@
 		C32034F916757ADB00CA3D8C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C33504DB16759D3700E4139A /* AVFoundation.framework */,
+				C33504D916759D2200E4139A /* MapKit.framework */,
+				C33504D716759CD500E4139A /* CoreMotion.framework */,
+				C33504D516759CC900E4139A /* CoreLocation.framework */,
+				C33504D216759CC000E4139A /* libsqlite3.dylib */,
 				C32034FA16757ADB00CA3D8C /* UIKit.framework */,
 				C32034FC16757ADB00CA3D8C /* Foundation.framework */,
 				C32034FE16757ADB00CA3D8C /* CoreGraphics.framework */,
