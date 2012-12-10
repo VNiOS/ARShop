@@ -32,6 +32,11 @@
 		C320354E1675836700CA3D8C /* BeNCDetailInCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C320354C1675836700CA3D8C /* BeNCDetailInCameraViewController.xib */; };
 		C32035511675853200CA3D8C /* BeNCDetailShopInCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035501675853200CA3D8C /* BeNCDetailShopInCamera.m */; };
 		C32035541675859000CA3D8C /* BeNCProcessDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035531675859000CA3D8C /* BeNCProcessDatabase.m */; };
+		C33504C116759AEF00E4139A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = C33504B816759AEF00E4139A /* FMDatabase.m */; };
+		C33504C216759AEF00E4139A /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C33504BA16759AEF00E4139A /* FMDatabaseAdditions.m */; };
+		C33504C316759AEF00E4139A /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = C33504BC16759AEF00E4139A /* FMDatabasePool.m */; };
+		C33504C416759AEF00E4139A /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C33504BE16759AEF00E4139A /* FMDatabaseQueue.m */; };
+		C33504C516759AEF00E4139A /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C33504C016759AEF00E4139A /* FMResultSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +82,16 @@
 		C32035501675853200CA3D8C /* BeNCDetailShopInCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCDetailShopInCamera.m; sourceTree = "<group>"; };
 		C32035521675859000CA3D8C /* BeNCProcessDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCProcessDatabase.h; sourceTree = "<group>"; };
 		C32035531675859000CA3D8C /* BeNCProcessDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCProcessDatabase.m; sourceTree = "<group>"; };
+		C33504B716759AEF00E4139A /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		C33504B816759AEF00E4139A /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		C33504B916759AEF00E4139A /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		C33504BA16759AEF00E4139A /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		C33504BB16759AEF00E4139A /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		C33504BC16759AEF00E4139A /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		C33504BD16759AEF00E4139A /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		C33504BE16759AEF00E4139A /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		C33504BF16759AEF00E4139A /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		C33504C016759AEF00E4139A /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +164,7 @@
 		C320351916757B5900CA3D8C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				C33504B516759AD200E4139A /* FMDB */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -245,6 +261,23 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		C33504B516759AD200E4139A /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				C33504B716759AEF00E4139A /* FMDatabase.h */,
+				C33504B816759AEF00E4139A /* FMDatabase.m */,
+				C33504B916759AEF00E4139A /* FMDatabaseAdditions.h */,
+				C33504BA16759AEF00E4139A /* FMDatabaseAdditions.m */,
+				C33504BB16759AEF00E4139A /* FMDatabasePool.h */,
+				C33504BC16759AEF00E4139A /* FMDatabasePool.m */,
+				C33504BD16759AEF00E4139A /* FMDatabaseQueue.h */,
+				C33504BE16759AEF00E4139A /* FMDatabaseQueue.m */,
+				C33504BF16759AEF00E4139A /* FMResultSet.h */,
+				C33504C016759AEF00E4139A /* FMResultSet.m */,
+			);
+			name = FMDB;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -328,6 +361,11 @@
 				C320354D1675836700CA3D8C /* BeNCDetailInCameraViewController.m in Sources */,
 				C32035511675853200CA3D8C /* BeNCDetailShopInCamera.m in Sources */,
 				C32035541675859000CA3D8C /* BeNCProcessDatabase.m in Sources */,
+				C33504C116759AEF00E4139A /* FMDatabase.m in Sources */,
+				C33504C216759AEF00E4139A /* FMDatabaseAdditions.m in Sources */,
+				C33504C316759AEF00E4139A /* FMDatabasePool.m in Sources */,
+				C33504C416759AEF00E4139A /* FMDatabaseQueue.m in Sources */,
+				C33504C516759AEF00E4139A /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +468,7 @@
 				C320351616757ADB00CA3D8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
