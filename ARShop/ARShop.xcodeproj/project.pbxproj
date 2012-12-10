@@ -1,0 +1,437 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C32034FB16757ADB00CA3D8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32034FA16757ADB00CA3D8C /* UIKit.framework */; };
+		C32034FD16757ADB00CA3D8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32034FC16757ADB00CA3D8C /* Foundation.framework */; };
+		C32034FF16757ADB00CA3D8C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32034FE16757ADB00CA3D8C /* CoreGraphics.framework */; };
+		C320350516757ADB00CA3D8C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C320350316757ADB00CA3D8C /* InfoPlist.strings */; };
+		C320350716757ADB00CA3D8C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C320350616757ADB00CA3D8C /* main.m */; };
+		C320350B16757ADB00CA3D8C /* BeNCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C320350A16757ADB00CA3D8C /* BeNCAppDelegate.m */; };
+		C320352516757E7900CA3D8C /* BeNCMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C320352316757E7900CA3D8C /* BeNCMenuViewController.m */; };
+		C320352616757E7900CA3D8C /* BeNCMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C320352416757E7900CA3D8C /* BeNCMenuViewController.xib */; };
+		C320352A1675800000CA3D8C /* BeNCListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035281675800000CA3D8C /* BeNCListViewController.m */; };
+		C320352B1675800000CA3D8C /* BeNCListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32035291675800000CA3D8C /* BeNCListViewController.xib */; };
+		C320352F1675801C00CA3D8C /* BeNCMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C320352D1675801C00CA3D8C /* BeNCMapViewController.m */; };
+		C32035301675801C00CA3D8C /* BeNCMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C320352E1675801C00CA3D8C /* BeNCMapViewController.xib */; };
+		C32035341675803500CA3D8C /* BeNCCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035321675803500CA3D8C /* BeNCCameraViewController.m */; };
+		C32035351675803500CA3D8C /* BeNCCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32035331675803500CA3D8C /* BeNCCameraViewController.xib */; };
+		C32035391675804C00CA3D8C /* BeNCDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035371675804C00CA3D8C /* BeNCDetailViewController.m */; };
+		C320353A1675804C00CA3D8C /* BeNCDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32035381675804C00CA3D8C /* BeNCDetailViewController.xib */; };
+		C320353D167580B600CA3D8C /* BeNCShopEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C320353C167580B600CA3D8C /* BeNCShopEntity.m */; };
+		C3203540167580EA00CA3D8C /* BeNCShopCellCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C320353F167580EA00CA3D8C /* BeNCShopCellCell.m */; };
+		C32035431675819800CA3D8C /* BeNCUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035421675819800CA3D8C /* BeNCUtility.m */; };
+		C3203546167581AF00CA3D8C /* BeNCGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = C3203545167581AF00CA3D8C /* BeNCGlobal.m */; };
+		C3203549167582D400CA3D8C /* BeNCArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = C3203548167582D400CA3D8C /* BeNCArrow.m */; };
+		C320354D1675836700CA3D8C /* BeNCDetailInCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C320354B1675836700CA3D8C /* BeNCDetailInCameraViewController.m */; };
+		C320354E1675836700CA3D8C /* BeNCDetailInCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C320354C1675836700CA3D8C /* BeNCDetailInCameraViewController.xib */; };
+		C32035511675853200CA3D8C /* BeNCDetailShopInCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035501675853200CA3D8C /* BeNCDetailShopInCamera.m */; };
+		C32035541675859000CA3D8C /* BeNCProcessDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035531675859000CA3D8C /* BeNCProcessDatabase.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C32034F616757ADB00CA3D8C /* ARShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C32034FA16757ADB00CA3D8C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C32034FC16757ADB00CA3D8C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C32034FE16757ADB00CA3D8C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C320350216757ADB00CA3D8C /* ARShop-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ARShop-Info.plist"; path = "ARShop/ARShop-Info.plist"; sourceTree = "<group>"; };
+		C320350416757ADB00CA3D8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C320350616757ADB00CA3D8C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ARShop/main.m; sourceTree = "<group>"; };
+		C320350816757ADB00CA3D8C /* ARShop-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ARShop-Prefix.pch"; path = "ARShop/ARShop-Prefix.pch"; sourceTree = "<group>"; };
+		C320350916757ADB00CA3D8C /* BeNCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BeNCAppDelegate.h; path = ARShop/BeNCAppDelegate.h; sourceTree = "<group>"; };
+		C320350A16757ADB00CA3D8C /* BeNCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BeNCAppDelegate.m; path = ARShop/BeNCAppDelegate.m; sourceTree = "<group>"; };
+		C320352216757E7900CA3D8C /* BeNCMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCMenuViewController.h; sourceTree = "<group>"; };
+		C320352316757E7900CA3D8C /* BeNCMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCMenuViewController.m; sourceTree = "<group>"; };
+		C320352416757E7900CA3D8C /* BeNCMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeNCMenuViewController.xib; sourceTree = "<group>"; };
+		C32035271675800000CA3D8C /* BeNCListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCListViewController.h; sourceTree = "<group>"; };
+		C32035281675800000CA3D8C /* BeNCListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCListViewController.m; sourceTree = "<group>"; };
+		C32035291675800000CA3D8C /* BeNCListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeNCListViewController.xib; sourceTree = "<group>"; };
+		C320352C1675801C00CA3D8C /* BeNCMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCMapViewController.h; sourceTree = "<group>"; };
+		C320352D1675801C00CA3D8C /* BeNCMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCMapViewController.m; sourceTree = "<group>"; };
+		C320352E1675801C00CA3D8C /* BeNCMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeNCMapViewController.xib; sourceTree = "<group>"; };
+		C32035311675803500CA3D8C /* BeNCCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCCameraViewController.h; sourceTree = "<group>"; };
+		C32035321675803500CA3D8C /* BeNCCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCCameraViewController.m; sourceTree = "<group>"; };
+		C32035331675803500CA3D8C /* BeNCCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeNCCameraViewController.xib; sourceTree = "<group>"; };
+		C32035361675804C00CA3D8C /* BeNCDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCDetailViewController.h; sourceTree = "<group>"; };
+		C32035371675804C00CA3D8C /* BeNCDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCDetailViewController.m; sourceTree = "<group>"; };
+		C32035381675804C00CA3D8C /* BeNCDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeNCDetailViewController.xib; sourceTree = "<group>"; };
+		C320353B167580B600CA3D8C /* BeNCShopEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCShopEntity.h; sourceTree = "<group>"; };
+		C320353C167580B600CA3D8C /* BeNCShopEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCShopEntity.m; sourceTree = "<group>"; };
+		C320353E167580EA00CA3D8C /* BeNCShopCellCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCShopCellCell.h; sourceTree = "<group>"; };
+		C320353F167580EA00CA3D8C /* BeNCShopCellCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCShopCellCell.m; sourceTree = "<group>"; };
+		C32035411675819800CA3D8C /* BeNCUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCUtility.h; sourceTree = "<group>"; };
+		C32035421675819800CA3D8C /* BeNCUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCUtility.m; sourceTree = "<group>"; };
+		C3203544167581AF00CA3D8C /* BeNCGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCGlobal.h; sourceTree = "<group>"; };
+		C3203545167581AF00CA3D8C /* BeNCGlobal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCGlobal.m; sourceTree = "<group>"; };
+		C3203547167582D400CA3D8C /* BeNCArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCArrow.h; sourceTree = "<group>"; };
+		C3203548167582D400CA3D8C /* BeNCArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCArrow.m; sourceTree = "<group>"; };
+		C320354A1675836700CA3D8C /* BeNCDetailInCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCDetailInCameraViewController.h; sourceTree = "<group>"; };
+		C320354B1675836700CA3D8C /* BeNCDetailInCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCDetailInCameraViewController.m; sourceTree = "<group>"; };
+		C320354C1675836700CA3D8C /* BeNCDetailInCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeNCDetailInCameraViewController.xib; sourceTree = "<group>"; };
+		C320354F1675853200CA3D8C /* BeNCDetailShopInCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCDetailShopInCamera.h; sourceTree = "<group>"; };
+		C32035501675853200CA3D8C /* BeNCDetailShopInCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCDetailShopInCamera.m; sourceTree = "<group>"; };
+		C32035521675859000CA3D8C /* BeNCProcessDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCProcessDatabase.h; sourceTree = "<group>"; };
+		C32035531675859000CA3D8C /* BeNCProcessDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCProcessDatabase.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C32034F316757ADB00CA3D8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C32034FB16757ADB00CA3D8C /* UIKit.framework in Frameworks */,
+				C32034FD16757ADB00CA3D8C /* Foundation.framework in Frameworks */,
+				C32034FF16757ADB00CA3D8C /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C32034EB16757ADA00CA3D8C = {
+			isa = PBXGroup;
+			children = (
+				C320350916757ADB00CA3D8C /* BeNCAppDelegate.h */,
+				C320350A16757ADB00CA3D8C /* BeNCAppDelegate.m */,
+				C320351816757B3300CA3D8C /* Classes */,
+				C320351916757B5900CA3D8C /* Libraries */,
+				C320351716757B1000CA3D8C /* Resource */,
+				C32034F916757ADB00CA3D8C /* Frameworks */,
+				C32034F716757ADB00CA3D8C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C32034F716757ADB00CA3D8C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C32034F616757ADB00CA3D8C /* ARShop.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C32034F916757ADB00CA3D8C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C32034FA16757ADB00CA3D8C /* UIKit.framework */,
+				C32034FC16757ADB00CA3D8C /* Foundation.framework */,
+				C32034FE16757ADB00CA3D8C /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C320351716757B1000CA3D8C /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				C320351D16757BD000CA3D8C /* Others */,
+				C320351C16757BB200CA3D8C /* Mutilanguage */,
+				C320351B16757BA000CA3D8C /* Nibs */,
+				C320351A16757B8A00CA3D8C /* Database */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		C320351816757B3300CA3D8C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C320351E16757C9400CA3D8C /* Common */,
+				C320351F16757CA000CA3D8C /* Controllers */,
+				C320352016757CB000CA3D8C /* Entities */,
+				C320352116757CC500CA3D8C /* Views */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		C320351916757B5900CA3D8C /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		C320351A16757B8A00CA3D8C /* Database */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Database;
+			sourceTree = "<group>";
+		};
+		C320351B16757BA000CA3D8C /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+				C320354C1675836700CA3D8C /* BeNCDetailInCameraViewController.xib */,
+				C32035381675804C00CA3D8C /* BeNCDetailViewController.xib */,
+				C32035331675803500CA3D8C /* BeNCCameraViewController.xib */,
+				C320352E1675801C00CA3D8C /* BeNCMapViewController.xib */,
+				C32035291675800000CA3D8C /* BeNCListViewController.xib */,
+				C320352416757E7900CA3D8C /* BeNCMenuViewController.xib */,
+			);
+			name = Nibs;
+			sourceTree = "<group>";
+		};
+		C320351C16757BB200CA3D8C /* Mutilanguage */ = {
+			isa = PBXGroup;
+			children = (
+				C320350316757ADB00CA3D8C /* InfoPlist.strings */,
+			);
+			name = Mutilanguage;
+			sourceTree = "<group>";
+		};
+		C320351D16757BD000CA3D8C /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				C320350216757ADB00CA3D8C /* ARShop-Info.plist */,
+				C320350616757ADB00CA3D8C /* main.m */,
+				C320350816757ADB00CA3D8C /* ARShop-Prefix.pch */,
+			);
+			name = Others;
+			sourceTree = "<group>";
+		};
+		C320351E16757C9400CA3D8C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C32035411675819800CA3D8C /* BeNCUtility.h */,
+				C32035421675819800CA3D8C /* BeNCUtility.m */,
+				C3203544167581AF00CA3D8C /* BeNCGlobal.h */,
+				C3203545167581AF00CA3D8C /* BeNCGlobal.m */,
+				C32035521675859000CA3D8C /* BeNCProcessDatabase.h */,
+				C32035531675859000CA3D8C /* BeNCProcessDatabase.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		C320351F16757CA000CA3D8C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C320352216757E7900CA3D8C /* BeNCMenuViewController.h */,
+				C320352316757E7900CA3D8C /* BeNCMenuViewController.m */,
+				C32035271675800000CA3D8C /* BeNCListViewController.h */,
+				C32035281675800000CA3D8C /* BeNCListViewController.m */,
+				C320352C1675801C00CA3D8C /* BeNCMapViewController.h */,
+				C320352D1675801C00CA3D8C /* BeNCMapViewController.m */,
+				C32035311675803500CA3D8C /* BeNCCameraViewController.h */,
+				C32035321675803500CA3D8C /* BeNCCameraViewController.m */,
+				C32035361675804C00CA3D8C /* BeNCDetailViewController.h */,
+				C32035371675804C00CA3D8C /* BeNCDetailViewController.m */,
+				C320354A1675836700CA3D8C /* BeNCDetailInCameraViewController.h */,
+				C320354B1675836700CA3D8C /* BeNCDetailInCameraViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C320352016757CB000CA3D8C /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C320353B167580B600CA3D8C /* BeNCShopEntity.h */,
+				C320353C167580B600CA3D8C /* BeNCShopEntity.m */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
+		C320352116757CC500CA3D8C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C320353E167580EA00CA3D8C /* BeNCShopCellCell.h */,
+				C320353F167580EA00CA3D8C /* BeNCShopCellCell.m */,
+				C3203547167582D400CA3D8C /* BeNCArrow.h */,
+				C3203548167582D400CA3D8C /* BeNCArrow.m */,
+				C320354F1675853200CA3D8C /* BeNCDetailShopInCamera.h */,
+				C32035501675853200CA3D8C /* BeNCDetailShopInCamera.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C32034F516757ADB00CA3D8C /* ARShop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C320351416757ADB00CA3D8C /* Build configuration list for PBXNativeTarget "ARShop" */;
+			buildPhases = (
+				C32034F216757ADB00CA3D8C /* Sources */,
+				C32034F316757ADB00CA3D8C /* Frameworks */,
+				C32034F416757ADB00CA3D8C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ARShop;
+			productName = ARShop;
+			productReference = C32034F616757ADB00CA3D8C /* ARShop.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C32034ED16757ADA00CA3D8C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = BeNC;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = C32034F016757ADA00CA3D8C /* Build configuration list for PBXProject "ARShop" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C32034EB16757ADA00CA3D8C;
+			productRefGroup = C32034F716757ADB00CA3D8C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C32034F516757ADB00CA3D8C /* ARShop */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C32034F416757ADB00CA3D8C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C320350516757ADB00CA3D8C /* InfoPlist.strings in Resources */,
+				C320352616757E7900CA3D8C /* BeNCMenuViewController.xib in Resources */,
+				C320352B1675800000CA3D8C /* BeNCListViewController.xib in Resources */,
+				C32035301675801C00CA3D8C /* BeNCMapViewController.xib in Resources */,
+				C32035351675803500CA3D8C /* BeNCCameraViewController.xib in Resources */,
+				C320353A1675804C00CA3D8C /* BeNCDetailViewController.xib in Resources */,
+				C320354E1675836700CA3D8C /* BeNCDetailInCameraViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C32034F216757ADB00CA3D8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C320350716757ADB00CA3D8C /* main.m in Sources */,
+				C320350B16757ADB00CA3D8C /* BeNCAppDelegate.m in Sources */,
+				C320352516757E7900CA3D8C /* BeNCMenuViewController.m in Sources */,
+				C320352A1675800000CA3D8C /* BeNCListViewController.m in Sources */,
+				C320352F1675801C00CA3D8C /* BeNCMapViewController.m in Sources */,
+				C32035341675803500CA3D8C /* BeNCCameraViewController.m in Sources */,
+				C32035391675804C00CA3D8C /* BeNCDetailViewController.m in Sources */,
+				C320353D167580B600CA3D8C /* BeNCShopEntity.m in Sources */,
+				C3203540167580EA00CA3D8C /* BeNCShopCellCell.m in Sources */,
+				C32035431675819800CA3D8C /* BeNCUtility.m in Sources */,
+				C3203546167581AF00CA3D8C /* BeNCGlobal.m in Sources */,
+				C3203549167582D400CA3D8C /* BeNCArrow.m in Sources */,
+				C320354D1675836700CA3D8C /* BeNCDetailInCameraViewController.m in Sources */,
+				C32035511675853200CA3D8C /* BeNCDetailShopInCamera.m in Sources */,
+				C32035541675859000CA3D8C /* BeNCProcessDatabase.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C320350316757ADB00CA3D8C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C320350416757ADB00CA3D8C /* en */,
+			);
+			name = InfoPlist.strings;
+			path = ARShop;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C320351216757ADB00CA3D8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C320351316757ADB00CA3D8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C320351516757ADB00CA3D8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ARShop/ARShop-Prefix.pch";
+				INFOPLIST_FILE = "ARShop/ARShop-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C320351616757ADB00CA3D8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ARShop/ARShop-Prefix.pch";
+				INFOPLIST_FILE = "ARShop/ARShop-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C32034F016757ADA00CA3D8C /* Build configuration list for PBXProject "ARShop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C320351216757ADB00CA3D8C /* Debug */,
+				C320351316757ADB00CA3D8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C320351416757ADB00CA3D8C /* Build configuration list for PBXNativeTarget "ARShop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C320351516757ADB00CA3D8C /* Debug */,
+				C320351616757ADB00CA3D8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C32034ED16757ADA00CA3D8C /* Project object */;
+}
