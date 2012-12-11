@@ -42,6 +42,14 @@
 		C33504D816759CD500E4139A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33504D716759CD500E4139A /* CoreMotion.framework */; };
 		C33504DA16759D2200E4139A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33504D916759D2200E4139A /* MapKit.framework */; };
 		C33504DC16759D3700E4139A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33504DB16759D3700E4139A /* AVFoundation.framework */; };
+		C3611F3E16770722008DBE79 /* ARShopDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C3611F3D16770722008DBE79 /* ARShopDatabase.sqlite */; };
+		C3611F4616771BF3008DBE79 /* BeNCTabbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C3611F4516771BF3008DBE79 /* BeNCTabbarItem.m */; };
+		C3611F4E16771E93008DBE79 /* tabbar1.png in Resources */ = {isa = PBXBuildFile; fileRef = C3611F4816771E93008DBE79 /* tabbar1.png */; };
+		C3611F4F16771E93008DBE79 /* tabbar1_h.png in Resources */ = {isa = PBXBuildFile; fileRef = C3611F4916771E93008DBE79 /* tabbar1_h.png */; };
+		C3611F5016771E93008DBE79 /* tabbar2.png in Resources */ = {isa = PBXBuildFile; fileRef = C3611F4A16771E93008DBE79 /* tabbar2.png */; };
+		C3611F5116771E93008DBE79 /* tabbar2_h.png in Resources */ = {isa = PBXBuildFile; fileRef = C3611F4B16771E93008DBE79 /* tabbar2_h.png */; };
+		C3611F5216771E93008DBE79 /* tabbar3.png in Resources */ = {isa = PBXBuildFile; fileRef = C3611F4C16771E93008DBE79 /* tabbar3.png */; };
+		C3611F5316771E93008DBE79 /* tabbar3_h.png in Resources */ = {isa = PBXBuildFile; fileRef = C3611F4D16771E93008DBE79 /* tabbar3_h.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +110,15 @@
 		C33504D716759CD500E4139A /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		C33504D916759D2200E4139A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C33504DB16759D3700E4139A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C3611F3D16770722008DBE79 /* ARShopDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = ARShopDatabase.sqlite; sourceTree = "<group>"; };
+		C3611F4416771BF3008DBE79 /* BeNCTabbarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCTabbarItem.h; sourceTree = "<group>"; };
+		C3611F4516771BF3008DBE79 /* BeNCTabbarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCTabbarItem.m; sourceTree = "<group>"; };
+		C3611F4816771E93008DBE79 /* tabbar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar1.png; sourceTree = "<group>"; };
+		C3611F4916771E93008DBE79 /* tabbar1_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar1_h.png; sourceTree = "<group>"; };
+		C3611F4A16771E93008DBE79 /* tabbar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar2.png; sourceTree = "<group>"; };
+		C3611F4B16771E93008DBE79 /* tabbar2_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar2_h.png; sourceTree = "<group>"; };
+		C3611F4C16771E93008DBE79 /* tabbar3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar3.png; sourceTree = "<group>"; };
+		C3611F4D16771E93008DBE79 /* tabbar3_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar3_h.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +179,7 @@
 		C320351716757B1000CA3D8C /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				C3611F4716771E81008DBE79 /* Images */,
 				C320351D16757BD000CA3D8C /* Others */,
 				C320351C16757BB200CA3D8C /* Mutilanguage */,
 				C320351B16757BA000CA3D8C /* Nibs */,
@@ -192,6 +210,7 @@
 		C320351A16757B8A00CA3D8C /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				C3611F3D16770722008DBE79 /* ARShopDatabase.sqlite */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -277,6 +296,8 @@
 				C3203548167582D400CA3D8C /* BeNCArrow.m */,
 				C320354F1675853200CA3D8C /* BeNCDetailShopInCamera.h */,
 				C32035501675853200CA3D8C /* BeNCDetailShopInCamera.m */,
+				C3611F4416771BF3008DBE79 /* BeNCTabbarItem.h */,
+				C3611F4516771BF3008DBE79 /* BeNCTabbarItem.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -296,6 +317,19 @@
 				C33504C016759AEF00E4139A /* FMResultSet.m */,
 			);
 			name = FMDB;
+			sourceTree = "<group>";
+		};
+		C3611F4716771E81008DBE79 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C3611F4816771E93008DBE79 /* tabbar1.png */,
+				C3611F4916771E93008DBE79 /* tabbar1_h.png */,
+				C3611F4A16771E93008DBE79 /* tabbar2.png */,
+				C3611F4B16771E93008DBE79 /* tabbar2_h.png */,
+				C3611F4C16771E93008DBE79 /* tabbar3.png */,
+				C3611F4D16771E93008DBE79 /* tabbar3_h.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,6 +390,13 @@
 				C32035351675803500CA3D8C /* BeNCCameraViewController.xib in Resources */,
 				C320353A1675804C00CA3D8C /* BeNCDetailViewController.xib in Resources */,
 				C320354E1675836700CA3D8C /* BeNCDetailInCameraViewController.xib in Resources */,
+				C3611F3E16770722008DBE79 /* ARShopDatabase.sqlite in Resources */,
+				C3611F4E16771E93008DBE79 /* tabbar1.png in Resources */,
+				C3611F4F16771E93008DBE79 /* tabbar1_h.png in Resources */,
+				C3611F5016771E93008DBE79 /* tabbar2.png in Resources */,
+				C3611F5116771E93008DBE79 /* tabbar2_h.png in Resources */,
+				C3611F5216771E93008DBE79 /* tabbar3.png in Resources */,
+				C3611F5316771E93008DBE79 /* tabbar3_h.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +427,7 @@
 				C33504C316759AEF00E4139A /* FMDatabasePool.m in Sources */,
 				C33504C416759AEF00E4139A /* FMDatabaseQueue.m in Sources */,
 				C33504C516759AEF00E4139A /* FMResultSet.m in Sources */,
+				C3611F4616771BF3008DBE79 /* BeNCTabbarItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

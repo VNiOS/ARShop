@@ -8,12 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+
 @class BeNCMenuViewController;
 
-@interface BeNCAppDelegate : UIResponder <UIApplicationDelegate>
+@interface BeNCAppDelegate : UIResponder <UIApplicationDelegate>{
+    NSString *databasePath;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) BeNCMenuViewController *viewController;
+
+@property (nonatomic,retain) NSString *databasePath;
+- (void)Checkdatabase ;
 
 @end

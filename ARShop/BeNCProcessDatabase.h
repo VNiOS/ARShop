@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BeNCProcessDatabase : NSObject
-
+@interface BeNCProcessDatabase : NSObject{
+    
+}
++(BeNCProcessDatabase*)sharedMySingleton;
+-(void)sayHello;
 @end

@@ -7,7 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BeNCTabbarItem.h"
 
-@interface BeNCMenuViewController : UIViewController
+@protocol BeNCMenuViewControllerDelegate
+- (void)addController:(id)controller;
+@end
+
+@interface BeNCMenuViewController : UIViewController<BeNCTabbarItemDelegate>
+{
+    UIView *tabBarHolder;
+	NSMutableArray *tabViewControllers;
+	NSMutableArray *tabItemsArray;
+	int initTab; 
+}
+
+@property int initTab;
+@property (nonatomic, retain) UIView *tabBarHolder;
+@property (nonatomic, assign) id <BeNCMenuViewControllerDelegate> delegate;
+@property (nonatomic, retain) NSMutableArray *tabViewControllers;
+@property (nonatomic, retain) NSMutableArray *tabItemsArray;
+//actions
+- (id)initWithTabViewControllers:(NSMutableArray *)tbControllers tabItems:(NSMutableArray *)tbItems initialTab:(int)iTab;
+-(void)initialTab:(int)tabIndex;
+-(void)activateController:(int)index;
+-(void)activateTabItem:(int)index;
 
 @end
