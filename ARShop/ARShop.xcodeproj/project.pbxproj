@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7F08DB4167724F000D46DCF /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F08DB3167724F000D46DCF /* LocationService.m */; };
 		C32034FB16757ADB00CA3D8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32034FA16757ADB00CA3D8C /* UIKit.framework */; };
 		C32034FD16757ADB00CA3D8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32034FC16757ADB00CA3D8C /* Foundation.framework */; };
 		C32034FF16757ADB00CA3D8C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32034FE16757ADB00CA3D8C /* CoreGraphics.framework */; };
@@ -53,6 +54,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A7F08DB2167724F000D46DCF /* LocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
+		A7F08DB3167724F000D46DCF /* LocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
 		C32034F616757ADB00CA3D8C /* ARShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C32034FA16757ADB00CA3D8C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C32034FC16757ADB00CA3D8C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -249,6 +252,8 @@
 		C320351E16757C9400CA3D8C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A7F08DB2167724F000D46DCF /* LocationService.h */,
+				A7F08DB3167724F000D46DCF /* LocationService.m */,
 				C32035411675819800CA3D8C /* BeNCUtility.h */,
 				C32035421675819800CA3D8C /* BeNCUtility.m */,
 				C3203544167581AF00CA3D8C /* BeNCGlobal.h */,
@@ -428,6 +433,7 @@
 				C33504C416759AEF00E4139A /* FMDatabaseQueue.m in Sources */,
 				C33504C516759AEF00E4139A /* FMResultSet.m in Sources */,
 				C3611F4616771BF3008DBE79 /* BeNCTabbarItem.m in Sources */,
+				A7F08DB4167724F000D46DCF /* LocationService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
