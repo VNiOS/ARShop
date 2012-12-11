@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#include <AVFoundation/AVFoundation.h>
 
-@interface BeNCCameraViewController : UIViewController
+@interface BeNCCameraViewController : UIViewController{
+    AVCaptureSession *captureSession;
+    AVCaptureDeviceInput *deviceInput;
+}
 
 @end

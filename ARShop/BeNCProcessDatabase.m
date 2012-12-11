@@ -7,6 +7,9 @@
 //
 
 #import "BeNCProcessDatabase.h"
+#import "FMDatabase.h"
+#import "FMResultSet.h"
+#import "BeNCAppDelegate.h"
 
 @implementation BeNCProcessDatabase
 
@@ -46,8 +49,12 @@ static BeNCProcessDatabase *shareDatabase = nil;
 	return self;
 }
 
--(void)sayHello {
-	NSLog(@"Hello World!");
+-(void)getDatebase {
+    BeNCAppDelegate  *appDelegate = (BeNCAppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSString *databasePath = appDelegate.databasePath;
+    NSLog(@"Init sqlite database");
+    database = [[FMDatabase databaseWithPath:databasePath]retain];
+	NSLog(@"Hello getDatabase!");
 }
 
 

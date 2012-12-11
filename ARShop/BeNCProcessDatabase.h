@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FMDatabase.h"
 
 @interface BeNCProcessDatabase : NSObject{
+    FMDatabase *database;
     
 }
 +(BeNCProcessDatabase*)sharedMySingleton;
--(void)sayHello;
+-(void)getDatebase;
 @end
