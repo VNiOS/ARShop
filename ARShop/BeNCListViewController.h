@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface BeNCListViewController : UIViewController
 
+
+-(void)didUpdateLocation:(NSNotification *)notifi;
+-(void)didUpdateHeading:(NSNotification *)notifi;
 @end
