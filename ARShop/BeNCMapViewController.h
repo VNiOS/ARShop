@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
+@interface BeNCMapViewController : UIViewController<MKMapViewDelegate>{
+    
+    MKMapView *mapView;
+    
+}
+@property (nonatomic,retain) MKMapView *mapView;
 
-@interface BeNCMapViewController : UIViewController
-
+-(void)didUpdateLocation:(NSNotification *)notifi;
 @end
