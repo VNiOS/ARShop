@@ -7,7 +7,7 @@
 //
 
 #import "BeNCCameraViewController.h"
-
+#import "LocationService.h"
 @interface BeNCCameraViewController ()
 
 @end

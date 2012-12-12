@@ -36,11 +36,12 @@
     [[LocationService locationService]startUpdate];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
-     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
-    // Do any additional setup after loading the view from its nib.
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
+    
 }
 -(void)didUpdateHeading:(NSNotification *)notifi{
     CLHeading *newHeading = (CLHeading *)[notifi object];
+    
     NSLog(@"Goc quay so voi North la %f ", newHeading.magneticHeading*0.0174532925);
 }
 -(void)didUpdateLocation:(NSNotification *)notifi{
