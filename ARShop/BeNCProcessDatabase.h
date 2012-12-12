@@ -11,8 +11,10 @@
 
 @interface BeNCProcessDatabase : NSObject{
     FMDatabase *database;
-    
+    NSArray *arrayShop;
 }
-+(BeNCProcessDatabase*)sharedMySingleton;
+@property(nonatomic, retain)NSArray *arrayShop;
++(BeNCProcessDatabase*)sharedMyDatabase;
 -(void)getDatebase;
+- (NSArray *)getDatabaseShop;
 @end

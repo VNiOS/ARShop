@@ -23,51 +23,59 @@
 {
     [_window release];
     [_viewController release];
+    [databasePath release];
     [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self checkDatabase];
     BeNCTabbarItem *tabItem1 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(0, 0, 64, 49) normalState:@"tabbar1.png" toggledState:@"tabbar1_h.png"];
 	BeNCTabbarItem *tabItem2 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(64, 0, 64, 49) normalState:@"tabbar2.png" toggledState:@"tabbar2_h.png"];
 	BeNCTabbarItem *tabItem3 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(128, 0, 64, 49) normalState:@"tabbar3.png" toggledState:@"tabbar3_h.png"];
+    
+    
     BeNCListViewController *listViewController = [[BeNCListViewController alloc]initWithNibName:@"BeNCListViewController" bundle:nil];
     BeNCMapViewController *mapViewController = [[BeNCMapViewController alloc]initWithNibName:@"BeNCMapViewController" bundle:nil];
     BeNCCameraViewController *cameraViewController = [[BeNCCameraViewController alloc]initWithNibName:@"BeNCCameraViewController" bundle:nil];
+    
     
     NSMutableArray *viewControllersArray = [[NSMutableArray alloc] init];
 	[viewControllersArray addObject:listViewController];
 	[viewControllersArray addObject:mapViewController];
 	[viewControllersArray addObject:cameraViewController];
+    
 	
 	NSMutableArray *tabItemsArray = [[NSMutableArray alloc] init];
 	[tabItemsArray addObject:tabItem1];
 	[tabItemsArray addObject:tabItem2];
 	[tabItemsArray addObject:tabItem3];
     
+    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
-    self.viewController = [[[BeNCMenuViewController alloc]initWithTabViewControllers:viewControllersArray tabItems:tabItemsArray initialTab:0]autorelease];
+    self.viewController = [[BeNCMenuViewController alloc]initWithTabViewControllers:viewControllersArray tabItems:tabItemsArray initialTab:0];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
-    [self Checkdatabase];
+//    NSLog(@"%@",databasePath);
     return YES;
 }
 
-- (void)Checkdatabase 
+- (void)checkDatabase 
 {
+
     BOOL success;
     NSString *databaseName = @"ARShopDatabase.sqlite";
-    
     NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentDir = [documentPath objectAtIndex:0];
     databasePath = [documentDir stringByAppendingPathComponent:databaseName];
-//    NSLog(@"%@",databasePath);
     NSFileManager *fileManager = [NSFileManager defaultManager];
     success = [fileManager fileExistsAtPath:databasePath];
     if (success) return;
     NSString *databasePathFromApp = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:databaseName];
     [fileManager copyItemAtPath:databasePathFromApp toPath:databasePath error:nil];
+    NSLog(@"%@",databasePath);
+    NSLog(@"hello");
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -96,5 +104,6 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 @end

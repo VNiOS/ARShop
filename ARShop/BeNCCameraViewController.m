@@ -50,12 +50,13 @@
 - (void)addVideoInput {
     captureSession = [[AVCaptureSession alloc]init];
     AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
-    [previewLayer setOrientation:AVCaptureVideoOrientationPortraitUpsideDown];
-    previewLayer.frame = CGRectMake(0, 0, 480, 320);
+    previewLayer.frame = self.view.bounds;
+//    [previewLayer setOrientation:AVCaptureVideoOrientationPortraitUpsideDown];
     previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
 	[self.view.layer addSublayer:previewLayer];
     NSError *error = nil;
     AVCaptureDevice * camera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    
     deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:camera error:&error];
     if ([captureSession canAddInput:deviceInput])
         [captureSession addInput:deviceInput];
@@ -63,6 +64,7 @@
 }
 - (void)dealloc
 {
+    [captureSession stopRunning];
     [captureSession release];
     [deviceInput release];
     [super dealloc];

@@ -19,7 +19,7 @@
 
 @property (strong, nonatomic) BeNCMenuViewController *viewController;
 
-@property (nonatomic,retain) NSString *databasePath;
-- (void)Checkdatabase ;
+@property (nonatomic,retain)NSString *databasePath;
+- (void)checkDatabase;
 
 @end

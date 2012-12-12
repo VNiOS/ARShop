@@ -31,5 +31,5 @@
 -(void)initialTab:(int)tabIndex;
 -(void)activateController:(int)index;
 -(void)activateTabItem:(int)index;
-
+- (void)getDatabase:(NSNotification *)notification;
 @end

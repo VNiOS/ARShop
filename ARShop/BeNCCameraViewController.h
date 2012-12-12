@@ -13,5 +13,5 @@
     AVCaptureSession *captureSession;
     AVCaptureDeviceInput *deviceInput;
 }
-
+- (void)addVideoInput;
 @end
