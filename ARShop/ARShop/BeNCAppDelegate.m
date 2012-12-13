@@ -5,13 +5,14 @@
 //  Created by Administrator on 12/10/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
-
+#import "LocationService.h"
 #import "BeNCAppDelegate.h"
 #import "BeNCMenuViewController.h"
 #import "BeNCTabbarItem.h"
 #import "BeNCListViewController.h"
 #import "BeNCCameraViewController.h"
 #import "BeNCMapViewController.h"
+#import "BeNCProcessDatabase.h"
 
 @implementation BeNCAppDelegate
 
@@ -30,9 +31,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self checkDatabase];
-    BeNCTabbarItem *tabItem1 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(0, 0, 64, 49) normalState:@"tabbar1.png" toggledState:@"tabbar1_h.png"];
-	BeNCTabbarItem *tabItem2 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(64, 0, 64, 49) normalState:@"tabbar2.png" toggledState:@"tabbar2_h.png"];
-	BeNCTabbarItem *tabItem3 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(128, 0, 64, 49) normalState:@"tabbar3.png" toggledState:@"tabbar3_h.png"];
+    BeNCTabbarItem *tabItem1 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(60, 5, 120, 40) normalState:@"listoff.png" toggledState:@"ListOn.png"];
+	BeNCTabbarItem *tabItem2 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(180, 5, 120, 40) normalState:@"mapoff.png" toggledState:@"mapon.png"];
+	BeNCTabbarItem *tabItem3 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(300, 5, 120, 40) normalState:@"cameraoff.png" toggledState:@"cameraon.png"];
     
     
     BeNCListViewController *listViewController = [[BeNCListViewController alloc]initWithNibName:@"BeNCListViewController" bundle:nil];
@@ -41,7 +42,10 @@
     
     
     NSMutableArray *viewControllersArray = [[NSMutableArray alloc] init];
-	[viewControllersArray addObject:listViewController];
+    UINavigationController *listNavigation = [[UINavigationController alloc]initWithRootViewController:listViewController];
+    [listNavigation.navigationBar setHidden:NO];
+    [listNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
+	[viewControllersArray addObject:listNavigation];
 	[viewControllersArray addObject:mapViewController];
 	[viewControllersArray addObject:cameraViewController];
     
@@ -51,12 +55,15 @@
 	[tabItemsArray addObject:tabItem2];
 	[tabItemsArray addObject:tabItem3];
     
+    [[LocationService locationService]startUpdate];
+    [[BeNCProcessDatabase sharedMyDatabase] getDatebase ];
+    
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.viewController = [[BeNCMenuViewController alloc]initWithTabViewControllers:viewControllersArray tabItems:tabItemsArray initialTab:0];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
-//    NSLog(@"%@",databasePath);
+
     return YES;
 }
 

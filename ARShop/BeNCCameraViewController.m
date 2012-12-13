@@ -50,8 +50,8 @@
 - (void)addVideoInput {
     captureSession = [[AVCaptureSession alloc]init];
     AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
-    previewLayer.frame = self.view.bounds;
-//    [previewLayer setOrientation:AVCaptureVideoOrientationPortraitUpsideDown];
+    previewLayer.frame = CGRectMake(0, 0, 320, 480);
+    [previewLayer setOrientation:AVCaptureVideoOrientationPortraitUpsideDown];
     previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
 	[self.view.layer addSublayer:previewLayer];
     NSError *error = nil;

@@ -40,7 +40,7 @@
 
 - (void)viewDidLoad
 {
-   [[BeNCProcessDatabase sharedMyDatabase] getDatebase ];
+   
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getDatabase:) name:@"GetDatabase" object:nil];
     self.view.transform = CGAffineTransformIdentity;
     self.view.transform = CGAffineTransformMakeRotation(M_PI/2);
@@ -73,8 +73,8 @@
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	//Create a view holder to store the tabbar items
-	tabBarHolder = [[UIView alloc] initWithFrame:CGRectMake(150, 271, 480, 49)];
-	tabBarHolder.backgroundColor = [UIColor clearColor];
+	tabBarHolder = [[UIView alloc] initWithFrame:CGRectMake(0, 255, 480, 45)];
+	tabBarHolder.backgroundColor = [UIColor grayColor];
 	//add it as a subview
 	[self.view addSubview:tabBarHolder];
 	//loop thru all the view controllers and add their views to self
@@ -101,8 +101,10 @@
 	for (int i = [tabItemsArray count]; i < [tabItemsArray count]; i++) {
 		if (i == index) {
 			[[tabItemsArray objectAtIndex:i] toggleOn:YES];
+            [[tabItemsArray objectAtIndex:i] setAlpha:1.0];
 		} else {
 			[[tabItemsArray objectAtIndex:i] toggleOn:NO];
+            [[tabItemsArray objectAtIndex:i] setAlpha:0.7];
 		}
 	}
 }

@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface BeNCListViewController : UIViewController
-
+@interface BeNCListViewController : UIViewController{
+    IBOutlet UITableView *listShopView;
+    NSMutableArray *shopsArray;
+}
+@property(nonatomic,retain) IBOutlet UITableView *listShopView;
 
 -(void)didUpdateLocation:(NSNotification *)notifi;
 -(void)didUpdateHeading:(NSNotification *)notifi;
+-(void)getShopData:(NSNotification *)notification;
 @end

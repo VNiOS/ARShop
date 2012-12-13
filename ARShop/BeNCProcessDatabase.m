@@ -63,15 +63,22 @@ static BeNCProcessDatabase *shareDatabase = nil;
 - (NSArray *)getDatabaseShop
 {
     [database open];
+    NSLog(@"start get data________");
     NSMutableArray *shops = [[NSMutableArray alloc]init];
     FMResultSet *results  = [database executeQuery:[NSString stringWithFormat:@"select *from shops order by shop_name"]];
     while ([results next]) {
+        
         NSMutableDictionary *shop = [[NSMutableDictionary alloc] init];
         NSNumber *shop_id = [[NSNumber alloc] initWithInt:[results intForColumn:BeNCShopProperiesShopId]];
         NSNumber *shop_type = [[NSNumber alloc] initWithInt:[results intForColumn:BeNCShopProperiesShopTye]];
         NSNumber *shop_phone = [[NSNumber alloc] initWithInt:[results intForColumn:BeNCShopProperiesShopPhone]];
-        NSNumber *shop_latitude = [[NSNumber alloc] initWithFloat:[results intForColumn:BeNCShopProperiesShopLatitude]];
-        NSNumber *shop_longitude = [[NSNumber alloc] initWithFloat:[results intForColumn:BeNCShopProperiesShopLongitude]];
+        
+        
+        NSNumber *shop_latitude = [[NSNumber alloc] initWithFloat:[results doubleForColumn:BeNCShopProperiesShopLatitude]];
+        //NSLog(@" latitude : %lf",[shop_latitude doubleValue]);
+        NSNumber *shop_longitude = [[NSNumber alloc] initWithFloat:[results doubleForColumn:BeNCShopProperiesShopLongitude]];
+        //NSLog(@" longitude : %lf",[shop_longitude doubleValue]);
+        
         NSString *shop_name = [NSString stringWithFormat:@"%@",[results stringForColumn:BeNCShopProperiesShopName]];
         NSString *shop_address = [NSString stringWithFormat:@"%@",[results stringForColumn:BeNCShopProperiesShopAddress]];
         NSString *shop_address_detail = [NSString stringWithFormat:@"%@",[results stringForColumn:BeNCShopProperiesShopAddressDetail]];
@@ -101,10 +108,12 @@ static BeNCProcessDatabase *shareDatabase = nil;
         [shops addObject:newShop];
         [newShop release];
         }
-    return [NSArray arrayWithArray:shops];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"GetData" object:shops];
-    [shops release];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"GetDatabase" object:shops];
+    NSLog(@"post database !!!");
     [database close];
+    return [NSArray arrayWithArray:shops];
+    
+    
 }
 - (void)dealloc
 {

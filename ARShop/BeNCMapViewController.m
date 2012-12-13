@@ -44,9 +44,7 @@ bool firstUpdate = 1;
     
     [self.view addSubview:mapView];
     
-    NSLog(@"MapView.userlocation : %f %f",mapView.userLocation.coordinate.latitude,mapView.userLocation.coordinate.longitude);
-    
-    [[LocationService locationService]startUpdate];
+  
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];    
     
 
@@ -56,7 +54,7 @@ bool firstUpdate = 1;
     
     CLLocation *newLocation = (CLLocation *)[notifi object];
     
-    NSLog(@"Toa do moi la : %f %f",newLocation.coordinate.latitude ,newLocation.coordinate.longitude);
+    NSLog(@"MapView get new location : %f %f",newLocation.coordinate.latitude ,newLocation.coordinate.longitude);
     if (firstUpdate ) {
         CLLocationCoordinate2D startCoord = CLLocationCoordinate2DMake(newLocation.coordinate.latitude, newLocation.coordinate.longitude);
             MKCoordinateRegion adjustedRegion = [mapView regionThatFits:MKCoordinateRegionMakeWithDistance(startCoord, 1200, 1200)];

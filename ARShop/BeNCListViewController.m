@@ -8,11 +8,14 @@
 
 #import "BeNCListViewController.h"
 #import "LocationService.h"
+#import "BeNCDetailViewController.h"
+#import "BeNCUtility.h"
 @interface BeNCListViewController ()
 
 @end
 
 @implementation BeNCListViewController
+@synthesize listShopView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,18 +28,21 @@
 
 - (void)viewDidLoad
 {
-    [self.view setBackgroundColor:[UIColor yellowColor]];
+    [self setTitle:@"List Shop"];
     self.view.transform = CGAffineTransformIdentity;
-    self.view.transform = CGAffineTransformMakeRotation(M_PI/2);
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
+    self.listShopView.frame = CGRectMake(0, 0, 480, 320);
     
-
-
-    [[LocationService locationService]startUpdate];
-    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getShopData:) name:@"GetDatabase" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
+    
+}
+-(void)getShopData:(NSNotification *)notification{
+    NSLog(@"get shop data in LISTVIEW");
+    shopsArray = [[NSMutableArray alloc]initWithArray:(NSArray *)[notification object]];
+    [self.listShopView reloadData];
     
 }
 -(void)didUpdateHeading:(NSNotification *)notifi{
@@ -47,9 +53,9 @@
 -(void)didUpdateLocation:(NSNotification *)notifi{
     CLLocation *newLocation = (CLLocation *)[notifi object];
     
-    NSLog(@"Toa do moi la : %f %f",newLocation.coordinate.latitude ,newLocation.coordinate.longitude);
-    
+    NSLog(@"ListView get new location : %f %f",newLocation.coordinate.latitude ,newLocation.coordinate.longitude);
 }
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -61,5 +67,49 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    // Return the number of rows in the section.
+    return [shopsArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle    reuseIdentifier:CellIdentifier] autorelease];
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"Line %d",indexPath.row];
+    NSDictionary *shop  = [shopsArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = [shop objectForKey:BeNCShopProperiesShopName];
+    cell.detailTextLabel.text = [shop objectForKey:BeNCShopProperiesShopAddress];
+    return cell;
+}
+
+
+
+#pragma mark - Table view delegate
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 60;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+      BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithNibName:@"BeNCDetailViewController" bundle:nil];
+    
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     [detailViewController release];
+     
+}
+
 
 @end
