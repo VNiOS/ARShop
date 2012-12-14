@@ -12,12 +12,14 @@
 #import "BeNCUtility.h"
 #import "BeNCProcessDatabase.h"
 #import "BeNCShopEntity.h"
+#import "BeNCShopCellCell.h"
+
 @interface BeNCListViewController ()
 
 @end
 
 @implementation BeNCListViewController
-@synthesize listShopView;
+@synthesize listShopView,userLocation;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,7 +32,10 @@
 
 - (void)viewDidLoad
 {
+    userLocation = [[CLLocation alloc]init];
     
+    
+    NSLog(@"User location : %f %f ",userLocation.coordinate.latitude,userLocation.coordinate.longitude);
     [self setTitle:@"List Shop"];
     self.view.transform = CGAffineTransformIdentity;
     self.view.bounds = CGRectMake(0, 0, 480, 320);
@@ -45,21 +50,35 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
     [self getShopData];
 }
+#pragma mark getdata
 -(void)getShopData{
     [[BeNCProcessDatabase sharedMyDatabase]getDatebase];
     shopsArray = [[NSArray alloc]initWithArray:[[BeNCProcessDatabase sharedMyDatabase] arrayShop]];
     [self.listShopView reloadData];
     
 }
+-(int)calculeDistance:(BeNCShopEntity *)shop{
+    //NSLog(@"user location : %f %f", userLocation.coordinate.latitude , userLocation.coordinate.longitude);
+    NSLog(@"shop %@ co toa do la %f %f",shop.shop_name ,shop.shop_latitude ,shop.shop_longitute);
+    CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:shop.shop_latitude longitude:shop.shop_longitute];
+    int distance = (int)[shoplocation distanceFromLocation: self.userLocation];
+    return distance;
+}
 -(void)didUpdateHeading:(NSNotification *)notifi{
-    CLHeading *newHeading = (CLHeading *)[notifi object];
+    //CLHeading *newHeading = (CLHeading *)[notifi object];
     
-    NSLog(@"Goc quay so voi North la %f ", newHeading.magneticHeading*0.0174532925);
+    //NSLog(@"heading la %f ", newHeading.magneticHeading*0.0174532925);
 }
 -(void)didUpdateLocation:(NSNotification *)notifi{
     CLLocation *newLocation = (CLLocation *)[notifi object];
     
     NSLog(@"ListView get new location : %f %f",newLocation.coordinate.latitude ,newLocation.coordinate.longitude);
+    if (userLocation) {
+        [userLocation release];
+    }
+    self.userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
+    [self.listShopView reloadData];
+    
 }
 
 - (void)viewDidUnload
@@ -91,13 +110,18 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    BeNCShopCellCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle    reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[BeNCShopCellCell alloc] initWithStyle:UITableViewCellStyleSubtitle    reuseIdentifier:CellIdentifier] autorelease];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     BeNCShopEntity *shop  = [shopsArray objectAtIndex:indexPath.row];
     cell.textLabel.text = shop.shop_name;
     cell.detailTextLabel.text = shop.shop_address;
+    cell.imageView.image = [UIImage imageNamed:@"images.jpg"];
+    NSString *dis = [NSString stringWithFormat:@"%d m",[self calculeDistance:shop]];
+    NSLog(@"shop %@ co distance la %@ ",shop.shop_name ,dis);
+    [cell.distanceBt setTitle:dis forState:UIControlStateNormal];
     return cell;
 }
 

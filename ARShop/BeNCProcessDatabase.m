@@ -73,9 +73,9 @@ static BeNCProcessDatabase *shareDatabase = nil;
         NSNumber *shop_phone = [[NSNumber alloc] initWithInt:[results intForColumn:BeNCShopProperiesShopPhone]];
         
         
-        NSNumber *shop_latitude = [[NSNumber alloc] initWithFloat:[results doubleForColumn:BeNCShopProperiesShopLatitude]];
-        //NSLog(@" latitude : %lf",[shop_latitude doubleValue]);
-        NSNumber *shop_longitude = [[NSNumber alloc] initWithFloat:[results doubleForColumn:BeNCShopProperiesShopLongitude]];
+        NSNumber *shop_latitude = [[NSNumber alloc] initWithFloat:(float)[results doubleForColumn:BeNCShopProperiesShopLatitude]];
+        NSLog(@"get latitude : %lf",[shop_latitude floatValue]);
+        NSNumber *shop_longitude = [[NSNumber alloc] initWithFloat:(float)[results doubleForColumn:BeNCShopProperiesShopLongitude]];
         //NSLog(@" longitude : %lf",[shop_longitude doubleValue]);
         
         NSString *shop_name = [NSString stringWithFormat:@"%@",[results stringForColumn:BeNCShopProperiesShopName]];

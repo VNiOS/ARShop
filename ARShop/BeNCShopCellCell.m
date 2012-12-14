@@ -9,12 +9,14 @@
 #import "BeNCShopCellCell.h"
 
 @implementation BeNCShopCellCell
-
+@synthesize distanceBt;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        self.distanceBt = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [self.distanceBt setFrame:CGRectMake(280, 5, 100, 50)];
+        [self addSubview:self.distanceBt];
     }
     return self;
 }

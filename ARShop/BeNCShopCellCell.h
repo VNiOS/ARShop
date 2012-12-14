@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BeNCShopCellCell : UITableViewCell
-
+@interface BeNCShopCellCell : UITableViewCell{
+    UIButton *distanceBt;
+}
+@property (nonatomic ,retain) UIButton *distanceBt; 
 @end
