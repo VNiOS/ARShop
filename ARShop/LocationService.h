@@ -17,7 +17,7 @@
 }
 @property(nonatomic,retain) CLLocationManager *locationManager;
 
-+(id)locationService;
++(id)sharedLocation;
 -(id)init;
 -(void)startUpdate;
 @end

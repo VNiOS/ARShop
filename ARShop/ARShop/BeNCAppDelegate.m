@@ -55,7 +55,7 @@
 	[tabItemsArray addObject:tabItem2];
 	[tabItemsArray addObject:tabItem3];
     
-    [[LocationService locationService]startUpdate];
+    [[LocationService sharedLocation]startUpdate];
     [[BeNCProcessDatabase sharedMyDatabase] getDatebase ];
     
     

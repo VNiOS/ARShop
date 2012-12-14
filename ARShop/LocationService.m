@@ -29,7 +29,7 @@
     return self;
 }
 
-+(id)locationService{
++(id)sharedLocation{
     LocationService *service = nil;
     service = [[LocationService alloc]init];
     return service;
