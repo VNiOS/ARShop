@@ -55,9 +55,7 @@
 	[tabItemsArray addObject:tabItem2];
 	[tabItemsArray addObject:tabItem3];
     
-    [[LocationService locationService]startUpdate];
-    [[BeNCProcessDatabase sharedMyDatabase] getDatebase ];
-    
+    [[LocationService locationService]startUpdate];    
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.viewController = [[BeNCMenuViewController alloc]initWithTabViewControllers:viewControllersArray tabItems:tabItemsArray initialTab:0];
@@ -80,9 +78,6 @@
     if (success) return;
     NSString *databasePathFromApp = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:databaseName];
     [fileManager copyItemAtPath:databasePathFromApp toPath:databasePath error:nil];
-    NSLog(@"%@",databasePath);
-    NSLog(@"hello");
-
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -28,10 +28,8 @@
 		if ([defaults integerForKey:kSelectedTab]) {
 			initTab = [defaults integerForKey:kSelectedTab];
 		}
-		NSLog(@"%d", initTab);
 		tabViewControllers = [[NSMutableArray alloc] initWithCapacity:[tbControllers count]];
 		tabViewControllers = tbControllers;
-		
 		tabItemsArray = [[NSMutableArray alloc] initWithCapacity:[tbItems count]];
 		tabItemsArray = tbItems;
 	}
@@ -40,19 +38,16 @@
 
 - (void)viewDidLoad
 {
-   
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getDatabase:) name:@"GetDatabase" object:nil];
+    [[BeNCProcessDatabase sharedMyDatabase]getDatebase];
+    NSArray *array =   [[BeNCProcessDatabase sharedMyDatabase] arrayShop];
+    NSLog(@"so phan tu shop = %i",[array count]);
     self.view.transform = CGAffineTransformIdentity;
     self.view.transform = CGAffineTransformMakeRotation(M_PI/2);
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
-- (void)getDatabase:(NSNotification *)notification
-{
-     NSArray *arrayShop = (NSArray *)[notification object];
-    NSLog(@"number shop = %i",[arrayShop count]);
-}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -75,8 +70,10 @@
 	//Create a view holder to store the tabbar items
 	tabBarHolder = [[UIView alloc] initWithFrame:CGRectMake(0, 255, 480, 45)];
 	tabBarHolder.backgroundColor = [UIColor grayColor];
+    
 	//add it as a subview
 	[self.view addSubview:tabBarHolder];
+    
 	//loop thru all the view controllers and add their views to self
 	for (int i = [tabViewControllers count]-1; i >= 0; i--) {
 		[self.view addSubview:[[tabViewControllers objectAtIndex:i] view]];
