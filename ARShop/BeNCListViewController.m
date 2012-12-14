@@ -58,7 +58,7 @@
     
 }
 -(int)calculeDistance:(BeNCShopEntity *)shop{
-    //NSLog(@"user location : %f %f", userLocation.coordinate.latitude , userLocation.coordinate.longitude);
+
     NSLog(@"shop %@ co toa do la %f %f",shop.shop_name ,shop.shop_latitude ,shop.shop_longitute);
     CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:shop.shop_latitude longitude:shop.shop_longitute];
     int distance = (int)[shoplocation distanceFromLocation: self.userLocation];

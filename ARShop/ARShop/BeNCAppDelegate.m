@@ -31,9 +31,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self checkDatabase];
-    BeNCTabbarItem *tabItem1 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(5, 5, 90, 30) normalState:@"listoff.png" toggledState:@"ListOn.png"];
-	BeNCTabbarItem *tabItem2 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(95, 5, 90, 30) normalState:@"mapoff.png" toggledState:@"mapon.png"];
-	BeNCTabbarItem *tabItem3 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(185, 5, 90, 30) normalState:@"cameraoff.png" toggledState:@"cameraon.png"];
+    BeNCTabbarItem *tabItem1 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(2, 2, 90, 30) normalState:@"listoff.png" toggledState:@"ListOn.png"];
+	BeNCTabbarItem *tabItem2 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(94, 2, 90, 30) normalState:@"mapoff.png" toggledState:@"mapon.png"];
+	BeNCTabbarItem *tabItem3 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(186, 2, 90, 30) normalState:@"cameraoff.png" toggledState:@"cameraon.png"];
     
     
     BeNCListViewController *listViewController = [[BeNCListViewController alloc]initWithNibName:@"BeNCListViewController" bundle:nil];

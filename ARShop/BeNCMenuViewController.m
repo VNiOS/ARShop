@@ -66,7 +66,7 @@
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	//Create a view holder to store the tabbar items
-	tabBarHolder = [[UIView alloc] initWithFrame:CGRectMake(200, 260, 280, 40)];
+	tabBarHolder = [[UIView alloc] initWithFrame:CGRectMake(200, 266, 280, 34)];
 	tabBarHolder.backgroundColor = [UIColor grayColor];
     
 	//add it as a subview

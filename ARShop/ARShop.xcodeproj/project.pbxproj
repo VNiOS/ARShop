@@ -15,6 +15,7 @@
 		A779362C1679C024006603C7 /* mapon.png in Resources */ = {isa = PBXBuildFile; fileRef = A779362B1679C024006603C7 /* mapon.png */; };
 		A7F08DB4167724F000D46DCF /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F08DB3167724F000D46DCF /* LocationService.m */; };
 		A7F21FB7167B0C9E006AE452 /* images.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A7F21FB6167B0C9E006AE452 /* images.jpg */; };
+		A7F21FBF167B23EF006AE452 /* BeNCShopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F21FBE167B23EF006AE452 /* BeNCShopAnnotation.m */; };
 		C310BDA1167886CF00DA1D55 /* ARShopDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C310BDA0167886CF00DA1D55 /* ARShopDatabase.sqlite */; };
 		C32034FB16757ADB00CA3D8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32034FA16757ADB00CA3D8C /* UIKit.framework */; };
 		C32034FD16757ADB00CA3D8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32034FC16757ADB00CA3D8C /* Foundation.framework */; };
@@ -70,6 +71,8 @@
 		A7F08DB2167724F000D46DCF /* LocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
 		A7F08DB3167724F000D46DCF /* LocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
 		A7F21FB6167B0C9E006AE452 /* images.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpg; sourceTree = "<group>"; };
+		A7F21FBD167B23EF006AE452 /* BeNCShopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCShopAnnotation.h; sourceTree = "<group>"; };
+		A7F21FBE167B23EF006AE452 /* BeNCShopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCShopAnnotation.m; sourceTree = "<group>"; };
 		C310BDA0167886CF00DA1D55 /* ARShopDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = ARShopDatabase.sqlite; sourceTree = "<group>"; };
 		C32034F616757ADB00CA3D8C /* ARShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C32034FA16757ADB00CA3D8C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -317,6 +320,8 @@
 				C32035501675853200CA3D8C /* BeNCDetailShopInCamera.m */,
 				C3611F4416771BF3008DBE79 /* BeNCTabbarItem.h */,
 				C3611F4516771BF3008DBE79 /* BeNCTabbarItem.m */,
+				A7F21FBD167B23EF006AE452 /* BeNCShopAnnotation.h */,
+				A7F21FBE167B23EF006AE452 /* BeNCShopAnnotation.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -462,6 +467,7 @@
 				C33504C516759AEF00E4139A /* FMResultSet.m in Sources */,
 				C3611F4616771BF3008DBE79 /* BeNCTabbarItem.m in Sources */,
 				A7F08DB4167724F000D46DCF /* LocationService.m in Sources */,
+				A7F21FBF167B23EF006AE452 /* BeNCShopAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
