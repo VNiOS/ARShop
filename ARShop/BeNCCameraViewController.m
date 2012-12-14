@@ -8,6 +8,7 @@
 
 #import "BeNCCameraViewController.h"
 #import "LocationService.h"
+#import "BeNCProcessDatabase.h"
 @interface BeNCCameraViewController ()
 
 @end
@@ -26,6 +27,8 @@
 
 - (void)viewDidLoad
 {
+
+    
     [self.view setBackgroundColor:[UIColor redColor]];
     self.view.transform = CGAffineTransformIdentity;
     self.view.transform = CGAffineTransformMakeRotation(M_PI/2);

@@ -10,6 +10,7 @@
 #import "LocationService.h"
 #import "BeNCDetailViewController.h"
 #import "BeNCUtility.h"
+#import "BeNCProcessDatabase.h"
 @interface BeNCListViewController ()
 
 @end
@@ -28,22 +29,22 @@
 
 - (void)viewDidLoad
 {
+    
     [self setTitle:@"List Shop"];
     self.view.transform = CGAffineTransformIdentity;
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
     self.listShopView.frame = CGRectMake(0, 0, 480, 320);
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getShopData:) name:@"GetDatabase" object:nil];
     
+
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getShopData:) name:@"GetDatabase" object:nil];
+
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
-    
 }
 -(void)getShopData:(NSNotification *)notification{
-    NSLog(@"get shop data in LISTVIEW");
-    shopsArray = [[NSMutableArray alloc]initWithArray:(NSArray *)[notification object]];
-    [self.listShopView reloadData];
+  
     
 }
 -(void)didUpdateHeading:(NSNotification *)notifi{

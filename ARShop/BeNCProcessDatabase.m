@@ -55,12 +55,11 @@ static BeNCProcessDatabase *shareDatabase = nil;
 -(void)getDatebase {
     BeNCAppDelegate  *appDelegate = (BeNCAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSString *databasePath = appDelegate.databasePath;
-    NSLog(@"path = %@",appDelegate.databasePath);
     database = [[FMDatabase databaseWithPath:databasePath]retain];
-    [self getDatabaseShop];
+    [self getArrayShops];
 }
 
-- (NSArray *)getDatabaseShop
+- (NSArray *)getArrayShops
 {
     [database open];
     NSLog(@"start get data________");
@@ -106,14 +105,14 @@ static BeNCProcessDatabase *shareDatabase = nil;
         
         BeNCShopEntity *newShop = [[BeNCShopEntity alloc]initWithDictionary:shop];
         [shops addObject:newShop];
+        NSLog(@"shop name = %@",newShop.shop_name);
+
         [newShop release];
         }
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"GetDatabase" object:shops];
-    NSLog(@"post database !!!");
+//    [[NSNotificationCenter defaultCenter]postNotificationName:@"GetDatabase" object:shops];
     [database close];
+    arrayShop = shops;
     return [NSArray arrayWithArray:shops];
-    
-    
 }
 - (void)dealloc
 {

@@ -54,7 +54,7 @@ bool firstUpdate = 1;
     
     CLLocation *newLocation = (CLLocation *)[notifi object];
     
-    NSLog(@"MapView get new location : %f %f",newLocation.coordinate.latitude ,newLocation.coordinate.longitude);
+//    NSLog(@"MapView get new location : %f %f",newLocation.coordinate.latitude ,newLocation.coordinate.longitude);
     if (firstUpdate ) {
         CLLocationCoordinate2D startCoord = CLLocationCoordinate2DMake(newLocation.coordinate.latitude, newLocation.coordinate.longitude);
             MKCoordinateRegion adjustedRegion = [mapView regionThatFits:MKCoordinateRegionMakeWithDistance(startCoord, 1200, 1200)];
@@ -63,12 +63,7 @@ bool firstUpdate = 1;
         
     }
     
-    
-    
 }
-
-
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -84,7 +79,6 @@ bool firstUpdate = 1;
 -(void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views{
     
     NSLog(@"Annotation add :%d",views.count);
-    ;
     
 }
 - (void)mapView:(MKMapView *)mv regionDidChangeAnimated:(BOOL)animated {
