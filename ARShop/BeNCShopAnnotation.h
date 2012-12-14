@@ -7,7 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
+@interface BeNCShopAnnotation : NSObject<MKAnnotation>{
+    NSString *_name;
+    NSString *_address;
+    CLLocationCoordinate2D _coordinate;
+    
+    NSString *title;
+    NSString *subtitle;
+    
+    int index;
+    bool isGroup;
+    
+}
+@property(nonatomic,copy)  NSString *title;
+@property(nonatomic,copy)  NSString *subtitle;
+@property (copy) NSString *name;
+@property (copy) NSString *address;
 
-@interface BeNCShopAnnotation : NSObject
+@property(nonatomic) int index;
+@property(nonatomic) bool isGroup;
 
-@end
+
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+- (id)initWithName:(NSString*)name address:(NSString*)address coordinate:(CLLocationCoordinate2D)coordinate;@end

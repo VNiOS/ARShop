@@ -8,6 +8,9 @@
 
 #import "BeNCMapViewController.h"
 #import "LocationService.h"
+#import "BeNCProcessDatabase.h"
+#import "BeNCShopEntity.h"
+#import "BeNCShopAnnotation.h"
 @interface BeNCMapViewController ()
 
 @end
@@ -45,11 +48,36 @@ bool firstUpdate = 1;
     [self.view addSubview:mapView];
     
   
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];    
-    
+    //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];    
+    [self getShopData];
 
 }
+-(void)getShopData{
+    [[BeNCProcessDatabase sharedMyDatabase]getDatebase];
+    shopsArray = [[NSArray alloc]initWithArray:[[BeNCProcessDatabase sharedMyDatabase] arrayShop]];
+    [self addShopAnnotation];
+}
+-(void)addShopAnnotation{
+    for (int i=0; i<shopsArray.count; i++) {
+        
+        BeNCShopEntity *shop = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
+        
+      
+        CLLocationCoordinate2D placeCoord;
+        
+        placeCoord.latitude=shop.shop_latitude;
+        placeCoord.longitude=shop.shop_longitute;
+        
+        //CLLocation *placelocation=[[CLLocation alloc]initWithLatitude:placeCoord.latitude longitude:placeCoord.longitude];
+        //CLLocationDistance dis=[placelocation distanceFromLocation:userCoordinate];
+        
+        BeNCShopAnnotation *resultPlace=[[BeNCShopAnnotation alloc]initWithName:shop.shop_name address:shop.shop_address coordinate:placeCoord];
+        //resultPlace.distance=dis;
+        resultPlace.index=i;
+       [mapView addAnnotation:resultPlace];
+    }
 
+}
 -(void)didUpdateLocation:(NSNotification *)notifi{
     
     CLLocation *newLocation = (CLLocation *)[notifi object];

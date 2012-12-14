@@ -12,9 +12,11 @@
 @interface BeNCMapViewController : UIViewController<MKMapViewDelegate>{
     
     MKMapView *mapView;
+    NSArray *shopsArray;
     
 }
 @property (nonatomic,retain) MKMapView *mapView;
-
+-(void)getShopData;
 -(void)didUpdateLocation:(NSNotification *)notifi;
+-(void)addShopAnnotation;
 @end
