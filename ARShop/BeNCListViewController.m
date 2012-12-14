@@ -114,6 +114,7 @@
     if (cell == nil) {
         cell = [[[BeNCShopCellCell alloc] initWithStyle:UITableViewCellStyleSubtitle    reuseIdentifier:CellIdentifier] autorelease];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     }
     BeNCShopEntity *shop  = [shopsArray objectAtIndex:indexPath.row];
     cell.textLabel.text = shop.shop_name;
@@ -130,6 +131,10 @@
 #pragma mark - Table view delegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 60;
+}
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
+    NSString *footer = [NSString stringWithFormat:@"%d shops in list",[shopsArray count]];
+    return footer;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
