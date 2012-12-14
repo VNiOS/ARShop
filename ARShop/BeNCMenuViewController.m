@@ -38,9 +38,7 @@
 
 - (void)viewDidLoad
 {
-    [[BeNCProcessDatabase sharedMyDatabase]getDatebase];
-    NSArray *array =   [[BeNCProcessDatabase sharedMyDatabase] arrayShop];
-    NSLog(@"so phan tu shop = %i",[array count]);
+   
     self.view.transform = CGAffineTransformIdentity;
     self.view.transform = CGAffineTransformMakeRotation(M_PI/2);
     self.view.bounds = CGRectMake(0, 0, 480, 320);

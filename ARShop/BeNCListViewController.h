@@ -11,11 +11,11 @@
 
 @interface BeNCListViewController : UIViewController{
     IBOutlet UITableView *listShopView;
-    NSMutableArray *shopsArray;
+    NSArray *shopsArray;
 }
 @property(nonatomic,retain) IBOutlet UITableView *listShopView;
 
 -(void)didUpdateLocation:(NSNotification *)notifi;
 -(void)didUpdateHeading:(NSNotification *)notifi;
--(void)getShopData:(NSNotification *)notification;
+-(void)getShopData;
 @end

@@ -11,6 +11,7 @@
 #import "BeNCDetailViewController.h"
 #import "BeNCUtility.h"
 #import "BeNCProcessDatabase.h"
+#import "BeNCShopEntity.h"
 @interface BeNCListViewController ()
 
 @end
@@ -42,9 +43,12 @@
 
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
+    [self getShopData];
 }
--(void)getShopData:(NSNotification *)notification{
-  
+-(void)getShopData{
+    [[BeNCProcessDatabase sharedMyDatabase]getDatebase];
+    shopsArray = [[NSArray alloc]initWithArray:[[BeNCProcessDatabase sharedMyDatabase] arrayShop]];
+    [self.listShopView reloadData];
     
 }
 -(void)didUpdateHeading:(NSNotification *)notifi{
@@ -91,10 +95,9 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle    reuseIdentifier:CellIdentifier] autorelease];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"Line %d",indexPath.row];
-    NSDictionary *shop  = [shopsArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = [shop objectForKey:BeNCShopProperiesShopName];
-    cell.detailTextLabel.text = [shop objectForKey:BeNCShopProperiesShopAddress];
+    BeNCShopEntity *shop  = [shopsArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = shop.shop_name;
+    cell.detailTextLabel.text = shop.shop_address;
     return cell;
 }
 
