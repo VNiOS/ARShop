@@ -13,6 +13,8 @@
 		A77936271679BC16006603C7 /* ListOn.png in Resources */ = {isa = PBXBuildFile; fileRef = A77936211679BC16006603C7 /* ListOn.png */; };
 		A77936281679BC16006603C7 /* mapoff.png in Resources */ = {isa = PBXBuildFile; fileRef = A77936221679BC16006603C7 /* mapoff.png */; };
 		A779362C1679C024006603C7 /* mapon.png in Resources */ = {isa = PBXBuildFile; fileRef = A779362B1679C024006603C7 /* mapon.png */; };
+		A7EC9FA9167F051000CE1B3E /* BeNCShopGroupAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EC9FA8167F051000CE1B3E /* BeNCShopGroupAnnotation.m */; };
+		A7EC9FB0167F08BB00CE1B3E /* BeNCShopGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EC9FAF167F08BB00CE1B3E /* BeNCShopGroupView.m */; };
 		A7F08DB4167724F000D46DCF /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F08DB3167724F000D46DCF /* LocationService.m */; };
 		A7F21FB7167B0C9E006AE452 /* images.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A7F21FB6167B0C9E006AE452 /* images.jpg */; };
 		A7F21FBF167B23EF006AE452 /* BeNCShopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F21FBE167B23EF006AE452 /* BeNCShopAnnotation.m */; };
@@ -68,6 +70,10 @@
 		A77936211679BC16006603C7 /* ListOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ListOn.png; sourceTree = "<group>"; };
 		A77936221679BC16006603C7 /* mapoff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapoff.png; sourceTree = "<group>"; };
 		A779362B1679C024006603C7 /* mapon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapon.png; sourceTree = "<group>"; };
+		A7EC9FA7167F051000CE1B3E /* BeNCShopGroupAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCShopGroupAnnotation.h; sourceTree = "<group>"; };
+		A7EC9FA8167F051000CE1B3E /* BeNCShopGroupAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCShopGroupAnnotation.m; sourceTree = "<group>"; };
+		A7EC9FAE167F08BB00CE1B3E /* BeNCShopGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCShopGroupView.h; sourceTree = "<group>"; };
+		A7EC9FAF167F08BB00CE1B3E /* BeNCShopGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCShopGroupView.m; sourceTree = "<group>"; };
 		A7F08DB2167724F000D46DCF /* LocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
 		A7F08DB3167724F000D46DCF /* LocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
 		A7F21FB6167B0C9E006AE452 /* images.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpg; sourceTree = "<group>"; };
@@ -322,6 +328,10 @@
 				C3611F4516771BF3008DBE79 /* BeNCTabbarItem.m */,
 				A7F21FBD167B23EF006AE452 /* BeNCShopAnnotation.h */,
 				A7F21FBE167B23EF006AE452 /* BeNCShopAnnotation.m */,
+				A7EC9FA7167F051000CE1B3E /* BeNCShopGroupAnnotation.h */,
+				A7EC9FA8167F051000CE1B3E /* BeNCShopGroupAnnotation.m */,
+				A7EC9FAE167F08BB00CE1B3E /* BeNCShopGroupView.h */,
+				A7EC9FAF167F08BB00CE1B3E /* BeNCShopGroupView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -468,6 +478,8 @@
 				C3611F4616771BF3008DBE79 /* BeNCTabbarItem.m in Sources */,
 				A7F08DB4167724F000D46DCF /* LocationService.m in Sources */,
 				A7F21FBF167B23EF006AE452 /* BeNCShopAnnotation.m in Sources */,
+				A7EC9FA9167F051000CE1B3E /* BeNCShopGroupAnnotation.m in Sources */,
+				A7EC9FB0167F08BB00CE1B3E /* BeNCShopGroupView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

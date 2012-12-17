@@ -17,7 +17,10 @@
     NSString *subtitle;
     
     int index;
-    bool isGroup;
+    bool isChecked;
+    
+    CGPoint locationInView;
+    NSMutableArray *overideAnnotation;
     
 }
 @property(nonatomic,copy)  NSString *title;
@@ -26,8 +29,10 @@
 @property (copy) NSString *address;
 
 @property(nonatomic) int index;
-@property(nonatomic) bool isGroup;
+@property(nonatomic) bool isChecked;
+@property(nonatomic) CGPoint locationInView;
 
+@property(nonatomic,retain) NSMutableArray *overideAnnotation;
 
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 - (id)initWithName:(NSString*)name address:(NSString*)address coordinate:(CLLocationCoordinate2D)coordinate;@end
