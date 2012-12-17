@@ -33,9 +33,7 @@
 - (void)viewDidLoad
 {
     userLocation = [[CLLocation alloc]init];
-    
-    
-    NSLog(@"User location : %f %f ",userLocation.coordinate.latitude,userLocation.coordinate.longitude);
+//    NSLog(@"User location : %f %f ",userLocation.coordinate.latitude,userLocation.coordinate.longitude);
     [self setTitle:@"List Shop"];
     self.view.transform = CGAffineTransformIdentity;
     self.view.bounds = CGRectMake(0, 0, 480, 320);
@@ -44,7 +42,7 @@
     
     
 
-//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getShopData:) name:@"GetDatabase" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getShopData:) name:@"GetDatabase" object:nil];
 
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
@@ -54,12 +52,13 @@
 -(void)getShopData{
     [[BeNCProcessDatabase sharedMyDatabase]getDatebase];
     shopsArray = [[NSArray alloc]initWithArray:[[BeNCProcessDatabase sharedMyDatabase] arrayShop]];
+//    NSLog(@"so phan tu cua mang = %i",[shopsArray count]);
     [self.listShopView reloadData];
     
 }
 -(int)calculeDistance:(BeNCShopEntity *)shop{
 
-    NSLog(@"shop %@ co toa do la %f %f",shop.shop_name ,shop.shop_latitude ,shop.shop_longitute);
+//    NSLog(@"shop %@ co toa do la %f %f",shop.shop_name ,shop.shop_latitude ,shop.shop_longitute);
     CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:shop.shop_latitude longitude:shop.shop_longitute];
     int distance = (int)[shoplocation distanceFromLocation: self.userLocation];
     return distance;
@@ -72,10 +71,8 @@
 -(void)didUpdateLocation:(NSNotification *)notifi{
     CLLocation *newLocation = (CLLocation *)[notifi object];
     
-    NSLog(@"ListView get new location : %f %f",newLocation.coordinate.latitude ,newLocation.coordinate.longitude);
-    if (userLocation) {
-        [userLocation release];
-    }
+//    NSLog(@"ListView get new location : %f %f",newLocation.coordinate.latitude ,newLocation.coordinate.longitude);
+ 
     self.userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     [self.listShopView reloadData];
     
@@ -101,7 +98,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
     // Return the number of rows in the section.
     return [shopsArray count];
 }

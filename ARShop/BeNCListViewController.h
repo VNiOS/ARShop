@@ -14,9 +14,8 @@
     NSArray *shopsArray;
     CLLocation *userLocation ;
 }
-@property(nonatomic,retain) IBOutlet UITableView *listShopView;
-@property(nonatomic,retain)  CLLocation *userLocation ;
-
+@property(nonatomic,retain)IBOutlet UITableView *listShopView;
+@property(nonatomic,retain)CLLocation *userLocation ;
 -(void)didUpdateLocation:(NSNotification *)notifi;
 -(void)didUpdateHeading:(NSNotification *)notifi;
 -(void)getShopData;

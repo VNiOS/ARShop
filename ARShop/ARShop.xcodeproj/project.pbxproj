@@ -52,13 +52,8 @@
 		C33504D816759CD500E4139A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33504D716759CD500E4139A /* CoreMotion.framework */; };
 		C33504DA16759D2200E4139A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33504D916759D2200E4139A /* MapKit.framework */; };
 		C33504DC16759D3700E4139A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33504DB16759D3700E4139A /* AVFoundation.framework */; };
+		C3435E30167ECE80004B7FD0 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = C3435E2F167ECE80004B7FD0 /* arrow.png */; };
 		C3611F4616771BF3008DBE79 /* BeNCTabbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C3611F4516771BF3008DBE79 /* BeNCTabbarItem.m */; };
-		C3611F4E16771E93008DBE79 /* tabbar1.png in Resources */ = {isa = PBXBuildFile; fileRef = C3611F4816771E93008DBE79 /* tabbar1.png */; };
-		C3611F4F16771E93008DBE79 /* tabbar1_h.png in Resources */ = {isa = PBXBuildFile; fileRef = C3611F4916771E93008DBE79 /* tabbar1_h.png */; };
-		C3611F5016771E93008DBE79 /* tabbar2.png in Resources */ = {isa = PBXBuildFile; fileRef = C3611F4A16771E93008DBE79 /* tabbar2.png */; };
-		C3611F5116771E93008DBE79 /* tabbar2_h.png in Resources */ = {isa = PBXBuildFile; fileRef = C3611F4B16771E93008DBE79 /* tabbar2_h.png */; };
-		C3611F5216771E93008DBE79 /* tabbar3.png in Resources */ = {isa = PBXBuildFile; fileRef = C3611F4C16771E93008DBE79 /* tabbar3.png */; };
-		C3611F5316771E93008DBE79 /* tabbar3_h.png in Resources */ = {isa = PBXBuildFile; fileRef = C3611F4D16771E93008DBE79 /* tabbar3_h.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,14 +126,9 @@
 		C33504D716759CD500E4139A /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		C33504D916759D2200E4139A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C33504DB16759D3700E4139A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C3435E2F167ECE80004B7FD0 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		C3611F4416771BF3008DBE79 /* BeNCTabbarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCTabbarItem.h; sourceTree = "<group>"; };
 		C3611F4516771BF3008DBE79 /* BeNCTabbarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCTabbarItem.m; sourceTree = "<group>"; };
-		C3611F4816771E93008DBE79 /* tabbar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar1.png; sourceTree = "<group>"; };
-		C3611F4916771E93008DBE79 /* tabbar1_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar1_h.png; sourceTree = "<group>"; };
-		C3611F4A16771E93008DBE79 /* tabbar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar2.png; sourceTree = "<group>"; };
-		C3611F4B16771E93008DBE79 /* tabbar2_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar2_h.png; sourceTree = "<group>"; };
-		C3611F4C16771E93008DBE79 /* tabbar3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar3.png; sourceTree = "<group>"; };
-		C3611F4D16771E93008DBE79 /* tabbar3_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar3_h.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -346,6 +336,7 @@
 		C3611F4716771E81008DBE79 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C3435E2F167ECE80004B7FD0 /* arrow.png */,
 				A7F21FB6167B0C9E006AE452 /* images.jpg */,
 				A779362B1679C024006603C7 /* mapon.png */,
 				A779361E1679BC16006603C7 /* cameraoff.png */,
@@ -353,12 +344,6 @@
 				A77936201679BC16006603C7 /* listoff.png */,
 				A77936211679BC16006603C7 /* ListOn.png */,
 				A77936221679BC16006603C7 /* mapoff.png */,
-				C3611F4816771E93008DBE79 /* tabbar1.png */,
-				C3611F4916771E93008DBE79 /* tabbar1_h.png */,
-				C3611F4A16771E93008DBE79 /* tabbar2.png */,
-				C3611F4B16771E93008DBE79 /* tabbar2_h.png */,
-				C3611F4C16771E93008DBE79 /* tabbar3.png */,
-				C3611F4D16771E93008DBE79 /* tabbar3_h.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -421,12 +406,6 @@
 				C32035351675803500CA3D8C /* BeNCCameraViewController.xib in Resources */,
 				C320353A1675804C00CA3D8C /* BeNCDetailViewController.xib in Resources */,
 				C320354E1675836700CA3D8C /* BeNCDetailInCameraViewController.xib in Resources */,
-				C3611F4E16771E93008DBE79 /* tabbar1.png in Resources */,
-				C3611F4F16771E93008DBE79 /* tabbar1_h.png in Resources */,
-				C3611F5016771E93008DBE79 /* tabbar2.png in Resources */,
-				C3611F5116771E93008DBE79 /* tabbar2_h.png in Resources */,
-				C3611F5216771E93008DBE79 /* tabbar3.png in Resources */,
-				C3611F5316771E93008DBE79 /* tabbar3_h.png in Resources */,
 				C310BDA1167886CF00DA1D55 /* ARShopDatabase.sqlite in Resources */,
 				A77936241679BC16006603C7 /* cameraoff.png in Resources */,
 				A77936251679BC16006603C7 /* cameraon.png in Resources */,
@@ -435,6 +414,7 @@
 				A77936281679BC16006603C7 /* mapoff.png in Resources */,
 				A779362C1679C024006603C7 /* mapon.png in Resources */,
 				A7F21FB7167B0C9E006AE452 /* images.jpg in Resources */,
+				C3435E30167ECE80004B7FD0 /* arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

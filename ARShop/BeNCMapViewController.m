@@ -31,23 +31,16 @@ bool firstUpdate = 1;
 {
     
     self.view.transform = CGAffineTransformIdentity;
-    self.view.transform = CGAffineTransformMakeRotation(M_PI/2);
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
     
     
-    mapView=[[MKMapView alloc]initWithFrame:CGRectMake(0, 0, 480, 480)];
+    mapView=[[MKMapView alloc]initWithFrame:CGRectMake(0, 0, 480, 320)];
     [mapView setDelegate:self];
     [mapView setShowsUserLocation:YES];
-    for (UIView *aView in mapView.subviews){
-        aView.transform = CGAffineTransformMakeRotation(-M_PI/2);
-    }
-    
-    
-    
+
     [self.view addSubview:mapView];
     
-  
     //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];    
     [self getShopData];
 
@@ -106,7 +99,7 @@ bool firstUpdate = 1;
 #pragma mark mapViewDelegate
 -(void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views{
     
-    NSLog(@"Annotation add :%d",views.count);
+//    NSLog(@"Annotation add :%d",views.count);
     
 }
 - (void)mapView:(MKMapView *)mv regionDidChangeAnimated:(BOOL)animated {

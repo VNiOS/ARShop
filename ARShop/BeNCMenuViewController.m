@@ -38,12 +38,8 @@
 
 - (void)viewDidLoad
 {
-   
-    self.view.transform = CGAffineTransformIdentity;
-    self.view.transform = CGAffineTransformMakeRotation(M_PI/2);
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
