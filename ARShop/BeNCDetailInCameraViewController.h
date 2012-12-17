@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BeNCShopEntity.h"
+#include <CoreMotion/CoreMotion.h>
+#import "BeNCArrow.h"
 
-@interface BeNCDetailInCameraViewController : UIViewController
+@interface BeNCDetailInCameraViewController : UIViewController{
+    CMMotionManager *motionManager;
+    BeNCArrow *arrowImage;
+    NSTimer *timer;
+}
+- (void)setContentForView:(BeNCShopEntity *)shopEntity;
+
 
 @end

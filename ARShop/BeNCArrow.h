@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface BeNCArrow : UIImageView
-
+#import <CoreLocation/CoreLocation.h>
+#import "BeNCShopEntity.h"
+#include <CoreLocation/CoreLocation.h>
+@interface BeNCArrow : UIImageView{
+    CLLocation *userLocation;
+    BeNCShopEntity *shop ;
+    double rotationAngleArrow;
+}
+- (id)initWithShop:(BeNCShopEntity *)shopEntity;
 @end

@@ -7,7 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BeNCShopEntity.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface BeNCDetailShopInCamera : UIView
-
+@interface BeNCDetailShopInCamera : UIView{
+    UILabel *labelShopName;
+    UILabel *labelShopAddress;
+    UILabel *labelDistanceToShop;
+    CLLocation *userLocation ;
+    BeNCShopEntity *shop;
+}
+@property(nonatomic, retain)UILabel *labelShopName;
+@property(nonatomic, retain)UILabel *labelShopAddress;
+@property(nonatomic, retain)UILabel *labelDistanceToShop;
+@property(nonatomic,retain)CLLocation *userLocation ;
+- (id)initWithShop:(BeNCShopEntity *)shopEntity;
+- (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity;
+- (float)caculateMax:(float )numberA withNumberB:(float )numberB;
+- (void)updateContentDetailShop:(BeNCShopEntity *)shopEntity;
 @end

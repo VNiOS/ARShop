@@ -32,7 +32,11 @@ bool firstUpdate = 1;
 - (void)viewDidLoad
 {
     
+<<<<<<< HEAD
     self.title = @"Map";
+=======
+    self.view.transform = CGAffineTransformIdentity;
+>>>>>>> 168052504642b5a63e618159324ee1cc3a0cd2e3
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
     
@@ -40,10 +44,17 @@ bool firstUpdate = 1;
     mapView=[[MKMapView alloc]initWithFrame:CGRectMake(0, 0, 480, 320)];
     [mapView setDelegate:self];
     [mapView setShowsUserLocation:YES];
+<<<<<<< HEAD
     
     [self.view addSubview:mapView];
     
   
+=======
+
+    [self.view addSubview:mapView];
+    
+    //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];    
+>>>>>>> 168052504642b5a63e618159324ee1cc3a0cd2e3
     [self getShopData];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
 
@@ -101,7 +112,7 @@ bool firstUpdate = 1;
 #pragma mark mapViewDelegate
 -(void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views{
     
-    NSLog(@"Annotation add :%d",views.count);
+//    NSLog(@"Annotation add :%d",views.count);
     
 }
 - (void)mapView:(MKMapView *)mv regionDidChangeAnimated:(BOOL)animated {

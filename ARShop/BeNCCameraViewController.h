@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #include <AVFoundation/AVFoundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface BeNCCameraViewController : UIViewController{
     AVCaptureSession *captureSession;
     AVCaptureDeviceInput *deviceInput;
+    NSArray *shopsArray;
+    CLLocation *userLocation ;
+    NSMutableArray *arrayShopDistance;
+
 }
 - (void)addVideoInput;
 
