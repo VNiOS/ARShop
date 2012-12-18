@@ -15,6 +15,7 @@
 		A779362C1679C024006603C7 /* mapon.png in Resources */ = {isa = PBXBuildFile; fileRef = A779362B1679C024006603C7 /* mapon.png */; };
 		A7EC9FA9167F051000CE1B3E /* BeNCShopGroupAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EC9FA8167F051000CE1B3E /* BeNCShopGroupAnnotation.m */; };
 		A7EC9FB0167F08BB00CE1B3E /* BeNCShopGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EC9FAF167F08BB00CE1B3E /* BeNCShopGroupView.m */; };
+		A7EFB61E16807876005E0F17 /* CalloutMapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EFB61D16807876005E0F17 /* CalloutMapAnnotationView.m */; };
 		A7F08DB4167724F000D46DCF /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F08DB3167724F000D46DCF /* LocationService.m */; };
 		A7F21FB7167B0C9E006AE452 /* images.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A7F21FB6167B0C9E006AE452 /* images.jpg */; };
 		A7F21FBF167B23EF006AE452 /* BeNCShopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F21FBE167B23EF006AE452 /* BeNCShopAnnotation.m */; };
@@ -69,6 +70,8 @@
 		A7EC9FA8167F051000CE1B3E /* BeNCShopGroupAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCShopGroupAnnotation.m; sourceTree = "<group>"; };
 		A7EC9FAE167F08BB00CE1B3E /* BeNCShopGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCShopGroupView.h; sourceTree = "<group>"; };
 		A7EC9FAF167F08BB00CE1B3E /* BeNCShopGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCShopGroupView.m; sourceTree = "<group>"; };
+		A7EFB61C16807876005E0F17 /* CalloutMapAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalloutMapAnnotationView.h; sourceTree = "<group>"; };
+		A7EFB61D16807876005E0F17 /* CalloutMapAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalloutMapAnnotationView.m; sourceTree = "<group>"; };
 		A7F08DB2167724F000D46DCF /* LocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
 		A7F08DB3167724F000D46DCF /* LocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
 		A7F21FB6167B0C9E006AE452 /* images.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpg; sourceTree = "<group>"; };
@@ -308,6 +311,8 @@
 		C320352116757CC500CA3D8C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A7EFB61C16807876005E0F17 /* CalloutMapAnnotationView.h */,
+				A7EFB61D16807876005E0F17 /* CalloutMapAnnotationView.m */,
 				C320353E167580EA00CA3D8C /* BeNCShopCellCell.h */,
 				C320353F167580EA00CA3D8C /* BeNCShopCellCell.m */,
 				C3203547167582D400CA3D8C /* BeNCArrow.h */,
@@ -460,6 +465,7 @@
 				A7F21FBF167B23EF006AE452 /* BeNCShopAnnotation.m in Sources */,
 				A7EC9FA9167F051000CE1B3E /* BeNCShopGroupAnnotation.m in Sources */,
 				A7EC9FB0167F08BB00CE1B3E /* BeNCShopGroupView.m in Sources */,
+				A7EFB61E16807876005E0F17 /* CalloutMapAnnotationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
