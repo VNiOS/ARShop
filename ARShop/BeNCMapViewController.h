@@ -13,10 +13,14 @@
     
     MKMapView *mapView;
     NSArray *shopsArray;
-    
+    MKAnnotationView *_selectedAnnotationView;
 }
 @property (nonatomic,retain) MKMapView *mapView;
+@property (nonatomic, retain) MKAnnotationView *selectedAnnotationView;
 -(void)getShopData;
 -(void)didUpdateLocation:(NSNotification *)notifi;
 -(void)addShopAnnotation;
+-(IBAction)showDetail:(id)sender;
+-(void)checkOverride;
+-(float)distanceOf:(CGPoint)point1 andpoint :(CGPoint)point2;
 @end

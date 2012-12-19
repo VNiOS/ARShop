@@ -34,7 +34,7 @@
 {
     userLocation = [[CLLocation alloc]init];
     [self setTitle:@"List Shop"];
-    self.view.transform = CGAffineTransformIdentity;
+    
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
     self.listShopView.frame = CGRectMake(0, 0, 480, 320);
@@ -57,7 +57,11 @@
 }
 -(int)calculeDistance:(BeNCShopEntity *)shop{
 
+
+    //NSLog(@"shop %@ co toa do la %f %f",shop.shop_name ,shop.shop_latitude ,shop.shop_longitute);
+
 //    NSLog(@"shop %@ co toa do la %f %f",shop.shop_name ,shop.shop_latitude ,shop.shop_longitute);
+
     CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:shop.shop_latitude longitude:shop.shop_longitute];
     int distance = (int)[shoplocation distanceFromLocation: self.userLocation];
     return distance;
@@ -70,8 +74,12 @@
 -(void)didUpdateLocation:(NSNotification *)notifi{
     CLLocation *newLocation = (CLLocation *)[notifi object];
     
+
+    NSLog(@"ListView get new location : %f %f",newLocation.coordinate.latitude ,newLocation.coordinate.longitude);
+
 //    NSLog(@"ListView get new location : %f %f",newLocation.coordinate.latitude ,newLocation.coordinate.longitude);
  
+
     self.userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     [self.listShopView reloadData];
     
@@ -116,6 +124,10 @@
     cell.detailTextLabel.text = shop.shop_address;
     cell.imageView.image = [UIImage imageNamed:@"images.jpg"];
     NSString *dis = [NSString stringWithFormat:@"%d m",[self calculeDistance:shop]];
+<<<<<<< HEAD
+=======
+    //NSLog(@"shop %@ co distance la %@ ",shop.shop_name ,dis);
+>>>>>>> 39997ae0ca7582d398b4c30069bfe4a9b18ff8db
     [cell.distanceBt setTitle:dis forState:UIControlStateNormal];
     return cell;
 }

@@ -43,10 +43,15 @@
     
     NSMutableArray *viewControllersArray = [[NSMutableArray alloc] init];
     UINavigationController *listNavigation = [[UINavigationController alloc]initWithRootViewController:listViewController];
+    UINavigationController *mapNavigation = [[UINavigationController alloc]initWithRootViewController:mapViewController];
+    
     [listNavigation.navigationBar setHidden:NO];
     [listNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
+    [mapNavigation.navigationBar setHidden:NO];
+    [mapNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
+    
 	[viewControllersArray addObject:listNavigation];
-	[viewControllersArray addObject:mapViewController];
+	[viewControllersArray addObject:mapNavigation];
 	[viewControllersArray addObject:cameraViewController];
     
 	
