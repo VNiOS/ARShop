@@ -45,7 +45,11 @@
     [self.view addSubview:detailShop];
     arrowImage = [[[BeNCArrow alloc]initWithShop:shopEntity]retain];
     [self.view addSubview:arrowImage];
+<<<<<<< HEAD
     self.view.frame = detailShop.frame;
+=======
+//    timer = [[NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(updateMotion) userInfo:nil repeats:YES]retain];   
+>>>>>>> b7bdc2a6cee1c6733870a669a50850ebf59fc417
     [self.view setBackgroundColor:[UIColor clearColor]];
 }
 - (void)updateContentForView:(BeNCShopEntity *)shopEntity
