@@ -56,6 +56,10 @@
 		C33504DC16759D3700E4139A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33504DB16759D3700E4139A /* AVFoundation.framework */; };
 		C3435E30167ECE80004B7FD0 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = C3435E2F167ECE80004B7FD0 /* arrow.png */; };
 		C3611F4616771BF3008DBE79 /* BeNCTabbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C3611F4516771BF3008DBE79 /* BeNCTabbarItem.m */; };
+		C3FFA3E91681AB86007B7963 /* menu.gif in Resources */ = {isa = PBXBuildFile; fileRef = C3FFA3E81681AB86007B7963 /* menu.gif */; };
+		C3FFA3F01681ADE5007B7963 /* coupon.png in Resources */ = {isa = PBXBuildFile; fileRef = C3FFA3EF1681ADE5007B7963 /* coupon.png */; };
+		C3FFA3FC1681B034007B7963 /* BeNCWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FFA3FA1681B034007B7963 /* BeNCWebViewController.m */; };
+		C3FFA3FD1681B034007B7963 /* BeNCWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3FFA3FB1681B034007B7963 /* BeNCWebViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -135,6 +139,11 @@
 		C3435E2F167ECE80004B7FD0 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		C3611F4416771BF3008DBE79 /* BeNCTabbarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCTabbarItem.h; sourceTree = "<group>"; };
 		C3611F4516771BF3008DBE79 /* BeNCTabbarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCTabbarItem.m; sourceTree = "<group>"; };
+		C3FFA3E81681AB86007B7963 /* menu.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = menu.gif; sourceTree = "<group>"; };
+		C3FFA3EF1681ADE5007B7963 /* coupon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coupon.png; sourceTree = "<group>"; };
+		C3FFA3F91681B034007B7963 /* BeNCWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCWebViewController.h; sourceTree = "<group>"; };
+		C3FFA3FA1681B034007B7963 /* BeNCWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCWebViewController.m; sourceTree = "<group>"; };
+		C3FFA3FB1681B034007B7963 /* BeNCWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeNCWebViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				C320354C1675836700CA3D8C /* BeNCDetailInCameraViewController.xib */,
+				C3FFA3FB1681B034007B7963 /* BeNCWebViewController.xib */,
 				C32035381675804C00CA3D8C /* BeNCDetailViewController.xib */,
 				C32035331675803500CA3D8C /* BeNCCameraViewController.xib */,
 				C320352E1675801C00CA3D8C /* BeNCMapViewController.xib */,
@@ -292,6 +302,8 @@
 				C32035371675804C00CA3D8C /* BeNCDetailViewController.m */,
 				C320354A1675836700CA3D8C /* BeNCDetailInCameraViewController.h */,
 				C320354B1675836700CA3D8C /* BeNCDetailInCameraViewController.m */,
+				C3FFA3F91681B034007B7963 /* BeNCWebViewController.h */,
+				C3FFA3FA1681B034007B7963 /* BeNCWebViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -346,6 +358,8 @@
 		C3611F4716771E81008DBE79 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C3FFA3EF1681ADE5007B7963 /* coupon.png */,
+				C3FFA3E81681AB86007B7963 /* menu.gif */,
 				C3435E2F167ECE80004B7FD0 /* arrow.png */,
 				A7F21FB6167B0C9E006AE452 /* images.jpg */,
 				A779362B1679C024006603C7 /* mapon.png */,
@@ -425,6 +439,9 @@
 				A779362C1679C024006603C7 /* mapon.png in Resources */,
 				A7F21FB7167B0C9E006AE452 /* images.jpg in Resources */,
 				C3435E30167ECE80004B7FD0 /* arrow.png in Resources */,
+				C3FFA3E91681AB86007B7963 /* menu.gif in Resources */,
+				C3FFA3F01681ADE5007B7963 /* coupon.png in Resources */,
+				C3FFA3FD1681B034007B7963 /* BeNCWebViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +477,7 @@
 				A7F21FBF167B23EF006AE452 /* BeNCShopAnnotation.m in Sources */,
 				A7EC9FA9167F051000CE1B3E /* BeNCShopGroupAnnotation.m in Sources */,
 				A7EC9FB0167F08BB00CE1B3E /* BeNCShopGroupView.m in Sources */,
+				C3FFA3FC1681B034007B7963 /* BeNCWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

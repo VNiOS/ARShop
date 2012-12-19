@@ -63,7 +63,7 @@ static BeNCProcessDatabase *shareDatabase = nil;
 {
     [database open];
     NSMutableArray *shops = [[NSMutableArray alloc]init];
-    FMResultSet *results  = [database executeQuery:[NSString stringWithFormat:@"select *from shops order by shop_name"]];
+    FMResultSet *results  = [database executeQuery:[NSString stringWithFormat:@"select *from shops"]];
     while ([results next]) {
         
         NSMutableDictionary *shop = [[NSMutableDictionary alloc] init];
@@ -74,7 +74,6 @@ static BeNCProcessDatabase *shareDatabase = nil;
         
         NSNumber *shop_latitude = [[NSNumber alloc] initWithFloat:(float)[results doubleForColumn:BeNCShopProperiesShopLatitude]];
         NSNumber *shop_longitude = [[NSNumber alloc] initWithFloat:(float)[results doubleForColumn:BeNCShopProperiesShopLongitude]];
-        //NSLog(@" longitude : %lf",[shop_longitude doubleValue]);
         
         NSString *shop_name = [NSString stringWithFormat:@"%@",[results stringForColumn:BeNCShopProperiesShopName]];
         NSString *shop_address = [NSString stringWithFormat:@"%@",[results stringForColumn:BeNCShopProperiesShopAddress]];
@@ -105,7 +104,6 @@ static BeNCProcessDatabase *shareDatabase = nil;
         [shops addObject:newShop];
         [newShop release];
         }
-//    [[NSNotificationCenter defaultCenter]postNotificationName:@"GetDatabase" object:shops];
     [database close];
     arrayShop = shops;
     return [NSArray arrayWithArray:shops];

@@ -25,7 +25,6 @@
         userLocation = [[CLLocation alloc]init];        
         [[NSNotificationCenter defaultCenter]postNotificationName:@"init" object:nil];
 
-        NSLog(@"init");
     }
     return self;
 }
@@ -43,7 +42,6 @@
 
     [self.locationManager startUpdatingLocation];
     [self.locationManager startUpdatingHeading];
-    NSLog(@"Start Update");
 }
 #pragma mark CLLocationManagerDelegate
 
