@@ -41,7 +41,6 @@
     arrowImage = [[BeNCArrow alloc]initWithShop:shopEntity];
     [self.view addSubview:arrowImage];
 //    timer = [[NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(updateMotion) userInfo:nil repeats:YES]retain];   
-    self.view.frame = detailShop.frame;
     [self.view setBackgroundColor:[UIColor clearColor]];
 }
 
@@ -69,8 +68,6 @@
 - (void)viewDidLoad
 {
 //    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
-    self.view.transform = CGAffineTransformIdentity;
-    self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }

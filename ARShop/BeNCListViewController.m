@@ -33,7 +33,6 @@
 - (void)viewDidLoad
 {
     userLocation = [[CLLocation alloc]init];
-//    NSLog(@"User location : %f %f ",userLocation.coordinate.latitude,userLocation.coordinate.longitude);
     [self setTitle:@"List Shop"];
     self.view.transform = CGAffineTransformIdentity;
     self.view.bounds = CGRectMake(0, 0, 480, 320);
@@ -117,7 +116,6 @@
     cell.detailTextLabel.text = shop.shop_address;
     cell.imageView.image = [UIImage imageNamed:@"images.jpg"];
     NSString *dis = [NSString stringWithFormat:@"%d m",[self calculeDistance:shop]];
-    NSLog(@"shop %@ co distance la %@ ",shop.shop_name ,dis);
     [cell.distanceBt setTitle:dis forState:UIControlStateNormal];
     return cell;
 }
