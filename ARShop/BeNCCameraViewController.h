@@ -13,11 +13,15 @@
 @interface BeNCCameraViewController : UIViewController{
     AVCaptureSession *captureSession;
     AVCaptureDeviceInput *deviceInput;
-    NSArray *shopsArray;
+    NSMutableArray *shopsArray;
     CLLocation *userLocation ;
+<<<<<<< HEAD
     NSMutableArray *arrayShopDistance;
-
+    NSMutableArray *mutableArray;
+    NSMutableArray *arrayTest;
+=======
+>>>>>>> b7bdc2a6cee1c6733870a669a50850ebf59fc417
 }
 - (void)addVideoInput;
-
+- (NSMutableArray * )sortShopByDistance:(NSMutableArray *)array;
 @end

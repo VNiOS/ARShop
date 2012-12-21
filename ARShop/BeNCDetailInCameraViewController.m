@@ -21,11 +21,14 @@
 @end
 
 @implementation BeNCDetailInCameraViewController
+@synthesize shop;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+//        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
+        userLocation = [[CLLocation alloc]init];
         motionManager = [[CMMotionManager alloc]init];
         motionManager.deviceMotionUpdateInterval = 1.0/60.0;
         if (motionManager.isDeviceMotionAvailable) {
@@ -36,15 +39,30 @@
 }
 - (void)setContentForView:(BeNCShopEntity *)shopEntity
 {
-    BeNCDetailShopInCamera *detailShop = [[BeNCDetailShopInCamera alloc]initWithShop:shopEntity];
-    [self.view addSubview:detailShop];
-    arrowImage = [[BeNCArrow alloc]initWithShop:shopEntity];
-    [self.view addSubview:arrowImage];
-//    timer = [[NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(updateMotion) userInfo:nil repeats:YES]retain];   
+    shop = shopEntity;
+    detailShop = [[[BeNCDetailShopInCamera alloc]initWithShop:shopEntity]retain];
     self.view.frame = detailShop.frame;
+    [self.view addSubview:detailShop];
+    arrowImage = [[[BeNCArrow alloc]initWithShop:shopEntity]retain];
+    [self.view addSubview:arrowImage];
+<<<<<<< HEAD
+    self.view.frame = detailShop.frame;
+=======
+//    timer = [[NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(updateMotion) userInfo:nil repeats:YES]retain];   
+>>>>>>> b7bdc2a6cee1c6733870a669a50850ebf59fc417
     [self.view setBackgroundColor:[UIColor clearColor]];
 }
+- (void)updateContentForView:(BeNCShopEntity *)shopEntity
+{
+    arrowImage = [[BeNCArrow alloc]initWithShop:shopEntity];
+    arrowImage.shop = shopEntity;
+    
+    detailShop = [[BeNCDetailShopInCamera alloc]initWithShop:shopEntity];
+    detailShop.shop = shopEntity;
+    [self.view setBackgroundColor:[UIColor clearColor]];
+//    timer = [[NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(updateMotion) userInfo:nil repeats:YES]retain];   
 
+}
 - (void)updateMotion
 {
     CMDeviceMotion *currentDeviceMotion = motionManager.deviceMotion;
@@ -63,14 +81,10 @@
     CGAffineTransform transfromScale = CGAffineTransformMakeRotation(yaw);
     arrowImage.transform = CGAffineTransformScale(transfromScale, 1, scaleHeight);
     [arrowImage setCenter:CGPointMake(22, 22)];
-    
-    
 }
 - (void)viewDidLoad
 {
 //    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
-    self.view.transform = CGAffineTransformIdentity;
-    self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
@@ -86,6 +100,7 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
 
 - (void)dealloc
 {

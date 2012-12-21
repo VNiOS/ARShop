@@ -34,11 +34,15 @@ bool firstUpdate = 1;
 - (void)viewDidLoad
 {
     
+<<<<<<< HEAD
+    self.title = @"Map";
+=======
 
     self.title = @"Map";
 
     self.view.transform = CGAffineTransformIdentity;
 
+>>>>>>> b7bdc2a6cee1c6733870a669a50850ebf59fc417
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
     
@@ -46,10 +50,21 @@ bool firstUpdate = 1;
     mapView=[[MKMapView alloc]initWithFrame:CGRectMake(0, 0, 480, 320)];
     [mapView setDelegate:self];
     [mapView setShowsUserLocation:YES];
+<<<<<<< HEAD
+    
+    [self.view addSubview:mapView];
+    
+  
+
+    [self.view addSubview:mapView];
+    
+    //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];    
+=======
     [self.view addSubview:mapView];
     
      [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
 
+>>>>>>> b7bdc2a6cee1c6733870a669a50850ebf59fc417
     [self getShopData];
 
 }
@@ -174,10 +189,8 @@ bool firstUpdate = 1;
             [annotationView setHidden:NO];
             CGPoint locationInView = [mapView convertCoordinate:shopAnnotation.coordinate toPointToView:self.view];
             shopAnnotation.locationInView = locationInView;
-            NSLog(@"Shop %@ co vi tri la %f %f",shopAnnotation.name,locationInView.x ,locationInView.y);
         }
     }
-    NSLog(@"Check trung nhau ___________________");
 
     for( id<MKAnnotation> annotation in mapView.annotations) {
         if ([annotation isKindOfClass:[BeNCShopAnnotation class]]) {
@@ -189,6 +202,12 @@ bool firstUpdate = 1;
                     if ([annotationCheck isKindOfClass:[BeNCShopAnnotation class]]) {
                         
                         BeNCShopAnnotation *shopcheck = (BeNCShopAnnotation *)annotationCheck;
+<<<<<<< HEAD
+                            if (shopcheck.index!=shopAnnotation.index &&shopcheck.isChecked==0 && [self distanceOf:shopAnnotation.locationInView andpoint:shopcheck.locationInView]<10) {
+                                [shopAnnotation.overideAnnotation addObject:shopcheck];
+//                                MKAnnotationView *View  =  [mapView viewForAnnotation:annotationCheck];
+//                                [View setHidden:YES];
+=======
                             if (shopcheck.index!=shopAnnotation.index && shopcheck.isChecked==0 && [self distanceOf:shopAnnotation.locationInView andpoint:shopcheck.locationInView]<10) {
                                 [shopAnnotation.overideAnnotation addObject:shopcheck.shop];
                                 
@@ -199,6 +218,7 @@ bool firstUpdate = 1;
                                 
                                 
                                 NSLog(@" * Shop %@ va shop %@ trung nhau",shopAnnotation.name,shopcheck.name);
+>>>>>>> b7bdc2a6cee1c6733870a669a50850ebf59fc417
                                 shopcheck.isChecked = 1;
                             }
   

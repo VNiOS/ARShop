@@ -17,6 +17,7 @@
     CLLocation *userLocation ;
     BeNCShopEntity *shop;
 }
+@property(nonatomic, retain)BeNCShopEntity *shop;
 @property(nonatomic, retain)UILabel *labelShopName;
 @property(nonatomic, retain)UILabel *labelShopAddress;
 @property(nonatomic, retain)UILabel *labelDistanceToShop;

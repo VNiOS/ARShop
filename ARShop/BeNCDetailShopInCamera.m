@@ -14,7 +14,7 @@
 #define max 100000
 
 @implementation BeNCDetailShopInCamera
-@synthesize labelDistanceToShop,labelShopName,labelShopAddress;
+@synthesize labelDistanceToShop,labelShopName,labelShopAddress,shop;
 @synthesize userLocation;
 
 - (id)initWithShop:(BeNCShopEntity *)shopEntity
@@ -35,7 +35,7 @@
         [self addSubview:labelShopAddress];
         [self addSubview:labelDistanceToShop];
         [self.layer setCornerRadius:10];
-        self.alpha = 0.7; 
+        self.alpha = 0.5; 
         [self updateContentDetailShop:shopEntity];
 
         // Initialization code
@@ -50,7 +50,8 @@
     [labelShopName setTextAlignment:UITextAlignmentCenter];
     labelShopAddress.text = shopEntity.shop_address;
     [labelShopAddress setFont:[UIFont systemFontOfSize:textSize-4]];
-    CGSize labelShopNameSize = [shopEntity.shop_name sizeWithFont:[UIFont systemFontOfSize:textSize] constrainedToSize:CGSizeMake(max, 40) lineBreakMode:UILineBreakModeCharacterWrap];
+    [labelShopAddress setTextAlignment:UITextAlignmentCenter];
+    CGSize labelShopNameSize = [shopEntity.shop_name sizeWithFont:[UIFont boldSystemFontOfSize:textSize] constrainedToSize:CGSizeMake(max, 40) lineBreakMode:UILineBreakModeCharacterWrap];
     CGSize labelShopAddressSize = [shopEntity.shop_address sizeWithFont:[UIFont systemFontOfSize:textSize - 4] constrainedToSize:CGSizeMake(max, 30) lineBreakMode:UILineBreakModeCharacterWrap];
     float originLabelDistance = [self caculateMax:labelShopNameSize.width withNumberB:labelShopAddressSize.width];
     
@@ -59,6 +60,7 @@
     labelDistanceToShop.frame = CGRectMake(originLabelDistance + 60, 0, 65, 45);
     self.frame = CGRectMake(0, 0,originLabelDistance + 125 ,50 );
     [self setBackgroundColor:[UIColor whiteColor]];
+    
 }
 - (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity
 {
@@ -75,7 +77,7 @@
 
 - (float)caculateMax:(float )numberA withNumberB:(float )numberB
 {
-    int maxNumber = 0;
+    int maxNumber;
     if (numberA >= numberB) {
         maxNumber = numberA;
     }
