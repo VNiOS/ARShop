@@ -25,8 +25,10 @@
 {
     self = [super init];
     if (self) {
+        [[LocationService sharedLocation]startUpdate];
         shop = shopEntity;
         labelDistanceToShop = [[UILabel alloc]init];
+        [labelDistanceToShop setTextAlignment:UITextAlignmentCenter];
         userLocation = [[CLLocation alloc]init];
         [self.view addSubview:labelDistanceToShop];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];       
@@ -56,7 +58,7 @@
     return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
-- (void)setContentDetailForView:(BeNCShopEntity *)shopEntity
+- (void)setContentDetailForView:(BeNCShopEntity *)shopEntity withDistance:(float )distance
 {
     UIImageView *logoImgaeView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 60, 60)];
     UIImage *logoImage = [UIImage imageNamed:@"images.jpg"];

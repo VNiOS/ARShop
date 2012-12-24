@@ -20,7 +20,7 @@
 @property(nonatomic, retain)UILabel *labelDistanceToShop;
 - (IBAction)goToMenuSite:(id)sender;
 - (IBAction)goToCouponSite:(id)sender;
-- (void)setContentDetailForView:(BeNCShopEntity *)shopEntity;
+- (void)setContentDetailForView:(BeNCShopEntity *)shopEntity withDistance:(float )distance;
 - (id)initWithShop:(BeNCShopEntity *)shopEntity;
 
 @end

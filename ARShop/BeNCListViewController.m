@@ -19,7 +19,7 @@
 @end
 
 @implementation BeNCListViewController
-@synthesize listShopView,userLocation;
+@synthesize listShopView,userLocation,distanceToShop;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -109,6 +109,7 @@
     cell.textLabel.text = shop.shop_name;
     cell.detailTextLabel.text = shop.shop_address;
     cell.imageView.image = [UIImage imageNamed:@"images.jpg"];
+    
     NSString *dis = [NSString stringWithFormat:@"%d m",[self calculeDistance:shop]];
     //NSLog(@"shop %@ co distance la %@ ",shop.shop_name ,dis);
     [cell.distanceBt setTitle:dis forState:UIControlStateNormal];
@@ -129,7 +130,7 @@
 {
     BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:indexPath.row];
     BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:shopEntity];
-    [detailViewController setContentDetailForView:shopEntity];
+    [detailViewController setContentDetailForView:shopEntity withDistance:distanceToShop];
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      

@@ -13,7 +13,9 @@
     IBOutlet UITableView *listShopView;
     NSArray *shopsArray;
     CLLocation *userLocation ;
+    float distanceToShop;
 }
+@property float distanceToShop;
 @property(nonatomic,retain)IBOutlet UITableView *listShopView;
 @property(nonatomic,retain)CLLocation *userLocation ;
 -(void)didUpdateLocation:(NSNotification *)notifi;

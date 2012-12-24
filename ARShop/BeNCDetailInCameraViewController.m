@@ -47,7 +47,6 @@
     [self.view addSubview:arrowImage];
     [self.view setBackgroundColor:[UIColor clearColor]];
 //    timer = [[NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(updateMotion) userInfo:nil repeats:YES]retain];   
-
 }
 - (void)updateContentForView:(BeNCShopEntity *)shopEntity
 {
