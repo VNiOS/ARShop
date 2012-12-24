@@ -33,16 +33,8 @@ bool firstUpdate = 1;
 
 - (void)viewDidLoad
 {
-    
-<<<<<<< HEAD
-    self.title = @"Map";
-=======
 
     self.title = @"Map";
-
-    self.view.transform = CGAffineTransformIdentity;
-
->>>>>>> b7bdc2a6cee1c6733870a669a50850ebf59fc417
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
     
@@ -50,21 +42,16 @@ bool firstUpdate = 1;
     mapView=[[MKMapView alloc]initWithFrame:CGRectMake(0, 0, 480, 320)];
     [mapView setDelegate:self];
     [mapView setShowsUserLocation:YES];
-<<<<<<< HEAD
     
     [self.view addSubview:mapView];
     
   
 
-    [self.view addSubview:mapView];
     
     //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];    
-=======
-    [self.view addSubview:mapView];
     
      [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
 
->>>>>>> b7bdc2a6cee1c6733870a669a50850ebf59fc417
     [self getShopData];
 
 }
@@ -128,8 +115,8 @@ bool firstUpdate = 1;
 
 -  (void)mapView:(MKMapView *)mapview didSelectAnnotationView:(MKAnnotationView *)view
 {
-    if (view.annotation isKindOfClass:[BeNCShopAnnotation class]) {
-        [view];
+    if ([view.annotation isKindOfClass:[BeNCShopAnnotation class]]) {
+//        [view];
     }
       
 }
@@ -166,8 +153,6 @@ bool firstUpdate = 1;
         
         return annotationView;
     
-            
-    
     
     
     }
@@ -202,12 +187,10 @@ bool firstUpdate = 1;
                     if ([annotationCheck isKindOfClass:[BeNCShopAnnotation class]]) {
                         
                         BeNCShopAnnotation *shopcheck = (BeNCShopAnnotation *)annotationCheck;
-<<<<<<< HEAD
                             if (shopcheck.index!=shopAnnotation.index &&shopcheck.isChecked==0 && [self distanceOf:shopAnnotation.locationInView andpoint:shopcheck.locationInView]<10) {
                                 [shopAnnotation.overideAnnotation addObject:shopcheck];
 //                                MKAnnotationView *View  =  [mapView viewForAnnotation:annotationCheck];
 //                                [View setHidden:YES];
-=======
                             if (shopcheck.index!=shopAnnotation.index && shopcheck.isChecked==0 && [self distanceOf:shopAnnotation.locationInView andpoint:shopcheck.locationInView]<10) {
                                 [shopAnnotation.overideAnnotation addObject:shopcheck.shop];
                                 
@@ -218,7 +201,6 @@ bool firstUpdate = 1;
                                 
                                 
                                 NSLog(@" * Shop %@ va shop %@ trung nhau",shopAnnotation.name,shopcheck.name);
->>>>>>> b7bdc2a6cee1c6733870a669a50850ebf59fc417
                                 shopcheck.isChecked = 1;
                             }
   
@@ -238,10 +220,12 @@ bool firstUpdate = 1;
         }
     }
 }
+}
 -(float)distanceOf:(CGPoint)point1 andpoint:(CGPoint)point2{
     CGFloat xDist = (point1.x - point2.x); 
     CGFloat yDist = (point1.y - point2.y); 
     CGFloat distance = sqrt((xDist * xDist) + (yDist * yDist));
     return distance;
 }
+        
 @end

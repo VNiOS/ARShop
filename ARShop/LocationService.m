@@ -24,10 +24,7 @@
         
         userLocation = [[CLLocation alloc]init];        
         [[NSNotificationCenter defaultCenter]postNotificationName:@"init" object:nil];
-<<<<<<< HEAD
 
-=======
->>>>>>> b7bdc2a6cee1c6733870a669a50850ebf59fc417
     }
     return self;
 }

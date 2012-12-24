@@ -29,7 +29,8 @@
         labelDistanceToShop = [[UILabel alloc]init];
         userLocation = [[CLLocation alloc]init];
         [self.view addSubview:labelDistanceToShop];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];        [self updateDistane:shopEntity];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];       
+        [self updateDistane:shopEntity];
     }
     return self;
 }
@@ -85,17 +86,17 @@
     [labelAddressDetail setBackgroundColor:[UIColor clearColor]];
     labelAddressDetail.text = shopEntity.shop_address_detail;
     [labelAddressDetail setFont:[UIFont systemFontOfSize:textSize - 2]];
-    CGSize labelShopAddressDetailSize = [shopEntity.shop_name sizeWithFont:[UIFont systemFontOfSize:textSize -2] constrainedToSize:CGSizeMake(320, max) lineBreakMode:UILineBreakModeCharacterWrap];
-    labelAddressDetail.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + 10, 320, labelShopAddressDetailSize.height);
+    CGSize labelShopAddressDetailSize = [shopEntity.shop_name sizeWithFont:[UIFont systemFontOfSize:textSize -2] constrainedToSize:CGSizeMake(300, max) lineBreakMode:UILineBreakModeCharacterWrap];
+    labelAddressDetail.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + 10, 300, labelShopAddressDetailSize.height);
     [self.view addSubview:labelAddressDetail];
     
     UILabel *labelShopDescription = [[UILabel alloc]init];
     [labelShopDescription setBackgroundColor:[UIColor clearColor]];
     labelShopDescription.text = shopEntity.shop_description;
     [labelShopDescription setFont:[UIFont systemFontOfSize:textSize -2]];
-    CGSize labelShopDescriptionSize = [shopEntity.shop_description sizeWithFont:[UIFont systemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(320, max) lineBreakMode:UILineBreakModeCharacterWrap];
+    CGSize labelShopDescriptionSize = [shopEntity.shop_description sizeWithFont:[UIFont systemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(300, max) lineBreakMode:UILineBreakModeCharacterWrap];
     [self.view addSubview:labelShopDescription];
-    labelShopDescription.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + 10, 320, labelShopDescriptionSize.height);
+    labelShopDescription.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + 10, 300, labelShopDescriptionSize.height);
     
     UILabel *labelShopPhone = [[UILabel alloc]init];
     [labelShopPhone setBackgroundColor:[UIColor clearColor]];
@@ -144,7 +145,7 @@
 - (void)updateDistane:(BeNCShopEntity *)shopEntity
 {
     
-    labelDistanceToShop.frame = CGRectMake(420, 60, 55, 30);
+    labelDistanceToShop.frame = CGRectMake(390, 60, 90, 30);
     labelDistanceToShop.text = [NSString stringWithFormat:@"%d m",[self caculateDistanceToShop:shop]];
 
 }
@@ -159,7 +160,6 @@
     CLLocation *newLocation = (CLLocation *)[notification object];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     labelDistanceToShop.text = [NSString stringWithFormat:@"%d m",[self caculateDistanceToShop:shop]];
-    NSLog(@"khoang cach de shop %@ la %d",shop.shop_name,[self caculateDistanceToShop:shop]);
 }
 
 

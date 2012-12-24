@@ -29,14 +29,10 @@
 
 
 - (void)viewDidLoad
-<<<<<<< HEAD
 {
     [self getDatabase];
     arrayTest = [[NSMutableArray alloc]init];
-=======
-{ 
     userLocation = [[CLLocation alloc]init];
->>>>>>> b7bdc2a6cee1c6733870a669a50850ebf59fc417
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     [self addVideoInput];
@@ -75,7 +71,6 @@
     [captureSession startRunning];    
 }
 
-<<<<<<< HEAD
 
 # pragma mark - get Database
 - (void )getDatabase
@@ -113,10 +108,8 @@
 {
     for (int i = 0; i < 5; i ++) {
         BeNCDetailInCameraViewController *detailView = [[BeNCDetailInCameraViewController alloc]initWithNibName:@"BeNCDetailInCameraViewController" bundle:nil];
-//        NSLog(@"chieu rong cua fame la %f",detailView.view.frame.size.width);
         [arrayTest addObject:detailView];
         BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
-
         [detailView setContentForView:shopEntity];
         if (i < 3) {
             CGRect frame = detailView.view.frame;
@@ -135,7 +128,7 @@
         [self.view addSubview:detailView.view];
         
     }
-=======
+}
 - (void)sortShopByDistance
 {
     [[BeNCProcessDatabase sharedMyDatabase]getDatebase];
@@ -149,44 +142,9 @@
 }
 
 
-- (void)setContentForView
-{
-    for (int i = 0; i < 7; i ++) {
-        BeNCShopEntity *shop = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
-        NSLog(@"shop name la : %@",shop.shop_name);
-        BeNCDetailInCameraViewController *detailView = [[BeNCDetailInCameraViewController alloc]initWithNibName:@"BeNCDetailInCameraViewController" bundle:nil];
-        CGRect frame = detailView.view.frame;
-        frame.origin.x = 235 *( i / 4) + 5;
-        frame.origin.y = 60 * (i % 4) + 5;
-        detailView.view.frame = frame;
-        [detailView setContentForView:shop];
-        [self.view addSubview:detailView.view];    
-    }
-    BeNCShopEntity *shop = (BeNCShopEntity *)[shopsArray objectAtIndex:2];
-    NSLog(@"shop name la : %@",shop.shop_name);
-    BeNCDetailInCameraViewController *detailView = [[BeNCDetailInCameraViewController alloc]initWithNibName:@"BeNCDetailInCameraViewController" bundle:nil];
-    CGRect frame = detailView.view.frame;
-    frame.origin.x =  5;
-    frame.origin.y =  5;
-    detailView.view.frame = frame;
-    [detailView setContentForView:shop];
-    [self.view addSubview:detailView.view]; 
->>>>>>> b7bdc2a6cee1c6733870a669a50850ebf59fc417
-
-}
-
-
-- (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity
-{
-    CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute];
-    int distance = (int)[shoplocation distanceFromLocation: userLocation];
-    return distance;
-}
-
 -(void)didUpdateLocation:(NSNotification *)notification {
     CLLocation *newLocation = (CLLocation *)[notification object];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
-<<<<<<< HEAD
 //    NSMutableArray *arraytam = (NSMutableArray *)[self sortShopByDistance:shopsArray];
 //    shopsArray = [[NSMutableArray alloc]initWithArray:arraytam];
 ////    for (int i = 0; i < [shopsArray count]; i ++) {
@@ -198,9 +156,7 @@
 //        BeNCDetailInCameraViewController *detailViewTest = (BeNCDetailInCameraViewController *)[arrayTest objectAtIndex:i];
 //        [detailViewTest updateContentForView:(BeNCShopEntity *)[shopsArray objectAtIndex:i]];
 //    }
-=======
     [self sortShopByDistance];
->>>>>>> b7bdc2a6cee1c6733870a669a50850ebf59fc417
 }
 
 - (void)dealloc

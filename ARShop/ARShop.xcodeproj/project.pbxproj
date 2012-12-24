@@ -482,11 +482,8 @@
 				A7F21FBF167B23EF006AE452 /* BeNCShopAnnotation.m in Sources */,
 				A7EC9FA9167F051000CE1B3E /* BeNCShopGroupAnnotation.m in Sources */,
 				A7EC9FB0167F08BB00CE1B3E /* BeNCShopGroupView.m in Sources */,
-<<<<<<< HEAD
 				C3FFA3FC1681B034007B7963 /* BeNCWebViewController.m in Sources */,
-=======
 				A7EFB61E16807876005E0F17 /* CalloutMapAnnotationView.m in Sources */,
->>>>>>> b7bdc2a6cee1c6733870a669a50850ebf59fc417
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
