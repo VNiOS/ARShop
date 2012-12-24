@@ -61,7 +61,7 @@
 
 -(void)didUpdateHeading:(NSNotification *)notification{
     CLHeading *newHeading = [notification object];
-    self.transform = CGAffineTransformMakeRotation(- (newHeading.magneticHeading * rotationRate + rotationAngleArrow));
+    self.transform = CGAffineTransformMakeRotation(- (newHeading.magneticHeading * rotationRate + M_PI/2) + rotationAngleArrow);
 //    NSLog(@" goc quay den shop %@ la %f",shop.shop_name,- (newHeading.magneticHeading * rotationRate + M_PI/2) + rotationAngleArrow);
 }
 

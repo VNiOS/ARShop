@@ -29,7 +29,6 @@
         shop = shopEntity;
         labelDistanceToShop = [[UILabel alloc]init];
         [labelDistanceToShop setTextAlignment:UITextAlignmentCenter];
-        userLocation = [[CLLocation alloc]init];
         [self.view addSubview:labelDistanceToShop];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];       
         [self updateDistane:shopEntity];

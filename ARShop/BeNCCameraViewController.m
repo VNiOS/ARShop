@@ -90,7 +90,6 @@
         }
     }
     return array;
-    
 }
 
 - (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity
@@ -108,7 +107,6 @@
 {
     for (int i = 0; i < 5; i ++) {
         BeNCDetailInCameraViewController *detailView = [[BeNCDetailInCameraViewController alloc]initWithNibName:@"BeNCDetailInCameraViewController" bundle:nil];
-        [arrayTest addObject:detailView];
         BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
         [detailView setContentForView:shopEntity];
         if (i < 3) {
@@ -129,17 +127,17 @@
         
     }
 }
-- (void)sortShopByDistance
-{
-    [[BeNCProcessDatabase sharedMyDatabase]getDatebase];
-    shopsArray = [[[NSMutableArray alloc]initWithArray:[[BeNCProcessDatabase sharedMyDatabase] arrayShop]]retain];
-    for (int i = 0; i < [shopsArray count]; i ++) {
-        for (int j = i + 1; j < [shopsArray count]; j ++) {
-            if ([self caculateDistanceToShop:[shopsArray objectAtIndex:i]] > [self caculateDistanceToShop:[shopsArray objectAtIndex:j]]) 
-                [shopsArray exchangeObjectAtIndex:i withObjectAtIndex:j];
-        }
-    }
-}
+//- (void)sortShopByDistance
+//{
+//    [[BeNCProcessDatabase sharedMyDatabase]getDatebase];
+//    shopsArray = [[[NSMutableArray alloc]initWithArray:[[BeNCProcessDatabase sharedMyDatabase] arrayShop]]retain];
+//    for (int i = 0; i < [shopsArray count]; i ++) {
+//        for (int j = i + 1; j < [shopsArray count]; j ++) {
+//            if ([self caculateDistanceToShop:[shopsArray objectAtIndex:i]] > [self caculateDistanceToShop:[shopsArray objectAtIndex:j]]) 
+//                [shopsArray exchangeObjectAtIndex:i withObjectAtIndex:j];
+//        }
+//    }
+//}
 
 
 -(void)didUpdateLocation:(NSNotification *)notification {
@@ -152,11 +150,10 @@
 ////        int distance = [self caculateDistanceToShop:shop];
 ////        NSLog(@"ten cua hang la %@ va khoang cach %d",shop.shop_name,distance);
 ////    }
-//    for (int i = 0; i < 7; i ++) {
+//    for (int i = 0; i < 5; i ++) {
 //        BeNCDetailInCameraViewController *detailViewTest = (BeNCDetailInCameraViewController *)[arrayTest objectAtIndex:i];
 //        [detailViewTest updateContentForView:(BeNCShopEntity *)[shopsArray objectAtIndex:i]];
 //    }
-    [self sortShopByDistance];
 }
 
 - (void)dealloc
