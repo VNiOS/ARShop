@@ -15,5 +15,6 @@
     BeNCShopEntity *shop ;
     double rotationAngleArrow;
 }
+@property(nonatomic, retain)BeNCShopEntity *shop;
 - (id)initWithShop:(BeNCShopEntity *)shopEntity;
 @end

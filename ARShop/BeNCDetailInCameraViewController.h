@@ -10,13 +10,19 @@
 #import "BeNCShopEntity.h"
 #include <CoreMotion/CoreMotion.h>
 #import "BeNCArrow.h"
+#import "BeNCDetailShopInCamera.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface BeNCDetailInCameraViewController : UIViewController{
     CMMotionManager *motionManager;
     BeNCArrow *arrowImage;
     NSTimer *timer;
+    BeNCDetailShopInCamera *detailShop;
+    CLLocation *userLocation;
+    BeNCShopEntity *shop;
 }
+@property(nonatomic, retain)BeNCShopEntity *shop;
 - (void)setContentForView:(BeNCShopEntity *)shopEntity;
-
+- (void)updateContentForView:(BeNCShopEntity *)shopEntity;
 
 @end

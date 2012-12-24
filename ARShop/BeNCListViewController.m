@@ -34,7 +34,6 @@
 {
     userLocation = [[CLLocation alloc]init];
     [self setTitle:@"List Shop"];
-    
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
     self.listShopView.frame = CGRectMake(0, 0, 480, 320);
@@ -56,12 +55,13 @@
     
 }
 -(int)calculeDistance:(BeNCShopEntity *)shop{
-
+]
 
     //NSLog(@"shop %@ co toa do la %f %f",shop.shop_name ,shop.shop_latitude ,shop.shop_longitute);
 
 //    NSLog(@"shop %@ co toa do la %f %f",shop.shop_name ,shop.shop_latitude ,shop.shop_longitute);
 
+>>>>>>> b7bdc2a6cee1c6733870a669a50850ebf59fc417
     CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:shop.shop_latitude longitude:shop.shop_longitute];
     int distance = (int)[shoplocation distanceFromLocation: self.userLocation];
     return distance;
@@ -75,11 +75,16 @@
     CLLocation *newLocation = (CLLocation *)[notifi object];
     
 
+<<<<<<< HEAD
+//    NSLog(@"ListView get new location : %f %f",newLocation.coordinate.latitude ,newLocation.coordinate.longitude);
+ 
+=======
     NSLog(@"ListView get new location : %f %f",newLocation.coordinate.latitude ,newLocation.coordinate.longitude);
 
 //    NSLog(@"ListView get new location : %f %f",newLocation.coordinate.latitude ,newLocation.coordinate.longitude);
  
 
+>>>>>>> b7bdc2a6cee1c6733870a669a50850ebf59fc417
     self.userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     [self.listShopView reloadData];
     
@@ -144,12 +149,28 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-      BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithNibName:@"BeNCDetailViewController" bundle:nil];
-    
+    BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:indexPath.row];
+    BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:shopEntity];
+    [detailViewController setContentDetailForView:shopEntity];
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      
 }
+
+//- (void)bnEventCellDidClickedAtCell:(BNEventCell *)cell1
+//{
+//    NSIndexPath *indexPathCell = [self.tableView indexPathForCell:cell1];
+//    BNEventEntity *selectedEvent = [eventDay objectAtIndex:indexPathCell.row];
+//    
+//    BNEventEditorController *editView=[[BNEventEditorController alloc]initWithNibName:@"BNEventEditorController" bundle:nil];
+//    editView.delegate = self;
+//    dateStart=[[NSDate alloc]init];
+//    dateStart=selectedEvent.startDate;
+//    [editView getDateStart:dateStart];
+//    [editView getEventInput:selectedEvent];
+//    
+//    [self.navigationController pushViewController:editView animated:YES];
+//}
 
 
 @end
