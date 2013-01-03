@@ -21,7 +21,7 @@
     self = [super init];
     if (self) {
         [[LocationService sharedLocation]startUpdate];
-        userLocation = [[CLLocation alloc]init];
+        userLocation = [[LocationService sharedLocation] userLocation];
         shop = shopEntity;
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
@@ -61,17 +61,15 @@
 
 -(void)didUpdateHeading:(NSNotification *)notification{
     CLHeading *newHeading = [notification object];
-    self.transform = CGAffineTransformMakeRotation(- (newHeading.magneticHeading * rotationRate + M_PI/2) + rotationAngleArrow);
-//    NSLog(@" goc quay den shop %@ la %f",shop.shop_name,- (newHeading.magneticHeading * rotationRate + M_PI/2) + rotationAngleArrow);
+    self.transform = CGAffineTransformMakeRotation(( - (newHeading.magneticHeading * rotationRate + M_PI/2) ) + rotationAngleArrow);
 }
-
 -(void)didUpdateLocation:(NSNotification *)notification {
     CLLocation *newLocation = (CLLocation *)[notification object];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     rotationAngleArrow = [self caculateRotationAngle:shop];
-//    self.transform = CGAffineTransformMakeRotation(rotationAngleArrow);
-    NSLog(@"goc quay to shop %@ la %f",shop.shop_name,rotationAngleArrow);
+    NSLog(@"goc quay den shop %@ la %f",shop.shop_name,rotationAngleArrow);
 }
+
 - (void)dealloc
 {
     [shop release];

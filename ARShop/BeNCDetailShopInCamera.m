@@ -16,6 +16,7 @@
 @implementation BeNCDetailShopInCamera
 @synthesize labelDistanceToShop,labelShopName,labelShopAddress,shop;
 @synthesize userLocation;
+@synthesize delegate;
 
 - (id)initWithShop:(BeNCShopEntity *)shopEntity
 {
@@ -85,6 +86,13 @@
         maxNumber = numberB;
     }
     return maxNumber;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didTouchesToView)]) {
+        [self.delegate didTouchesToView];
+    }
 }
 - (void)dealloc
 {

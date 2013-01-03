@@ -9,16 +9,16 @@
 #import <UIKit/UIKit.h>
 #include <AVFoundation/AVFoundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "BeNCDetailInCameraViewController.h"
 
-@interface BeNCCameraViewController : UIViewController{
+@interface BeNCCameraViewController : UIViewController<CLLocationManagerDelegate,BeNCDetailInCameraDelegate>{
     AVCaptureSession *captureSession;
     AVCaptureDeviceInput *deviceInput;
     NSMutableArray *shopsArray;
     CLLocation *userLocation ;
     NSMutableArray *arrayShopDistance;
-    NSMutableArray *mutableArray;
-    NSMutableArray *arrayTest;
+    CLLocationManager *locationManager;
 }
+@property(nonatomic, retain)CLLocationManager *locationManager;
 - (void)addVideoInput;
-- (NSMutableArray * )sortShopByDistance:(NSMutableArray *)array;
 @end

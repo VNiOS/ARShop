@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "BeNCShopEntity.h"
 #import <CoreLocation/CoreLocation.h>
-
+@class BeNCDetailShopInCamera;
+@protocol BeNCDetailShopDelegate <NSObject>
+@optional
+- (void)didTouchesToView;
+@end
 @interface BeNCDetailShopInCamera : UIView{
     UILabel *labelShopName;
     UILabel *labelShopAddress;
@@ -17,6 +21,7 @@
     CLLocation *userLocation ;
     BeNCShopEntity *shop;
 }
+@property (nonatomic, retain)id<BeNCDetailShopDelegate>delegate;
 @property(nonatomic, retain)BeNCShopEntity *shop;
 @property(nonatomic, retain)UILabel *labelShopName;
 @property(nonatomic, retain)UILabel *labelShopAddress;

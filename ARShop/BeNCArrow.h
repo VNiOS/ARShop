@@ -10,7 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "BeNCShopEntity.h"
 #include <CoreLocation/CoreLocation.h>
-@interface BeNCArrow : UIImageView{
+@interface BeNCArrow : UIImageView<CLLocationManagerDelegate>{
     CLLocation *userLocation;
     BeNCShopEntity *shop ;
     double rotationAngleArrow;

@@ -26,6 +26,7 @@
     self = [super init];
     if (self) {
         [[LocationService sharedLocation]startUpdate];
+        userLocation = [[LocationService sharedLocation] userLocation];
         shop = shopEntity;
         labelDistanceToShop = [[UILabel alloc]init];
         [labelDistanceToShop setTextAlignment:UITextAlignmentCenter];

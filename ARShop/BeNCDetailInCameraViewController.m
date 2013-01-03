@@ -21,7 +21,7 @@
 @end
 
 @implementation BeNCDetailInCameraViewController
-@synthesize shop;
+@synthesize shop,delegate,index;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,8 +39,8 @@
 }
 - (void)setContentForView:(BeNCShopEntity *)shopEntity
 {
-    shop = shopEntity;
     detailShop = [[BeNCDetailShopInCamera alloc]initWithShop:shopEntity];
+    detailShop.delegate = self;
     self.view.frame = detailShop.frame;
     [self.view addSubview:detailShop];
     arrowImage = [[BeNCArrow alloc]initWithShop:shopEntity];
@@ -48,17 +48,7 @@
     [self.view setBackgroundColor:[UIColor clearColor]];
 //    timer = [[NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(updateMotion) userInfo:nil repeats:YES]retain];   
 }
-- (void)updateContentForView:(BeNCShopEntity *)shopEntity
-{
-    arrowImage = [[BeNCArrow alloc]initWithShop:shopEntity];
-    arrowImage.shop = shopEntity;
-    
-    detailShop = [[BeNCDetailShopInCamera alloc]initWithShop:shopEntity];
-    detailShop.shop = shopEntity;
-    [self.view setBackgroundColor:[UIColor clearColor]];
-//    timer = [[NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(updateMotion) userInfo:nil repeats:YES]retain];   
 
-}
 - (void)updateMotion
 {
     CMDeviceMotion *currentDeviceMotion = motionManager.deviceMotion;
@@ -96,8 +86,16 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-
+-(void)setIndexForView:(int )aIndex
+{
+    index = aIndex;
+}
+- (void)didTouchesToView
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didSeclectView:)]) {
+        [self.delegate didSeclectView:self.index];
+    }
+}
 - (void)dealloc
 {
     [timer release];

@@ -196,11 +196,6 @@ bool firstUpdate = 1;
                                 
                                 MKAnnotationView *shopCheckView  =  (MKAnnotationView *)[mapView viewForAnnotation:annotationCheck];
                                 [shopCheckView setHidden:YES];
-                                
-                                
-                                
-                                
-                                NSLog(@" * Shop %@ va shop %@ trung nhau",shopAnnotation.name,shopcheck.name);
                                 shopcheck.isChecked = 1;
                             }
   
