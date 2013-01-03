@@ -35,7 +35,8 @@
 
 - (void)viewDidLoad
 {
-
+    UIBarButtonItem *refreshButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Refresh" style:UIBarButtonSystemItemRefresh target:self action:@selector(sortShopByCheckShop)];
+    self.navigationItem.rightBarButtonItem = refreshButtonItem;
     [self setTitle:@"List Shop"];
     [self getShopData];
     self.view.bounds = CGRectMake(0, 0, 480, 320);
@@ -78,6 +79,20 @@
     self.userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     [self sortShopByDistance];
     [self.listShopView reloadData];
+}
+
+- (void)sortShopByCheckShop
+{
+    for (int  i = 0; i < [shopsArray count]; i ++) {
+        BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
+        NSLog(@"checkBox is %d",shopEntity.shopCheck);
+        if (shopEntity.shopCheck == 0) {
+            [shopsArray removeObject:shopEntity];
+        }
+    }
+    NSLog(@"so phan tu cua mang la %d",[shopsArray count]);
+    [self.listShopView reloadData];
+
 }
 
 - (void)sortShopByDistance
@@ -146,6 +161,14 @@
     BeNCOneShopARViewController *oneShopAR = [[BeNCOneShopARViewController alloc]initWithShop:shopEntity];
     [self.navigationController pushViewController:oneShopAR animated:YES];
 
+}
+- (void)beNCShopCellDidCleckCheckButton:(BeNCShopCellCell *)shopCell
+{
+    NSIndexPath *indexPathCell = [self.listShopView indexPathForCell:shopCell];
+    BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:indexPathCell.row];
+    shopEntity.shopCheck = shopCell.checkBoxSelected;
+
+    
 }
 
 @end

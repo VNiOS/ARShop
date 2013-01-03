@@ -11,10 +11,12 @@
 
 @implementation BeNCShopEntity
 @synthesize shop_address,shop_address_detail,shop_close_time,shop_coupon_link,shop_description,shop_id,shop_latitude,shop_longitute,shop_menu_link,shop_name,shop_open_time,shop_phone,shop_type;
+@synthesize shopCheck;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     self = [super init];
     if (self) {
+        shopCheck = 1;
         self.shop_id = [[dictionary objectForKey:BeNCShopProperiesShopId]intValue];
         self.shop_name = [dictionary objectForKey:BeNCShopProperiesShopName];
         self.shop_type = [[dictionary objectForKey:BeNCShopProperiesShopTye]intValue];
@@ -32,4 +34,8 @@
     return  self;
 }
 
+- (void)setValueForShopCheck:(BOOL )check
+{
+    self.shopCheck = check;
+}
 @end

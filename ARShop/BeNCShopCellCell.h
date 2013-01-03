@@ -12,11 +12,16 @@
 
 @optional
 - (void)bnShoptCellDidClickedAtCell:(BeNCShopCellCell *)shopCell;
+- (void)beNCShopCellDidCleckCheckButton:(BeNCShopCellCell *)shopCell;
 @end
 
 @interface BeNCShopCellCell : UITableViewCell{
+    UIButton *checkbox ;
     UIButton *distanceToShop;
+    BOOL checkBoxSelected;
+
 }
+@property  BOOL checkBoxSelected; 
 @property (nonatomic, retain) id<BeNCShopCellDelegate>delegate;
 @property (nonatomic ,retain) UIButton *distanceToShop; 
 @end

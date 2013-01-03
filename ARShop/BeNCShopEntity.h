@@ -22,8 +22,10 @@
     NSString *shop_close_time;
     float shop_latitude;
     float shop_longitute;
+    BOOL shopCheck;
     
 }
+@property BOOL shopCheck;
 @property int shop_id;
 @property int shop_type;
 @property int shop_phone;

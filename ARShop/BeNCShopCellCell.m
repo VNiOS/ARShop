@@ -9,17 +9,23 @@
 #import "BeNCShopCellCell.h"
 
 @implementation BeNCShopCellCell
-@synthesize distanceToShop,delegate;
+@synthesize distanceToShop,delegate,checkBoxSelected;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        checkBoxSelected = 1;
+        checkbox = [[UIButton alloc] initWithFrame:CGRectMake(390,5,50,50)];
+        [checkbox setBackgroundImage:[UIImage imageNamed:@"unchecked.png"]forState:UIControlStateNormal];
+        [checkbox setBackgroundImage:[UIImage imageNamed:@"checkbox.png"]forState:UIControlStateSelected];
+        [checkbox setBackgroundImage:[UIImage imageNamed:@"checkbox.png"]forState:UIControlStateHighlighted];
+        checkbox.adjustsImageWhenHighlighted=YES;
+        [checkbox setSelected:checkBoxSelected];
+        [checkbox addTarget:self action:@selector(checkboxSelected:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:checkbox];
         
-        UIButton *checkboxButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [checkboxButton setTitle:@"Check" forState:UIControlStateNormal];
-        [checkboxButton setFrame:CGRectMake(390, 5, 80, 50)];
-        [checkboxButton addTarget:self action:@selector(touchesToButtonDistance) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:checkboxButton];
+        
         
         distanceToShop = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [distanceToShop setFrame:CGRectMake(290, 5, 90, 50)];
@@ -42,7 +48,15 @@
         [self.delegate bnShoptCellDidClickedAtCell:self];
     }
 }
-
+            
+-(void)checkboxSelected:(id)sender
+{
+    checkBoxSelected = !checkBoxSelected;
+    [checkbox setSelected:checkBoxSelected];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(beNCShopCellDidCleckCheckButton:)]) {
+        [self.delegate beNCShopCellDidCleckCheckButton:self];
+    }
+}
 - (void)dealloc
 {
     [distanceToShop release];

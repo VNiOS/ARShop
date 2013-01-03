@@ -22,4 +22,5 @@
 -(void)didUpdateLocation:(NSNotification *)notifi;
 -(void)getShopData;
 -(int)calculeDistance:(BeNCShopEntity *)shop;
+- (void)sortShopByCheckShop;
 @end
