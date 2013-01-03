@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad
 {
-//    self.view.bounds = CGRectMake(0, 0, 480, 320);
+    self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
@@ -44,7 +44,7 @@
 
 - (void)loadWebView:(NSString *)stringURL
 {
-    webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 480, 320)];
+    webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, 480, 300)];
     webView.delegate = self;
     NSURL *uRL = [NSURL URLWithString:stringURL];
     NSURLRequest *uRLRequest = [NSURLRequest requestWithURL:uRL];

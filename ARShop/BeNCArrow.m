@@ -21,7 +21,6 @@
     self = [super init];
     if (self) {
         [[LocationService sharedLocation]startUpdate];
-        userLocation = [[LocationService sharedLocation] userLocation];
         shop = shopEntity;
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
@@ -67,11 +66,11 @@
     CLLocation *newLocation = (CLLocation *)[notification object];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     rotationAngleArrow = [self caculateRotationAngle:shop];
-    NSLog(@"goc quay den shop %@ la %f",shop.shop_name,rotationAngleArrow);
 }
 
 - (void)dealloc
 {
+    [userLocation release];
     [shop release];
     [userLocation release];
     [super dealloc];

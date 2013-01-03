@@ -32,9 +32,8 @@
 
 - (void)viewDidLoad
 {
-//    [self getDatabase];
-//    userLocation = [[CLLocation alloc]init];
-//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
+    [self setTitle:@"AR"];
+    [self getDatabase];
     self.locationManager = [[CLLocationManager alloc]init];
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     locationManager.delegate = self;
@@ -149,17 +148,14 @@
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     [self sortShopByDistance];
 }
--(void)didUpdateLocation:(NSNotification *)notification {
-    CLLocation *newLocation = (CLLocation *)[notification object];
-    userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
-    [self sortShopByDistance];
-}
 
 - (void)didSeclectView:(int)index
 {
     BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:index];
-    BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc]initWithShop:shopEntity];
+    BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:shopEntity];
     [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController release];
+
 }
 - (void)dealloc
 {

@@ -32,8 +32,8 @@
 {
     [self checkDatabase];
     BeNCTabbarItem *tabItem1 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(2, 2, 90, 30) normalState:@"listoff.png" toggledState:@"ListOn.png"];
-	BeNCTabbarItem *tabItem2 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(94, 2, 90, 30) normalState:@"mapoff.png" toggledState:@"mapon.png"];
-	BeNCTabbarItem *tabItem3 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(186, 2, 90, 30) normalState:@"cameraoff.png" toggledState:@"cameraon.png"];
+	BeNCTabbarItem *tabItem2 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(94, 2, 90, 30) normalState:@"cameraoff.png" toggledState:@"cameraon.png"];
+	BeNCTabbarItem *tabItem3 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(186, 2, 90, 30) normalState:@"mapoff.png" toggledState:@"mapon.png"];
     
     
     BeNCListViewController *listViewController = [[BeNCListViewController alloc]initWithNibName:@"BeNCListViewController" bundle:nil];
@@ -44,15 +44,18 @@
     NSMutableArray *viewControllersArray = [[NSMutableArray alloc] init];
     UINavigationController *listNavigation = [[UINavigationController alloc]initWithRootViewController:listViewController];
     UINavigationController *mapNavigation = [[UINavigationController alloc]initWithRootViewController:mapViewController];
+    UINavigationController *cameraNavigation = [[UINavigationController alloc]initWithRootViewController:cameraViewController];
     
     [listNavigation.navigationBar setHidden:NO];
     [listNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
+    [cameraNavigation.navigationBar setHidden:NO];
+    [cameraNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
     [mapNavigation.navigationBar setHidden:NO];
     [mapNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
     
 	[viewControllersArray addObject:listNavigation];
+    [viewControllersArray addObject:cameraNavigation];
 	[viewControllersArray addObject:mapNavigation];
-	[viewControllersArray addObject:cameraViewController];
     
 	
 	NSMutableArray *tabItemsArray = [[NSMutableArray alloc] init];

@@ -11,6 +11,7 @@
 #import "BeNCArrow.h"
 #import "BeNCWebViewController.h"
 #import "LocationService.h"
+#import "BeNCOneShopARViewController.h"
 
 #define textSize 20
 #define max 1000000
@@ -30,9 +31,11 @@
         shop = shopEntity;
         labelDistanceToShop = [[UILabel alloc]init];
         [labelDistanceToShop setTextAlignment:UITextAlignmentCenter];
+        labelDistanceToShop.frame = CGRectMake(390, 60, 90, 30);
+        labelDistanceToShop.text = [NSString stringWithFormat:@"%d m",[self caculateDistanceToShop:shopEntity]];
         [self.view addSubview:labelDistanceToShop];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];       
-        [self updateDistane:shopEntity];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil]; 
+        [self setContentDetailForView:shopEntity];
     }
     return self;
 }
@@ -58,7 +61,7 @@
     return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
-- (void)setContentDetailForView:(BeNCShopEntity *)shopEntity withDistance:(float )distance
+- (void)setContentDetailForView:(BeNCShopEntity *)shopEntity
 {
     UIImageView *logoImgaeView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 60, 60)];
     UIImage *logoImage = [UIImage imageNamed:@"images.jpg"];
@@ -137,6 +140,9 @@
     arrowImage.frame = CGRectMake(430,10,30, 45);
     [self.view addSubview:arrowImage];
     
+    UIBarButtonItem *cameraButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"ARShop" style:UIBarButtonSystemItemCamera target:self action:@selector(goToCamera:)];
+    self.navigationItem.rightBarButtonItem = cameraButtonItem;
+    
 //    UIButton *buttonFindMap = [UIButton buttonWithType:UIButtonTypeCustom];
 //    buttonFindMap.frame = CGRectMake(50, 250, 60, 60);
 //    
@@ -144,13 +150,7 @@
 //    [self.view addSubview:arrowImage];
 }
 
-- (void)updateDistane:(BeNCShopEntity *)shopEntity
-{
-    
-    labelDistanceToShop.frame = CGRectMake(390, 60, 90, 30);
-    labelDistanceToShop.text = [NSString stringWithFormat:@"%d m",[self caculateDistanceToShop:shop]];
 
-}
 - (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity
 {
     CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute];
@@ -169,16 +169,22 @@
 {
     BeNCWebViewController *webView = [[BeNCWebViewController alloc]initWithNibName:@"BeNCWebViewController" bundle:nil];
     [webView loadWebView:shop.shop_menu_link];
-    [self presentModalViewController:webView animated:YES];
+    [self.navigationController pushViewController:webView animated:YES];
 }
 
 - (IBAction)goToCouponSite:(id)sender
 {
     BeNCWebViewController *webView = [[BeNCWebViewController alloc]initWithNibName:@"BeNCWebViewController" bundle:nil];
     [webView loadWebView:shop.shop_coupon_link];
-    [self presentModalViewController:webView animated:YES];
+    [self.navigationController pushViewController:webView animated:YES];
     
 }
-
+                                         
+- (IBAction)goToCamera:(id)sender
+{
+    BeNCOneShopARViewController *oneShopAR = [[BeNCOneShopARViewController alloc]initWithShop:shop];
+    [self.navigationController pushViewController:oneShopAR animated:YES];
+        
+}
 
 @end

@@ -19,6 +19,8 @@
 		A7F08DB4167724F000D46DCF /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F08DB3167724F000D46DCF /* LocationService.m */; };
 		A7F21FB7167B0C9E006AE452 /* images.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A7F21FB6167B0C9E006AE452 /* images.jpg */; };
 		A7F21FBF167B23EF006AE452 /* BeNCShopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F21FBE167B23EF006AE452 /* BeNCShopAnnotation.m */; };
+		C30B2CFD1695336200B56235 /* BeNCOneShopARViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30B2CFB1695336200B56235 /* BeNCOneShopARViewController.m */; };
+		C30B2CFE1695336200B56235 /* BeNCOneShopARViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C30B2CFC1695336200B56235 /* BeNCOneShopARViewController.xib */; };
 		C310BDA1167886CF00DA1D55 /* ARShopDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C310BDA0167886CF00DA1D55 /* ARShopDatabase.sqlite */; };
 		C32034FB16757ADB00CA3D8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32034FA16757ADB00CA3D8C /* UIKit.framework */; };
 		C32034FD16757ADB00CA3D8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32034FC16757ADB00CA3D8C /* Foundation.framework */; };
@@ -81,6 +83,9 @@
 		A7F21FB6167B0C9E006AE452 /* images.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpg; sourceTree = "<group>"; };
 		A7F21FBD167B23EF006AE452 /* BeNCShopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCShopAnnotation.h; sourceTree = "<group>"; };
 		A7F21FBE167B23EF006AE452 /* BeNCShopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCShopAnnotation.m; sourceTree = "<group>"; };
+		C30B2CFA1695336200B56235 /* BeNCOneShopARViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCOneShopARViewController.h; sourceTree = "<group>"; };
+		C30B2CFB1695336200B56235 /* BeNCOneShopARViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCOneShopARViewController.m; sourceTree = "<group>"; };
+		C30B2CFC1695336200B56235 /* BeNCOneShopARViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeNCOneShopARViewController.xib; sourceTree = "<group>"; };
 		C310BDA0167886CF00DA1D55 /* ARShopDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = ARShopDatabase.sqlite; sourceTree = "<group>"; };
 		C32034F616757ADB00CA3D8C /* ARShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C32034FA16757ADB00CA3D8C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -246,6 +251,7 @@
 		C320351B16757BA000CA3D8C /* Nibs */ = {
 			isa = PBXGroup;
 			children = (
+				C30B2CFC1695336200B56235 /* BeNCOneShopARViewController.xib */,
 				C320354C1675836700CA3D8C /* BeNCDetailInCameraViewController.xib */,
 				C3FFA3FB1681B034007B7963 /* BeNCWebViewController.xib */,
 				C32035381675804C00CA3D8C /* BeNCDetailViewController.xib */,
@@ -339,6 +345,8 @@
 				A7EC9FA8167F051000CE1B3E /* BeNCShopGroupAnnotation.m */,
 				A7EC9FAE167F08BB00CE1B3E /* BeNCShopGroupView.h */,
 				A7EC9FAF167F08BB00CE1B3E /* BeNCShopGroupView.m */,
+				C30B2CFA1695336200B56235 /* BeNCOneShopARViewController.h */,
+				C30B2CFB1695336200B56235 /* BeNCOneShopARViewController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -447,6 +455,7 @@
 				C3FFA3E91681AB86007B7963 /* menu.gif in Resources */,
 				C3FFA3F01681ADE5007B7963 /* coupon.png in Resources */,
 				C3FFA3FD1681B034007B7963 /* BeNCWebViewController.xib in Resources */,
+				C30B2CFE1695336200B56235 /* BeNCOneShopARViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +493,7 @@
 				A7EC9FB0167F08BB00CE1B3E /* BeNCShopGroupView.m in Sources */,
 				C3FFA3FC1681B034007B7963 /* BeNCWebViewController.m in Sources */,
 				A7EFB61E16807876005E0F17 /* CalloutMapAnnotationView.m in Sources */,
+				C30B2CFD1695336200B56235 /* BeNCOneShopARViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

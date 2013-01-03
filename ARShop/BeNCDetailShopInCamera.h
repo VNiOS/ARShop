@@ -11,7 +11,6 @@
 #import <CoreLocation/CoreLocation.h>
 @class BeNCDetailShopInCamera;
 @protocol BeNCDetailShopDelegate <NSObject>
-@optional
 - (void)didTouchesToView;
 @end
 @interface BeNCDetailShopInCamera : UIView{

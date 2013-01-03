@@ -14,10 +14,7 @@
 #import <CoreLocation/CoreLocation.h>
 @class BeNCDetailInCameraViewController;
 @protocol BeNCDetailInCameraDelegate <NSObject>
-
-@optional
 - (void)didSeclectView:(int )index;
-
 @end
 @interface BeNCDetailInCameraViewController : UIViewController<BeNCDetailShopDelegate>{
     CMMotionManager *motionManager;

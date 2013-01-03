@@ -150,7 +150,6 @@ bool firstUpdate = 1;
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
         
-        
         return annotationView;
     
     
@@ -165,7 +164,6 @@ bool firstUpdate = 1;
     [detailViewController release];
 }
 -(void)checkOverride{
-    NSLog(@"Location in view ___________________");
     for( id<MKAnnotation> annotation in mapView.annotations) {
         if ([annotation isKindOfClass:[BeNCShopAnnotation class]]) {
             BeNCShopAnnotation *shopAnnotation = (BeNCShopAnnotation *)annotation;

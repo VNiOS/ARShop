@@ -130,7 +130,6 @@
 {
     BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:indexPath.row];
     BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:shopEntity];
-    [detailViewController setContentDetailForView:shopEntity withDistance:distanceToShop];
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      
