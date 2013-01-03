@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+@class BeNCShopCellCell;
+@protocol BeNCShopCellDelegate <NSObject>
+
+@optional
+- (void)bnShoptCellDidClickedAtCell:(BeNCShopCellCell *)shopCell;
+@end
 
 @interface BeNCShopCellCell : UITableViewCell{
-    UIButton *distanceBt;
+    UIButton *distanceToShop;
 }
-@property (nonatomic ,retain) UIButton *distanceBt; 
+@property (nonatomic, retain) id<BeNCShopCellDelegate>delegate;
+@property (nonatomic ,retain) UIButton *distanceToShop; 
 @end

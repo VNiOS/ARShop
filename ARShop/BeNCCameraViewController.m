@@ -24,6 +24,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        [self addVideoInput];
         // Custom initialization
     }
     return self;
@@ -37,10 +38,10 @@
     self.locationManager = [[CLLocationManager alloc]init];
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     locationManager.delegate = self;
+    [locationManager setDistanceFilter:3];
     [locationManager startUpdatingLocation];
     userLocation = nil;
     self.view.bounds = CGRectMake(0, 0, 480, 320);
-    [self addVideoInput];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
@@ -132,8 +133,6 @@
 }
 - (void)sortShopByDistance
 {
-    [[BeNCProcessDatabase sharedMyDatabase]getDatebase];
-    shopsArray = [[[NSMutableArray alloc]initWithArray:[[BeNCProcessDatabase sharedMyDatabase] arrayShop]]retain];
     for (int i = 0; i < [shopsArray count]; i ++) {
         for (int j = i + 1; j < [shopsArray count]; j ++) {
             if ([self caculateDistanceToShop:[shopsArray objectAtIndex:i]] > [self caculateDistanceToShop:[shopsArray objectAtIndex:j]]) 

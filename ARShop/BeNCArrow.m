@@ -60,7 +60,7 @@
 
 -(void)didUpdateHeading:(NSNotification *)notification{
     CLHeading *newHeading = [notification object];
-    self.transform = CGAffineTransformMakeRotation(( - (newHeading.magneticHeading * rotationRate + M_PI/2) ) + rotationAngleArrow);
+    self.transform = CGAffineTransformMakeRotation( - newHeading.magneticHeading * rotationRate - M_PI/2 + rotationAngleArrow);
 }
 -(void)didUpdateLocation:(NSNotification *)notification {
     CLLocation *newLocation = (CLLocation *)[notification object];

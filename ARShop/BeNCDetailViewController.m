@@ -27,7 +27,6 @@
     self = [super init];
     if (self) {
         [[LocationService sharedLocation]startUpdate];
-        userLocation = [[LocationService sharedLocation] userLocation];
         shop = shopEntity;
         labelDistanceToShop = [[UILabel alloc]init];
         [labelDistanceToShop setTextAlignment:UITextAlignmentCenter];
@@ -145,9 +144,7 @@
     
 //    UIButton *buttonFindMap = [UIButton buttonWithType:UIButtonTypeCustom];
 //    buttonFindMap.frame = CGRectMake(50, 250, 60, 60);
-//    
-//    BeNCArrow *arrowImage = [[BeNCArrow alloc]initWithShop:shopEntity];
-//    [self.view addSubview:arrowImage];
+
 }
 
 

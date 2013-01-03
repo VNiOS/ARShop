@@ -309,10 +309,6 @@
 				C32035321675803500CA3D8C /* BeNCCameraViewController.m */,
 				C32035361675804C00CA3D8C /* BeNCDetailViewController.h */,
 				C32035371675804C00CA3D8C /* BeNCDetailViewController.m */,
-				C320354A1675836700CA3D8C /* BeNCDetailInCameraViewController.h */,
-				C320354B1675836700CA3D8C /* BeNCDetailInCameraViewController.m */,
-				C3FFA3F91681B034007B7963 /* BeNCWebViewController.h */,
-				C3FFA3FA1681B034007B7963 /* BeNCWebViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -329,6 +325,10 @@
 		C320352116757CC500CA3D8C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C320354A1675836700CA3D8C /* BeNCDetailInCameraViewController.h */,
+				C320354B1675836700CA3D8C /* BeNCDetailInCameraViewController.m */,
+				C3FFA3F91681B034007B7963 /* BeNCWebViewController.h */,
+				C3FFA3FA1681B034007B7963 /* BeNCWebViewController.m */,
 				A7EFB61C16807876005E0F17 /* CalloutMapAnnotationView.h */,
 				A7EFB61D16807876005E0F17 /* CalloutMapAnnotationView.m */,
 				C320353E167580EA00CA3D8C /* BeNCShopCellCell.h */,
