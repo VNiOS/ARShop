@@ -97,6 +97,7 @@
 
 - (void)setContentForView
 {
+    [arrayShopDistance release];
     arrayShopDistance = [[NSMutableArray alloc]init];
     for (int i = 0; i < 5; i ++) {
         BeNCDetailInCameraViewController *detailView = [[BeNCDetailInCameraViewController alloc]initWithNibName:@"BeNCDetailInCameraViewController" bundle:nil];
@@ -128,6 +129,7 @@
     for (int i = 0; i < [arrayShopDistance count]; i ++) {
         BeNCDetailInCameraViewController *detailView = (BeNCDetailInCameraViewController *)[arrayShopDistance objectAtIndex:i];
         [detailView.view removeFromSuperview];
+        [detailView release];
     }
     [self setContentForView];
 }
@@ -144,6 +146,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
+    [userLocation release];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     [self sortShopByDistance];
 }
