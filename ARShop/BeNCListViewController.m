@@ -15,13 +15,16 @@
 #import "BeNCShopCellCell.h"
 #import "BeNCOneShopARViewController.h"
 
+#define MainList 0
+#define MapList 1
+
 @interface BeNCListViewController ()
 
 @end
 
 @implementation BeNCListViewController
 @synthesize listShopView,userLocation,distanceToShop;
-
+@synthesize listType;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -41,11 +44,21 @@
     self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:refreshButtonItem,editButton, nil];
     
     [self setTitle:@"List Shop"];
-    [self getShopData];
+    
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     self.listShopView.frame = CGRectMake(0, 0, 480, 320);
     listShopView.delegate = self;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
+    
+    
+    if (listType == MainList) {
+        [self getShopData];
+        NSLog(@"main list");
+    }
+    else if(listType == MapList){
+        
+        NSLog(@"map list");
+    }
     [super viewDidLoad];
 
 }
@@ -63,7 +76,14 @@
 }
 
 #pragma mark getdata
-
+-(void)getShopDataFromMap:(NSArray *)shopArray{
+    NSLog(@"get shop data from map");
+    shopsArray = [[NSMutableArray alloc]initWithArray:shopArray];
+    if (self.userLocation==nil) {
+       self.userLocation = [[LocationService sharedLocation]getOldLocation]; 
+    }
+    [self.listShopView reloadData];
+}
 
 -(void)getShopData{
     [[BeNCProcessDatabase sharedMyDatabase]getDatebase];

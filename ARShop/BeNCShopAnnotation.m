@@ -9,7 +9,7 @@
 #import "BeNCShopAnnotation.h"
 
 @implementation BeNCShopAnnotation
-@synthesize name=_name,address=_address,coordinate=_coordinate,title,subtitle,index,isChecked,locationInView,overideAnnotation,shop=_shop;
+@synthesize name=_name,address=_address,coordinate=_coordinate,title,subtitle,index,isChecked,isGrouped,locationInView,overideAnnotation,shop=_shop;
 -(id)initWithName:(NSString *)name address:(NSString *)address coordinate:(CLLocationCoordinate2D)coordinate{
     
     if (self=[super init]) {

@@ -23,5 +23,5 @@
 +(id)userLocation;
 -(id)init;
 -(void)startUpdate;
-
+-(CLLocation *)getOldLocation;
 @end

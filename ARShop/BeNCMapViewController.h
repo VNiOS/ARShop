@@ -9,14 +9,19 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
+
 @interface BeNCMapViewController : UIViewController<MKMapViewDelegate>{
     
     MKMapView *mapView;
+    
     NSArray *shopsArray;
-    MKAnnotationView *_selectedAnnotationView;
+    NSMutableArray *shopsAnnotations;
+    NSMutableArray *selectedShops;
+    
 }
 @property (nonatomic,retain) MKMapView *mapView;
 @property (nonatomic, retain) MKAnnotationView *selectedAnnotationView;
+
 -(void)getShopData;
 -(void)didUpdateLocation:(NSNotification *)notifi;
 -(void)addShopAnnotation;
