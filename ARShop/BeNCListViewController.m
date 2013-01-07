@@ -41,7 +41,7 @@
     UIBarButtonItem *refreshButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Refresh" style:UIBarButtonSystemItemRefresh target:self action:@selector(sortShopByCheckShop)];
     self.navigationItem.rightBarButtonItem = refreshButtonItem;
     [self setTitle:@"List Shop"];
-    [self getShopData];
+    
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     self.listShopView.frame = CGRectMake(0, 0, 480, 320);
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
@@ -49,9 +49,11 @@
     
     if (listType == MainList) {
         [self getShopData];
+        NSLog(@"main list");
     }
     else if(listType == MapList){
         
+        NSLog(@"map list");
     }
     [super viewDidLoad];
 
@@ -71,7 +73,12 @@
 
 #pragma mark getdata
 -(void)getShopDataFromMap:(NSArray *)shopArray{
+    NSLog(@"get shop data from map");
     shopsArray = [[NSMutableArray alloc]initWithArray:shopArray];
+    if (self.userLocation==nil) {
+       self.userLocation = [[LocationService sharedLocation]getOldLocation]; 
+    }
+    [self.listShopView reloadData];
 }
 
 -(void)getShopData{

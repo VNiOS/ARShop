@@ -14,6 +14,7 @@
 		A77936281679BC16006603C7 /* mapoff.png in Resources */ = {isa = PBXBuildFile; fileRef = A77936221679BC16006603C7 /* mapoff.png */; };
 		A779362C1679C024006603C7 /* mapon.png in Resources */ = {isa = PBXBuildFile; fileRef = A779362B1679C024006603C7 /* mapon.png */; };
 		A7EBB989169ABDF3004924AC /* BeNCAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EBB988169ABDF3004924AC /* BeNCAnnotationView.m */; };
+		A7EBB98C169AC144004924AC /* location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A7EBB98B169AC144004924AC /* location.gpx */; };
 		A7F08DB4167724F000D46DCF /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F08DB3167724F000D46DCF /* LocationService.m */; };
 		A7F21FB7167B0C9E006AE452 /* images.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A7F21FB6167B0C9E006AE452 /* images.jpg */; };
 		A7F21FBF167B23EF006AE452 /* BeNCShopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F21FBE167B23EF006AE452 /* BeNCShopAnnotation.m */; };
@@ -72,6 +73,7 @@
 		A779362B1679C024006603C7 /* mapon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapon.png; sourceTree = "<group>"; };
 		A7EBB987169ABDF3004924AC /* BeNCAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCAnnotationView.h; sourceTree = "<group>"; };
 		A7EBB988169ABDF3004924AC /* BeNCAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCAnnotationView.m; sourceTree = "<group>"; };
+		A7EBB98B169AC144004924AC /* location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = location.gpx; sourceTree = "<group>"; };
 		A7F08DB2167724F000D46DCF /* LocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
 		A7F08DB3167724F000D46DCF /* LocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
 		A7F21FB6167B0C9E006AE452 /* images.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpg; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		C320351716757B1000CA3D8C /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				A7EBB98B169AC144004924AC /* location.gpx */,
 				C3611F4716771E81008DBE79 /* Images */,
 				C320351D16757BD000CA3D8C /* Others */,
 				C320351C16757BB200CA3D8C /* Mutilanguage */,
@@ -446,6 +449,7 @@
 				C3FFA3F01681ADE5007B7963 /* coupon.png in Resources */,
 				C3FFA3FD1681B034007B7963 /* BeNCWebViewController.xib in Resources */,
 				C30B2CFE1695336200B56235 /* BeNCOneShopARViewController.xib in Resources */,
+				A7EBB98C169AC144004924AC /* location.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -54,7 +54,25 @@
         [userLocation release];
     }
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
+    
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setFloat:userLocation.coordinate.latitude forKey:@"userLatitude"];
+    [userDefault setFloat:userLocation.coordinate.longitude forKey:@"userLongitude"];
+    
+    
+    
       [[NSNotificationCenter defaultCenter]postNotificationName:@"UpdateLocation" object:newLocation];
+}
+-(CLLocation *)getOldLocation{
+    NSLog(@"get old location");
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    
+    float latitude = (float)[userDefault floatForKey:@"userLatitude"];
+    float longitude = [userDefault floatForKey:@"userLongitude"];
+
+    CLLocation *oldLocation = [[CLLocation alloc]initWithLatitude:latitude longitude:longitude];
+    return oldLocation;
 }
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"Update location fail");

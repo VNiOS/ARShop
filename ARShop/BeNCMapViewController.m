@@ -177,16 +177,10 @@ bool firstUpdate = 1;
             annotationView.numberlb.hidden = YES;
             annotationView.numberImageView.hidden = YES;
         }
-        UIButton *numberbt = [UIButton buttonWithType:UIButtonTypeCustom];
-        numberbt.imageView.image = [UIImage imageNamed:@"numberView.png"];
-        numberbt.titleLabel.text = [NSString stringWithFormat:@"%d",shopAnnotation.overideAnnotation.count];
-        numberbt.frame = annotationView.frame;
-        [annotationView addSubview:numberbt];
-        //        [annotationView.layer setCornerRadius:4];
-        //        [annotationView.layer setShadowColor:[UIColor blackColor].CGColor];
-        //        [annotationView.layer setShadowOpacity:0.6];
-        //        [annotationView.layer setShadowOffset:CGSizeMake(2, 2)];
-        //        [annotationView.layer setShadowRadius:3];
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        [button addTarget:self action:@selector(showDetail:) forControlEvents:UIControlEventTouchUpInside];
+        annotationView.rightCalloutAccessoryView = button;
+
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
         return annotationView;
@@ -195,7 +189,7 @@ bool firstUpdate = 1;
 }
 -(IBAction)showDetail:(id)sender{
     if (selectedShops.count==1) {
-        BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithNibName:@"BeNCDetailViewController" bundle:nil];
+        BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:(BeNCShopEntity *)[selectedShops objectAtIndex:0]];
         
         [self.navigationController pushViewController:detailViewController animated:YES];
         [detailViewController release];
