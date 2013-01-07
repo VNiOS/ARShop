@@ -145,13 +145,19 @@
 {
     static NSString *CellIdentifier = @"Cell";
     BeNCShopCellCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    cell.checkBoxSelected =! cell.checkBoxSelected;
     if (cell == nil) {
         cell = [[BeNCShopCellCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.delegate = self;
     }
-    cell.accessoryType = UITableViewCellAccessoryNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     BeNCShopEntity *shop  = [shopsArray objectAtIndex:indexPath.row];
+    if (shop.shopCheck == 1) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark ;
+    }
+    else {
+        cell.accessoryType = UITableViewCellAccessoryNone ;
+    }
+    
     [cell updateContentForCell:shop withLocation:userLocation];
     return cell;
 }
@@ -169,9 +175,8 @@
 {
     if (editing) {
         BeNCShopEntity *shop  = [shopsArray objectAtIndex:indexPath.row];
-        BeNCShopCellCell *newCell = (BeNCShopCellCell *)[tableView cellForRowAtIndexPath:indexPath];
-        newCell.checkBoxSelected =! newCell.checkBoxSelected;
-        [newCell updateContentForCell:shop withLocation:userLocation];
+        shop.shopCheck =! shop.shopCheck;
+        [self.listShopView reloadData];
 //        if (newCell.accessoryType == UITableViewCellAccessoryNone) {
 //            newCell.accessoryType = UITableViewCellAccessoryCheckmark;
 //        }else {
@@ -200,22 +205,22 @@
 }
 - (void)beNCShopCellDidCleckCheckButton:(BeNCShopCellCell *)shopCell
 {
-    NSIndexPath *indexPathCell = [self.listShopView indexPathForCell:shopCell];
-    BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:indexPathCell.row];
-    shopEntity.shopCheck = shopCell.checkBoxSelected;
+//    NSIndexPath *indexPathCell = [self.listShopView indexPathForCell:shopCell];
+//    BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:indexPathCell.row];
 }
 
 - (IBAction)editList:(id)sender
 {
+    editing =! editing;
     
-    if (!listShopView.isEditing) {
-         [listShopView setEditing:YES animated:YES];
-        
-    }
-    else {
-        [listShopView setEditing:NO animated:YES];
-
-    }
+//    if (!listShopView.isEditing) {
+//         [listShopView setEditing:YES animated:YES];
+//        
+//    }
+//    else {
+//        [listShopView setEditing:NO animated:YES];
+//
+//    }
 //    if (editing) {
 //        editButton setBackgroundImage:<#(UIImage *)#> forState:<#(UIControlState)#> barMetrics:<#(UIBarMetrics)#>
 //    }

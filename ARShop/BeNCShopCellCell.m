@@ -10,13 +10,12 @@
 #import "BeNCShopEntity.h"
 
 @implementation BeNCShopCellCell
-@synthesize distanceToShop,delegate,checkBoxSelected,userLocation;
+@synthesize distanceToShop,delegate,userLocation;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        [self setSelectionStyle:UITableViewCellEditingStyleNone];
         distanceToShop = [UIButton buttonWithType:UIButtonTypeRoundedRect];
             }
     return self;
@@ -37,12 +36,6 @@
 }
 - (void)updateContentForCell:(BeNCShopEntity *)shopEntity withLocation:(CLLocation *)location
 {    
-//    if (checkBoxSelected == 1) {
-//        self.accessoryType = UITableViewCellAccessoryCheckmark;
-//    }
-//    else {
-//        self.accessoryType = UITableViewCellAccessoryNone;
-//    }
     [distanceToShop setFrame:CGRectMake(300, 5, 90, 50)];
     [distanceToShop addTarget:self action:@selector(touchesToButtonDistance) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:distanceToShop];
@@ -60,23 +53,7 @@
     return distance;
 }
 
-- (void)togleCheckmark
-{
-    checkBoxSelected =! checkBoxSelected;
-    if (checkBoxSelected) {
-        self.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
-    else{ 
-        self.accessoryType = UITableViewCellAccessoryNone;
 
-    }
-    
-}
-//-(void)didUpdateLocation:(NSNotification *)notifi{
-//    CLLocation *newLocation = (CLLocation *)[notifi object];
-//    self.userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
-//    [self sortShopByDistance];
-//}
 //-(void)checkboxSelected:(id)sender
 //{
 //    checkBoxSelected = !checkBoxSelected;
