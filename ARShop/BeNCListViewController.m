@@ -15,13 +15,16 @@
 #import "BeNCShopCellCell.h"
 #import "BeNCOneShopARViewController.h"
 
+#define MainList 0
+#define MapList 1
+
 @interface BeNCListViewController ()
 
 @end
 
 @implementation BeNCListViewController
 @synthesize listShopView,userLocation,distanceToShop;
-
+@synthesize listType;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -42,6 +45,14 @@
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     self.listShopView.frame = CGRectMake(0, 0, 480, 320);
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
+    
+    
+    if (listType == MainList) {
+        [self getShopData];
+    }
+    else if(listType == MapList){
+        
+    }
     [super viewDidLoad];
 
 }
@@ -59,7 +70,9 @@
 }
 
 #pragma mark getdata
-
+-(void)getShopDataFromMap:(NSArray *)shopArray{
+    shopsArray = [[NSMutableArray alloc]initWithArray:shopArray];
+}
 
 -(void)getShopData{
     [[BeNCProcessDatabase sharedMyDatabase]getDatebase];

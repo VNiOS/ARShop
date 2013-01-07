@@ -22,6 +22,7 @@
     
     int index;
     bool isChecked;
+    bool isGrouped;
     
     CGPoint locationInView;
     NSMutableArray *overideAnnotation;
@@ -37,6 +38,7 @@
 
 @property(nonatomic) int index;
 @property(nonatomic) bool isChecked;
+@property(nonatomic) bool isGrouped;
 @property(nonatomic) CGPoint locationInView;
 
 @property(nonatomic,retain) NSMutableArray *overideAnnotation;

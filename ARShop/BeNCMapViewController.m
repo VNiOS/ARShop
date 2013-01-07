@@ -12,8 +12,13 @@
 #import "BeNCProcessDatabase.h"
 #import "BeNCShopEntity.h"
 #import "BeNCShopAnnotation.h"
-#import "BeNCShopGroupAnnotation.h"
-#import "CalloutMapAnnotationView.h"
+#import "BeNCListViewController.h"
+#import <QuartzCore/QuartzCore.h>
+#import "BeNCAnnotationView.h"
+#define MainList 0
+#define MapList 1
+
+
 @interface BeNCMapViewController ()
 
 @end
@@ -33,7 +38,7 @@ bool firstUpdate = 1;
 
 - (void)viewDidLoad
 {
-
+    
     self.title = @"Map";
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
@@ -45,15 +50,10 @@ bool firstUpdate = 1;
     
     [self.view addSubview:mapView];
     
-  
-
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
     
-    //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];    
-    
-     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
-
     [self getShopData];
-
+    
 }
 -(void)getShopData{
     [[BeNCProcessDatabase sharedMyDatabase]getDatebase];
@@ -62,23 +62,26 @@ bool firstUpdate = 1;
 }
 
 -(void)addShopAnnotation{
+    shopsAnnotations = [[NSMutableArray alloc]init];
     for (int i=0; i<shopsArray.count; i++) {
         
         BeNCShopEntity *shop = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
         //NSLog(@"khoi tao annotation %d la %@",i,shop.shop_name);
-      
+        
         CLLocationCoordinate2D placeCoord;
         
         placeCoord.latitude=shop.shop_latitude;
         placeCoord.longitude=shop.shop_longitute;
-             
+        
         BeNCShopAnnotation *shopAnnotation=[[BeNCShopAnnotation alloc]initWithName:shop.shop_name address:shop.shop_address coordinate:placeCoord];
         shopAnnotation.index=i;
+        shopAnnotation.isGrouped = 0;
         shopAnnotation.shop = shop;
-        [shopAnnotation.overideAnnotation addObject:shop];         
-       [mapView addAnnotation:shopAnnotation];
+        [shopAnnotation.overideAnnotation addObject:shop];
+        [shopsAnnotations addObject:shopAnnotation];
+        [mapView addAnnotation:shopAnnotation];
     }
-
+    
 }
 -(void)didUpdateLocation:(NSNotification *)notifi{
     
@@ -95,8 +98,7 @@ bool firstUpdate = 1;
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -106,7 +108,7 @@ bool firstUpdate = 1;
 #pragma mark mapViewDelegate
 -(void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views{
     
-//    NSLog(@"Annotation add :%d",views.count);
+    //    NSLog(@"Annotation add :%d",views.count);
     
 }
 - (void)mapView:(MKMapView *)mv regionDidChangeAnimated:(BOOL)animated {
@@ -115,104 +117,169 @@ bool firstUpdate = 1;
 
 -  (void)mapView:(MKMapView *)mapview didSelectAnnotationView:(MKAnnotationView *)view
 {
+    
+    
     if ([view.annotation isKindOfClass:[BeNCShopAnnotation class]]) {
-//        [view];
+        
+        BeNCShopAnnotation *shopAnnotation = (BeNCShopAnnotation *)view.annotation;
+        
+        if (shopAnnotation.overideAnnotation.count > 1) {
+            shopAnnotation.title = [NSString stringWithFormat:@"%d shop",shopAnnotation.overideAnnotation.count];
+        }
+        else{
+            shopAnnotation.title = shopAnnotation.name;
+        }
+        if (selectedShops ) {
+            [selectedShops release];
+        }
+        selectedShops = [[NSMutableArray alloc]initWithArray:shopAnnotation.overideAnnotation];
+        BeNCShopEntity *shop = (BeNCShopEntity *)[shopAnnotation.overideAnnotation objectAtIndex:0];
+        NSLog(@"- Select annotation %@",shop.shop_name);
+        NSLog(@"  Number of shop : %d",selectedShops.count);
+        
     }
-      
+    
 }
--(void )mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view{
-    
-    
-    
+-(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view{
+    NSLog(@"Deselect annotation");
 }
 -(MKAnnotationView *)mapView:(MKMapView *)mv viewForAnnotation:(id <MKAnnotation>)annotation {
-    // Define your reuse identifier.
-    static NSString *identifier = @"CalloutAnnotation";   
-    //NSLog(@"view for annotation");
+    
+    static NSString *identifier = @"annotation";   
+    NSLog(@"View for annotation");
     if ([annotation isKindOfClass:[BeNCShopAnnotation class]]) {
-        MKPinAnnotationView *annotationView = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        
+        BeNCAnnotationView *annotationView = (BeNCAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
         if (annotationView == nil) {
-            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+            annotationView = [[BeNCAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
             
         } else {
             annotationView.annotation = annotation;
         }
-        UIButton *button=[UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-
-        [button addTarget:self action:@selector(showDetail:) forControlEvents:UIControlEventTouchUpInside];
-        annotationView.rightCalloutAccessoryView=button;
+        BeNCShopAnnotation *shopAnnotation = (BeNCShopAnnotation *)annotation;
+        if (shopAnnotation.overideAnnotation.count>1) {
+            //annotationView.pinColor = MKPinAnnotationColorGreen;
+        }
+        else{
+            //annotationView.pinColor = MKPinAnnotationColorRed;
+        }
         
-        UIImageView *icon = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"images.jpg"]];
-        [icon setFrame:CGRectMake(0, 0, 30, 30)];
-        annotationView.leftCalloutAccessoryView=icon;
-        
-        
+        UIImage *img = [UIImage imageNamed:@"images.png"];
+        annotationView.image = img ;
+        [annotationView setFrame:CGRectMake(annotationView.frame.origin.x, annotationView.frame.origin.y, 45, 45)];
+        if (shopAnnotation.overideAnnotation.count>1) {
+            annotationView.numberlb.text = [NSString stringWithFormat:@"%d",shopAnnotation.overideAnnotation.count];
+            
+            annotationView.numberlb.hidden =NO;
+            annotationView.numberImageView.hidden = NO;
+        }
+        else{
+            annotationView.numberlb.hidden = YES;
+            annotationView.numberImageView.hidden = YES;
+        }
+        UIButton *numberbt = [UIButton buttonWithType:UIButtonTypeCustom];
+        numberbt.imageView.image = [UIImage imageNamed:@"numberView.png"];
+        numberbt.titleLabel.text = [NSString stringWithFormat:@"%d",shopAnnotation.overideAnnotation.count];
+        numberbt.frame = annotationView.frame;
+        [annotationView addSubview:numberbt];
+        //        [annotationView.layer setCornerRadius:4];
+        //        [annotationView.layer setShadowColor:[UIColor blackColor].CGColor];
+        //        [annotationView.layer setShadowOpacity:0.6];
+        //        [annotationView.layer setShadowOffset:CGSizeMake(2, 2)];
+        //        [annotationView.layer setShadowRadius:3];
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
-        
         return annotationView;
-    
-    
-    
     }
     return nil;    
 }
 -(IBAction)showDetail:(id)sender{
-    BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithNibName:@"BeNCDetailViewController" bundle:nil];
+    if (selectedShops.count==1) {
+        BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithNibName:@"BeNCDetailViewController" bundle:nil];
+        
+        [self.navigationController pushViewController:detailViewController animated:YES];
+        [detailViewController release];
+    }
+    else{
+        BeNCListViewController *listShopViewController = [[BeNCListViewController alloc]initWithNibName:@"BeNCListViewController" bundle:nil];
+        [listShopViewController setListType:1];
+        [listShopViewController getShopDataFromMap:selectedShops];
+        [self.navigationController pushViewController:listShopViewController animated:YES];
+        [listShopViewController release];
+        
+        
+    }
     
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
+    
 }
 -(void)checkOverride{
-    for( id<MKAnnotation> annotation in mapView.annotations) {
+    for( id<MKAnnotation> annotation in shopsAnnotations) {
         if ([annotation isKindOfClass:[BeNCShopAnnotation class]]) {
             BeNCShopAnnotation *shopAnnotation = (BeNCShopAnnotation *)annotation;
             shopAnnotation.isChecked = 0;
-            MKAnnotationView *annotationView = [mapView viewForAnnotation:shopAnnotation];
-            [annotationView setHidden:NO];
             CGPoint locationInView = [mapView convertCoordinate:shopAnnotation.coordinate toPointToView:self.view];
             shopAnnotation.locationInView = locationInView;
+            //NSLog(@"Shop %@ co toa do la %f %f",shopAnnotation.shop.shop_name, locationInView.x,locationInView.y);
         }
     }
-
-    for( id<MKAnnotation> annotation in mapView.annotations) {
+    
+    NSLog(@"Check trung nhau ___________________");
+    for( id<MKAnnotation> annotation in shopsAnnotations) {
         if ([annotation isKindOfClass:[BeNCShopAnnotation class]]) {
             BeNCShopAnnotation *shopAnnotation = (BeNCShopAnnotation *)annotation;
-            
-            [shopAnnotation.overideAnnotation removeAllObjects ];
-            [shopAnnotation.overideAnnotation addObject:shopAnnotation.shop];    
-                for( id<MKAnnotation> annotationCheck in mapView.annotations) {
+            if (shopAnnotation.isChecked==0) {
+                NSLog(@" - Check shop %@",shopAnnotation.name);
+                if (shopAnnotation.isGrouped == 1) {
+                    [self.mapView addAnnotation:shopAnnotation];
+                    
+                }
+                shopAnnotation.isGrouped = 0;
+                [shopAnnotation.overideAnnotation removeAllObjects ];
+                [shopAnnotation.overideAnnotation addObject:shopAnnotation.shop];    
+                for( id<MKAnnotation> annotationCheck in shopsAnnotations) {
                     if ([annotationCheck isKindOfClass:[BeNCShopAnnotation class]]) {
                         
                         BeNCShopAnnotation *shopcheck = (BeNCShopAnnotation *)annotationCheck;
-                            if (shopcheck.index!=shopAnnotation.index &&shopcheck.isChecked==0 && [self distanceOf:shopAnnotation.locationInView andpoint:shopcheck.locationInView]<10) {
-                                [shopAnnotation.overideAnnotation addObject:shopcheck];
-//                                MKAnnotationView *View  =  [mapView viewForAnnotation:annotationCheck];
-//                                [View setHidden:YES];
-                            if (shopcheck.index!=shopAnnotation.index && shopcheck.isChecked==0 && [self distanceOf:shopAnnotation.locationInView andpoint:shopcheck.locationInView]<10) {
+                        
+                        if (shopcheck.index!=shopAnnotation.index && shopcheck.isChecked==0) {
+                            
+                            
+                            if ([self distanceOf:shopAnnotation.locationInView andpoint:shopcheck.locationInView]<20) {
+                                NSLog(@" * Shop %@ va shop %@ trung nhau",shopAnnotation.name,shopcheck.name);
                                 [shopAnnotation.overideAnnotation addObject:shopcheck.shop];
-                                
-                                MKAnnotationView *shopCheckView  =  (MKAnnotationView *)[mapView viewForAnnotation:annotationCheck];
-                                [shopCheckView setHidden:YES];
+                                if (shopcheck.isGrouped == 0) {
+                                    NSLog(@"Xoa annotation %@",shopcheck.shop.shop_name);
+                                    [self.mapView removeAnnotation:shopcheck];
+                                }
+                                shopcheck.isGrouped = 1;
                                 shopcheck.isChecked = 1;
+                                
                             }
-  
+                            else{
+                                
+                            }
+                            
+                        }
+                        
                     }
                 }
-            MKPinAnnotationView *shopView = (MKPinAnnotationView *)[mapView viewForAnnotation:shopAnnotation];
-            
-            if (shopAnnotation.overideAnnotation.count>1) {
-                shopView.pinColor = MKPinAnnotationColorGreen ;
+                BeNCAnnotationView *shopView = (BeNCAnnotationView *)[mapView viewForAnnotation:shopAnnotation];
+                
+                if (shopAnnotation.overideAnnotation.count>1) {
+                    shopView.numberlb.text = [NSString stringWithFormat:@"%d",shopAnnotation.overideAnnotation.count];
+                    NSLog(@"Ghep %d shop vao shop %@",shopAnnotation.overideAnnotation.count, shopAnnotation.shop.shop_name);
+                    shopView.numberImageView.hidden = NO;
+                    shopView.numberlb.hidden = NO;
+                }
+                else{
+                    shopView.numberImageView.hidden = YES;
+                    shopView.numberlb.hidden = YES;
+                }
+                shopAnnotation.isChecked = 1;
             }
-            else{
-                shopView.pinColor = MKPinAnnotationColorRed ;
-            }
-            shopAnnotation.isChecked = 1;   
-           
             
         }
     }
-}
 }
 -(float)distanceOf:(CGPoint)point1 andpoint:(CGPoint)point2{
     CGFloat xDist = (point1.x - point2.x); 
@@ -220,5 +287,5 @@ bool firstUpdate = 1;
     CGFloat distance = sqrt((xDist * xDist) + (yDist * yDist));
     return distance;
 }
-        
+
 @end
