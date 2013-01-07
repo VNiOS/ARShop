@@ -37,10 +37,14 @@
 {
     UIBarButtonItem *refreshButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Refresh" style:UIBarButtonSystemItemRefresh target:self action:@selector(sortShopByCheckShop)];
     self.navigationItem.rightBarButtonItem = refreshButtonItem;
+    editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonSystemItemRefresh target:self action:@selector(editList:)];
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:refreshButtonItem,editButton, nil];
+    
     [self setTitle:@"List Shop"];
     [self getShopData];
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     self.listShopView.frame = CGRectMake(0, 0, 480, 320);
+    listShopView.delegate = self;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
     [super viewDidLoad];
 
@@ -106,6 +110,7 @@
 }
 
 #pragma mark - Table view delegate
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -120,19 +125,14 @@
 {
     static NSString *CellIdentifier = @"Cell";
     BeNCShopCellCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell.checkBoxSelected =! cell.checkBoxSelected;
     if (cell == nil) {
-        cell = [[[BeNCShopCellCell alloc] initWithStyle:UITableViewCellStyleSubtitle    reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[BeNCShopCellCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.delegate = self;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.accessoryType = UITableViewCellAccessoryNone;
     }
+    cell.accessoryType = UITableViewCellAccessoryNone;
     BeNCShopEntity *shop  = [shopsArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = shop.shop_name;
-    cell.detailTextLabel.text = shop.shop_address;
-    cell.imageView.image = [UIImage imageNamed:@"images.jpg"];
-    
-    NSString *distanceShop = [NSString stringWithFormat:@"%d m",[self calculeDistance:shop]];
-    [cell.distanceToShop setTitle:distanceShop forState:UIControlStateNormal];
+    [cell updateContentForCell:shop withLocation:userLocation];
     return cell;
 }
 
@@ -147,12 +147,28 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (editing) {
+        BeNCShopEntity *shop  = [shopsArray objectAtIndex:indexPath.row];
+        BeNCShopCellCell *newCell = (BeNCShopCellCell *)[tableView cellForRowAtIndexPath:indexPath];
+        newCell.checkBoxSelected =! newCell.checkBoxSelected;
+        [newCell updateContentForCell:shop withLocation:userLocation];
+//        if (newCell.accessoryType == UITableViewCellAccessoryNone) {
+//            newCell.accessoryType = UITableViewCellAccessoryCheckmark;
+//        }else {
+//            newCell.accessoryType = UITableViewCellAccessoryNone;
+//        }
+    }
+    else {
     BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:indexPath.row];
     BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:shopEntity];
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
-     
+   }
 }
+//-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+//{
+//    
+//}
 
 - (void)bnShoptCellDidClickedAtCell:(BeNCShopCellCell *)shopCell
 {
@@ -167,8 +183,30 @@
     NSIndexPath *indexPathCell = [self.listShopView indexPathForCell:shopCell];
     BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:indexPathCell.row];
     shopEntity.shopCheck = shopCell.checkBoxSelected;
-
-    
 }
 
+- (IBAction)editList:(id)sender
+{
+    
+    if (!listShopView.isEditing) {
+         [listShopView setEditing:YES animated:YES];
+        
+    }
+    else {
+        [listShopView setEditing:NO animated:YES];
+
+    }
+//    if (editing) {
+//        editButton setBackgroundImage:<#(UIImage *)#> forState:<#(UIControlState)#> barMetrics:<#(UIBarMetrics)#>
+//    }
+//    else {
+//        editButton setBackgroundImage:<#(UIImage *)#> forState:<#(UIControlState)#> barMetrics:<#(UIBarMetrics)#>
+//    }
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [shopsArray removeObjectAtIndex:[indexPath row]];
+    [self.listShopView reloadData];
+
+}
 @end
