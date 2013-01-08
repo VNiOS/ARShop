@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "BeNCShopEntity.h"
 @class BeNCShopCellCell;
 @protocol BeNCShopCellDelegate <NSObject>
 
@@ -18,10 +20,11 @@
 @interface BeNCShopCellCell : UITableViewCell{
     UIButton *checkbox ;
     UIButton *distanceToShop;
-    BOOL checkBoxSelected;
+    CLLocation *userLocation ;
 
 }
-@property  BOOL checkBoxSelected; 
+@property (nonatomic, retain)CLLocation *userLocation ;
 @property (nonatomic, retain) id<BeNCShopCellDelegate>delegate;
-@property (nonatomic ,retain) UIButton *distanceToShop; 
+@property (nonatomic ,retain) UIButton *distanceToShop;
+- (void)updateContentForCell:(BeNCShopEntity *)shopEntity withLocation:(CLLocation *)location;
 @end

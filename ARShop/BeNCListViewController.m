@@ -40,10 +40,14 @@
 {
     UIBarButtonItem *refreshButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Refresh" style:UIBarButtonSystemItemRefresh target:self action:@selector(sortShopByCheckShop)];
     self.navigationItem.rightBarButtonItem = refreshButtonItem;
+    editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonSystemItemRefresh target:self action:@selector(editList:)];
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:refreshButtonItem,editButton, nil];
+    
     [self setTitle:@"List Shop"];
     
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     self.listShopView.frame = CGRectMake(0, 0, 480, 320);
+    listShopView.delegate = self;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
     
     
@@ -105,12 +109,24 @@
 {
     for (int  i = 0; i < [shopsArray count]; i ++) {
         BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
-        NSLog(@"checkBox is %d",shopEntity.shopCheck);
+
         if (shopEntity.shopCheck == 0) {
             [shopsArray removeObject:shopEntity];
         }
     }
-    NSLog(@"so phan tu cua mang la %d",[shopsArray count]);
+    for (int  i = 0; i < [shopsArray count]; i ++) {
+        BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
+        
+        if (shopEntity.shopCheck == 0) {
+            [shopsArray removeObject:shopEntity];
+        }
+    }
+
+    for (int  i = 0; i < [shopsArray count]; i ++) {
+        BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
+        NSLog(@"check mark cua shop %@ la %d",shopEntity.shop_name,shopEntity.shopCheck);
+
+    }
     [self.listShopView reloadData];
 
 }
@@ -126,6 +142,7 @@
 }
 
 #pragma mark - Table view delegate
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -141,18 +158,19 @@
     static NSString *CellIdentifier = @"Cell";
     BeNCShopCellCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[BeNCShopCellCell alloc] initWithStyle:UITableViewCellStyleSubtitle    reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[BeNCShopCellCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.delegate = self;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.accessoryType = UITableViewCellAccessoryNone;
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     BeNCShopEntity *shop  = [shopsArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = shop.shop_name;
-    cell.detailTextLabel.text = shop.shop_address;
-    cell.imageView.image = [UIImage imageNamed:@"images.jpg"];
+    if (shop.shopCheck == 1) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark ;
+    }
+    else {
+        cell.accessoryType = UITableViewCellAccessoryNone ;
+    }
     
-    NSString *distanceShop = [NSString stringWithFormat:@"%d m",[self calculeDistance:shop]];
-    [cell.distanceToShop setTitle:distanceShop forState:UIControlStateNormal];
+    [cell updateContentForCell:shop withLocation:userLocation];
     return cell;
 }
 
@@ -167,12 +185,28 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (editing) {
+        BeNCShopEntity *shop  = [shopsArray objectAtIndex:indexPath.row];
+        shop.shopCheck =! shop.shopCheck;
+        [self.listShopView reloadData];
+        
+//        if (newCell.accessoryType == UITableViewCellAccessoryNone) {
+//            newCell.accessoryType = UITableViewCellAccessoryCheckmark;
+//        }else {
+//            newCell.accessoryType = UITableViewCellAccessoryNone;
+//        }
+    }
+    else {
     BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:indexPath.row];
     BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:shopEntity];
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
-     
+   }
 }
+//-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+//{
+//    
+//}
 
 - (void)bnShoptCellDidClickedAtCell:(BeNCShopCellCell *)shopCell
 {
@@ -184,11 +218,33 @@
 }
 - (void)beNCShopCellDidCleckCheckButton:(BeNCShopCellCell *)shopCell
 {
-    NSIndexPath *indexPathCell = [self.listShopView indexPathForCell:shopCell];
-    BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:indexPathCell.row];
-    shopEntity.shopCheck = shopCell.checkBoxSelected;
-
-    
+//    NSIndexPath *indexPathCell = [self.listShopView indexPathForCell:shopCell];
+//    BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:indexPathCell.row];
 }
 
+- (IBAction)editList:(id)sender
+{
+    editing =! editing;
+    
+//    if (!listShopView.isEditing) {
+//         [listShopView setEditing:YES animated:YES];
+//        
+//    }
+//    else {
+//        [listShopView setEditing:NO animated:YES];
+//
+//    }
+//    if (editing) {
+//        editButton setBackgroundImage:<#(UIImage *)#> forState:<#(UIControlState)#> barMetrics:<#(UIBarMetrics)#>
+//    }
+//    else {
+//        editButton setBackgroundImage:<#(UIImage *)#> forState:<#(UIControlState)#> barMetrics:<#(UIBarMetrics)#>
+//    }
+}
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [shopsArray removeObjectAtIndex:[indexPath row]];
+//    [self.listShopView reloadData];
+//
+//}
 @end

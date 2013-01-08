@@ -10,14 +10,14 @@
 #import <CoreLocation/CoreLocation.h>
 #import "BeNCShopEntity.h"
 #import "BeNCShopCellCell.h"
-@interface BeNCListViewController : UIViewController<BeNCShopCellDelegate>{
-    
-    int listType;
-    
+@interface BeNCListViewController : UIViewController<BeNCShopCellDelegate,UITableViewDelegate,UITableViewDataSource>{
+        int listType;
     IBOutlet UITableView *listShopView;
     NSMutableArray *shopsArray;
     CLLocation *userLocation ;
     float distanceToShop;
+    BOOL editing;
+    UIBarButtonItem *editButton;
 }
 @property float distanceToShop;
 @property(nonatomic,retain)IBOutlet UITableView *listShopView;
@@ -27,6 +27,7 @@
 -(void)getShopData;
 -(int)calculeDistance:(BeNCShopEntity *)shop;
 - (void)sortShopByCheckShop;
+- (IBAction)editList:(id)sender;
 -(void)getShopDataFromMap:(NSArray *)shopArray;
 -(void)sortShopByDistance;
 @end

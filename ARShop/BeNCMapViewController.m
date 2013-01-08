@@ -146,7 +146,6 @@ bool firstUpdate = 1;
 -(MKAnnotationView *)mapView:(MKMapView *)mv viewForAnnotation:(id <MKAnnotation>)annotation {
     
     static NSString *identifier = @"annotation";   
-    NSLog(@"View for annotation");
     if ([annotation isKindOfClass:[BeNCShopAnnotation class]]) {
         
         BeNCAnnotationView *annotationView = (BeNCAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
@@ -217,12 +216,10 @@ bool firstUpdate = 1;
         }
     }
     
-    NSLog(@"Check trung nhau ___________________");
     for( id<MKAnnotation> annotation in shopsAnnotations) {
         if ([annotation isKindOfClass:[BeNCShopAnnotation class]]) {
             BeNCShopAnnotation *shopAnnotation = (BeNCShopAnnotation *)annotation;
             if (shopAnnotation.isChecked==0) {
-                NSLog(@" - Check shop %@",shopAnnotation.name);
                 if (shopAnnotation.isGrouped == 1) {
                     [self.mapView addAnnotation:shopAnnotation];
                     
@@ -239,10 +236,8 @@ bool firstUpdate = 1;
                             
                             
                             if ([self distanceOf:shopAnnotation.locationInView andpoint:shopcheck.locationInView]<20) {
-                                NSLog(@" * Shop %@ va shop %@ trung nhau",shopAnnotation.name,shopcheck.name);
                                 [shopAnnotation.overideAnnotation addObject:shopcheck.shop];
                                 if (shopcheck.isGrouped == 0) {
-                                    NSLog(@"Xoa annotation %@",shopcheck.shop.shop_name);
                                     [self.mapView removeAnnotation:shopcheck];
                                 }
                                 shopcheck.isGrouped = 1;
@@ -261,7 +256,6 @@ bool firstUpdate = 1;
                 
                 if (shopAnnotation.overideAnnotation.count>1) {
                     shopView.numberlb.text = [NSString stringWithFormat:@"%d",shopAnnotation.overideAnnotation.count];
-                    NSLog(@"Ghep %d shop vao shop %@",shopAnnotation.overideAnnotation.count, shopAnnotation.shop.shop_name);
                     shopView.numberImageView.hidden = NO;
                     shopView.numberlb.hidden = NO;
                 }
