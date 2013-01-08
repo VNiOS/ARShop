@@ -109,12 +109,24 @@
 {
     for (int  i = 0; i < [shopsArray count]; i ++) {
         BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
-        NSLog(@"checkBox is %d",shopEntity.shopCheck);
+
         if (shopEntity.shopCheck == 0) {
             [shopsArray removeObject:shopEntity];
         }
     }
-    NSLog(@"so phan tu cua mang la %d",[shopsArray count]);
+    for (int  i = 0; i < [shopsArray count]; i ++) {
+        BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
+        
+        if (shopEntity.shopCheck == 0) {
+            [shopsArray removeObject:shopEntity];
+        }
+    }
+
+    for (int  i = 0; i < [shopsArray count]; i ++) {
+        BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
+        NSLog(@"check mark cua shop %@ la %d",shopEntity.shop_name,shopEntity.shopCheck);
+
+    }
     [self.listShopView reloadData];
 
 }
@@ -177,6 +189,7 @@
         BeNCShopEntity *shop  = [shopsArray objectAtIndex:indexPath.row];
         shop.shopCheck =! shop.shopCheck;
         [self.listShopView reloadData];
+        
 //        if (newCell.accessoryType == UITableViewCellAccessoryNone) {
 //            newCell.accessoryType = UITableViewCellAccessoryCheckmark;
 //        }else {
@@ -228,10 +241,10 @@
 //        editButton setBackgroundImage:<#(UIImage *)#> forState:<#(UIControlState)#> barMetrics:<#(UIBarMetrics)#>
 //    }
 }
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [shopsArray removeObjectAtIndex:[indexPath row]];
-    [self.listShopView reloadData];
-
-}
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [shopsArray removeObjectAtIndex:[indexPath row]];
+//    [self.listShopView reloadData];
+//
+//}
 @end
