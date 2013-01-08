@@ -24,7 +24,7 @@
 {
     self = [super init];
     if (self) {
-        
+        shop = shopEntity;
         self.userLocation = [[LocationService sharedLocation]getOldLocation]; 
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
@@ -73,85 +73,42 @@
 {
     detailView = [[BeNCDetailInCameraViewController alloc]initWithNibName:@"BeNCDetailInCameraViewController" bundle:nil];
     [detailView setContentForView:shopEntity];
-    CGRect frame = detailView.view.frame;
-    frame.origin.x = 25;
-    frame.origin.y = 50;
-    detailView.view.frame = frame;
+    detailView.view.center = CGPointMake(240, 125);
     [self.view addSubview:detailView.view];
 }
 -(void)didUpdateHeading:(NSNotification *)notification{
-    CLHeading *newHeading = [notification object];
-    double angleToNorth =  - newHeading.magneticHeading * rotationRate - M_PI_2;
-    double angleToHeading =   rotationAngleArrow + angleToNorth;
-    int valueX = cos(angleToHeading) * 240 ;
-    int valueY = sin(angleToHeading) * 160;
-//    NSLog(@"valuex %d valuey %d",valueX,valueY);
-    int newX = (int)(detailView.view.center.x - valueX);
-    
-    if (newX > 460 - frameRadius)
-        newX = 460 - frameRadius;
-    
-    if (newX < 40 + frameRadius)
-        newX = 40 + frameRadius;
-    
-    int newY = (int)(detailView.view.center.y-valueY);
-    
-    if (newY > 280 - frameRadius) {
-        newY = 260 - frameRadius;
-    }
-    if (newY < 40 + frameRadius) {
-        newY = 40 + frameRadius;
-    }
-    
-    CGPoint newCenter = CGPointMake(newX, newY);
-    //
-    detailView.view.center = newCenter;
-//    NSLog(@"goc cua mui ten so voi huong bac la %f",angleToHeading);
-//    CGRect frame = detailView.view.frame;
-//    int valueX = frame.origin.x + cosh(angleToHeading);
-//    int valueY = frame.origin.y + sinh(angleToHeading);
-//    if (valueX > 480-frameRadius)
-//        valueX = 480-frameRadius;
+//    CLHeading *newHeading = [notification object];
+//    double angleToNorth =  - newHeading.magneticHeading * rotationRate - M_PI_2;
+//    double angleToHeading =   rotationAngleArrow + angleToNorth;
+//    int valueX = cos(angleToHeading) * 240 ;
+//    int valueY = sin(angleToHeading) * 160;
+//      NSLog(@"goc quay cua heading so voi north la %f",angleToNorth);
+//    int newX = (int)(detailView.view.center.x - valueX);
 //    
-//    if (valueX < 0 )
-//        valueX = 0 ;
-//        
-//    if (valueY > 300 - frameRadius) {
-//        valueY = 300 - frameRadius;
+//    if (newX > 460 - 50)
+//        newX = 460 - 50;
+//    
+//    if (newX < 0 + 50)
+//        newX = 0 + 50;
+//    
+//    int newY = (int)(detailView.view.center.y + valueY);
+//    
+//    if (newY > 300 - frameRadius) {
+//        newY = 300 - frameRadius;
 //    }
-//    if (valueX < 0 ) {
-//        valueY = 0 ;
+//    if (newY < 0 + frameRadius) {
+//        newY = 0 + frameRadius;
 //    }
-//    frame.origin.x = valueX;
-//    frame.origin.y = valueY;
-//
-//    detailView.view.frame = frame;
-//    CGAffineTransform tnansform = CGAffineTransformMakeTranslation(<#CGFloat tx#>, <#CGFloat ty#>)
-    
-//    int newX = (int)(bug.center.x + valueX);
 //    
-//    if (newX > 320-BALL_RADIUS)
-//        newX = 320-BALL_RADIUS;
-//    
-//    if (newX < 0 + BALL_RADIUS)
-//        newX = 0 + BALL_RADIUS;
-//    
-//    int newY = (int)(bug.center.y-valueY);
-//    
-//    if (newY > 460 - BALL_RADIUS) {
-//        newY = 460 - BALL_RADIUS;
-//    }
-//    if (newY < 0 + BALL_RADIUS) {
-//        newY = 0 + BALL_RADIUS;
-//    }
+//    CGPoint newCenter = CGPointMake(newX, newY);
+//    detailView.view.center = newCenter;
 
-    //self.transform = CGAffineTransformMakeRotation( - newHeading.magneticHeading * rotationRate - M_PI_2 + rotationAngleArrow);
 }
 -(void)didUpdateLocation:(NSNotification *)notification {
-    CLLocation *newLocation = (CLLocation *)[notification object];
-    [userLocation release];
-    userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
-    rotationAngleArrow = [self caculateRotationAngle:shop];
+//    CLLocation *newLocation = (CLLocation *)[notification object];
+//    [userLocation release];
+//    userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
+//    rotationAngleArrow = [self caculateRotationAngle:shop];
 }
 -(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity{
     CLLocation *shopLocation = [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute];

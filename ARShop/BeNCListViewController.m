@@ -29,6 +29,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        userLocation = [[LocationService sharedLocation]getOldLocation];
         // Custom initialization
     }
     return self;

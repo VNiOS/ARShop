@@ -19,9 +19,9 @@
     BeNCShopEntity *shop;
     BeNCDetailInCameraViewController *detailView;
 }
+@property(nonatomic, retain)BeNCShopEntity *shop;
 @property double rotationAngleArrow;
 @property(nonatomic, retain) CLLocation *userLocation;
-@property(nonatomic, retain)BeNCShopEntity *shop;
 - (void)addVideoInput;
 - (void)setContentForView:(BeNCShopEntity *)shopEntity;
 - (id)initWithShop:(BeNCShopEntity *)shopEntity;
