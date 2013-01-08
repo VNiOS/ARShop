@@ -26,13 +26,15 @@
 {
     self = [super init];
     if (self) {
-        [[LocationService sharedLocation]startUpdate];
+        
         shop = shopEntity;
         labelDistanceToShop = [[UILabel alloc]init];
         [labelDistanceToShop setTextAlignment:UITextAlignmentCenter];
         labelDistanceToShop.frame = CGRectMake(390, 60, 90, 30);
         labelDistanceToShop.text = [NSString stringWithFormat:@"%d m",[self caculateDistanceToShop:shopEntity]];
         [self.view addSubview:labelDistanceToShop];
+        
+        userLocation = [[[LocationService sharedLocation]getOldLocation]retain];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil]; 
         [self setContentDetailForView:shopEntity];
     }

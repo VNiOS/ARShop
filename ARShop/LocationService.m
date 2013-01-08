@@ -69,7 +69,7 @@
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     
     float latitude = (float)[userDefault floatForKey:@"userLatitude"];
-    float longitude = [userDefault floatForKey:@"userLongitude"];
+    float longitude = (float)[userDefault floatForKey:@"userLongitude"];
 
     CLLocation *oldLocation = [[CLLocation alloc]initWithLatitude:latitude longitude:longitude];
     return oldLocation;
