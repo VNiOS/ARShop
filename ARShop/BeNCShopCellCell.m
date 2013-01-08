@@ -36,7 +36,7 @@
 }
 - (void)updateContentForCell:(BeNCShopEntity *)shopEntity withLocation:(CLLocation *)location
 {    
-    [distanceToShop setFrame:CGRectMake(300, 5, 90, 50)];
+    [distanceToShop setFrame:CGRectMake(330, 5, 90, 50)];
     [distanceToShop addTarget:self action:@selector(touchesToButtonDistance) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:distanceToShop];
     self.textLabel.text = shopEntity.shop_name;

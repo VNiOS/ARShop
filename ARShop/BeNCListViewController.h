@@ -26,7 +26,7 @@
 -(void)didUpdateLocation:(NSNotification *)notifi;
 -(void)getShopData;
 -(int)calculeDistance:(BeNCShopEntity *)shop;
-- (void)sortShopByCheckShop;
+- (void)refreshData;
 - (IBAction)editList:(id)sender;
 -(void)getShopDataFromMap:(NSArray *)shopArray;
 -(void)sortShopByDistance;

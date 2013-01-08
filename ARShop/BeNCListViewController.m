@@ -38,7 +38,7 @@
 
 - (void)viewDidLoad
 {
-    UIBarButtonItem *refreshButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Refresh" style:UIBarButtonSystemItemRefresh target:self action:@selector(sortShopByCheckShop)];
+    UIBarButtonItem *refreshButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Refresh" style:UIBarButtonSystemItemRefresh target:self action:@selector(refreshData)];
     self.navigationItem.rightBarButtonItem = refreshButtonItem;
     editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonSystemItemRefresh target:self action:@selector(editList:)];
     self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:refreshButtonItem,editButton, nil];
@@ -105,29 +105,14 @@
     [self.listShopView reloadData];
 }
 
-- (void)sortShopByCheckShop
+- (void)refreshData
 {
-    for (int  i = 0; i < [shopsArray count]; i ++) {
-        BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
-
-        if (shopEntity.shopCheck == 0) {
-            [shopsArray removeObject:shopEntity];
-        }
+    if (!editing) {
+        shopsArray = [[NSMutableArray alloc]initWithArray:[[BeNCProcessDatabase sharedMyDatabase] arrayShop]];
+        [self sortShopByDistance];
+        [self.listShopView reloadData];
     }
-    for (int  i = 0; i < [shopsArray count]; i ++) {
-        BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
-        
-        if (shopEntity.shopCheck == 0) {
-            [shopsArray removeObject:shopEntity];
-        }
-    }
-
-    for (int  i = 0; i < [shopsArray count]; i ++) {
-        BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
-        NSLog(@"check mark cua shop %@ la %d",shopEntity.shop_name,shopEntity.shopCheck);
-
-    }
-    [self.listShopView reloadData];
+    
 
 }
 
@@ -225,7 +210,38 @@
 - (IBAction)editList:(id)sender
 {
     editing =! editing;
-    
+    if (editing) {
+        for (int  i = 0; i < [shopsArray count]; i ++) {
+            BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
+            shopEntity.shopCheck = 1;
+        }  
+        [self.listShopView reloadData];
+    }
+    else {
+        for (int  i = 0; i < [shopsArray count]; i ++) {
+            BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
+            
+            if (shopEntity.shopCheck == 0) {
+                [shopsArray removeObject:shopEntity];
+            }
+        }
+        [self.listShopView reloadData];
+        for (int  i = 0; i < [shopsArray count]; i ++) {
+            BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
+            shopEntity.shopCheck = 0;
+        } 
+        [self.listShopView reloadData];
+
+//        for (int  i = 0; i < [shopsArray count]; i ++) {
+//            BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
+//            
+//            if (shopEntity.shopCheck == 0) {
+//                [shopsArray removeObject:shopEntity];
+//            }
+        }
+
+//    }
+      
 //    if (!listShopView.isEditing) {
 //         [listShopView setEditing:YES animated:YES];
 //        
