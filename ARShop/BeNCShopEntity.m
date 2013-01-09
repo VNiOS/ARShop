@@ -16,7 +16,7 @@
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     self = [super init];
     if (self) {
-        shopCheck = 1;
+//        shopCheck = 1;
         self.shop_id = [[dictionary objectForKey:BeNCShopProperiesShopId]intValue];
         self.shop_name = [dictionary objectForKey:BeNCShopProperiesShopName];
         self.shop_type = [[dictionary objectForKey:BeNCShopProperiesShopTye]intValue];
