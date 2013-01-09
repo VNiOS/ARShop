@@ -40,30 +40,36 @@
 - (void)viewDidLoad
 {
     UIBarButtonItem *refreshButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Refresh" style:UIBarButtonSystemItemRefresh target:self action:@selector(refreshData)];
-    self.navigationItem.rightBarButtonItem = refreshButtonItem;
-    editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonSystemItemRefresh target:self action:@selector(editList:)];
-    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:refreshButtonItem,editButton, nil];
+        editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonSystemItemRefresh target:self action:@selector(editList:)];
+    
+    UIBarButtonItem *done = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(closeListViewInMap:)];
     
     [self setTitle:@"List Shop"];
     
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     self.listShopView.frame = CGRectMake(0, 0, 480, 320);
     listShopView.delegate = self;
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
     
     
     if (listType == MainList) {
+        self.navigationItem.rightBarButtonItem = refreshButtonItem;
+        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:refreshButtonItem,editButton, nil];
         [self getShopData];
         NSLog(@"main list");
     }
     else if(listType == MapList){
-        
+        self.navigationItem.rightBarButtonItem = done;
         NSLog(@"map list");
     }
     [super viewDidLoad];
 
 }
-
+-(IBAction)closeListViewInMap:(id)sender{
+    NSLog(@"Close list view");
+    [self.navigationController.view removeFromSuperview];
+}
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -164,10 +170,10 @@
     return 60;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
-    NSString *footer = [NSString stringWithFormat:@"%d shops in list",[shopsArray count]];
-    return footer;
-}
+//- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
+//    NSString *footer = [NSString stringWithFormat:@"%d shops in list",[shopsArray count]];
+//    return footer;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

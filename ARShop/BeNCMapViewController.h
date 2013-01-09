@@ -25,7 +25,7 @@
 -(void)getShopData;
 -(void)didUpdateLocation:(NSNotification *)notifi;
 -(void)addShopAnnotation;
--(IBAction)showDetail:(id)sender;
+-(void)showDetail;
 -(void)checkOverride;
 -(float)distanceOf:(CGPoint)point1 andpoint :(CGPoint)point2;
 -(IBAction)toUserLocation:(id)sender;

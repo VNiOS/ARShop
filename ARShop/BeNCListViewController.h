@@ -30,4 +30,5 @@
 - (IBAction)editList:(id)sender;
 -(void)getShopDataFromMap:(NSArray *)shopArray;
 -(void)sortShopByDistance;
+-(IBAction)closeListViewInMap:(id)sender;
 @end
