@@ -28,4 +28,5 @@
 -(IBAction)showDetail:(id)sender;
 -(void)checkOverride;
 -(float)distanceOf:(CGPoint)point1 andpoint :(CGPoint)point2;
+-(IBAction)toUserLocation:(id)sender;
 @end

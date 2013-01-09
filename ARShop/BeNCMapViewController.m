@@ -50,6 +50,13 @@ bool firstUpdate = 1;
     
     [self.view addSubview:mapView];
     
+    UIButton *showUser = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    showUser.frame = CGRectMake(20, 230, 120, 30);
+    [showUser setTitle:@"Where am i ?" forState:UIControlStateNormal];
+    showUser.alpha = 0.9;
+    [showUser addTarget:self action:@selector(toUserLocation:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:showUser];
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
     
     [self getShopData];
@@ -156,16 +163,12 @@ bool firstUpdate = 1;
             annotationView.annotation = annotation;
         }
         BeNCShopAnnotation *shopAnnotation = (BeNCShopAnnotation *)annotation;
-        if (shopAnnotation.overideAnnotation.count>1) {
-            //annotationView.pinColor = MKPinAnnotationColorGreen;
-        }
-        else{
-            //annotationView.pinColor = MKPinAnnotationColorRed;
-        }
-        
-        UIImage *img = [UIImage imageNamed:@"images.png"];
+        UIImage *img = [UIImage imageNamed:@"MapFrame.png"];
         annotationView.image = img ;
-        [annotationView setFrame:CGRectMake(annotationView.frame.origin.x, annotationView.frame.origin.y, 45, 45)];
+        CGPoint locationInView = [mapView convertCoordinate:shopAnnotation.coordinate toPointToView:self.view];
+        NSLog(@"<<< Location in View %@ : %f %f",shopAnnotation.shop.shop_name,locationInView.x,locationInView.y);
+        [annotationView setFrame:CGRectMake(locationInView.x, locationInView.y - 25, 45, 50)];
+        
         if (shopAnnotation.overideAnnotation.count>1) {
             annotationView.numberlb.text = [NSString stringWithFormat:@"%d",shopAnnotation.overideAnnotation.count];
             
@@ -183,6 +186,9 @@ bool firstUpdate = 1;
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
         return annotationView;
+    }
+    else{
+        
     }
     return nil;    
 }
@@ -205,6 +211,19 @@ bool firstUpdate = 1;
     
     
 }
+-(IBAction)toUserLocation:(id)sender{
+    
+    MKCoordinateRegion region;
+    region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.coordinate,1000,1000);
+    
+    [self.mapView setRegion:region animated:YES];
+    for (id<MKAnnotation> annotation in self.mapView.annotations) {
+        if (![annotation isKindOfClass:[BeNCShopAnnotation class]]) {
+            [self.mapView selectAnnotation:annotation animated:YES];
+            break; 
+        }
+    }
+  }
 -(void)checkOverride{
     for( id<MKAnnotation> annotation in shopsAnnotations) {
         if ([annotation isKindOfClass:[BeNCShopAnnotation class]]) {
