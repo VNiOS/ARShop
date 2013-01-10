@@ -18,6 +18,8 @@
     float distanceToShop;
     BOOL editing;
     UIBarButtonItem *editButton;
+    UIBarButtonItem *refreshButtonItem;
+    NSMutableArray *arrayButtonItem;
 }
 @property float distanceToShop;
 @property(nonatomic,retain)IBOutlet UITableView *listShopView;

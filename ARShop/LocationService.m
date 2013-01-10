@@ -65,7 +65,6 @@
       [[NSNotificationCenter defaultCenter]postNotificationName:@"UpdateLocation" object:newLocation];
 }
 -(CLLocation *)getOldLocation{
-    NSLog(@"get old location");
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     
     float latitude = (float)[userDefault floatForKey:@"userLatitude"];

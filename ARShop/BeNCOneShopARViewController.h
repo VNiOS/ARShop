@@ -18,6 +18,7 @@
     double rotationAngleArrow;
     BeNCShopEntity *shop;
     BeNCDetailInCameraViewController *detailView;
+
 }
 @property(nonatomic, retain)BeNCShopEntity *shop;
 @property double rotationAngleArrow;
