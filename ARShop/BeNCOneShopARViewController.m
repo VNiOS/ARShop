@@ -125,17 +125,16 @@
     CLHeading *newHeading = [notification object];
     float angleToHeading;
     double angleToNorth =   newHeading.magneticHeading * rotationRate ;
-    if (rotationAngleArrow > 0) {
+    if (rotationAngleArrow >= 0) {
         angleToHeading = rotationAngleArrow - angleToNorth;
         if (angleToHeading < - M_PI) {
             angleToHeading = 2 * M_PI - (angleToNorth - rotationAngleArrow);
         }
     }
-    else {
-        
+    else if (rotationAngleArrow < 0){
         angleToHeading =  rotationAngleArrow - angleToNorth;
         
-        if (- 2 * M_PI < angleToHeading < - M_PI) {
+        if ( angleToHeading < - M_PI) {
             angleToHeading = 2 * M_PI + angleToHeading;
         }
         
