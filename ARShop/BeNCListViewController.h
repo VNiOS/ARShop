@@ -30,6 +30,8 @@
     float distanceToShop;
     BOOL editing;
     UIBarButtonItem *editButton;
+    UIBarButtonItem *refreshButtonItem;
+    NSMutableArray *arrayButtonItem;
 }
 @property(nonatomic,strong) id<ListViewOnMapDelegate> delegate;
 

@@ -18,6 +18,7 @@
     double rotationAngleArrow;
     BeNCShopEntity *shop;
     BeNCDetailInCameraViewController *detailView;
+
 }
 @property(nonatomic, retain)BeNCShopEntity *shop;
 @property double rotationAngleArrow;
@@ -25,6 +26,6 @@
 - (void)addVideoInput;
 - (void)setContentForView:(BeNCShopEntity *)shopEntity;
 - (id)initWithShop:(BeNCShopEntity *)shopEntity;
-
+-(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity;
 
 @end

@@ -10,6 +10,7 @@
 #import "BeNCShopEntity.h"
 #import "BeNCDetailInCameraViewController.h"
 #import "LocationService.h"
+#import <math.h>
 #define rotationRate 0.0174532925
 #define frameRadius 60
 
@@ -76,13 +77,45 @@
     detailView.view.center = CGPointMake(240, 125);
     [self.view addSubview:detailView.view];
 }
--(void)didUpdateHeading:(NSNotification *)notification{
-//    CLHeading *newHeading = [notification object];
-//    double angleToNorth =  - newHeading.magneticHeading * rotationRate - M_PI_2;
-//    double angleToHeading =   rotationAngleArrow + angleToNorth;
-//    int valueX = cos(angleToHeading) * 240 ;
-//    int valueY = sin(angleToHeading) * 160;
-//      NSLog(@"goc quay cua heading so voi north la %f",angleToNorth);
+- (void)setNewCenterForView:(float )angleToHeading{
+    float angle1 = atanf(85.0/240.0);
+    float angle2 = M_PI - angle1;
+    float angle3 = M_PI + angle1;
+    float angle4 = 2 * M_PI - angle1;
+    NSLog(@"goc 4 la %f",angle4);
+    float a;
+    if (angleToHeading < M_PI) {
+        a = tan(angleToHeading);
+    }
+    else {
+        a = tan(angleToHeading - M_PI);
+    }
+    float b = 125 - 240 * a ;
+    float valueX = 240 ;
+    float valueY = 125;
+    if (0 <= angleToHeading < angle1 || angle4 <= angleToHeading < 2 * M_PI) {
+        valueX = 100;
+        valueY = 30 * a + b;
+   
+    }
+        else if (angle1 <= angleToHeading < angle2){
+            valueX = -b/a ;
+            valueY = 80;
+        }
+        else if (angle2 <= angleToHeading < angle3) {
+            valueX = 380;
+            valueY = 480 * a + b;
+        }
+        else if (angle3 <= angleToHeading <  angle4) {
+            valueX = ( 290 -b )/a;
+            valueY = 230;
+        }
+    CGPoint newCenter = CGPointMake(valueX, valueY);
+    detailView.view.center = newCenter;
+    NSLog(@"center : %f , %f",newCenter.x,newCenter.y);
+//    int valueX = 5 ;
+//    int valueY = 160;
+//    NSLog(@"goc quay cua heading so voi north la %f",angleToNorth);
 //    int newX = (int)(detailView.view.center.x - valueX);
 //    
 //    if (newX > 460 - 50)
@@ -103,12 +136,29 @@
 //    CGPoint newCenter = CGPointMake(newX, newY);
 //    detailView.view.center = newCenter;
 
+    
+
 }
+
+-(void)didUpdateHeading:(NSNotification *)notification{
+    CLHeading *newHeading = [notification object];
+    float angleToHeading;
+    double angleToNorth =   newHeading.magneticHeading * rotationRate ;
+    if (rotationAngleArrow > 0) {
+        angleToHeading = ABS(rotationAngleArrow - angleToNorth);
+    }
+    else {
+        
+        angleToHeading = ABS(2 * M_PI - (angleToNorth - rotationAngleArrow));
+    }
+//    [self setNewCenterForView:angleToHeading];
+}
+
 -(void)didUpdateLocation:(NSNotification *)notification {
-//    CLLocation *newLocation = (CLLocation *)[notification object];
-//    [userLocation release];
-//    userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
-//    rotationAngleArrow = [self caculateRotationAngle:shop];
+    CLLocation *newLocation = (CLLocation *)[notification object];
+    [userLocation release];
+    userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
+    rotationAngleArrow = [self caculateRotationAngle:shop];
 }
 -(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity{
     CLLocation *shopLocation = [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute];

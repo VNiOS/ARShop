@@ -9,7 +9,11 @@
 #import "BeNCAnnotationView.h"
 
 @implementation BeNCAnnotationView
+
 @synthesize numberlb,numberImageView,backgroudImage;
+
+
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
