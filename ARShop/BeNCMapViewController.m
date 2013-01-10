@@ -18,6 +18,8 @@
 #define MainList 0
 #define MapList 1
 
+#define ANNOTATION_VIEW_WIDTH 45
+#define ANNOTATION_VIEW_HEIGTH 50
 
 @interface BeNCMapViewController ()
 
@@ -49,6 +51,13 @@ bool firstUpdate = 1;
     [mapView setShowsUserLocation:YES];
     
     [self.view addSubview:mapView];
+    
+    UIButton *showUser = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [showUser setBackgroundImage:[UIImage imageNamed:@"CurrentLocations.png"] forState:UIControlStateNormal];
+    showUser.frame = CGRectMake(20, 195, 50, 50);
+    showUser.alpha = 0.8;
+    [showUser addTarget:self action:@selector(toUserLocation:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:showUser];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
     
@@ -136,6 +145,7 @@ bool firstUpdate = 1;
         BeNCShopEntity *shop = (BeNCShopEntity *)[shopAnnotation.overideAnnotation objectAtIndex:0];
         NSLog(@"- Select annotation %@",shop.shop_name);
         NSLog(@"  Number of shop : %d",selectedShops.count);
+        [self showDetail];
         
     }
     
@@ -156,16 +166,10 @@ bool firstUpdate = 1;
             annotationView.annotation = annotation;
         }
         BeNCShopAnnotation *shopAnnotation = (BeNCShopAnnotation *)annotation;
-        if (shopAnnotation.overideAnnotation.count>1) {
-            //annotationView.pinColor = MKPinAnnotationColorGreen;
-        }
-        else{
-            //annotationView.pinColor = MKPinAnnotationColorRed;
-        }
-        
-        UIImage *img = [UIImage imageNamed:@"images.png"];
+        UIImage *img = [UIImage imageNamed:@"MapFrame.png"];
         annotationView.image = img ;
-        [annotationView setFrame:CGRectMake(annotationView.frame.origin.x, annotationView.frame.origin.y, 45, 45)];
+
+        [annotationView setFrame:CGRectMake(annotationView.frame.origin.x, annotationView.frame.origin.y, ANNOTATION_VIEW_WIDTH , ANNOTATION_VIEW_HEIGTH)];
         if (shopAnnotation.overideAnnotation.count>1) {
             annotationView.numberlb.text = [NSString stringWithFormat:@"%d",shopAnnotation.overideAnnotation.count];
             
@@ -176,17 +180,16 @@ bool firstUpdate = 1;
             annotationView.numberlb.hidden = YES;
             annotationView.numberImageView.hidden = YES;
         }
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-        [button addTarget:self action:@selector(showDetail:) forControlEvents:UIControlEventTouchUpInside];
-        annotationView.rightCalloutAccessoryView = button;
-
-        annotationView.enabled = YES;
-        annotationView.canShowCallout = YES;
+         annotationView.enabled = YES;
+        //annotationView.canShowCallout = YES;
         return annotationView;
+    }
+    else{
+        
     }
     return nil;    
 }
--(IBAction)showDetail:(id)sender{
+-(void)showDetail{
     if (selectedShops.count==1) {
         BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:(BeNCShopEntity *)[selectedShops objectAtIndex:0]];
         
@@ -195,9 +198,16 @@ bool firstUpdate = 1;
     }
     else{
         BeNCListViewController *listShopViewController = [[BeNCListViewController alloc]initWithNibName:@"BeNCListViewController" bundle:nil];
+        UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:listShopViewController];
         [listShopViewController setListType:1];
         [listShopViewController getShopDataFromMap:selectedShops];
-        [self.navigationController pushViewController:listShopViewController animated:YES];
+        CGAffineTransform scale = CGAffineTransformMakeScale(0.8, 0.8);
+        navigation.view.transform = scale;
+        [navigation.view.layer setShadowRadius:6];
+        [navigation.view.layer setShadowOpacity:0.9];
+        [navigation.view.layer setShadowColor:[UIColor blackColor].CGColor];
+        [navigation.view setFrame:CGRectMake(40, 20, 400, 200)];
+        [self.view addSubview:navigation.view];
         [listShopViewController release];
         
         
@@ -205,6 +215,19 @@ bool firstUpdate = 1;
     
     
 }
+-(IBAction)toUserLocation:(id)sender{
+    
+    MKCoordinateRegion region;
+    region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.coordinate,1000,1000);
+    
+    [self.mapView setRegion:region animated:YES];
+    for (id<MKAnnotation> annotation in self.mapView.annotations) {
+        if (![annotation isKindOfClass:[BeNCShopAnnotation class]]) {
+            [self.mapView selectAnnotation:annotation animated:YES];
+            break; 
+        }
+    }
+  }
 -(void)checkOverride{
     for( id<MKAnnotation> annotation in shopsAnnotations) {
         if ([annotation isKindOfClass:[BeNCShopAnnotation class]]) {

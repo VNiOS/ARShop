@@ -10,9 +10,11 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 @interface BeNCAnnotationView : MKAnnotationView{
+    UIImageView *backgroudImage;
     UIImageView *numberImageView;
     UILabel *numberlb;
 }
+@property(nonatomic,retain)  UIImageView *backgroudImage;
 @property(nonatomic,retain)  UIImageView *numberImageView;
 @property(nonatomic,retain)  UILabel *numberlb;
 -(id)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier;

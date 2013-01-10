@@ -14,14 +14,13 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-
+        
     }
     return self;
 }
 -(id)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier{
     if (self= [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) {
-        
-        
+
         self.numberImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"numberView.png"]];
         self.numberImageView.frame = CGRectMake(30, 30, 20, 20);
         
@@ -34,7 +33,9 @@
         self.numberlb.text = @"1";
         [self addSubview:self.numberImageView];
         [self addSubview:self.numberlb];
-                // Initialization code
+        [self setFrame:CGRectMake(0, 0, 45, 50)];
+        [self setCenterOffset:CGPointMake(self.frame.origin.x, self.frame.origin.y-22)];
+                       // Initialization code
     }
     return self;
 
