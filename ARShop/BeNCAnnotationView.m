@@ -10,6 +10,7 @@
 
 @implementation BeNCAnnotationView
 @synthesize numberlb,numberImageView;
+@synthesize backgroudImage;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

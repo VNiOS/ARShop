@@ -39,19 +39,15 @@
 
 - (void)viewDidLoad
 {
-<<<<<<< HEAD
     refreshButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Refresh" style:UIBarButtonSystemItemRefresh target:self action:@selector(refreshData)];
     self.navigationItem.rightBarButtonItem = refreshButtonItem;
     editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonSystemItemRefresh target:self action:@selector(editList:)];
     arrayButtonItem =  [[NSMutableArray arrayWithObjects:editButton,refreshButtonItem, nil]retain];
 
     self.navigationItem.rightBarButtonItems = arrayButtonItem;
-=======
-    UIBarButtonItem *refreshButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Refresh" style:UIBarButtonSystemItemRefresh target:self action:@selector(refreshData)];
         editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonSystemItemRefresh target:self action:@selector(editList:)];
     
     UIBarButtonItem *done = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(closeListViewInMap:)];
->>>>>>> ffd31131eb66c4b7b74cd6a1fbd08baf43758d87
     
     [self setTitle:@"List Shop"];
     
@@ -63,7 +59,7 @@
     
     if (listType == MainList) {
         self.navigationItem.rightBarButtonItem = refreshButtonItem;
-        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:refreshButtonItem,editButton, nil];
+        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:editButton,refreshButtonItem, nil];
         [self getShopData];
         NSLog(@"main list");
     }
