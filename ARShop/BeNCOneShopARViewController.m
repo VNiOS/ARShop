@@ -95,19 +95,19 @@
             valueX =   - b / a ;
             valueY = 0;
     }
-    else if ((angle2 <= angleToHeading && angleToHeading < M_PI) || (- angle2 <= angleToHeading && angleToHeading < - M_PI)) {
+    else if ((angle2 <= angleToHeading && angleToHeading < M_PI) || (- M_PI <= angleToHeading && angleToHeading < - angle2)) {
             valueX = 480 - originX;
             valueY = 480 * a + b;
     }
     else if (- angle2 <= angleToHeading && angleToHeading <  - angle1) {
-            valueX = ( 190 -b )/a;
-            valueY = 190;
+            valueX = ( 250 -b )/a;
+            valueY = 200;
     }
     if (valueX <= originX) {
         valueX = originX;
     }
     if (valueX > 480 - originX ) {
-        valueX = 480 - valueX ;
+        valueX = 480 - originX ;
     }
     if (valueY <= 0) {
         valueY = 0;
