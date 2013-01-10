@@ -9,12 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "BeNCShopEntity.h"
-
+@class BeNCDetailViewController;
+@protocol  DetailViewDelegate
+-(void)backToMap:(BeNCDetailViewController *)detailView;
+@end
 @interface BeNCDetailViewController : UIViewController{
     CLLocation *userLocation;
     BeNCShopEntity *shop;
     UILabel *labelDistanceToShop;
 }
+@property(nonatomic,strong) id<DetailViewDelegate> delegate;
 @property(nonatomic, retain)CLLocation *userLocation;
 @property(nonatomic, retain)BeNCShopEntity *shop;
 @property(nonatomic, retain)UILabel *labelDistanceToShop;

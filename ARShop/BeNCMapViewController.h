@@ -9,15 +9,18 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
-
-@interface BeNCMapViewController : UIViewController<MKMapViewDelegate>{
+#import "BeNCListViewController.h"
+#import "BeNCShopAnnotation.h"
+#import "BeNCDetailViewController.h"
+@interface BeNCMapViewController : UIViewController<MKMapViewDelegate,ListViewOnMapDelegate,DetailViewDelegate>{
     
     MKMapView *mapView;
     
     NSArray *shopsArray;
     NSMutableArray *shopsAnnotations;
-    NSMutableArray *selectedShops;
     
+    NSMutableArray *selectedShops;
+    BeNCShopAnnotation *selectedAnnotation;
 }
 @property (nonatomic,retain) MKMapView *mapView;
 @property (nonatomic, retain) MKAnnotationView *selectedAnnotationView;
@@ -29,4 +32,6 @@
 -(void)checkOverride;
 -(float)distanceOf:(CGPoint)point1 andpoint :(CGPoint)point2;
 -(IBAction)toUserLocation:(id)sender;
+-(void)animationScaleOn:(UINavigationController *)navigation;
+
 @end

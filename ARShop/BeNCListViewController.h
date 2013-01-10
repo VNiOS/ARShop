@@ -6,10 +6,22 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+
+
+
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "BeNCShopEntity.h"
 #import "BeNCShopCellCell.h"
+
+@class BeNCListViewController;
+
+@protocol ListViewOnMapDelegate 
+-(void)animationScaleOff:(UINavigationController *)listview;  
+@end
+
+
+
 @interface BeNCListViewController : UIViewController<BeNCShopCellDelegate,UITableViewDelegate,UITableViewDataSource>{
         int listType;
     IBOutlet UITableView *listShopView;
@@ -19,6 +31,8 @@
     BOOL editing;
     UIBarButtonItem *editButton;
 }
+@property(nonatomic,strong) id<ListViewOnMapDelegate> delegate;
+
 @property float distanceToShop;
 @property(nonatomic,retain)IBOutlet UITableView *listShopView;
 @property(nonatomic,retain)CLLocation *userLocation ;
@@ -31,4 +45,5 @@
 -(void)getShopDataFromMap:(NSArray *)shopArray;
 -(void)sortShopByDistance;
 -(IBAction)closeListViewInMap:(id)sender;
+
 @end

@@ -24,7 +24,7 @@
 
 @implementation BeNCListViewController
 @synthesize listShopView,userLocation,distanceToShop;
-@synthesize listType;
+@synthesize listType,delegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -61,6 +61,7 @@
     }
     else if(listType == MapList){
         self.navigationItem.rightBarButtonItem = done;
+        
         NSLog(@"map list");
     }
     [super viewDidLoad];
@@ -68,8 +69,10 @@
 }
 -(IBAction)closeListViewInMap:(id)sender{
     NSLog(@"Close list view");
-    [self.navigationController.view removeFromSuperview];
+    self.navigationController.navigationBar.hidden = YES;
+    [self.delegate animationScaleOff:self.navigationController];
 }
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];

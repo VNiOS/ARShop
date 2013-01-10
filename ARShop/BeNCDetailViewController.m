@@ -20,7 +20,7 @@
 @end
 
 @implementation BeNCDetailViewController
-@synthesize shop,labelDistanceToShop,userLocation;
+@synthesize shop,labelDistanceToShop,userLocation,delegate;
 
 - (id)initWithShop:(BeNCShopEntity *)shopEntity
 {
@@ -186,5 +186,7 @@
     [self.navigationController pushViewController:oneShopAR animated:YES];
         
 }
-
+-(void)viewWillDisappear:(BOOL)animated{
+    [delegate backToMap:self];
+}
 @end
