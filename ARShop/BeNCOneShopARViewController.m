@@ -78,65 +78,39 @@
     [self.view addSubview:detailView.view];
 }
 - (void)setNewCenterForView:(float )angleToHeading{
+    float originX = detailView.view.frame.size.width/2;
     float angle1 = atanf(85.0/240.0);
     float angle2 = M_PI - angle1;
-    float angle3 = M_PI + angle1;
-    float angle4 = 2 * M_PI - angle1;
-    NSLog(@"goc 4 la %f",angle4);
     float a;
-    if (angleToHeading < M_PI) {
         a = tan(angleToHeading);
-    }
-    else {
-        a = tan(angleToHeading - M_PI);
-    }
-    float b = 125 - 240 * a ;
-    float valueX = 240 ;
-    float valueY = 125;
-    if (0 <= angleToHeading < angle1 || angle4 <= angleToHeading < 2 * M_PI) {
-        valueX = 100;
-        valueY = 30 * a + b;
-   
-    }
-        else if (angle1 <= angleToHeading < angle2){
-            valueX = -b/a ;
-            valueY = 80;
+    float b = 240 - 125 * a ;
+    float valueX ;
+    float valueY;
+    if ((0 <= angleToHeading && angleToHeading < angle1 )||( - angle1 <= angleToHeading && angleToHeading < 0)) {
+        valueX = originX;
+        valueY =  b;
+       }
+        else if (angle1 <= angleToHeading && angleToHeading< angle2){
+            valueX = (40 - b)/a ;
+            valueY = 0;
         }
-        else if (angle2 <= angleToHeading < angle3) {
-            valueX = 380;
+        else if ((angle2 <= angleToHeading && angleToHeading < M_PI) || (- angle2 <= angleToHeading && angleToHeading < - M_PI)) {
+            valueX = 480 - originX;
             valueY = 480 * a + b;
         }
-        else if (angle3 <= angleToHeading <  angle4) {
+        else if (- angle2 <= angleToHeading && angleToHeading <  - angle1) {
             valueX = ( 290 -b )/a;
-            valueY = 230;
+            valueY = 190;
         }
+    if (valueX <= originX) {
+        valueX = originX;
+    }
+    if (valueX > 480 - originX ) {
+        valueX = 480 - valueX ;
+    }
     CGPoint newCenter = CGPointMake(valueX, valueY);
     detailView.view.center = newCenter;
-    NSLog(@"center : %f , %f",newCenter.x,newCenter.y);
-//    int valueX = 5 ;
-//    int valueY = 160;
-//    NSLog(@"goc quay cua heading so voi north la %f",angleToNorth);
-//    int newX = (int)(detailView.view.center.x - valueX);
-//    
-//    if (newX > 460 - 50)
-//        newX = 460 - 50;
-//    
-//    if (newX < 0 + 50)
-//        newX = 0 + 50;
-//    
-//    int newY = (int)(detailView.view.center.y + valueY);
-//    
-//    if (newY > 300 - frameRadius) {
-//        newY = 300 - frameRadius;
-//    }
-//    if (newY < 0 + frameRadius) {
-//        newY = 0 + frameRadius;
-//    }
-//    
-//    CGPoint newCenter = CGPointMake(newX, newY);
-//    detailView.view.center = newCenter;
-
-    
+//    NSLog(@"toa do cua view la %f va %f",newCenter.x,newCenter.y);
 
 }
 
@@ -145,13 +119,21 @@
     float angleToHeading;
     double angleToNorth =   newHeading.magneticHeading * rotationRate ;
     if (rotationAngleArrow > 0) {
-        angleToHeading = ABS(rotationAngleArrow - angleToNorth);
+        angleToHeading = rotationAngleArrow - angleToNorth;
+        if (angleToHeading < - M_PI) {
+            angleToHeading = 2 * M_PI - (angleToNorth - rotationAngleArrow);
+        }
     }
     else {
         
-        angleToHeading = ABS(2 * M_PI - (angleToNorth - rotationAngleArrow));
+        angleToHeading =  rotationAngleArrow - angleToNorth;
+        
+        if (- 2 * M_PI < angleToHeading < - M_PI) {
+            angleToHeading = 2 * M_PI + angleToHeading;
+        }
+        
     }
-//    [self setNewCenterForView:angleToHeading];
+    [self setNewCenterForView:angleToHeading];
 }
 
 -(void)didUpdateLocation:(NSNotification *)notification {
