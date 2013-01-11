@@ -65,7 +65,7 @@ static BeNCProcessDatabase *shareDatabase = nil;
     NSMutableArray *shops = [[NSMutableArray alloc]init];
     FMResultSet *results  = [database executeQuery:[NSString stringWithFormat:@"select *from shops"]];
     while ([results next]) {
-        
+        //NSLog(@"number of column %d",results.columnCount);
         NSMutableDictionary *shop = [[NSMutableDictionary alloc] init];
         NSNumber *shop_id = [[NSNumber alloc] initWithInt:[results intForColumn:BeNCShopProperiesShopId]];
         NSNumber *shop_type = [[NSNumber alloc] initWithInt:[results intForColumn:BeNCShopProperiesShopTye]];
@@ -84,7 +84,8 @@ static BeNCProcessDatabase *shareDatabase = nil;
         NSString *shop_menu_link = [NSString stringWithFormat:@"%@",[results stringForColumn:BeNCShopProperiesShopMenuLink]];
         NSString *shop_open_time = [NSString stringWithFormat:@"%@",[results stringForColumn:BeNCShopProperiesShopOpenTime]];
         NSString *shop_close_time = [NSString stringWithFormat:@"%@",[results stringForColumn:BeNCShopProperiesShopCloseTime]];
-        
+        NSString *shop_icon_link = [NSString stringWithFormat:@"%@",[results stringForColumn:BeNCShopProperiesShopIcon]];
+
 
         [shop setObject:shop_id forKey:BeNCShopProperiesShopId];
         [shop setObject:shop_name forKey:BeNCShopProperiesShopName];
@@ -99,6 +100,7 @@ static BeNCProcessDatabase *shareDatabase = nil;
         [shop setObject:shop_close_time forKey:BeNCShopProperiesShopCloseTime];
         [shop setObject:shop_latitude forKey:BeNCShopProperiesShopLatitude];
         [shop setObject:shop_longitude forKey:BeNCShopProperiesShopLongitude];
+        [shop setObject:shop_icon_link forKey:BeNCShopProperiesShopIcon];
         
         BeNCShopEntity *newShop = [[BeNCShopEntity alloc]initWithDictionary:shop];
         [shops addObject:newShop];

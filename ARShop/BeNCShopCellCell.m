@@ -11,12 +11,15 @@
 
 @implementation BeNCShopCellCell
 @synthesize distanceToShop,delegate,userLocation;
-
+@synthesize icon;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         distanceToShop = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        self.icon = [[EGOImageView alloc]initWithPlaceholderImage:[UIImage imageNamed:@"images.png"]];
+        self.icon.frame = CGRectMake(5, 5, 50, 50);
+        [self addSubview:self.icon];
             }
     return self;
 }
@@ -39,9 +42,11 @@
     [distanceToShop setFrame:CGRectMake(330, 5, 90, 50)];
     [distanceToShop addTarget:self action:@selector(touchesToButtonDistance) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:distanceToShop];
+    
     self.textLabel.text = shopEntity.shop_name;
     self.detailTextLabel.text = shopEntity.shop_address;
-    self.imageView.image = [UIImage imageNamed:@"images.jpg"];
+    self.imageView.image = [UIImage imageNamed:@"blank.png"];
+    self.icon.imageURL = [NSURL URLWithString:shopEntity.shop_icon_link];
     NSString *distanceShop = [NSString stringWithFormat:@"%d m",[self calculeDistance:shopEntity withLocation:location]];
     [self.distanceToShop setTitle:distanceShop forState:UIControlStateNormal];
 }

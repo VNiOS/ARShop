@@ -20,6 +20,7 @@
     int shop_phone;
     NSString *shop_open_time;
     NSString *shop_close_time;
+    NSString *shop_icon_link;
     float shop_latitude;
     float shop_longitute;
     BOOL shopCheck;
@@ -39,6 +40,7 @@
 @property (nonatomic, retain)NSString *shop_menu_link;
 @property (nonatomic, retain)NSString *shop_open_time;
 @property (nonatomic, retain)NSString *shop_close_time;
+@property (nonatomic, retain)NSString *shop_icon_link;
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

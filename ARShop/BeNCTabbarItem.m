@@ -34,6 +34,7 @@
 -(void)toggle {
 	[self setSelected:_on];
 }
+
 - (void)buttonPressed:(id)target
 {
 	//send notification of the button that was currently pressed

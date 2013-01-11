@@ -20,7 +20,7 @@ NSString *const BeNCShopProperiesShopCloseTime ;
 NSString *const BeNCShopProperiesShopPhone ;
 NSString *const BeNCShopProperiesShopLatitude ;
 NSString *const BeNCShopProperiesShopLongitude ;
-
+NSString *const BeNCShopProperiesShopIcon;
 @interface BeNCUtility : NSObject{
     
 }

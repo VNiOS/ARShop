@@ -20,4 +20,5 @@
 -(id)initWithFrame:(CGRect)frame normalState:(NSString*)n toggledState:(NSString *)t;            
 -(BOOL)isOn;
 -(void)toggleOn:(BOOL)state;
+
 @end

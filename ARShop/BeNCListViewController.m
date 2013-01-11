@@ -14,7 +14,7 @@
 #import "BeNCShopEntity.h"
 #import "BeNCShopCellCell.h"
 #import "BeNCOneShopARViewController.h"
-
+#import "EGOImageView.h"
 #define MainList 0
 #define MapList 1
 

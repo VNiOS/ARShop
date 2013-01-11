@@ -11,7 +11,7 @@
 
 @implementation BeNCShopEntity
 @synthesize shop_address,shop_address_detail,shop_close_time,shop_coupon_link,shop_description,shop_id,shop_latitude,shop_longitute,shop_menu_link,shop_name,shop_open_time,shop_phone,shop_type;
-@synthesize shopCheck;
+@synthesize shopCheck,shop_icon_link;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     self = [super init];
@@ -30,6 +30,7 @@
         self.shop_phone= [[dictionary objectForKey:BeNCShopProperiesShopPhone]intValue];
         self.shop_latitude = [[dictionary objectForKey:BeNCShopProperiesShopLatitude]floatValue];
         self.shop_longitute = [[dictionary objectForKey:BeNCShopProperiesShopLongitude] floatValue];
+        self.shop_icon_link = [dictionary objectForKey:BeNCShopProperiesShopIcon];
     }
     return  self;
 }

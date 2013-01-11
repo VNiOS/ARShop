@@ -21,6 +21,12 @@
 		A7F08DB4167724F000D46DCF /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F08DB3167724F000D46DCF /* LocationService.m */; };
 		A7F21FB7167B0C9E006AE452 /* images.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A7F21FB6167B0C9E006AE452 /* images.jpg */; };
 		A7F21FBF167B23EF006AE452 /* BeNCShopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F21FBE167B23EF006AE452 /* BeNCShopAnnotation.m */; };
+		A7F29C2416A008380040DA28 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F29C1816A008380040DA28 /* EGOCache.m */; };
+		A7F29C2516A008380040DA28 /* EGOImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F29C1B16A008380040DA28 /* EGOImageButton.m */; };
+		A7F29C2616A008380040DA28 /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F29C1E16A008380040DA28 /* EGOImageLoadConnection.m */; };
+		A7F29C2716A008380040DA28 /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F29C2016A008380040DA28 /* EGOImageLoader.m */; };
+		A7F29C2816A008380040DA28 /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F29C2316A008380040DA28 /* EGOImageView.m */; };
+		A7F29C2B16A0106D0040DA28 /* blank.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F29C2A16A0106C0040DA28 /* blank.png */; };
 		C30B2CFD1695336200B56235 /* BeNCOneShopARViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30B2CFB1695336200B56235 /* BeNCOneShopARViewController.m */; };
 		C30B2CFE1695336200B56235 /* BeNCOneShopARViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C30B2CFC1695336200B56235 /* BeNCOneShopARViewController.xib */; };
 		C310BDA1167886CF00DA1D55 /* ARShopDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C310BDA0167886CF00DA1D55 /* ARShopDatabase.sqlite */; };
@@ -85,6 +91,17 @@
 		A7F21FB6167B0C9E006AE452 /* images.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpg; sourceTree = "<group>"; };
 		A7F21FBD167B23EF006AE452 /* BeNCShopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCShopAnnotation.h; sourceTree = "<group>"; };
 		A7F21FBE167B23EF006AE452 /* BeNCShopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCShopAnnotation.m; sourceTree = "<group>"; };
+		A7F29C1716A008380040DA28 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
+		A7F29C1816A008380040DA28 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
+		A7F29C1A16A008380040DA28 /* EGOImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageButton.h; sourceTree = "<group>"; };
+		A7F29C1B16A008380040DA28 /* EGOImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageButton.m; sourceTree = "<group>"; };
+		A7F29C1D16A008380040DA28 /* EGOImageLoadConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageLoadConnection.h; sourceTree = "<group>"; };
+		A7F29C1E16A008380040DA28 /* EGOImageLoadConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoadConnection.m; sourceTree = "<group>"; };
+		A7F29C1F16A008380040DA28 /* EGOImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageLoader.h; sourceTree = "<group>"; };
+		A7F29C2016A008380040DA28 /* EGOImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoader.m; sourceTree = "<group>"; };
+		A7F29C2216A008380040DA28 /* EGOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageView.h; sourceTree = "<group>"; };
+		A7F29C2316A008380040DA28 /* EGOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageView.m; sourceTree = "<group>"; };
+		A7F29C2A16A0106C0040DA28 /* blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blank.png; sourceTree = "<group>"; };
 		C30B2CFA1695336200B56235 /* BeNCOneShopARViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCOneShopARViewController.h; sourceTree = "<group>"; };
 		C30B2CFB1695336200B56235 /* BeNCOneShopARViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCOneShopARViewController.m; sourceTree = "<group>"; };
 		C30B2CFC1695336200B56235 /* BeNCOneShopARViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeNCOneShopARViewController.xib; sourceTree = "<group>"; };
@@ -175,6 +192,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7F29C1516A008380040DA28 /* Egoimage */ = {
+			isa = PBXGroup;
+			children = (
+				A7F29C1616A008380040DA28 /* EGOCache */,
+				A7F29C1916A008380040DA28 /* EGOImageButton */,
+				A7F29C1C16A008380040DA28 /* EGOImageLoader */,
+				A7F29C2116A008380040DA28 /* EGOImageView */,
+			);
+			path = Egoimage;
+			sourceTree = "<group>";
+		};
+		A7F29C1616A008380040DA28 /* EGOCache */ = {
+			isa = PBXGroup;
+			children = (
+				A7F29C1716A008380040DA28 /* EGOCache.h */,
+				A7F29C1816A008380040DA28 /* EGOCache.m */,
+			);
+			path = EGOCache;
+			sourceTree = "<group>";
+		};
+		A7F29C1916A008380040DA28 /* EGOImageButton */ = {
+			isa = PBXGroup;
+			children = (
+				A7F29C1A16A008380040DA28 /* EGOImageButton.h */,
+				A7F29C1B16A008380040DA28 /* EGOImageButton.m */,
+			);
+			path = EGOImageButton;
+			sourceTree = "<group>";
+		};
+		A7F29C1C16A008380040DA28 /* EGOImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				A7F29C1D16A008380040DA28 /* EGOImageLoadConnection.h */,
+				A7F29C1E16A008380040DA28 /* EGOImageLoadConnection.m */,
+				A7F29C1F16A008380040DA28 /* EGOImageLoader.h */,
+				A7F29C2016A008380040DA28 /* EGOImageLoader.m */,
+			);
+			path = EGOImageLoader;
+			sourceTree = "<group>";
+		};
+		A7F29C2116A008380040DA28 /* EGOImageView */ = {
+			isa = PBXGroup;
+			children = (
+				A7F29C2216A008380040DA28 /* EGOImageView.h */,
+				A7F29C2316A008380040DA28 /* EGOImageView.m */,
+			);
+			path = EGOImageView;
+			sourceTree = "<group>";
+		};
 		C32034EB16757ADA00CA3D8C = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +304,7 @@
 		C320351916757B5900CA3D8C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				A7F29C1516A008380040DA28 /* Egoimage */,
 				C33504B516759AD200E4139A /* FMDB */,
 			);
 			name = Libraries;
@@ -371,6 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				A7EE6665169D3C0B00D172AF /* numberView.png */,
+				A7F29C2A16A0106C0040DA28 /* blank.png */,
 				A706EFE2169BDE2A0057D1FE /* CurrentLocations.png */,
 				A706EFE3169BDE2A0057D1FE /* MapFrame.png */,
 				C3FFA3EF1681ADE5007B7963 /* coupon.png */,
@@ -462,6 +530,7 @@
 				A706EFE4169BDE2A0057D1FE /* CurrentLocations.png in Resources */,
 				A706EFE5169BDE2A0057D1FE /* MapFrame.png in Resources */,
 				A7EE6666169D3C0C00D172AF /* numberView.png in Resources */,
+				A7F29C2B16A0106D0040DA28 /* blank.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +567,11 @@
 				C3FFA3FC1681B034007B7963 /* BeNCWebViewController.m in Sources */,
 				C30B2CFD1695336200B56235 /* BeNCOneShopARViewController.m in Sources */,
 				A7EBB989169ABDF3004924AC /* BeNCAnnotationView.m in Sources */,
+				A7F29C2416A008380040DA28 /* EGOCache.m in Sources */,
+				A7F29C2516A008380040DA28 /* EGOImageButton.m in Sources */,
+				A7F29C2616A008380040DA28 /* EGOImageLoadConnection.m in Sources */,
+				A7F29C2716A008380040DA28 /* EGOImageLoader.m in Sources */,
+				A7F29C2816A008380040DA28 /* EGOImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
