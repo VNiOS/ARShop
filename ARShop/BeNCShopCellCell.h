@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "BeNCShopEntity.h"
+#import "EGOImageView.h"
 @class BeNCShopCellCell;
 @protocol BeNCShopCellDelegate <NSObject>
 
@@ -20,9 +21,11 @@
 @interface BeNCShopCellCell : UITableViewCell{
     UIButton *checkbox ;
     UIButton *distanceToShop;
+    EGOImageView *icon ;
     CLLocation *userLocation ;
 
 }
+@property (nonatomic,retain) EGOImageView *icon;
 @property (nonatomic, retain)CLLocation *userLocation ;
 @property (nonatomic, retain) id<BeNCShopCellDelegate>delegate;
 @property (nonatomic ,retain) UIButton *distanceToShop;

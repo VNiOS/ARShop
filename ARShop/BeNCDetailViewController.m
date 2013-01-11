@@ -12,7 +12,7 @@
 #import "BeNCWebViewController.h"
 #import "LocationService.h"
 #import "BeNCOneShopARViewController.h"
-
+#import "EGOImageView.h"
 #define textSize 20
 #define max 1000000
 @interface BeNCDetailViewController ()
@@ -64,9 +64,9 @@
 
 - (void)setContentDetailForView:(BeNCShopEntity *)shopEntity
 {
-    UIImageView *logoImgaeView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 60, 60)];
-    UIImage *logoImage = [UIImage imageNamed:@"images.jpg"];
-    logoImgaeView.image = logoImage;
+    EGOImageView *logoImgaeView = [[EGOImageView alloc]initWithPlaceholderImage:[UIImage imageNamed:@"images.jpg"]];
+    logoImgaeView.frame = CGRectMake(5, 5, 60, 60);
+    logoImgaeView.imageURL = [NSURL URLWithString:shopEntity.shop_icon_link];
     [self.view addSubview:logoImgaeView];
     
     UILabel *labelShopName = [[UILabel alloc]init];
@@ -188,5 +188,8 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [delegate backToMap:self];
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController.navigationBar setHidden:NO];
 }
 @end

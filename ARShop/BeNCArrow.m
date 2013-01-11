@@ -20,7 +20,7 @@
 {
     self = [super init];
     if (self) {
-        [[LocationService sharedLocation]startUpdate];
+       userLocation = [[LocationService sharedLocation]getOldLocation];
         shop = shopEntity;
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];

@@ -19,6 +19,7 @@
 	NSMutableArray *tabViewControllers;
 	NSMutableArray *tabItemsArray;
 	int initTab; 
+    int selectedTab;
 }
 
 @property int initTab;
@@ -26,6 +27,7 @@
 @property (nonatomic, assign) id <BeNCMenuViewControllerDelegate> delegate;
 @property (nonatomic, retain) NSMutableArray *tabViewControllers;
 @property (nonatomic, retain) NSMutableArray *tabItemsArray;
+@property (nonatomic) int selectedTab;
 //actions
 - (id)initWithTabViewControllers:(NSMutableArray *)tbControllers tabItems:(NSMutableArray *)tbItems initialTab:(int)iTab;
 -(void)initialTab:(int)tabIndex;

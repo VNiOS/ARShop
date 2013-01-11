@@ -15,11 +15,11 @@
 #import "BeNCListViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "BeNCAnnotationView.h"
+#import "EGOImageView.h"
 #define MainList 0
 #define MapList 1
 
-#define ANNOTATION_VIEW_WIDTH 55
-#define ANNOTATION_VIEW_HEIGTH 60
+
 
 #define LISTVIEW_WIDTH 400
 #define LISTVIEW_HEIGTH 200
@@ -40,7 +40,9 @@ bool firstUpdate = 1;
     }
     return self;
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController.navigationBar setHidden:YES];
+}
 - (void)viewDidLoad
 {
     
@@ -57,7 +59,7 @@ bool firstUpdate = 1;
     
     UIButton *showUser = [UIButton buttonWithType:UIButtonTypeCustom];
     [showUser setBackgroundImage:[UIImage imageNamed:@"CurrentLocations.png"] forState:UIControlStateNormal];
-    showUser.frame = CGRectMake(20, 215, 30, 30);
+    showUser.frame = CGRectMake(20, 255, 30, 30);
     showUser.alpha = 0.8;
     [showUser addTarget:self action:@selector(toUserLocation:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:showUser];
@@ -156,10 +158,13 @@ bool firstUpdate = 1;
         if (selectedShops ) {
             [selectedShops release];
         }
+        
         selectedShops = [[NSMutableArray alloc]initWithArray:shopAnnotation.overideAnnotation];
         BeNCShopEntity *shop = (BeNCShopEntity *)[shopAnnotation.overideAnnotation objectAtIndex:0];
+        
         NSLog(@"- Select annotation %@",shop.shop_name);
         NSLog(@"  Number of shop : %d",selectedShops.count);
+        NSLog(@"  Shop link icon : %@",shop.shop_icon_link);
         [self showDetail];
         
     }
@@ -181,10 +186,7 @@ bool firstUpdate = 1;
             annotationView.annotation = annotation;
         }
         BeNCShopAnnotation *shopAnnotation = (BeNCShopAnnotation *)annotation;
-        UIImage *img = [UIImage imageNamed:@"MapFrame.png"];
-        annotationView.image = img ;
 
-        [annotationView setFrame:CGRectMake(annotationView.frame.origin.x, annotationView.frame.origin.y, ANNOTATION_VIEW_WIDTH , ANNOTATION_VIEW_HEIGTH)];
         if (shopAnnotation.overideAnnotation.count>1) {
             annotationView.numberlb.text = [NSString stringWithFormat:@"%d",shopAnnotation.overideAnnotation.count];
             
@@ -290,7 +292,7 @@ bool firstUpdate = 1;
                         if (shopcheck.index!=shopAnnotation.index && shopcheck.isChecked==0) {
                             
                             
-                            if ([self distanceOf:shopAnnotation.locationInView andpoint:shopcheck.locationInView]<20) {
+                            if ([self distanceOf:shopAnnotation.locationInView andpoint:shopcheck.locationInView]<40) {
                                 [shopAnnotation.overideAnnotation addObject:shopcheck.shop];
                                 if (shopcheck.isGrouped == 0) {
                                     [self.mapView removeAnnotation:shopcheck];

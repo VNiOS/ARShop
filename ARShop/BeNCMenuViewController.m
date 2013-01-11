@@ -16,18 +16,19 @@
 
 @implementation BeNCMenuViewController
 @synthesize tabViewControllers,tabBarHolder,delegate,initTab,tabItemsArray;
-
-
+@synthesize selectedTab;
+bool backToRootView;
 
 - (id)initWithTabViewControllers:(NSMutableArray *)tbControllers tabItems:(NSMutableArray *)tbItems initialTab:(int)iTab {
 	if ((self = [super init])) {
 		self.view.frame = [UIScreen mainScreen].bounds;
 		initTab = iTab;
-		
+		backToRootView = 0;
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 		if ([defaults integerForKey:kSelectedTab]) {
 			initTab = [defaults integerForKey:kSelectedTab];
 		}
+        self.selectedTab = initTab;
 		tabViewControllers = [[NSMutableArray alloc] initWithCapacity:[tbControllers count]];
 		tabViewControllers = tbControllers;
 		tabItemsArray = [[NSMutableArray alloc] initWithCapacity:[tbItems count]];
@@ -95,7 +96,7 @@
             [[tabItemsArray objectAtIndex:i] setAlpha:1.0];
 		} else {
 			[[tabItemsArray objectAtIndex:i] toggleOn:NO];
-            [[tabItemsArray objectAtIndex:i] setAlpha:0.7];
+            [[tabItemsArray objectAtIndex:i] setAlpha:0.5];
 		}
 	}
 }
@@ -104,7 +105,17 @@
 	for (int i = 0; i < [tabViewControllers count]; i++) {
 		if (i == index) {
 			[[tabViewControllers objectAtIndex:i] view].hidden = NO;
-		} else {
+            
+            
+            if (backToRootView) {
+                UINavigationController *navigation = (UINavigationController *)[tabViewControllers objectAtIndex:i];
+                if (navigation.viewControllers.count>1) {
+                    [navigation popToRootViewControllerAnimated:YES];
+                }
+                backToRootView =0;
+            }
+            
+             		} else {
 			[[tabViewControllers objectAtIndex:i] view].hidden = YES;
 		}
 	}
@@ -113,15 +124,23 @@
 #pragma mark -
 #pragma mark GTabTabItemDelegate action
 - (void)selectedItem:(BeNCTabbarItem *)button {
+    NSLog(@"swith tab");
 	int indexC = 0;
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSUInteger tabIndex;
 	for (BeNCTabbarItem *tb in tabItemsArray) {		
 		if (tb == button) {
 			[tb toggleOn:YES];
-			[self activateController:indexC];
-			tabIndex = indexC;
+			
+            tabIndex = indexC;
 			[defaults setInteger:tabIndex forKey:kSelectedTab];
+            NSLog(@"tabIndex %d",tabIndex);
+            if (tabIndex ==  selectedTab) {
+                NSLog(@"AAAAAAA");
+                backToRootView = 1;
+            }
+            [self activateController:indexC];
+            self.selectedTab = tabIndex;
 		} else {
 			[tb toggleOn:NO];
 		}

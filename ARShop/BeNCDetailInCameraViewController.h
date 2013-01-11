@@ -12,6 +12,7 @@
 #import "BeNCArrow.h"
 #import "BeNCDetailShopInCamera.h"
 #import <CoreLocation/CoreLocation.h>
+
 @class BeNCDetailInCameraViewController;
 @protocol BeNCDetailInCameraDelegate <NSObject>
 - (void)didSeclectView:(int )index;

@@ -23,7 +23,7 @@
     self = [super init];
     if (self) {
         shop = shopEntity;
-        [[LocationService sharedLocation]startUpdate];
+       userLocation = [[LocationService sharedLocation]getOldLocation];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
         labelShopName = [[UILabel alloc]init];
         [labelShopName setBackgroundColor:[UIColor clearColor]];
