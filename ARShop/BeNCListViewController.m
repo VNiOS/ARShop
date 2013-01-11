@@ -39,6 +39,9 @@
 
 - (void)viewDidLoad
 {
+    float angle1 = atanf(125.0/240.0);
+    float angle2 = M_PI - angle1;
+    NSLog(@"cac goc can tinh la angle1 = %f va angle2 = %f",angle1,angle2);
     refreshButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Refresh" style:UIBarButtonSystemItemRefresh target:self action:@selector(refreshData)];
     
     editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonSystemItemRefresh target:self action:@selector(editList:)];
