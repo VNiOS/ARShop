@@ -118,7 +118,7 @@
         else if (i >=3 && i < 5 ) {
             CGRect frame = detailView.view.frame;
             frame.origin.x =  480 - frame.size.width -5;
-            frame.origin.y = 95 * (i % 3) + 55;
+            frame.origin.y = 103 * (i % 3) + 35;
             detailView.view.frame = frame;
         }
         [self.view addSubview:detailView.view];

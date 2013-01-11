@@ -80,7 +80,8 @@
     [self.view addSubview:labelShopName];
     
     UILabel *labelShopAddress = [[UILabel alloc]init];
-    [labelShopAddress setBackgroundColor:[UIColor clearColor]];
+    [labelShopAddress setBackgroundColor:[UIColor grayColor]];
+    [labelShopAddress setTextColor:[UIColor whiteColor]];
     labelShopAddress.text = shopEntity.shop_address;
     [labelShopAddress setTextAlignment:UITextAlignmentCenter];
     [labelShopAddress setFont:[UIFont systemFontOfSize:textSize ]];
