@@ -31,6 +31,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self checkDatabase];
+    [[LocationService sharedLocation]startUpdate];
     BeNCTabbarItem *tabItem1 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(2, 2, 90, 30) normalState:@"listoff.png" toggledState:@"ListOn.png"];
 	BeNCTabbarItem *tabItem2 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(94, 2, 90, 30) normalState:@"cameraoff.png" toggledState:@"cameraon.png"];
 	BeNCTabbarItem *tabItem3 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(186, 2, 90, 30) normalState:@"mapoff.png" toggledState:@"mapon.png"];
@@ -64,7 +65,7 @@
 	[tabItemsArray addObject:tabItem2];
 	[tabItemsArray addObject:tabItem3];
     
-    [[LocationService sharedLocation]startUpdate];
+   
     [[BeNCProcessDatabase sharedMyDatabase] getDatebase ];
     
   

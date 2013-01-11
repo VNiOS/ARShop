@@ -17,8 +17,7 @@
     NSMutableArray *shopsArray;
     CLLocation *userLocation ;
     NSMutableArray *arrayShopDistance;
-    CLLocationManager *locationManager;
+    float rotationAngleArrow;
 }
-@property(nonatomic, retain)CLLocationManager *locationManager;
 - (void)addVideoInput;
 @end

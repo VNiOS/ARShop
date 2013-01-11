@@ -23,13 +23,15 @@
 @end
 
 @implementation BeNCListViewController
-@synthesize listShopView,userLocation,distanceToShop;
+@synthesize listShopView,userLocation,distanceToShop,shopsArray;
 @synthesize listType,delegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         userLocation = [[LocationService sharedLocation]getOldLocation];
+        [self getShopData];
+
         // Custom initialization
     }
     return self;
@@ -39,19 +41,13 @@
 
 - (void)viewDidLoad
 {
-    float angle1 = atanf(125.0/240.0);
-    float angle2 = M_PI - angle1;
-    NSLog(@"cac goc can tinh la angle1 = %f va angle2 = %f",angle1,angle2);
+    
     refreshButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Refresh" style:UIBarButtonSystemItemRefresh target:self action:@selector(refreshData)];
     
     editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonSystemItemRefresh target:self action:@selector(editList:)];
     arrayButtonItem =  [[NSMutableArray arrayWithObjects:editButton,refreshButtonItem, nil]retain];
-
-    
-        editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonSystemItemRefresh target:self action:@selector(editList:)];
     
     UIBarButtonItem *done = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(closeListViewInMap:)];
-    
     [self setTitle:@"List Shop"];
     
     self.view.bounds = CGRectMake(0, 0, 480, 320);
@@ -63,12 +59,10 @@
     if (listType == MainList) {
         self.navigationItem.rightBarButtonItem = refreshButtonItem;
         self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:editButton,refreshButtonItem, nil];
-        [self getShopData];
         NSLog(@"main list");
     }
     else if(listType == MapList){
         self.navigationItem.rightBarButtonItem = done;
-        
         NSLog(@"map list");
     }
     [super viewDidLoad];
@@ -104,7 +98,7 @@
 
 -(void)getShopData{
     [[BeNCProcessDatabase sharedMyDatabase]getDatebase];
-    shopsArray = [[NSMutableArray alloc]initWithArray:[[BeNCProcessDatabase sharedMyDatabase] arrayShop]];
+    self.shopsArray = [[NSMutableArray alloc]initWithArray:[[BeNCProcessDatabase sharedMyDatabase] arrayShop]];
     [self.listShopView reloadData];
     
 }

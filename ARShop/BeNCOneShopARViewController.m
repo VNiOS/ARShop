@@ -30,6 +30,7 @@
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
         [self setContentForView:shopEntity];
+
         // Custom initialization
     }
     return self;
@@ -73,18 +74,16 @@
 - (void)setContentForView:(BeNCShopEntity *)shopEntity
 {
     detailView = [[BeNCDetailInCameraViewController alloc]initWithNibName:@"BeNCDetailInCameraViewController" bundle:nil];
-    [detailView setContentForView:shopEntity];
-    detailView.view.center = CGPointMake(125, 240);
+    [detailView setContentForView1:shopEntity];
     [self.view addSubview:detailView.view];
 }
 - (void)setNewCenterForView:(float )angleToHeading{
-//    NSLog(@"goc dau vao la %f",angleToHeading);
     float originX = detailView.view.frame.size.width/2;
+    float originY = detailView.view.frame.size.height/2;
     float angle1 = atanf(125.0/240.0);
     float angle2 = M_PI - angle1;
     float a = tan(angleToHeading);
     float b = 125 - 240 * a ;
-//    NSLog(@"gia tri cua a = %f va b = %f",a,b);
     float valueX ;
     float valueY;
     if ((0 <= angleToHeading && angleToHeading < angle1 )||( - angle1 <= angleToHeading && angleToHeading < 0)) {
@@ -93,7 +92,7 @@
        }
     else if (angle1 <= angleToHeading && angleToHeading< angle2){
             valueX =   - b / a ;
-            valueY = 0;
+            valueY = originY;
     }
     else if ((angle2 <= angleToHeading && angleToHeading < M_PI) || (- M_PI <= angleToHeading && angleToHeading < - angle2)) {
             valueX = 480 - originX;
@@ -101,7 +100,7 @@
     }
     else if (- angle2 <= angleToHeading && angleToHeading <  - angle1) {
             valueX = ( 250 -b )/a;
-            valueY = 200;
+            valueY = 300 - originY;
     }
     if (valueX <= originX) {
         valueX = originX;
@@ -109,15 +108,14 @@
     if (valueX > 480 - originX ) {
         valueX = 480 - originX ;
     }
-    if (valueY <= 0) {
-        valueY = 0;
+    if (valueY <= originY) {
+        valueY = originY;
     }
-    if (valueY > 190 ) {
-        valueY = 190 ;
+    if (valueY > 300 - originY ) {
+        valueY = 300 - originY;
     }
     CGPoint newCenter = CGPointMake(valueX, valueY);
     detailView.view.center = newCenter;
-//    NSLog(@"toa do cua view la truc x = %f truc y = %f",newCenter.x,newCenter.y);
 
 }
 

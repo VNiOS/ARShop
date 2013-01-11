@@ -12,18 +12,24 @@
 #import "BeNCShopEntity.h"
 #import "BeNCDetailInCameraViewController.h"
 #import "BeNCDetailViewController.h"
+#import "BeNCListViewController.h"
+#define rotationRate 0.0174532925
+
 @interface BeNCCameraViewController ()
 
 @end
 
 @implementation BeNCCameraViewController
-@synthesize locationManager;
 
 #pragma mark - View Cycle Life
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        userLocation = [[LocationService sharedLocation] getOldLocation];
+        [self sortShopByDistance];
+//        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
         [self addVideoInput];
         // Custom initialization
     }
@@ -35,12 +41,6 @@
 {
     [self setTitle:@"AR"];
     [self getDatabase];
-    self.locationManager = [[CLLocationManager alloc]init];
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    locationManager.delegate = self;
-    [locationManager setDistanceFilter:3];
-    [locationManager startUpdatingLocation];
-    userLocation = nil;
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -80,8 +80,9 @@
 # pragma mark - get Database
 - (void )getDatabase
 {
-    [[BeNCProcessDatabase sharedMyDatabase]getDatebase];
-    shopsArray = [[NSMutableArray alloc]initWithArray:[[BeNCProcessDatabase sharedMyDatabase] arrayShop]];
+    BeNCListViewController *listViewController = [[BeNCListViewController alloc]initWithNibName:@"BeNCListViewController" bundle:nil];
+    shopsArray = [[[NSMutableArray alloc]initWithArray:listViewController.shopsArray]retain];
+
 }
 
 - (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity
@@ -105,11 +106,11 @@
         [detailView setIndex:i];
         [arrayShopDistance addObject:detailView];
         BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
-        [detailView setContentForView:shopEntity];
+        [detailView setContentForView1:shopEntity];
         if (i < 3) {
             CGRect frame = detailView.view.frame;
             frame.origin.x =  5;
-            frame.origin.y = 105 * (i % 3) + 5;
+            frame.origin.y = 85 * (i % 3) + 5;
             detailView.view.frame = frame;
             
         }
@@ -117,7 +118,7 @@
         else if (i >=3 && i < 5 ) {
             CGRect frame = detailView.view.frame;
             frame.origin.x =  480 - frame.size.width -5;
-            frame.origin.y = 105 * (i % 3) + 55;
+            frame.origin.y = 95 * (i % 3) + 55;
             detailView.view.frame = frame;
         }
         [self.view addSubview:detailView.view];
@@ -144,8 +145,9 @@
     [self deleteData];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
+
+-(void)didUpdateLocation:(NSNotification *)notification {
+    CLLocation *newLocation = (CLLocation *)[notification object];
     [userLocation release];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     [self sortShopByDistance];
@@ -157,8 +159,78 @@
     BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:shopEntity];
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];
-
 }
+
+- (void)setNewCenterForView:(float )angleToHeading  withDetailView:(BeNCDetailInCameraViewController *)detailViewInCamera{
+    float originX = detailViewInCamera.view.frame.size.width/2;
+    float originY = detailViewInCamera.view.frame.size.height/2;
+    float angle1 = atanf(125.0/240.0);
+    float angle2 = M_PI - angle1;
+    float a = tan(angleToHeading);
+    float b = 125 - 240 * a ;
+    float valueX ;
+    float valueY;
+    if ((0 <= angleToHeading && angleToHeading < angle1 )||( - angle1 <= angleToHeading && angleToHeading < 0)) {
+        valueX = originX;
+        valueY =  b;
+    }
+    else if (angle1 <= angleToHeading && angleToHeading< angle2){
+        valueX =   - b / a ;
+        valueY = originY;
+    }
+    else if ((angle2 <= angleToHeading && angleToHeading < M_PI) || (- M_PI <= angleToHeading && angleToHeading < - angle2)) {
+        valueX = 480 - originX;
+        valueY = 480 * a + b;
+    }
+    else if (- angle2 <= angleToHeading && angleToHeading <  - angle1) {
+        valueX = ( 250 -b )/a;
+        valueY = 300 - originY;
+    }
+    if (valueX <= originX) {
+        valueX = originX;
+    }
+    if (valueX > 480 - originX ) {
+        valueX = 480 - originX ;
+    }
+    if (valueY <= originY) {
+        valueY = originY;
+    }
+    if (valueY > 300 - originY ) {
+        valueY = 300 - originY;
+    }
+    CGPoint newCenter = CGPointMake(valueX, valueY);
+    detailViewInCamera.view.center = newCenter;
+    
+}
+
+//-(void)didUpdateHeading:(NSNotification *)notification{
+//    CLHeading *newHeading = [notification object];
+//    float angleToHeading;
+//    double angleToNorth =   newHeading.magneticHeading * rotationRate ;
+//    if (rotationAngleArrow >= 0) {
+//        angleToHeading = rotationAngleArrow - angleToNorth;
+//        if (angleToHeading < - M_PI) {
+//            angleToHeading = 2 * M_PI - (angleToNorth - rotationAngleArrow);
+//        }
+//    }
+//    else if (rotationAngleArrow < 0){
+//        angleToHeading =  rotationAngleArrow - angleToNorth;
+//        
+//        if ( angleToHeading < - M_PI) {
+//            angleToHeading = 2 * M_PI + angleToHeading;
+//        }
+//        
+//    }
+//    [self setNewCenterForView:angleToHeading];
+//}
+
+//-(void)didUpdateLocation:(NSNotification *)notification {
+//    CLLocation *newLocation = (CLLocation *)[notification object];
+//    [userLocation release];
+//    userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
+//    rotationAngleArrow = [self caculateRotationAngle:shop];
+//}
+
 - (void)dealloc
 {
     [captureSession stopRunning];

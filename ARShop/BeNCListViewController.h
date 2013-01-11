@@ -34,7 +34,7 @@
     NSMutableArray *arrayButtonItem;
 }
 @property(nonatomic,strong) id<ListViewOnMapDelegate> delegate;
-
+@property(nonatomic, retain) NSMutableArray *shopsArray;
 @property float distanceToShop;
 @property(nonatomic,retain)IBOutlet UITableView *listShopView;
 @property(nonatomic,retain)CLLocation *userLocation ;

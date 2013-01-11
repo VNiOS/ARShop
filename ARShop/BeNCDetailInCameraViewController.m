@@ -40,14 +40,38 @@
 - (void)setContentForView:(BeNCShopEntity *)shopEntity
 {
     detailShop = [[BeNCDetailShopInCamera alloc]initWithShop:shopEntity];
+    [detailShop updateContentDetailShop:shopEntity];
     detailShop.delegate = self;
     self.view.frame = detailShop.frame;
     [self.view addSubview:detailShop];
+    
     arrowImage = [[BeNCArrow alloc]initWithShop:shopEntity];
     [self.view addSubview:arrowImage];
     [self.view setBackgroundColor:[UIColor clearColor]];
 //    timer = [[NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(updateMotion) userInfo:nil repeats:YES]retain];   
 }
+
+- (void)setContentForView1:(BeNCShopEntity *)shopEntity
+{
+    detailShop = [[BeNCDetailShopInCamera alloc]initWithShop:shopEntity];
+    [detailShop setContentDetailShop:shopEntity];
+    detailShop.delegate = self;
+    CGRect frame = detailShop.frame;
+    frame.size.height = frame.size.width + 30;
+    self.view.frame = frame;
+    
+    CGRect frame1 = detailShop.frame;
+    frame1.origin.x = 0;
+    frame1.origin.y = 30;
+    detailShop.frame = frame1;
+    [self.view addSubview:detailShop];
+    
+    arrowImage = [[BeNCArrow alloc]initWithShop:shopEntity];
+    arrowImage.frame = CGRectMake(frame.size.width/2 - 15, 0 , 20, 30);
+    [self.view addSubview:arrowImage];
+    [self.view setBackgroundColor:[UIColor clearColor]];
+}
+
 
 - (void)updateMotion
 {
