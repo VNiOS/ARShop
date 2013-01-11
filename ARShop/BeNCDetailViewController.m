@@ -70,7 +70,8 @@
     [self.view addSubview:logoImgaeView];
     
     UILabel *labelShopName = [[UILabel alloc]init];
-    [labelShopName setBackgroundColor:[UIColor clearColor]];
+    [labelShopName setBackgroundColor:[UIColor grayColor]];
+    [labelShopName setTextColor:[UIColor whiteColor]];
     labelShopName.text = shopEntity.shop_name;
     [labelShopName setTextAlignment:UITextAlignmentCenter];
     [labelShopName setFont:[UIFont boldSystemFontOfSize:textSize +2]];
@@ -90,49 +91,44 @@
 
     UILabel *labelAddressDetail = [[UILabel alloc]init];
     [labelAddressDetail setBackgroundColor:[UIColor clearColor]];
-    labelAddressDetail.text = shopEntity.shop_address_detail;
-    [labelAddressDetail setFont:[UIFont systemFontOfSize:textSize - 2]];
+    labelAddressDetail.text = [NSString stringWithFormat:@"Address detail : %@",shopEntity.shop_address_detail];
+    [labelAddressDetail setFont:[UIFont systemFontOfSize:textSize ]];
     CGSize labelShopAddressDetailSize = [shopEntity.shop_name sizeWithFont:[UIFont systemFontOfSize:textSize -2] constrainedToSize:CGSizeMake(300, max) lineBreakMode:UILineBreakModeCharacterWrap];
     labelAddressDetail.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + 10, 300, labelShopAddressDetailSize.height);
     [self.view addSubview:labelAddressDetail];
     
     UILabel *labelShopDescription = [[UILabel alloc]init];
     [labelShopDescription setBackgroundColor:[UIColor clearColor]];
-    labelShopDescription.text = shopEntity.shop_description;
-    [labelShopDescription setFont:[UIFont systemFontOfSize:textSize -2]];
+    [labelShopDescription setTextColor:[UIColor redColor]];
+    labelShopDescription.text = [NSString stringWithFormat:@"%@",shopEntity.shop_description];
+    [labelShopDescription setFont:[UIFont systemFontOfSize:textSize ]];
     CGSize labelShopDescriptionSize = [shopEntity.shop_description sizeWithFont:[UIFont systemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(300, max) lineBreakMode:UILineBreakModeCharacterWrap];
     [self.view addSubview:labelShopDescription];
     labelShopDescription.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + 10, 300, labelShopDescriptionSize.height);
     
     UILabel *labelShopPhone = [[UILabel alloc]init];
     [labelShopPhone setBackgroundColor:[UIColor clearColor]];
-    labelShopPhone.text = [NSString stringWithFormat:@"%i",shopEntity.shop_phone];
+    labelShopPhone.text = [NSString stringWithFormat:@"Tel : %i",shopEntity.shop_phone];
     [labelShopPhone setFont:[UIFont systemFontOfSize:textSize ]];
     labelShopPhone.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + labelShopDescriptionSize.height +15, 320, 20);
     [self.view addSubview:labelShopPhone];
     
     UILabel *labelTimeOpen = [[UILabel alloc]init];
     [labelTimeOpen setBackgroundColor:[UIColor clearColor]];
-    labelTimeOpen.text = shopEntity.shop_open_time ;
+    labelTimeOpen.text = [NSString stringWithFormat:@"Open time: %@ - %@",shopEntity.shop_open_time,shopEntity.shop_close_time] ;
     [labelTimeOpen setFont:[UIFont systemFontOfSize:textSize ]];
-    labelTimeOpen.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + labelShopDescriptionSize.height + 40, 100, 20);
+    labelTimeOpen.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + labelShopDescriptionSize.height + 40, 250, 20);
     [self.view addSubview:labelTimeOpen];
-   
-    UILabel *labelTimeClose = [[UILabel alloc]init];
-    [labelTimeClose setBackgroundColor:[UIColor clearColor]];
-    labelTimeClose.text = shopEntity.shop_close_time;
-    [labelTimeClose setFont:[UIFont systemFontOfSize:textSize ]];
-    [self.view addSubview:labelTimeClose];
-    labelTimeClose.frame = CGRectMake(180, labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + labelShopDescriptionSize.height + 40,100, 20);
+
     
     UIButton *buttonToMenuSite = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonToMenuSite.frame = CGRectMake(50,labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + labelShopDescriptionSize.height + 65, 60, 40);
+    buttonToMenuSite.frame = CGRectMake(90,labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + labelShopDescriptionSize.height + 65, 60, 40);
     [buttonToMenuSite setBackgroundImage:[UIImage imageNamed:@"menu.gif"] forState:UIControlStateNormal];
     [buttonToMenuSite addTarget:self action:@selector(goToMenuSite:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:buttonToMenuSite];
     
     UIButton *buttonToCouponSite = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonToCouponSite.frame = CGRectMake(160, labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + labelShopDescriptionSize.height + 65, 60, 40);
+    buttonToCouponSite.frame = CGRectMake(200, labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + labelShopDescriptionSize.height + 65, 60, 40);
     [buttonToCouponSite setBackgroundImage:[UIImage imageNamed:@"coupon.png"] forState:UIControlStateNormal];
     [buttonToCouponSite addTarget:self action:@selector(goToCouponSite:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:buttonToCouponSite];

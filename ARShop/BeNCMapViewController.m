@@ -42,6 +42,7 @@ bool firstUpdate = 1;
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController.navigationBar setHidden:YES];
+    
 }
 - (void)viewDidLoad
 {
@@ -221,9 +222,9 @@ bool firstUpdate = 1;
         [listShopViewController getShopDataFromMap:selectedShops];
         CGAffineTransform scale = CGAffineTransformMakeScale(0.8, 0.8);
         navigation.view.transform = scale;
-//        [navigation.view.layer setShadowRadius:6];
-//        [navigation.view.layer setShadowOpacity:0.9];
-//        [navigation.view.layer setShadowColor:[UIColor blackColor].CGColor];
+        [navigation.view.layer setShadowRadius:6];
+        [navigation.view.layer setShadowOpacity:0.9];
+        [navigation.view.layer setShadowColor:[UIColor blackColor].CGColor];
         
         [navigation.view setFrame:CGRectMake(220, 110, 4, 2)];
         [self.view addSubview:navigation.view];
