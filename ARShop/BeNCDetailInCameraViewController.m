@@ -39,7 +39,7 @@
     detailShop = [[BeNCDetailShopInCamera alloc]initWithShop:shopEntity];
     detailShop.delegate = self;
     CGRect frame = detailShop.frame;
-    frame.size.height = 70;
+    frame.size.height = 110;
     self.view.frame = frame;    
     CGRect frame1 = detailShop.frame;
     frame1.origin.x = 0;
@@ -51,6 +51,10 @@
     arrowImage.frame = CGRectMake(frame.size.width/2 - 15, 0 , 20, 30);
     [self.view addSubview:arrowImage];
     [self.view setBackgroundColor:[UIColor clearColor]];
+    
+    UITapGestureRecognizer *recognize = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTouchesToView:)];
+    [self.view addGestureRecognizer:recognize];
+    [recognize release];
 }
 
 
@@ -74,13 +78,14 @@
 {
     index = aIndex;
 }
-- (void)didTouchesToView
+- (void)didTouchesToView:(UITapGestureRecognizer *) recognizer
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(didSeclectView:)]) {
         NSLog(@"test delegate co den k");
         [self.delegate didSeclectView:self.index];
     }
 }
+
 - (void)dealloc
 {
     [timer release];
