@@ -27,15 +27,43 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         userLocation = [[LocationService sharedLocation] getOldLocation];
-        [self sortShopByDistance];
-//        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
         [self addVideoInput];
+        shopEntity1 = (BeNCShopEntity *)[shopsArray objectAtIndex:0];
+        shopEntity2 = (BeNCShopEntity *)[shopsArray objectAtIndex:1];
+        shopEntity3 = (BeNCShopEntity *)[shopsArray objectAtIndex:2];
+        shopEntity4 = (BeNCShopEntity *)[shopsArray objectAtIndex:3];
+        shopEntity5 = (BeNCShopEntity *)[shopsArray objectAtIndex:4];
+        
+        detaitlView1 = [[BeNCDetailInCameraViewController alloc]initWithShop:shopEntity1];
+        detaitlView1.delegate = self;
+        [detaitlView1 setIndex:0];
+        detaitlView2 = [[BeNCDetailInCameraViewController alloc]initWithShop:shopEntity2];
+        detaitlView2.delegate = self;
+        [detaitlView1 setIndex:1];
+        detaitlView3 = [[BeNCDetailInCameraViewController alloc]initWithShop:shopEntity3];
+        detaitlView3.delegate = self;
+        [detaitlView1 setIndex:2];
+        detaitlView4 = [[BeNCDetailInCameraViewController alloc]initWithShop:shopEntity4];
+        detaitlView4.delegate = self;
+        [detaitlView1 setIndex:3];
+        detaitlView5 = [[BeNCDetailInCameraViewController alloc]initWithShop:shopEntity5];
+        detaitlView5.delegate = self;
+        [detaitlView1 setIndex:4];
+
+        
+        
+        [self.view addSubview:detaitlView5.view];
+        [self.view addSubview:detaitlView4.view];
+        [self.view addSubview:detaitlView3.view];
+        [self.view addSubview:detaitlView2.view];
+        [self.view addSubview:detaitlView1.view];
+
         // Custom initialization
     }
     return self;
 }
-
 
 - (void)viewDidLoad
 {
@@ -96,69 +124,84 @@
 #pragma mark - set Content For View
 
 
-- (void)setContentForView
-{
-    [arrayShopDistance release];
-    arrayShopDistance = [[NSMutableArray alloc]init];
-    for (int i = 0; i < 5; i ++) {
-        BeNCDetailInCameraViewController *detailView = [[BeNCDetailInCameraViewController alloc]initWithNibName:@"BeNCDetailInCameraViewController" bundle:nil];
-        detailView.delegate = self;
-        [detailView setIndex:i];
-        [arrayShopDistance addObject:detailView];
-        BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
-        [detailView setContentForView1:shopEntity];
-        if (i < 3) {
-            CGRect frame = detailView.view.frame;
-            frame.origin.x =  5;
-            frame.origin.y = 85 * (i % 3) + 5;
-            detailView.view.frame = frame;
-            
-        }
-        
-        else if (i >=3 && i < 5 ) {
-            CGRect frame = detailView.view.frame;
-            frame.origin.x =  480 - frame.size.width -5;
-            frame.origin.y = 103 * (i % 3) + 35;
-            detailView.view.frame = frame;
-        }
-        [self.view addSubview:detailView.view];
-        
-    }
-}
-- (void)deleteData
-{
-    for (int i = 0; i < [arrayShopDistance count]; i ++) {
-        BeNCDetailInCameraViewController *detailView = (BeNCDetailInCameraViewController *)[arrayShopDistance objectAtIndex:i];
-        [detailView.view removeFromSuperview];
-        [detailView release];
-    }
-    [self setContentForView];
-}
-- (void)sortShopByDistance
-{
-    for (int i = 0; i < [shopsArray count]; i ++) {
-        for (int j = i + 1; j < [shopsArray count]; j ++) {
-            if ([self caculateDistanceToShop:[shopsArray objectAtIndex:i]] > [self caculateDistanceToShop:[shopsArray objectAtIndex:j]]) 
-                [shopsArray exchangeObjectAtIndex:i withObjectAtIndex:j];
-        }
-    }
-    [self deleteData];
-}
+//- (void)setContentForView
+//{
+//    [arrayShopDistance release];
+//    arrayShopDistance = [[NSMutableArray alloc]init];
+//    for (int i = 0; i < 5; i ++) {
+//
+//        BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
+//        BeNCDetailInCameraViewController *detailView = [[BeNCDetailInCameraViewController alloc]initWithShop:shopEntity];
+//        detailView.delegate = self;
+//        [detailView setIndex:i];
+//        [arrayShopDistance addObject:detailView];
+//
+//        if (i < 3) {
+//            CGRect frame = detailView.view.frame;
+//            frame.origin.x =  5;
+//            frame.origin.y = 85 * (i % 3) + 5;
+//            detailView.view.frame = frame;
+//            
+//        }
+//        
+//        else if (i >=3 && i < 5 ) {
+//            CGRect frame = detailView.view.frame;
+//            frame.origin.x =  480 - frame.size.width -5;
+//            frame.origin.y = 103 * (i % 3) + 35;
+//            detailView.view.frame = frame;
+//        }
+//        [self.view addSubview:detailView.view];
+//        
+//    }
+//}
+//- (void)deleteData
+//{
+//    for (int i = 0; i < [arrayShopDistance count]; i ++) {
+//        BeNCDetailInCameraViewController *detailView = (BeNCDetailInCameraViewController *)[arrayShopDistance objectAtIndex:i];
+//        [detailView.view removeFromSuperview];
+//        [detailView release];
+//    }
+//    [self setContentForView];
+//}
+//- (void)sortShopByDistance
+//{
+//    for (int i = 0; i < [shopsArray count]; i ++) {
+//        for (int j = i + 1; j < [shopsArray count]; j ++) {
+//            if ([self caculateDistanceToShop:[shopsArray objectAtIndex:i]] > [self caculateDistanceToShop:[shopsArray objectAtIndex:j]]) 
+//                [shopsArray exchangeObjectAtIndex:i withObjectAtIndex:j];
+//        }
+//    }
+//    [self deleteData];
+//}
 
 
 -(void)didUpdateLocation:(NSNotification *)notification {
     CLLocation *newLocation = (CLLocation *)[notification object];
     [userLocation release];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
-    [self sortShopByDistance];
+    rotationAngleArrow1 = [self caculateRotationAngle:shopEntity1];
+    rotationAngleArrow2 = [self caculateRotationAngle:shopEntity2];
+    rotationAngleArrow3 = [self caculateRotationAngle:shopEntity3];
+    rotationAngleArrow4 = [self caculateRotationAngle:shopEntity4];
+    rotationAngleArrow5 = [self caculateRotationAngle:shopEntity5];
 }
 
-- (void)didSeclectView:(int)index
-{
-    BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:index];
-    BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:shopEntity];
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
+-(void)didUpdateHeading:(NSNotification *)notification{
+    
+    CLHeading *newHeading = [notification object];
+    double newAngleToNorth =   newHeading.magneticHeading * rotationRate ;
+    float angleToHeading1 = [self caculateRotationAngleToHeading:rotationAngleArrow1 withAngleTonorth:newAngleToNorth];
+    float angleToHeading2 = [self caculateRotationAngleToHeading:rotationAngleArrow2 withAngleTonorth:newAngleToNorth];
+    float angleToHeading3 = [self caculateRotationAngleToHeading:rotationAngleArrow3 withAngleTonorth:newAngleToNorth];
+    float angleToHeading4 = [self caculateRotationAngleToHeading:rotationAngleArrow4 withAngleTonorth:newAngleToNorth];
+    float angleToHeading5 = [self caculateRotationAngleToHeading:rotationAngleArrow5 withAngleTonorth:newAngleToNorth];
+
+    [self setNewCenterForView:angleToHeading1 withDetailView:detaitlView1];
+    [self setNewCenterForView:angleToHeading2 withDetailView:detaitlView2];
+    [self setNewCenterForView:angleToHeading3 withDetailView:detaitlView3];
+    [self setNewCenterForView:angleToHeading4 withDetailView:detaitlView4];
+    [self setNewCenterForView:angleToHeading5 withDetailView:detaitlView5];
+
 }
 
 - (void)setNewCenterForView:(float )angleToHeading  withDetailView:(BeNCDetailInCameraViewController *)detailViewInCamera{
@@ -184,7 +227,7 @@
     }
     else if (- angle2 <= angleToHeading && angleToHeading <  - angle1) {
         valueX = ( 250 -b )/a;
-        valueY = 300 - originY;
+        valueY = 196 - originY;
     }
     if (valueX <= originX) {
         valueX = originX;
@@ -195,41 +238,71 @@
     if (valueY <= originY) {
         valueY = originY;
     }
-    if (valueY > 300 - originY ) {
-        valueY = 300 - originY;
+    if (valueY > 196 - originY ) {
+        valueY = 196 - originY;
     }
     CGPoint newCenter = CGPointMake(valueX, valueY);
     detailViewInCamera.view.center = newCenter;
     
 }
 
-//-(void)didUpdateHeading:(NSNotification *)notification{
-//    CLHeading *newHeading = [notification object];
-//    float angleToHeading;
-//    double angleToNorth =   newHeading.magneticHeading * rotationRate ;
-//    if (rotationAngleArrow >= 0) {
-//        angleToHeading = rotationAngleArrow - angleToNorth;
-//        if (angleToHeading < - M_PI) {
-//            angleToHeading = 2 * M_PI - (angleToNorth - rotationAngleArrow);
-//        }
-//    }
-//    else if (rotationAngleArrow < 0){
-//        angleToHeading =  rotationAngleArrow - angleToNorth;
-//        
-//        if ( angleToHeading < - M_PI) {
-//            angleToHeading = 2 * M_PI + angleToHeading;
-//        }
-//        
-//    }
-//    [self setNewCenterForView:angleToHeading];
-//}
+-(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity{
+    CLLocation *shopLocation = [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute];
+    CLLocationDistance distance = [shopLocation distanceFromLocation:userLocation];
+    CLLocation *point =  [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:userLocation.coordinate.longitude];
+    CLLocationDistance distance1 = [userLocation distanceFromLocation:point];
+    double rotationAngle;
+    
+    double angle=acos(distance1/distance);
+    if (userLocation.coordinate.latitude<=shopEntity.shop_latitude) {
+        if (userLocation.coordinate.longitude<=shopEntity.shop_longitute) {
+            rotationAngle = angle;
+        }
+        else{
+            rotationAngle = - angle;
+        }
+    }
+    else{
+        if (userLocation.coordinate.longitude<shopEntity.shop_longitute) {
+            rotationAngle = M_PI - angle;
+        }
+        else{
+            rotationAngle = -(M_PI - angle);
+        }
+    }
+    return rotationAngle;
+}
 
-//-(void)didUpdateLocation:(NSNotification *)notification {
-//    CLLocation *newLocation = (CLLocation *)[notification object];
-//    [userLocation release];
-//    userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
-//    rotationAngleArrow = [self caculateRotationAngle:shop];
-//}
+-(double)caculateRotationAngleToHeading:(double)angleToShop withAngleTonorth:(double )angleToNorth
+{
+    float angleToHeading;
+    if (angleToShop >= 0) {
+        angleToHeading = angleToShop - angleToNorth;
+        if (angleToHeading < - M_PI) {
+            angleToHeading = 2 * M_PI - (angleToNorth - angleToShop);
+        }
+    }
+    else if (angleToShop < 0){
+        angleToHeading =  angleToShop - angleToNorth;
+        
+        if ( angleToHeading < - M_PI) {
+            angleToHeading = 2 * M_PI + angleToHeading;
+        }
+    }
+    return angleToHeading;
+
+}
+
+
+- (void)didSeclectView:(int)index
+{
+    NSLog(@"test delegate co den k");
+    BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:index];
+    BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:shopEntity];
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController release];
+}
+
 
 - (void)dealloc
 {

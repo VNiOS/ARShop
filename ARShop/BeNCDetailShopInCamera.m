@@ -38,38 +38,37 @@
         [self addSubview:labelShopAddress];
         [self addSubview:labelDistanceToShop];
         [self.layer setCornerRadius:8];
-        self.alpha = 0.5; 
-//        [self updateContentDetailShop:shopEntity];
+//        self.alpha = 0.5; 
+        [self setContentDetailShop:shopEntity];
 
         // Initialization code
     }
     return self;
 }
 
-- (void)updateContentDetailShop:(BeNCShopEntity *)shopEntity
-{
-    labelShopName.text = shopEntity.shop_name;
-    [labelShopName setFont:[UIFont boldSystemFontOfSize:textSize]];
-    [labelShopName setTextAlignment:UITextAlignmentCenter];
-    labelShopAddress.text = shopEntity.shop_address;
-    [labelShopAddress setFont:[UIFont systemFontOfSize:textSize-4]];
-    [labelShopAddress setTextAlignment:UITextAlignmentCenter];
-    CGSize labelShopNameSize = [shopEntity.shop_name sizeWithFont:[UIFont boldSystemFontOfSize:textSize] constrainedToSize:CGSizeMake(max, 40) lineBreakMode:UILineBreakModeCharacterWrap];
-    CGSize labelShopAddressSize = [shopEntity.shop_address sizeWithFont:[UIFont systemFontOfSize:textSize - 4] constrainedToSize:CGSizeMake(max, 30) lineBreakMode:UILineBreakModeCharacterWrap];
-    float originLabelDistance = [self caculateMax:labelShopNameSize.width withNumberB:labelShopAddressSize.width];
-    
-    labelShopName.frame = CGRectMake(50, 0,originLabelDistance,25 );
-    labelShopAddress.frame = CGRectMake(50, 20,originLabelDistance,25);
-    labelDistanceToShop.frame = CGRectMake(originLabelDistance + 60, 0, 65, 45);
-    self.frame = CGRectMake(0, 0,originLabelDistance + 125 ,50 );
-    [self setBackgroundColor:[UIColor whiteColor]];
-    
-}
+//- (void)updateContentDetailShop:(BeNCShopEntity *)shopEntity
+//{
+//    labelShopName.text = shopEntity.shop_name;
+//    [labelShopName setFont:[UIFont boldSystemFontOfSize:textSize]];
+//    [labelShopName setTextAlignment:UITextAlignmentCenter];
+//    labelShopAddress.text = shopEntity.shop_address;
+//    [labelShopAddress setFont:[UIFont systemFontOfSize:textSize-4]];
+//    [labelShopAddress setTextAlignment:UITextAlignmentCenter];
+//    CGSize labelShopNameSize = [shopEntity.shop_name sizeWithFont:[UIFont boldSystemFontOfSize:textSize] constrainedToSize:CGSizeMake(max, 40) lineBreakMode:UILineBreakModeCharacterWrap];
+//    CGSize labelShopAddressSize = [shopEntity.shop_address sizeWithFont:[UIFont systemFontOfSize:textSize - 4] constrainedToSize:CGSizeMake(max, 30) lineBreakMode:UILineBreakModeCharacterWrap];
+//    float originLabelDistance = [self caculateMax:labelShopNameSize.width withNumberB:labelShopAddressSize.width];
+//    
+//    labelShopName.frame = CGRectMake(50, 0,originLabelDistance,25 );
+//    labelShopAddress.frame = CGRectMake(50, 20,originLabelDistance,25);
+//    labelDistanceToShop.frame = CGRectMake(originLabelDistance + 60, 0, 65, 45);
+//    self.frame = CGRectMake(0, 0,originLabelDistance + 125 ,50 );
+//    [self setBackgroundColor:[UIColor whiteColor]];
+//    
+//}
 
 - (void)setContentDetailShop:(BeNCShopEntity *)shopEntity
 {
     [labelDistanceToShop setFont:[UIFont systemFontOfSize:textSize - 4]];
-
     labelShopName.text = shopEntity.shop_name;
     [labelShopName setFont:[UIFont boldSystemFontOfSize:textSize - 2]];
     [labelShopName setTextAlignment:UITextAlignmentCenter];

@@ -29,6 +29,5 @@
 - (id)initWithShop:(BeNCShopEntity *)shopEntity;
 - (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity;
 - (float)caculateMax:(float )numberA withNumberB:(float )numberB;
-- (void)updateContentDetailShop:(BeNCShopEntity *)shopEntity;
 - (void)setContentDetailShop:(BeNCShopEntity *)shopEntity;
 @end

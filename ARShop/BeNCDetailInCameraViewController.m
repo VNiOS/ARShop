@@ -23,43 +23,24 @@
 @implementation BeNCDetailInCameraViewController
 @synthesize shop,delegate,index;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithShop:(BeNCShopEntity *)shopEntity
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super init];
     if (self) {
-//        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
-        userLocation = [[CLLocation alloc]init];
-        motionManager = [[CMMotionManager alloc]init];
-        motionManager.deviceMotionUpdateInterval = 1.0/60.0;
-        if (motionManager.isDeviceMotionAvailable) {
-            [motionManager startDeviceMotionUpdates];
-        }
+
+        [self setContentForView:shopEntity];
     }
     return self;
 }
+
+
 - (void)setContentForView:(BeNCShopEntity *)shopEntity
 {
     detailShop = [[BeNCDetailShopInCamera alloc]initWithShop:shopEntity];
-    [detailShop updateContentDetailShop:shopEntity];
-    detailShop.delegate = self;
-    self.view.frame = detailShop.frame;
-    [self.view addSubview:detailShop];
-    
-    arrowImage = [[BeNCArrow alloc]initWithShop:shopEntity];
-    [self.view addSubview:arrowImage];
-    [self.view setBackgroundColor:[UIColor clearColor]];
-//    timer = [[NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(updateMotion) userInfo:nil repeats:YES]retain];   
-}
-
-- (void)setContentForView1:(BeNCShopEntity *)shopEntity
-{
-    detailShop = [[BeNCDetailShopInCamera alloc]initWithShop:shopEntity];
-    [detailShop setContentDetailShop:shopEntity];
     detailShop.delegate = self;
     CGRect frame = detailShop.frame;
-    frame.size.height = frame.size.width + 30;
-    self.view.frame = frame;
-    
+    frame.size.height = 70;
+    self.view.frame = frame;    
     CGRect frame1 = detailShop.frame;
     frame1.origin.x = 0;
     frame1.origin.y = 30;
@@ -73,30 +54,9 @@
 }
 
 
-- (void)updateMotion
-{
-    CMDeviceMotion *currentDeviceMotion = motionManager.deviceMotion;
-    CMAttitude *currentAttitude = currentDeviceMotion.attitude;
-    float roll = currentAttitude.roll;
-    float pitch = currentAttitude.pitch;
-    float yaw = currentAttitude.yaw;
-    float scaleWidth = ( widthFrame * cosf(pitch) )/widthFrame;
-    float scaleHeight = ( heightFrame * cosf(roll) )/heightFrame;
-    if (scaleWidth < 0.1) {
-        scaleWidth = 0.1;
-    }
-    if (scaleHeight < 0.1) {
-        scaleHeight = 0.1;
-    }
-    CGAffineTransform transfromScale = CGAffineTransformMakeRotation(yaw);
-    arrowImage.transform = CGAffineTransformScale(transfromScale, 1, scaleHeight);
-    [arrowImage setCenter:CGPointMake(22, 22)];
-}
 - (void)viewDidLoad
 {
-//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
@@ -117,6 +77,7 @@
 - (void)didTouchesToView
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(didSeclectView:)]) {
+        NSLog(@"test delegate co den k");
         [self.delegate didSeclectView:self.index];
     }
 }

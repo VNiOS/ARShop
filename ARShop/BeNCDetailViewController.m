@@ -100,7 +100,6 @@
     
     UILabel *labelShopDescription = [[UILabel alloc]init];
     [labelShopDescription setBackgroundColor:[UIColor clearColor]];
-    [labelShopDescription setTextColor:[UIColor redColor]];
     labelShopDescription.text = [NSString stringWithFormat:@"%@",shopEntity.shop_description];
     [labelShopDescription setFont:[UIFont systemFontOfSize:textSize ]];
     CGSize labelShopDescriptionSize = [shopEntity.shop_description sizeWithFont:[UIFont systemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(300, max) lineBreakMode:UILineBreakModeCharacterWrap];

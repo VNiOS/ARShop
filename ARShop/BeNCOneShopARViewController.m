@@ -73,8 +73,7 @@
 }
 - (void)setContentForView:(BeNCShopEntity *)shopEntity
 {
-    detailView = [[BeNCDetailInCameraViewController alloc]initWithNibName:@"BeNCDetailInCameraViewController" bundle:nil];
-    [detailView setContentForView1:shopEntity];
+    detailView = [[BeNCDetailInCameraViewController alloc]initWithShop:shopEntity];
     [self.view addSubview:detailView.view];
 }
 - (void)setNewCenterForView:(float )angleToHeading{
@@ -100,7 +99,7 @@
     }
     else if (- angle2 <= angleToHeading && angleToHeading <  - angle1) {
             valueX = ( 250 -b )/a;
-            valueY = 300 - originY;
+            valueY = 196 - originY;
     }
     if (valueX <= originX) {
         valueX = originX;
@@ -111,8 +110,8 @@
     if (valueY <= originY) {
         valueY = originY;
     }
-    if (valueY > 300 - originY ) {
-        valueY = 300 - originY;
+    if (valueY > 196 - originY ) {
+        valueY = 196 - originY;
     }
     CGPoint newCenter = CGPointMake(valueX, valueY);
     detailView.view.center = newCenter;

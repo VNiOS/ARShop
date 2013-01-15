@@ -17,7 +17,24 @@
     NSMutableArray *shopsArray;
     CLLocation *userLocation ;
     NSMutableArray *arrayShopDistance;
-    float rotationAngleArrow;
+    double rotationAngleArrow1;
+    double rotationAngleArrow2;
+    double rotationAngleArrow3;
+    double rotationAngleArrow4;
+    double rotationAngleArrow5;
+    BeNCShopEntity *shopEntity1;
+    BeNCShopEntity *shopEntity2;
+    BeNCShopEntity *shopEntity3;
+    BeNCShopEntity *shopEntity4;
+    BeNCShopEntity *shopEntity5;
+    BeNCDetailInCameraViewController *detaitlView1;
+    BeNCDetailInCameraViewController *detaitlView2;
+    BeNCDetailInCameraViewController *detaitlView3;
+    BeNCDetailInCameraViewController *detaitlView4;
+    BeNCDetailInCameraViewController *detaitlView5;
 }
 - (void)addVideoInput;
+-(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity;
+- (void)setNewCenterForView:(float )angleToHeading  withDetailView:(BeNCDetailInCameraViewController *)detailViewInCamera;
+
 @end

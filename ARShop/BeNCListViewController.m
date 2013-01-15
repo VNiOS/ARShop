@@ -31,8 +31,8 @@
     if (self) {
         userLocation = [[LocationService sharedLocation]getOldLocation];
         [self getShopData];
+        [self sortShopByDistance];
 
-        // Custom initialization
     }
     return self;
 }

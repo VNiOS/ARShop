@@ -29,8 +29,8 @@
 @property int index;
 @property(nonatomic, retain)id<BeNCDetailInCameraDelegate>delegate;
 @property(nonatomic, retain)BeNCShopEntity *shop;
+- (id)initWithShop:(BeNCShopEntity *)shopEntity;
 - (void)setContentForView:(BeNCShopEntity *)shopEntity;
-- (void)setContentForView1:(BeNCShopEntity *)shopEntity;
 
 
 @end
