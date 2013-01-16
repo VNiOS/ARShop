@@ -85,7 +85,7 @@
     labelShopAddress.frame = CGRectMake(3, 15,originLabelDistance,15);
     labelDistanceToShop.frame = CGRectMake(originLabelDistance + 5, 12,labelToShopSize.width, 15);
 //    self.frame = CGRectMake(0, 30,originLabelDistance + labelToShopSize.width + 8 ,30 );
-    [self setBackgroundColor:[UIColor whiteColor]];
+    [self setBackgroundColor:[UIColor blueColor]];
     
 }
 

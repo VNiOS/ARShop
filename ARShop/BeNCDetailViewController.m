@@ -13,7 +13,7 @@
 #import "LocationService.h"
 #import "BeNCOneShopARViewController.h"
 #import "EGOImageView.h"
-#define textSize 20
+#define textSize 18
 #define max 1000000
 @interface BeNCDetailViewController ()
 
@@ -30,8 +30,9 @@
         shop = shopEntity;
         labelDistanceToShop = [[UILabel alloc]init];
         [labelDistanceToShop setTextAlignment:UITextAlignmentCenter];
-        labelDistanceToShop.frame = CGRectMake(390, 60, 90, 30);
-        labelDistanceToShop.text = [NSString stringWithFormat:@"%d m",[self caculateDistanceToShop:shopEntity]];
+        [labelDistanceToShop setFont:[UIFont systemFontOfSize:textSize - 2]];
+        labelDistanceToShop.frame = CGRectMake(410, 50, 70, 30);
+        labelDistanceToShop.text = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:shopEntity]];
         [self.view addSubview:labelDistanceToShop];
         
         userLocation = [[[LocationService sharedLocation]getOldLocation]retain];
@@ -70,71 +71,76 @@
     [self.view addSubview:logoImgaeView];
     
     UILabel *labelShopName = [[UILabel alloc]init];
+    labelShopName.numberOfLines = 0;
     [labelShopName setBackgroundColor:[UIColor grayColor]];
     [labelShopName setTextColor:[UIColor whiteColor]];
     labelShopName.text = shopEntity.shop_name;
     [labelShopName setTextAlignment:UITextAlignmentCenter];
-    [labelShopName setFont:[UIFont boldSystemFontOfSize:textSize +2]];
-    CGSize labelShopNameSize = [shopEntity.shop_name sizeWithFont:[UIFont systemFontOfSize:textSize + 2] constrainedToSize:CGSizeMake(320, max) lineBreakMode:UILineBreakModeCharacterWrap];
+    [labelShopName setFont:[UIFont boldSystemFontOfSize:textSize +4]];
+    CGSize labelShopNameSize = [shopEntity.shop_name sizeWithFont:[UIFont systemFontOfSize:textSize + 4] constrainedToSize:CGSizeMake(320, max) lineBreakMode:UILineBreakModeCharacterWrap];
     labelShopName.frame = CGRectMake(80, 5, 320, labelShopNameSize.height);
     [self.view addSubview:labelShopName];
     
     UILabel *labelShopAddress = [[UILabel alloc]init];
+    labelShopAddress.numberOfLines = 0;
     [labelShopAddress setBackgroundColor:[UIColor grayColor]];
     [labelShopAddress setTextColor:[UIColor whiteColor]];
     labelShopAddress.text = shopEntity.shop_address;
     [labelShopAddress setTextAlignment:UITextAlignmentCenter];
-    [labelShopAddress setFont:[UIFont systemFontOfSize:textSize ]];
-    CGSize labelShopAddressSize = [shopEntity.shop_address sizeWithFont:[UIFont systemFontOfSize:textSize ] constrainedToSize:CGSizeMake(320, max) lineBreakMode:UILineBreakModeCharacterWrap];
+    [labelShopAddress setFont:[UIFont systemFontOfSize:textSize +2 ]];
+    CGSize labelShopAddressSize = [shopEntity.shop_address sizeWithFont:[UIFont systemFontOfSize:textSize +2 ] constrainedToSize:CGSizeMake(320, max) lineBreakMode:UILineBreakModeCharacterWrap];
     labelShopAddress.frame = CGRectMake(80, labelShopNameSize.height + 5, 320 ,labelShopAddressSize.height);
     [self.view addSubview:labelShopAddress];
     
 
     UILabel *labelAddressDetail = [[UILabel alloc]init];
     [labelAddressDetail setBackgroundColor:[UIColor clearColor]];
-    labelAddressDetail.text = [NSString stringWithFormat:@"Address detail : %@",shopEntity.shop_address_detail];
+    labelAddressDetail.text = [NSString stringWithFormat:@"%@",shopEntity.shop_address_detail];
     [labelAddressDetail setFont:[UIFont systemFontOfSize:textSize ]];
-    CGSize labelShopAddressDetailSize = [shopEntity.shop_name sizeWithFont:[UIFont systemFontOfSize:textSize -2] constrainedToSize:CGSizeMake(300, max) lineBreakMode:UILineBreakModeCharacterWrap];
-    labelAddressDetail.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + 10, 300, labelShopAddressDetailSize.height);
+    CGSize labelShopAddressDetailSize = [shopEntity.shop_address_detail sizeWithFont:[UIFont systemFontOfSize:textSize] constrainedToSize:CGSizeMake(300, max) lineBreakMode:UILineBreakModeCharacterWrap];
+    labelAddressDetail.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + 15, 300, labelShopAddressDetailSize.height);
+    labelAddressDetail.numberOfLines = 0;
     [self.view addSubview:labelAddressDetail];
     
     UILabel *labelShopDescription = [[UILabel alloc]init];
     [labelShopDescription setBackgroundColor:[UIColor clearColor]];
     labelShopDescription.text = [NSString stringWithFormat:@"%@",shopEntity.shop_description];
     [labelShopDescription setFont:[UIFont systemFontOfSize:textSize ]];
-    CGSize labelShopDescriptionSize = [shopEntity.shop_description sizeWithFont:[UIFont systemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(300, max) lineBreakMode:UILineBreakModeCharacterWrap];
+    CGSize labelShopDescriptionSize = [shopEntity.shop_description sizeWithFont:[UIFont systemFontOfSize:textSize] constrainedToSize:CGSizeMake(300, max) lineBreakMode:UILineBreakModeCharacterWrap];
+    labelShopDescription.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + 15, 300, labelShopDescriptionSize.height);
+    labelShopDescription.numberOfLines = 0;
     [self.view addSubview:labelShopDescription];
-    labelShopDescription.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + 10, 300, labelShopDescriptionSize.height);
+
     
     UILabel *labelShopPhone = [[UILabel alloc]init];
     [labelShopPhone setBackgroundColor:[UIColor clearColor]];
-    labelShopPhone.text = [NSString stringWithFormat:@"Tel : %i",shopEntity.shop_phone];
+    labelShopPhone.text = [NSString stringWithFormat:@"Tel : %@",shopEntity.shop_phone];
     [labelShopPhone setFont:[UIFont systemFontOfSize:textSize ]];
-    labelShopPhone.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + labelShopDescriptionSize.height +15, 320, 20);
+    labelShopPhone.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + labelShopDescriptionSize.height + 20, 320, 20);
     [self.view addSubview:labelShopPhone];
     
     UILabel *labelTimeOpen = [[UILabel alloc]init];
     [labelTimeOpen setBackgroundColor:[UIColor clearColor]];
     labelTimeOpen.text = [NSString stringWithFormat:@"Open time: %@ - %@",shopEntity.shop_open_time,shopEntity.shop_close_time] ;
     [labelTimeOpen setFont:[UIFont systemFontOfSize:textSize ]];
-    labelTimeOpen.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + labelShopDescriptionSize.height + 40, 250, 20);
+    labelTimeOpen.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + labelShopDescriptionSize.height + 45, 250, 20);
     [self.view addSubview:labelTimeOpen];
 
     
     UIButton *buttonToMenuSite = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonToMenuSite.frame = CGRectMake(90,labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + labelShopDescriptionSize.height + 65, 60, 40);
+    buttonToMenuSite.frame = CGRectMake(50,labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + labelShopDescriptionSize.height + 70, 60, 40);
     [buttonToMenuSite setBackgroundImage:[UIImage imageNamed:@"menu.gif"] forState:UIControlStateNormal];
     [buttonToMenuSite addTarget:self action:@selector(goToMenuSite:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:buttonToMenuSite];
     
     UIButton *buttonToCouponSite = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonToCouponSite.frame = CGRectMake(200, labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + labelShopDescriptionSize.height + 65, 60, 40);
+    buttonToCouponSite.frame = CGRectMake(140, labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + labelShopDescriptionSize.height + 70, 60, 40);
     [buttonToCouponSite setBackgroundImage:[UIImage imageNamed:@"coupon.png"] forState:UIControlStateNormal];
     [buttonToCouponSite addTarget:self action:@selector(goToCouponSite:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:buttonToCouponSite];
     
     BeNCArrow *arrowImage = [[BeNCArrow alloc]initWithShop:shopEntity];
-    arrowImage.frame = CGRectMake(430,10,30, 45);
+    arrowImage.frame = CGRectMake(430,10,20, 30);
     [self.view addSubview:arrowImage];
     
     UIBarButtonItem *cameraButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"ARShop" style:UIBarButtonSystemItemCamera target:self action:@selector(goToCamera:)];
@@ -157,7 +163,7 @@
     CLLocation *newLocation = (CLLocation *)[notification object];
     [userLocation release];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
-    labelDistanceToShop.text = [NSString stringWithFormat:@"%d m",[self caculateDistanceToShop:shop]];
+    labelDistanceToShop.text = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:shop]];
 }
 
 

@@ -100,7 +100,7 @@
     float originLabelDistance = [self caculateMax:labelShopNameSize.width withNumberB:labelShopAddressSize.width];
     
     CGSize toShopSize = [distanceToShop sizeWithFont:[UIFont systemFontOfSize:textSize - 4] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
-    float sizeWidth = originLabelDistance + toShopSize.width + 12;
+    float sizeWidth = originLabelDistance + toShopSize.width + 5;
     return sizeWidth;
 
 }
@@ -119,8 +119,6 @@
 {
     CLLocation *shoplocation = [[[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute]autorelease];
     int distance = (int)[shoplocation distanceFromLocation: userLocation];
-    NSLog(@"khoang cach den shop %@ la %i",shopEntity.shop_name, distance);
-
     return distance;
 }
 
