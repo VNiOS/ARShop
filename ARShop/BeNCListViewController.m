@@ -31,7 +31,7 @@
     if (self) {
         userLocation = [[LocationService sharedLocation]getOldLocation];
         [self getShopData];
-        [self sortShopByDistance];
+//        [self sortShopByDistance];
 
     }
     return self;

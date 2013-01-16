@@ -99,7 +99,7 @@
     }
     else if (- angle2 <= angleToHeading && angleToHeading <  - angle1) {
             valueX = ( 250 -b )/a;
-            valueY = 196 - originY;
+            valueY = 236 - originY;
     }
     if (valueX <= originX) {
         valueX = originX;
@@ -110,8 +110,8 @@
     if (valueY <= originY) {
         valueY = originY;
     }
-    if (valueY > 196 - originY ) {
-        valueY = 196 - originY;
+    if (valueY > 236 - originY ) {
+        valueY = 236 - originY;
     }
     CGPoint newCenter = CGPointMake(valueX, valueY);
     detailView.view.center = newCenter;
