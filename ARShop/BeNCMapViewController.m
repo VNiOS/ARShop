@@ -66,7 +66,9 @@ bool firstUpdate = 1;
     [self.view addSubview:showUser];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
-    
+    UIImageView *radaimg =  [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Radar.png"]];
+    radaimg.frame = CGRectMake(380, 0, 100, 100);
+    [self.view addSubview:radaimg];
     [self getShopData];
     
 }
@@ -218,6 +220,8 @@ bool firstUpdate = 1;
         BeNCListViewController *listShopViewController = [[BeNCListViewController alloc]initWithNibName:@"BeNCListViewController" bundle:nil];
         listShopViewController.delegate = self;
         UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:listShopViewController];
+        [navigation.navigationBar setHidden:YES];
+        [listShopViewController addButtonDone];
         [listShopViewController setListType:1];
         [listShopViewController getShopDataFromMap:selectedShops];
         CGAffineTransform scale = CGAffineTransformMakeScale(0.8, 0.8);
@@ -243,10 +247,16 @@ bool firstUpdate = 1;
                          navigation.view.frame = CGRectMake(40, 20, 400, 200);
                      }
                      completion:^(BOOL finished) { 
-                         
-                     }];
+                                                                }];
 }
 #pragma mark subView delegate;
+-(void)getShopFromList:(BeNCShopEntity *)shop{
+    BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:shop];
+    detailViewController.delegate = self;
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController release];
+
+}
 -(void)animationScaleOff:(UINavigationController *)listview{
     NSLog(@"Close");
     [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveLinear

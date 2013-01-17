@@ -63,8 +63,8 @@ bool backToRootView;
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	//Create a view holder to store the tabbar items
-	tabBarHolder = [[UIView alloc] initWithFrame:CGRectMake(202, 270, 280, 30)];
-	tabBarHolder.backgroundColor = [UIColor grayColor];
+	tabBarHolder = [[UIView alloc] initWithFrame:CGRectMake(210, 270, 280, 30)];
+	tabBarHolder.backgroundColor = [UIColor clearColor];
     
 	//add it as a subview
 	[self.view addSubview:tabBarHolder];
@@ -93,10 +93,10 @@ bool backToRootView;
 	for (int i = [tabItemsArray count]; i < [tabItemsArray count]; i++) {
 		if (i == index) {
 			[[tabItemsArray objectAtIndex:i] toggleOn:YES];
-            [[tabItemsArray objectAtIndex:i] setAlpha:1.0];
+
 		} else {
 			[[tabItemsArray objectAtIndex:i] toggleOn:NO];
-            [[tabItemsArray objectAtIndex:i] setAlpha:0.5];
+
 		}
 	}
 }
@@ -136,7 +136,6 @@ bool backToRootView;
 			[defaults setInteger:tabIndex forKey:kSelectedTab];
             NSLog(@"tabIndex %d",tabIndex);
             if (tabIndex ==  selectedTab) {
-                NSLog(@"AAAAAAA");
                 backToRootView = 1;
             }
             [self activateController:indexC];

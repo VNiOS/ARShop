@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A706EFE4169BDE2A0057D1FE /* CurrentLocations.png in Resources */ = {isa = PBXBuildFile; fileRef = A706EFE2169BDE2A0057D1FE /* CurrentLocations.png */; };
 		A706EFE5169BDE2A0057D1FE /* MapFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = A706EFE3169BDE2A0057D1FE /* MapFrame.png */; };
+		A748935816A7AA7A00AB072C /* Radar.png in Resources */ = {isa = PBXBuildFile; fileRef = A748935716A7AA7A00AB072C /* Radar.png */; };
 		A77936241679BC16006603C7 /* cameraoff.png in Resources */ = {isa = PBXBuildFile; fileRef = A779361E1679BC16006603C7 /* cameraoff.png */; };
 		A77936251679BC16006603C7 /* cameraon.png in Resources */ = {isa = PBXBuildFile; fileRef = A779361F1679BC16006603C7 /* cameraon.png */; };
 		A77936261679BC16006603C7 /* listoff.png in Resources */ = {isa = PBXBuildFile; fileRef = A77936201679BC16006603C7 /* listoff.png */; };
@@ -76,6 +77,7 @@
 /* Begin PBXFileReference section */
 		A706EFE2169BDE2A0057D1FE /* CurrentLocations.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CurrentLocations.png; sourceTree = "<group>"; };
 		A706EFE3169BDE2A0057D1FE /* MapFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapFrame.png; sourceTree = "<group>"; };
+		A748935716A7AA7A00AB072C /* Radar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Radar.png; sourceTree = "<group>"; };
 		A779361E1679BC16006603C7 /* cameraoff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameraoff.png; sourceTree = "<group>"; };
 		A779361F1679BC16006603C7 /* cameraon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameraon.png; sourceTree = "<group>"; };
 		A77936201679BC16006603C7 /* listoff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = listoff.png; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				A7EE6665169D3C0B00D172AF /* numberView.png */,
+				A748935716A7AA7A00AB072C /* Radar.png */,
 				A7F29C2A16A0106C0040DA28 /* blank.png */,
 				A706EFE2169BDE2A0057D1FE /* CurrentLocations.png */,
 				A706EFE3169BDE2A0057D1FE /* MapFrame.png */,
@@ -531,6 +534,7 @@
 				A706EFE5169BDE2A0057D1FE /* MapFrame.png in Resources */,
 				A7EE6666169D3C0C00D172AF /* numberView.png in Resources */,
 				A7F29C2B16A0106D0040DA28 /* blank.png in Resources */,
+				A748935816A7AA7A00AB072C /* Radar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
