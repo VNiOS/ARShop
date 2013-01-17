@@ -17,7 +17,7 @@
     NSString *shop_description;
     NSString *shop_coupon_link;
     NSString *shop_menu_link;
-    int shop_phone;
+    NSString *shop_phone;
     NSString *shop_open_time;
     NSString *shop_close_time;
     NSString *shop_icon_link;
@@ -29,7 +29,6 @@
 @property BOOL shopCheck;
 @property int shop_id;
 @property int shop_type;
-@property int shop_phone;
 @property float shop_latitude;
 @property float shop_longitute;
 @property (nonatomic, retain)NSString *shop_name;
@@ -38,6 +37,7 @@
 @property (nonatomic, retain)NSString *shop_description;
 @property (nonatomic, retain)NSString *shop_coupon_link;
 @property (nonatomic, retain)NSString *shop_menu_link;
+@property (nonatomic, retain)NSString *shop_phone;
 @property (nonatomic, retain)NSString *shop_open_time;
 @property (nonatomic, retain)NSString *shop_close_time;
 @property (nonatomic, retain)NSString *shop_icon_link;

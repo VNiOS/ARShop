@@ -69,12 +69,13 @@ static BeNCProcessDatabase *shareDatabase = nil;
         NSMutableDictionary *shop = [[NSMutableDictionary alloc] init];
         NSNumber *shop_id = [[NSNumber alloc] initWithInt:[results intForColumn:BeNCShopProperiesShopId]];
         NSNumber *shop_type = [[NSNumber alloc] initWithInt:[results intForColumn:BeNCShopProperiesShopTye]];
-        NSNumber *shop_phone = [[NSNumber alloc] initWithInt:[results intForColumn:BeNCShopProperiesShopPhone]];
         
         
         NSNumber *shop_latitude = [[NSNumber alloc] initWithFloat:(float)[results doubleForColumn:BeNCShopProperiesShopLatitude]];
         NSNumber *shop_longitude = [[NSNumber alloc] initWithFloat:(float)[results doubleForColumn:BeNCShopProperiesShopLongitude]];
         
+        NSString *shop_phone = [NSString stringWithFormat:@"%@",[results stringForColumn:BeNCShopProperiesShopPhone]];
+
         NSString *shop_name = [NSString stringWithFormat:@"%@",[results stringForColumn:BeNCShopProperiesShopName]];
         NSString *shop_address = [NSString stringWithFormat:@"%@",[results stringForColumn:BeNCShopProperiesShopAddress]];
         NSString *shop_address_detail = [NSString stringWithFormat:@"%@",[results stringForColumn:BeNCShopProperiesShopAddressDetail]];

@@ -27,7 +27,7 @@
         self.shop_menu_link = [dictionary objectForKey:BeNCShopProperiesShopMenuLink];
         self.shop_open_time = [dictionary objectForKey:BeNCShopProperiesShopOpenTime];
         self.shop_close_time = [dictionary objectForKey:BeNCShopProperiesShopCloseTime];
-        self.shop_phone= [[dictionary objectForKey:BeNCShopProperiesShopPhone]intValue];
+        self.shop_phone= [dictionary objectForKey:BeNCShopProperiesShopPhone];
         self.shop_latitude = [[dictionary objectForKey:BeNCShopProperiesShopLatitude]floatValue];
         self.shop_longitute = [[dictionary objectForKey:BeNCShopProperiesShopLongitude] floatValue];
         self.shop_icon_link = [dictionary objectForKey:BeNCShopProperiesShopIcon];

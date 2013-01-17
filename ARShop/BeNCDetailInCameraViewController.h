@@ -17,7 +17,7 @@
 @protocol BeNCDetailInCameraDelegate <NSObject>
 - (void)didSeclectView:(int )index;
 @end
-@interface BeNCDetailInCameraViewController : UIViewController<BeNCDetailShopDelegate>{
+@interface BeNCDetailInCameraViewController : UIViewController<BeNCDetailShopDelegate,UIGestureRecognizerDelegate>{
     CMMotionManager *motionManager;
     BeNCArrow *arrowImage;
     NSTimer *timer;
@@ -25,8 +25,10 @@
     CLLocation *userLocation;
     BeNCShopEntity *shop;
     int index;
+    NSString *distanceToShop;
 }
 @property int index;
+@property(nonatomic, retain)CLLocation *userLocation;
 @property(nonatomic, retain)id<BeNCDetailInCameraDelegate>delegate;
 @property(nonatomic, retain)BeNCShopEntity *shop;
 - (id)initWithShop:(BeNCShopEntity *)shopEntity;

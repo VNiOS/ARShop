@@ -41,16 +41,16 @@
         [detaitlView1 setIndex:0];
         detaitlView2 = [[BeNCDetailInCameraViewController alloc]initWithShop:shopEntity2];
         detaitlView2.delegate = self;
-        [detaitlView1 setIndex:1];
+        [detaitlView2 setIndex:1];
         detaitlView3 = [[BeNCDetailInCameraViewController alloc]initWithShop:shopEntity3];
         detaitlView3.delegate = self;
-        [detaitlView1 setIndex:2];
+        [detaitlView3 setIndex:2];
         detaitlView4 = [[BeNCDetailInCameraViewController alloc]initWithShop:shopEntity4];
         detaitlView4.delegate = self;
-        [detaitlView1 setIndex:3];
+        [detaitlView4 setIndex:3];
         detaitlView5 = [[BeNCDetailInCameraViewController alloc]initWithShop:shopEntity5];
         detaitlView5.delegate = self;
-        [detaitlView1 setIndex:4];
+        [detaitlView5 setIndex:4];
 
         
         
@@ -227,7 +227,7 @@
     }
     else if (- angle2 <= angleToHeading && angleToHeading <  - angle1) {
         valueX = ( 250 -b )/a;
-        valueY = 196 - originY;
+        valueY = 236 - originY;
     }
     if (valueX <= originX) {
         valueX = originX;
@@ -238,8 +238,8 @@
     if (valueY <= originY) {
         valueY = originY;
     }
-    if (valueY > 196 - originY ) {
-        valueY = 196 - originY;
+    if (valueY > 236 - originY ) {
+        valueY = 236 - originY;
     }
     CGPoint newCenter = CGPointMake(valueX, valueY);
     detailViewInCamera.view.center = newCenter;
