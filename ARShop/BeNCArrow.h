@@ -17,4 +17,5 @@
 }
 @property(nonatomic, retain)BeNCShopEntity *shop;
 - (id)initWithShop:(BeNCShopEntity *)shopEntity;
+-(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity;
 @end
