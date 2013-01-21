@@ -32,6 +32,7 @@
 @implementation BeNCMapViewController
 @synthesize mapView;
 @synthesize selectedAnnotationView = _selectedAnnotationView;
+@synthesize zoomSlider,zoomLabel;
 bool firstUpdate = 1;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -64,6 +65,23 @@ bool firstUpdate = 1;
     [showUser addTarget:self action:@selector(toUserLocation:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:showUser];
     
+    
+    
+    zoomSlider = [[UISlider alloc]initWithFrame:CGRectMake(-40, 120, 150, 40)] ;
+    zoomSlider.maximumValue = 10;
+    zoomSlider.value = 7;
+    zoomSlider.minimumValue = 1;
+    [zoomSlider addTarget:self action:@selector(sliderChange:) forControlEvents:UIControlEventValueChanged];
+    
+    
+    zoomlabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 40, 60, 20)];
+    zoomlabel.text = [NSString stringWithFormat:@"1 km"];
+    zoomlabel.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:zoomlabel];
+    
+    CGAffineTransform rotate = CGAffineTransformMakeRotation(-M_PI * 0.5);
+    zoomSlider.transform = rotate;
+    [self.view addSubview:zoomSlider];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
 
     [self getShopData];
@@ -141,8 +159,20 @@ bool firstUpdate = 1;
 }
 - (void)mapView:(MKMapView *)mv regionDidChangeAnimated:(BOOL)animated {
     [self checkOverride];
+    float span = self.mapView.region.span.latitudeDelta;
+    NSLog(@"Span %f",span);
+    //zoomSlider.value = span;
 }    
-
+-(void)zoomMap:(float)regionRadial{
+    MKCoordinateRegion region;
+    
+    
+    NSLog(@"Region Radial : %f",regionRadial
+          );
+    region = MKCoordinateRegionMakeWithDistance(self.mapView.centerCoordinate,regionRadial,regionRadial);
+    
+    [self.mapView setRegion:region animated:YES];
+}
 -  (void)mapView:(MKMapView *)mapview didSelectAnnotationView:(MKAnnotationView *)view
 {
     
@@ -334,10 +364,85 @@ bool firstUpdate = 1;
     CGFloat distance = sqrt((xDist * xDist) + (yDist * yDist));
     return distance;
 }
+-(IBAction)sliderChange:(id)sender{
+    UISlider *slider = (UISlider *)sender;
+    int valueInt = (int)slider.value;
+    int zoomValue = 1000;
+    NSLog(@"Slider value : %d",valueInt);
+    switch (valueInt) {
+        case 10:
+        
+            zoomlabel.text = [NSString stringWithFormat:@"100 m",valueInt];
+            zoomValue = 100;
+        
+            break;
+        case 9:
+        
+            zoomlabel.text = [NSString stringWithFormat:@"200 m",valueInt];
+            zoomValue = 200;
+            break;
+        
+        case 8:
+        
+            zoomlabel.text = [NSString stringWithFormat:@"500 m",valueInt];
+            zoomValue = 500;
+            break;
+        case 7:
+        
+            zoomlabel.text = [NSString stringWithFormat:@"1 km",valueInt];
+            zoomValue = 1000;
+        
+            break;
+        case 6:
+        
+            zoomlabel.text = [NSString stringWithFormat:@"2 km",valueInt];
+            zoomValue = 2000;
+            break;
+        case 5:
+        
+            zoomlabel.text = [NSString stringWithFormat:@"5 km",valueInt];
+            zoomValue = 5000;
+            break;
+        case 4:
+        {
+            zoomlabel.text = [NSString stringWithFormat:@"10 km",valueInt];
+            zoomValue = 10000;
+        }
+            break;
+        case 3:
+        
+            zoomlabel.text = [NSString stringWithFormat:@"20 km",valueInt];
+            zoomValue = 20000;
+            break;
+        case 2:
+        
+            zoomlabel.text = [NSString stringWithFormat:@"50 km",valueInt];
+            zoomValue = 50000;
+            break;
+        case 1:
+        
+            zoomlabel.text = [NSString stringWithFormat:@"100 km",valueInt];
+            zoomValue = 100000;
+            break;
+    
+
+        default:
+        
+            zoomlabel.text = [NSString stringWithFormat:@"1 km",valueInt];
+            zoomValue = 1000;
+          
+            break;
+    }
+    
+    
+    
+    NSLog(@"Value int %d",zoomValue);
+    [self zoomMap:(float)zoomValue];
+}
 -(IBAction)toUserLocation:(id)sender{
     
     MKCoordinateRegion region;
-    region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.coordinate,1000,1000);
+    region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.coordinate,2000,2000);
     
     [self.mapView setRegion:region animated:YES];
     for (id<MKAnnotation> annotation in self.mapView.annotations) {
