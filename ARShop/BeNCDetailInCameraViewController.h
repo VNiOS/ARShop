@@ -33,7 +33,7 @@
 @property(nonatomic, retain)BeNCShopEntity *shop;
 - (id)initWithShop:(BeNCShopEntity *)shopEntity;
 - (void)setContentForView:(BeNCShopEntity *)shopEntity;
-- (float)caculateMax:(float )numberA withNumberB:(float )numberB;
 -(float)calculateSizeFrame:(BeNCShopEntity *)shopEntity;
--(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity;
+- (float)caculateMax:(float )numberA withNumberB:(float )numberB;
+
 @end

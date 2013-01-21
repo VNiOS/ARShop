@@ -13,6 +13,8 @@
 #import "BeNCDetailInCameraViewController.h"
 #import "BeNCDetailViewController.h"
 #import "BeNCListViewController.h"
+#import "BeNCShopInRadar.h"
+#import "BeNCRadarViewController.h"
 #define rotationRate 0.0174532925
 
 @interface BeNCCameraViewController ()
@@ -59,16 +61,22 @@
         [self.view addSubview:detaitlView3.view];
         [self.view addSubview:detaitlView2.view];
         [self.view addSubview:detaitlView1.view];
+        BeNCRadarViewController *radarController = [[BeNCRadarViewController alloc]initWithNibName:@"BeNCRadarViewController" bundle:nil];
+        radarController.view.frame = CGRectMake(380, 0, 100, 100);
+        [self.view addSubview:radarController.view];
+//        UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Radar.png"]];
+//        imageView.frame = CGRectMake(380, 0, 100, 100);
+//        [self.view addSubview:imageView];
 
         // Custom initialization
     }
     return self;
 }
--(void)viewWillAppear:(BOOL)animated{
-    [self.navigationController.navigationBar setHidden:NO];
-}
+
 - (void)viewDidLoad
 {
+    
+
     [self setTitle:@"AR"];
     [self getDatabase];
     self.view.bounds = CGRectMake(0, 0, 480, 320);
@@ -189,6 +197,7 @@
 }
 
 -(void)didUpdateHeading:(NSNotification *)notification{
+
     
     CLHeading *newHeading = [notification object];
     double newAngleToNorth =   newHeading.magneticHeading * rotationRate ;

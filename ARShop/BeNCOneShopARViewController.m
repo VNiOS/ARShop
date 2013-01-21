@@ -29,6 +29,7 @@
         self.userLocation = [[LocationService sharedLocation]getOldLocation]; 
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
+        rotationAngleArrow = [self caculateRotationAngle:shop];
         [self setContentForView:shopEntity];
 
         // Custom initialization
@@ -85,7 +86,7 @@
     float b = 125 - 240 * a ;
     float valueX ;
     float valueY;
-    if ((0 <= angleToHeading && angleToHeading < angle1 )||( - angle1 <= angleToHeading && angleToHeading < 0)) {
+    if ((0 <= angleToHeading && angleToHeading < angle1 )||( angleToHeading < 0 &&   -angle1 < angleToHeading)) {
         valueX = originX;
         valueY =  b;
        }

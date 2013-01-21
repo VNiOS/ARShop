@@ -28,6 +28,6 @@
 @property(nonatomic,retain)CLLocation *userLocation ;
 - (id)initWithShop:(BeNCShopEntity *)shopEntity;
 - (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity;
-- (float)caculateMax:(float )numberA withNumberB:(float )numberB;
+//- (float)caculateMax:(float )numberA withNumberB:(float )numberB;
 - (void)setContentDetailShop:(BeNCShopEntity *)shopEntity;
 @end
