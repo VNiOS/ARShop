@@ -97,24 +97,13 @@
 {
     CGSize labelShopNameSize = [shopEntity.shop_name sizeWithFont:[UIFont boldSystemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
     CGSize labelShopAddressSize = [shopEntity.shop_address sizeWithFont:[UIFont systemFontOfSize:textSize - 6] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
-    float originLabelDistance = [self caculateMax:labelShopNameSize.width withNumberB:labelShopAddressSize.width];
-    
+    float originLabelDistance = MAX(labelShopNameSize.width, labelShopAddressSize.width);      
     CGSize toShopSize = [distanceToShop sizeWithFont:[UIFont systemFontOfSize:textSize - 4] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
     float sizeWidth = originLabelDistance + toShopSize.width + 7;
     return sizeWidth;
 
 }
-- (float)caculateMax:(float )numberA withNumberB:(float )numberB
-{
-    int maxNumber;
-    if (numberA >= numberB) {
-        maxNumber = numberA;
-    }
-    else {
-        maxNumber = numberB;
-    }
-    return maxNumber;
-}
+
 - (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity
 {
     CLLocation *shoplocation = [[[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute]autorelease];

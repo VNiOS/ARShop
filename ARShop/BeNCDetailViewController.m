@@ -143,7 +143,7 @@
     arrowImage.frame = CGRectMake(430,10,20, 30);
     [self.view addSubview:arrowImage];
     
-    UIBarButtonItem *cameraButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"ARShop" style:UIBarButtonSystemItemCamera target:self action:@selector(goToCamera:)];
+    UIBarButtonItem *cameraButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"ARShop" style:UIBarButtonItemStyleBordered target:self action:@selector(goToCamera:)];//[[UIBarButtonItem alloc]initWithTitle:@"ARShop" style:UIBarButtonSystemItemCamera target:self action:@selector(goToCamera:)];
     self.navigationItem.rightBarButtonItem = cameraButtonItem;
     
 //    UIButton *buttonFindMap = [UIButton buttonWithType:UIButtonTypeCustom];
