@@ -66,9 +66,6 @@ bool firstUpdate = 1;
     [self.view addSubview:showUser];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
-    UIImageView *radaimg =  [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Radar.png"]];
-    radaimg.frame = CGRectMake(380, 0, 100, 100);
-    [self.view addSubview:radaimg];
     [self getShopData];
     
 }
