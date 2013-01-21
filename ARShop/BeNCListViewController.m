@@ -48,9 +48,8 @@
     
     editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(editList:)];
     arrayButtonItem =  [[NSMutableArray arrayWithObjects:editButton,refreshButtonItem, nil]retain];
-    
-    UIBarButtonItem *done = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(closeListViewInMap:)];
-    [self setTitle:@"List Shop"];
+
+    [self setTitle:@"List Bar"];
     
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     self.listShopView.frame = CGRectMake(0, 0, 480, 320);
@@ -64,12 +63,14 @@
         NSLog(@"main list");
     }
     else if(listType == MapList){
-        self.navigationItem.rightBarButtonItem = done;
+        //self.navigationItem.rightBarButtonItem = done;
         NSLog(@"map list");
     }
     [super viewDidLoad];
-
 }
+
+
+
 -(IBAction)closeListViewInMap:(id)sender{
     NSLog(@"Close list view");
     self.navigationController.navigationBar.hidden = YES;
@@ -166,7 +167,9 @@
     else {
         cell.accessoryType = UITableViewCellAccessoryNone ;
     }
-    
+    if (listType == MapList) {
+        cell.distanceToShop.hidden = YES;
+    }
     [cell updateContentForCell:shop withLocation:userLocation];
     return cell;
 }

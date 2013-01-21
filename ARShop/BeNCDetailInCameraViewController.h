@@ -36,5 +36,4 @@
 - (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity;
 -(float)calculateSizeFrame:(BeNCShopEntity *)shopEntity;
 
-
 @end

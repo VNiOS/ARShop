@@ -25,5 +25,4 @@
 -(double)caculateRotationAngleToHeading:(double)angleToShop withAngleTonorth:(double )angleToNorth;
 - (float)giaiPhuongTrinhB2:(float )a withIndexB:(float)b withIndexC:(float )c withAngle:(float)angle;
 -(void)setFrameForView:(float )angleToHeading;
-
 @end

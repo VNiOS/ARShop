@@ -32,6 +32,7 @@
     UIBarButtonItem *editButton;
     UIBarButtonItem *refreshButtonItem;
     NSMutableArray *arrayButtonItem;
+    
 }
 @property(nonatomic,strong) id<ListViewOnMapDelegate> delegate;
 @property(nonatomic, retain) NSMutableArray *shopsArray;
