@@ -30,4 +30,5 @@
 @property (nonatomic, retain) id<BeNCShopCellDelegate>delegate;
 @property (nonatomic ,retain) UIButton *distanceToShop;
 - (void)updateContentForCell:(BeNCShopEntity *)shopEntity withLocation:(CLLocation *)location;
+-(int)calculeDistance:(BeNCShopEntity *)shop withLocation:(CLLocation *)location;
 @end

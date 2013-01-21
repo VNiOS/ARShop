@@ -13,6 +13,7 @@
 #import "BeNCCameraViewController.h"
 #import "BeNCMapViewController.h"
 #import "BeNCProcessDatabase.h"
+#import "BeNCAR3DViewController.h"
 
 @implementation BeNCAppDelegate
 
@@ -34,29 +35,35 @@
     [[LocationService sharedLocation]startUpdate];
     BeNCTabbarItem *tabItem1 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(2, 2, 90, 30) normalState:@"listoff.png" toggledState:@"ListOn.png"];
 	BeNCTabbarItem *tabItem2 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(94, 2, 90, 30) normalState:@"cameraoff.png" toggledState:@"cameraon.png"];
-	BeNCTabbarItem *tabItem3 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(186, 2, 90, 30) normalState:@"mapoff.png" toggledState:@"mapon.png"];
-    
+	BeNCTabbarItem *tabItem3 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(186, 2, 90, 30) normalState:@"AR3Doff.png" toggledState:@"AR3Don.png"];
+    BeNCTabbarItem *tabItem4 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(278, 2, 90, 30) normalState:@"mapoff.png" toggledState:@"mapon.png"];
+
     
     BeNCListViewController *listViewController = [[BeNCListViewController alloc]initWithNibName:@"BeNCListViewController" bundle:nil];
     [listViewController setListType:0];
-    BeNCMapViewController *mapViewController = [[BeNCMapViewController alloc]initWithNibName:@"BeNCMapViewController" bundle:nil];
     BeNCCameraViewController *cameraViewController = [[BeNCCameraViewController alloc]initWithNibName:@"BeNCCameraViewController" bundle:nil];
+    BeNCAR3DViewController *aR3DViewController = [[BeNCAR3DViewController alloc]initWithNibName:@"BeNCAR3DViewController" bundle:nil];
+    BeNCMapViewController *mapViewController = [[BeNCMapViewController alloc]initWithNibName:@"BeNCMapViewController" bundle:nil];
     
     
     NSMutableArray *viewControllersArray = [[NSMutableArray alloc] init];
     UINavigationController *listNavigation = [[UINavigationController alloc]initWithRootViewController:listViewController];
-    UINavigationController *mapNavigation = [[UINavigationController alloc]initWithRootViewController:mapViewController];
     UINavigationController *cameraNavigation = [[UINavigationController alloc]initWithRootViewController:cameraViewController];
+    UINavigationController *aR3DNavigation = [[UINavigationController alloc]initWithRootViewController:aR3DViewController];
+    UINavigationController *mapNavigation = [[UINavigationController alloc]initWithRootViewController:mapViewController];
     
     [listNavigation.navigationBar setHidden:NO];
     [listNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
     [cameraNavigation.navigationBar setHidden:NO];
     [cameraNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
+    [aR3DNavigation.navigationBar setHidden:NO];
+    [aR3DNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
     [mapNavigation.navigationBar setHidden:NO];
     [mapNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
     
 	[viewControllersArray addObject:listNavigation];
     [viewControllersArray addObject:cameraNavigation];
+    [viewControllersArray addObject:aR3DNavigation];
 	[viewControllersArray addObject:mapNavigation];
     
 	
@@ -64,6 +71,7 @@
 	[tabItemsArray addObject:tabItem1];
 	[tabItemsArray addObject:tabItem2];
 	[tabItemsArray addObject:tabItem3];
+    [tabItemsArray addObject:tabItem4];
     
    
     [[BeNCProcessDatabase sharedMyDatabase] getDatebase ];

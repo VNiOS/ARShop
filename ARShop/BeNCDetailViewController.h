@@ -27,5 +27,6 @@
 - (IBAction)goToCamera:(id)sender;
 - (void)setContentDetailForView:(BeNCShopEntity *)shopEntity;
 - (id)initWithShop:(BeNCShopEntity *)shopEntity;
+- (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity;
 
 @end

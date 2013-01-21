@@ -18,6 +18,8 @@
     NSMutableArray *arrayShopDistance;
 }
 @property (nonatomic, retain)CLLocation *userLocation;
+@property(nonatomic, retain) NSMutableArray *shopsArray;
+- (void)addVideoInput;
 
 
 @end

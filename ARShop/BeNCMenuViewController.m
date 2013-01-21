@@ -63,7 +63,7 @@ bool backToRootView;
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	//Create a view holder to store the tabbar items
-	tabBarHolder = [[UIView alloc] initWithFrame:CGRectMake(202, 270, 280, 30)];
+	tabBarHolder = [[UIView alloc] initWithFrame:CGRectMake(110, 270, 370, 30)];
 	tabBarHolder.backgroundColor = [UIColor grayColor];
     
 	//add it as a subview

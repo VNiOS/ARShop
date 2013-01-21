@@ -33,6 +33,8 @@
 @property(nonatomic, retain)BeNCShopEntity *shop;
 - (id)initWithShop:(BeNCShopEntity *)shopEntity;
 - (void)setContentForView:(BeNCShopEntity *)shopEntity;
+- (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity;
+-(float)calculateSizeFrame:(BeNCShopEntity *)shopEntity;
 
 
 @end
