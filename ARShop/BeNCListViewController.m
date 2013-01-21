@@ -15,6 +15,7 @@
 #import "BeNCShopCellCell.h"
 #import "BeNCOneShopARViewController.h"
 #import "EGOImageView.h"
+#import "BeNCShopInRadar.h"
 #define MainList 0
 #define MapList 1
 
@@ -31,7 +32,7 @@
     if (self) {
         userLocation = [[LocationService sharedLocation]getOldLocation];
         [self getShopData];
-        [self sortShopByDistance];
+//        [self sortShopByDistance];
 
     }
     return self;
@@ -41,6 +42,7 @@
 
 - (void)viewDidLoad
 {
+
     
     refreshButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Refresh" style:UIBarButtonSystemItemRefresh target:self action:@selector(refreshData)];
     
@@ -48,11 +50,12 @@
     arrayButtonItem =  [[NSMutableArray arrayWithObjects:editButton,refreshButtonItem, nil]retain];
     
     UIBarButtonItem *done = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(closeListViewInMap:)];
-    [self setTitle:@"List Bar"];
+    [self setTitle:@"List Shop"];
     
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     self.listShopView.frame = CGRectMake(0, 0, 480, 320);
     listShopView.delegate = self;
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
     
     if (listType == MainList) {
@@ -67,16 +70,7 @@
     [super viewDidLoad];
 
 }
--(void)addButtonDone{
-     done = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [done setTitle:@"X" forState:UIControlStateNormal];
-    [done setFrame:CGRectMake(self.view.frame.size.width ,  -10, 40, 40)];
-    [done addTarget:self action:@selector(closeListViewInMap:) forControlEvents:UIControlEventTouchUpInside];
-    [self.navigationController.view addSubview:done];
-
-}
 -(IBAction)closeListViewInMap:(id)sender{
-    [done setHidden:YES];
     NSLog(@"Close list view");
     self.navigationController.navigationBar.hidden = YES;
     [self.delegate animationScaleOff:self.navigationController];
@@ -189,31 +183,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    if (listType == MainList) {
-        if (editing) {
-            BeNCShopEntity *shop  = [shopsArray objectAtIndex:indexPath.row];
-            shop.shopCheck =! shop.shopCheck;
-            [self.listShopView reloadData];
-            
-        }
-        else {
-            BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:indexPath.row];
-            BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:shopEntity];
-            [self.navigationController pushViewController:detailViewController animated:YES];
-            [detailViewController release];
-        }
-    }
-    else if(listType == MapList){
+    if (editing) {
         BeNCShopEntity *shop  = [shopsArray objectAtIndex:indexPath.row];
-        [self.delegate getShopFromList:shop];
+        shop.shopCheck =! shop.shopCheck;
+        [self.listShopView reloadData];
+        
     }
+    else {
+    BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:indexPath.row];
+    BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:shopEntity];
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     [detailViewController release];
+   }
 }
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    UIView *footer = [[UIView alloc]init];
-    footer.backgroundColor = [UIColor whiteColor];
-    return footer;
-}
+
 
 - (void)bnShoptCellDidClickedAtCell:(BeNCShopCellCell *)shopCell
 {

@@ -32,14 +32,12 @@
 {
     [self checkDatabase];
     [[LocationService sharedLocation]startUpdate];
-
-    BeNCTabbarItem *tabItem1 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(0, 0, 90, 30) normalState:@"listoff.png" toggledState:@"ListOn.png"];
-	BeNCTabbarItem *tabItem2 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(90, 0, 90, 30) normalState:@"cameraoff.png" toggledState:@"cameraon.png"];
-	BeNCTabbarItem *tabItem3 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(180, 0, 90, 30) normalState:@"mapoff.png" toggledState:@"mapon.png"];
+    BeNCTabbarItem *tabItem1 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(2, 2, 90, 30) normalState:@"listoff.png" toggledState:@"ListOn.png"];
+	BeNCTabbarItem *tabItem2 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(94, 2, 90, 30) normalState:@"cameraoff.png" toggledState:@"cameraon.png"];
+	BeNCTabbarItem *tabItem3 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(186, 2, 90, 30) normalState:@"mapoff.png" toggledState:@"mapon.png"];
     
     
     BeNCListViewController *listViewController = [[BeNCListViewController alloc]initWithNibName:@"BeNCListViewController" bundle:nil];
-   
     [listViewController setListType:0];
     BeNCMapViewController *mapViewController = [[BeNCMapViewController alloc]initWithNibName:@"BeNCMapViewController" bundle:nil];
     BeNCCameraViewController *cameraViewController = [[BeNCCameraViewController alloc]initWithNibName:@"BeNCCameraViewController" bundle:nil];

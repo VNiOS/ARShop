@@ -36,6 +36,5 @@
 - (void)addVideoInput;
 -(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity;
 - (void)setNewCenterForView:(float )angleToHeading  withDetailView:(BeNCDetailInCameraViewController *)detailViewInCamera;
--(double)caculateRotationAngleToHeading:(double)angleToShop withAngleTonorth:(double )angleToNorth;
--(float)calculateSizeFrame:(BeNCShopEntity *)shopEntity;
+
 @end

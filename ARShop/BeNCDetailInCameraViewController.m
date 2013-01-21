@@ -100,13 +100,12 @@
     float originLabelDistance = [self caculateMax:labelShopNameSize.width withNumberB:labelShopAddressSize.width];
     
     CGSize toShopSize = [distanceToShop sizeWithFont:[UIFont systemFontOfSize:textSize - 4] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
-    float sizeWidth = originLabelDistance + toShopSize.width + 5;
+    float sizeWidth = originLabelDistance + toShopSize.width + 7;
     return sizeWidth;
 
 }
 - (float)caculateMax:(float )numberA withNumberB:(float )numberB
 {
-
     int maxNumber;
     if (numberA >= numberB) {
         maxNumber = numberA;
