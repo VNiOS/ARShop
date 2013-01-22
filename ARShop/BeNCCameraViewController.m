@@ -307,7 +307,6 @@
 
 - (void)didSeclectView:(int)index
 {
-    NSLog(@"test delegate co den k");
     BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:index];
     BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:shopEntity];
     [self.navigationController pushViewController:detailViewController animated:YES];

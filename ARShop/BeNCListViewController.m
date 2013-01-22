@@ -32,7 +32,7 @@
     if (self) {
         userLocation = [[LocationService sharedLocation]getOldLocation];
         [self getShopData];
-//        [self sortShopByDistance];
+        [self sortShopByDistance];
 
     }
     return self;
@@ -42,8 +42,6 @@
 
 - (void)viewDidLoad
 {
-
-    
     refreshButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Refresh" style:UIBarButtonItemStyleBordered target:self action:@selector(refreshData)];
     
     editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(editList:)];
@@ -178,10 +176,6 @@
     return 60;
 }
 
-//- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
-//    NSString *footer = [NSString stringWithFormat:@"%d shops in list",[shopsArray count]];
-//    return footer;
-//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

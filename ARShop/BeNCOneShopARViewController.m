@@ -138,6 +138,7 @@
         
     }
     [self setNewCenterForView:angleToHeading];
+
 }
 
 -(void)didUpdateLocation:(NSNotification *)notification {

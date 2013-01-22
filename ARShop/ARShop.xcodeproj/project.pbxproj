@@ -406,6 +406,8 @@
 				C318F71A16A6AE7E002185A6 /* BeNCRadarViewController.m */,
 				C351767E16A93702009A2EAA /* BeNCAR3DViewController.h */,
 				C351767F16A93702009A2EAA /* BeNCAR3DViewController.m */,
+				C30B2CFA1695336200B56235 /* BeNCOneShopARViewController.h */,
+				C30B2CFB1695336200B56235 /* BeNCOneShopARViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -436,8 +438,6 @@
 				C3611F4516771BF3008DBE79 /* BeNCTabbarItem.m */,
 				A7F21FBD167B23EF006AE452 /* BeNCShopAnnotation.h */,
 				A7F21FBE167B23EF006AE452 /* BeNCShopAnnotation.m */,
-				C30B2CFA1695336200B56235 /* BeNCOneShopARViewController.h */,
-				C30B2CFB1695336200B56235 /* BeNCOneShopARViewController.m */,
 				A7EBB987169ABDF3004924AC /* BeNCAnnotationView.h */,
 				A7EBB988169ABDF3004924AC /* BeNCAnnotationView.m */,
 				C3FC0D5C16A78E1B00822AD4 /* BeNCShopInRadar.h */,

@@ -9,17 +9,26 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <CoreLocation/CoreLocation.h>
-
+#import "BeNCShopEntity.h"
+#import "BeNCDetailInCameraViewController.h"
 @interface BeNCAR3DViewController : UIViewController{
     AVCaptureSession *captureSession;
     AVCaptureDeviceInput *deviceInput;
     NSMutableArray *shopsArray;
+    NSMutableArray *shopInViewAngle;
+    NSMutableArray *distanceToShop;
     CLLocation *userLocation ;
-    NSMutableArray *arrayShopDistance;
 }
 @property (nonatomic, retain)CLLocation *userLocation;
 @property(nonatomic, retain) NSMutableArray *shopsArray;
+@property(nonatomic, retain) NSMutableArray *shopInViewAngle;
 - (void)addVideoInput;
-
+-(void)getDatabase;
+- (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity;
+-(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity;
+-(double)caculateRotationAngleToHeading:(double)angleToShop withAngleTonorth:(double )angleToNorth;
+//- (void)sortShopByDistance;
+-(void)setContentForView;
+-(void)calculateValueDistanceToShop;
 
 @end
