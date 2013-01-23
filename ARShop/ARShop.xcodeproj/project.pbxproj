@@ -72,6 +72,7 @@
 		C351768116A93702009A2EAA /* BeNCAR3DViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C351767F16A93702009A2EAA /* BeNCAR3DViewController.m */; };
 		C351768216A93702009A2EAA /* BeNCAR3DViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C351768016A93702009A2EAA /* BeNCAR3DViewController.xib */; };
 		C3611F4616771BF3008DBE79 /* BeNCTabbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C3611F4516771BF3008DBE79 /* BeNCTabbarItem.m */; };
+		C3F50AD716AF7CD8001E4685 /* BeNCDetailInAR3D.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F50AD616AF7CD8001E4685 /* BeNCDetailInAR3D.m */; };
 		C3FC0D5E16A78E1B00822AD4 /* BeNCShopInRadar.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FC0D5D16A78E1B00822AD4 /* BeNCShopInRadar.m */; };
 		C3FC0D6D16A7AE3F00822AD4 /* Radar.png in Resources */ = {isa = PBXBuildFile; fileRef = C3FC0D6B16A7AE3F00822AD4 /* Radar.png */; };
 		C3FC0D6E16A7AE3F00822AD4 /* ShopInRadar.png in Resources */ = {isa = PBXBuildFile; fileRef = C3FC0D6C16A7AE3F00822AD4 /* ShopInRadar.png */; };
@@ -181,6 +182,8 @@
 		C351768016A93702009A2EAA /* BeNCAR3DViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeNCAR3DViewController.xib; sourceTree = "<group>"; };
 		C3611F4416771BF3008DBE79 /* BeNCTabbarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCTabbarItem.h; sourceTree = "<group>"; };
 		C3611F4516771BF3008DBE79 /* BeNCTabbarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCTabbarItem.m; sourceTree = "<group>"; };
+		C3F50AD516AF7CD8001E4685 /* BeNCDetailInAR3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCDetailInAR3D.h; sourceTree = "<group>"; };
+		C3F50AD616AF7CD8001E4685 /* BeNCDetailInAR3D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCDetailInAR3D.m; sourceTree = "<group>"; };
 		C3FC0D5C16A78E1B00822AD4 /* BeNCShopInRadar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCShopInRadar.h; sourceTree = "<group>"; };
 		C3FC0D5D16A78E1B00822AD4 /* BeNCShopInRadar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCShopInRadar.m; sourceTree = "<group>"; };
 		C3FC0D6B16A7AE3F00822AD4 /* Radar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Radar.png; sourceTree = "<group>"; };
@@ -423,6 +426,8 @@
 			children = (
 				C320354A1675836700CA3D8C /* BeNCDetailInCamera.h */,
 				C320354B1675836700CA3D8C /* BeNCDetailInCamera.m */,
+				C3F50AD516AF7CD8001E4685 /* BeNCDetailInAR3D.h */,
+				C3F50AD616AF7CD8001E4685 /* BeNCDetailInAR3D.m */,
 				C3FFA3F91681B034007B7963 /* BeNCWebViewController.h */,
 				C3FFA3FA1681B034007B7963 /* BeNCWebViewController.m */,
 				C320353E167580EA00CA3D8C /* BeNCShopCell.h */,
@@ -610,6 +615,7 @@
 				C318F71C16A6AE7F002185A6 /* BeNCRadarViewController.m in Sources */,
 				C3FC0D5E16A78E1B00822AD4 /* BeNCShopInRadar.m in Sources */,
 				C351768116A93702009A2EAA /* BeNCAR3DViewController.m in Sources */,
+				C3F50AD716AF7CD8001E4685 /* BeNCDetailInAR3D.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

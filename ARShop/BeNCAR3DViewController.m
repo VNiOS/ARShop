@@ -11,6 +11,7 @@
 #import "BeNCShopEntity.h"
 #import "BeNCProcessDatabase.h"
 #import "BeNCDetailInCamera.h"
+#import "BeNCDetailInAR3D.h"
 #define rotationRate 0.0174532925
 
 @interface BeNCAR3DViewController ()
@@ -28,6 +29,16 @@
         userLocation = [[LocationService sharedLocation]getOldLocation];
 //        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
 //        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
+        for (int i = 0; i < [shopsArray count]; i ++) {
+            BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
+            BeNCDetailInAR3D *testView = [[BeNCDetailInAR3D alloc]initWithShop:shopEntity];
+            [self.view addSubview:testView];
+
+        }
+//        BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:7];
+//        BeNCDetailInAR3D *testView = [[BeNCDetailInAR3D alloc]initWithShop:shopEntity];
+//        [self.view addSubview:testView];
+
     }
     return self;
 }
