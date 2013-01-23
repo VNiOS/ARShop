@@ -49,16 +49,15 @@
     float newCenterX;
     float newCenterY;
     if (0 <= angleToHeading && angleToHeading <= M_PI) {
-        newCenterY = 250 - distanceShop;
+        newCenterY = 250 - distanceShop - 10;
     }
     else {
-        newCenterY = 250 + distanceShop;
+        newCenterY = 250 + distanceShop + 80;
     }
 
     newCenterX = (newCenterY - b)/a ;
-    if (newCenterY > 230) {
-        newCenterY = 230;
-    }
+
+
     self.center = CGPointMake(newCenterX, newCenterY);
     
 //    NSLog(@"gia tri cua b = %f",b);
