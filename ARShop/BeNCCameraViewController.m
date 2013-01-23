@@ -10,7 +10,7 @@
 #import "LocationService.h"
 #import "BeNCProcessDatabase.h"
 #import "BeNCShopEntity.h"
-#import "BeNCDetailInCameraViewController.h"
+#import "BeNCDetailInCamera.h"
 #import "BeNCDetailViewController.h"
 #import "BeNCListViewController.h"
 #import "BeNCShopInRadar.h"
@@ -38,29 +38,29 @@
         shopEntity4 = (BeNCShopEntity *)[shopsArray objectAtIndex:3];
         shopEntity5 = (BeNCShopEntity *)[shopsArray objectAtIndex:4];
         
-        detaitlView1 = [[BeNCDetailInCameraViewController alloc]initWithShop:shopEntity1];
+        detaitlView1 = [[BeNCDetailInCamera alloc]initWithShop:shopEntity1];
         detaitlView1.delegate = self;
         [detaitlView1 setIndex:0];
-        detaitlView2 = [[BeNCDetailInCameraViewController alloc]initWithShop:shopEntity2];
+        detaitlView2 = [[BeNCDetailInCamera alloc]initWithShop:shopEntity2];
         detaitlView2.delegate = self;
         [detaitlView2 setIndex:1];
-        detaitlView3 = [[BeNCDetailInCameraViewController alloc]initWithShop:shopEntity3];
+        detaitlView3 = [[BeNCDetailInCamera alloc]initWithShop:shopEntity3];
         detaitlView3.delegate = self;
         [detaitlView3 setIndex:2];
-        detaitlView4 = [[BeNCDetailInCameraViewController alloc]initWithShop:shopEntity4];
+        detaitlView4 = [[BeNCDetailInCamera alloc]initWithShop:shopEntity4];
         detaitlView4.delegate = self;
         [detaitlView4 setIndex:3];
-        detaitlView5 = [[BeNCDetailInCameraViewController alloc]initWithShop:shopEntity5];
+        detaitlView5 = [[BeNCDetailInCamera alloc]initWithShop:shopEntity5];
         detaitlView5.delegate = self;
         [detaitlView5 setIndex:4];
 
         
         
-        [self.view addSubview:detaitlView5.view];
-        [self.view addSubview:detaitlView4.view];
-        [self.view addSubview:detaitlView3.view];
-        [self.view addSubview:detaitlView2.view];
-        [self.view addSubview:detaitlView1.view];
+        [self.view addSubview:detaitlView5];
+        [self.view addSubview:detaitlView4];
+        [self.view addSubview:detaitlView3];
+        [self.view addSubview:detaitlView2];
+        [self.view addSubview:detaitlView1];
         BeNCRadarViewController *radarController = [[BeNCRadarViewController alloc]initWithNibName:@"BeNCRadarViewController" bundle:nil];
         radarController.view.frame = CGRectMake(380, 0, 100, 100);
         [self.view addSubview:radarController.view];
@@ -215,9 +215,9 @@
 
 }
 
-- (void)setNewCenterForView:(float )angleToHeading  withDetailView:(BeNCDetailInCameraViewController *)detailViewInCamera{
-    float originX = detailViewInCamera.view.frame.size.width/2;
-    float originY = detailViewInCamera.view.frame.size.height/2;
+- (void)setNewCenterForView:(float )angleToHeading  withDetailView:(BeNCDetailInCamera *)detailViewInCamera{
+    float originX = detailViewInCamera.frame.size.width/2;
+    float originY = detailViewInCamera.frame.size.height/2;
     float angle1 = atanf(125.0/240.0);
     float angle2 = M_PI - angle1;
     float a = tan(angleToHeading);
@@ -238,7 +238,7 @@
     }
     else if (- angle2 <= angleToHeading && angleToHeading <  - angle1) {
         valueX = ( 250 -b )/a;
-        valueY = 236 - originY;
+        valueY = 288 - originY;
     }
     if (valueX <= originX) {
         valueX = originX;
@@ -249,11 +249,11 @@
     if (valueY <= originY) {
         valueY = originY;
     }
-    if (valueY > 236 - originY ) {
-        valueY = 236 - originY;
+    if (valueY > 288 - originY ) {
+        valueY = 288 - originY;
     }
     CGPoint newCenter = CGPointMake(valueX, valueY);
-    detailViewInCamera.view.center = newCenter;
+    detailViewInCamera.center = newCenter;
     
 }
 
@@ -307,7 +307,6 @@
 
 - (void)didSeclectView:(int)index
 {
-    NSLog(@"test delegate co den k");
     BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:index];
     BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:shopEntity];
     [self.navigationController pushViewController:detailViewController animated:YES];

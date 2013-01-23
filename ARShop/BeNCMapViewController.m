@@ -16,7 +16,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import "BeNCAnnotationView.h"
 #import "EGOImageView.h"
-#import "BeNCRadarViewController.h"
 #define MainList 0
 #define MapList 1
 
@@ -38,6 +37,7 @@ bool firstUpdate = 1;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+
         // Custom initialization
     }
     return self;

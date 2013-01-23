@@ -8,7 +8,7 @@
 
 #import "BeNCOneShopARViewController.h"
 #import "BeNCShopEntity.h"
-#import "BeNCDetailInCameraViewController.h"
+#import "BeNCDetailInCamera.h"
 #import "LocationService.h"
 #import <math.h>
 #define rotationRate 0.0174532925
@@ -74,12 +74,12 @@
 }
 - (void)setContentForView:(BeNCShopEntity *)shopEntity
 {
-    detailView = [[BeNCDetailInCameraViewController alloc]initWithShop:shopEntity];
-    [self.view addSubview:detailView.view];
+    detailView = [[BeNCDetailInCamera alloc]initWithShop:shopEntity];
+    [self.view addSubview:detailView];
 }
 - (void)setNewCenterForView:(float )angleToHeading{
-    float originX = detailView.view.frame.size.width/2;
-    float originY = detailView.view.frame.size.height/2;
+    float originX = detailView.frame.size.width/2;
+    float originY = detailView.frame.size.height/2;
     float angle1 = atanf(125.0/240.0);
     float angle2 = M_PI - angle1;
     float a = tan(angleToHeading);
@@ -100,7 +100,7 @@
     }
     else if (- angle2 <= angleToHeading && angleToHeading <  - angle1) {
             valueX = ( 250 -b )/a;
-            valueY = 236 - originY;
+            valueY = 288 - originY;
     }
     if (valueX <= originX) {
         valueX = originX;
@@ -111,11 +111,11 @@
     if (valueY <= originY) {
         valueY = originY;
     }
-    if (valueY > 236 - originY ) {
-        valueY = 236 - originY;
+    if (valueY > 288 - originY ) {
+        valueY = 288 - originY;
     }
     CGPoint newCenter = CGPointMake(valueX, valueY);
-    detailView.view.center = newCenter;
+    detailView.center = newCenter;
 
 }
 
@@ -138,6 +138,7 @@
         
     }
     [self setNewCenterForView:angleToHeading];
+
 }
 
 -(void)didUpdateLocation:(NSNotification *)notification {

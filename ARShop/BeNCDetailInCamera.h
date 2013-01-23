@@ -13,14 +13,13 @@
 #import "BeNCDetailShopInCamera.h"
 #import <CoreLocation/CoreLocation.h>
 
-@class BeNCDetailInCameraViewController;
+@class BeNCDetailInCamera;
 @protocol BeNCDetailInCameraDelegate <NSObject>
 - (void)didSeclectView:(int )index;
 @end
-@interface BeNCDetailInCameraViewController : UIViewController<BeNCDetailShopDelegate,UIGestureRecognizerDelegate>{
+@interface BeNCDetailInCamera : UIView<BeNCDetailShopDelegate,UIGestureRecognizerDelegate>{
     CMMotionManager *motionManager;
     BeNCArrow *arrowImage;
-    NSTimer *timer;
     BeNCDetailShopInCamera *detailShop;
     CLLocation *userLocation;
     BeNCShopEntity *shop;

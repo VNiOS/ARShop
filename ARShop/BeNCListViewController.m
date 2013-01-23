@@ -12,7 +12,7 @@
 #import "BeNCUtility.h"
 #import "BeNCProcessDatabase.h"
 #import "BeNCShopEntity.h"
-#import "BeNCShopCellCell.h"
+#import "BeNCShopCell.h"
 #import "BeNCOneShopARViewController.h"
 #import "EGOImageView.h"
 #import "BeNCShopInRadar.h"
@@ -32,7 +32,7 @@
     if (self) {
         userLocation = [[LocationService sharedLocation]getOldLocation];
         [self getShopData];
-//        [self sortShopByDistance];
+        [self sortShopByDistance];
 
     }
     return self;
@@ -42,8 +42,6 @@
 
 - (void)viewDidLoad
 {
-
-    
     refreshButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Refresh" style:UIBarButtonItemStyleBordered target:self action:@selector(refreshData)];
     
     editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(editList:)];
@@ -161,9 +159,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    BeNCShopCellCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    BeNCShopCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[BeNCShopCellCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[BeNCShopCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.delegate = self;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -185,10 +183,6 @@
     return 60;
 }
 
-//- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
-//    NSString *footer = [NSString stringWithFormat:@"%d shops in list",[shopsArray count]];
-//    return footer;
-//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -217,7 +211,7 @@
 }
 
 
-- (void)bnShoptCellDidClickedAtCell:(BeNCShopCellCell *)shopCell
+- (void)bnShoptCellDidClickedAtCell:(BeNCShopCell *)shopCell
 {
     if (!editing) {
         NSIndexPath *indexPathCell = [self.listShopView indexPathForCell:shopCell];

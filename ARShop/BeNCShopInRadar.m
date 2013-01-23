@@ -83,7 +83,7 @@
 {
     CLLocation *shoplocation = [[[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute]autorelease];
     float distance = (float)[shoplocation distanceFromLocation: self.userLocation];
-    float tiLe = 50.0/5000.0;
+    float tiLe = 38.0/5000.0;
     return distance * tiLe;
 }
 

@@ -77,8 +77,7 @@
     [labelShopAddress setTextAlignment:UITextAlignmentCenter];
     CGSize labelShopNameSize = [shopEntity.shop_name sizeWithFont:[UIFont boldSystemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
     CGSize labelShopAddressSize = [shopEntity.shop_address sizeWithFont:[UIFont systemFontOfSize:textSize - 6] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
-    float originLabelDistance = MAX(labelShopNameSize.width, labelShopAddressSize.width); //[self caculateMax:labelShopNameSize.width withNumberB:labelShopAddressSize.width];
-    
+    float originLabelDistance = MAX(labelShopNameSize.width, labelShopAddressSize.width);     
     CGSize labelToShopSize = [labelDistanceToShop.text sizeWithFont:[UIFont systemFontOfSize:textSize - 4] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
     
     labelShopName.frame = CGRectMake(3, 0,originLabelDistance,15 );
@@ -102,18 +101,6 @@
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     labelDistanceToShop.text = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:shop]];
 }
-//
-//- (float)caculateMax:(float )numberA withNumberB:(float )numberB
-//{
-//    int maxNumber;
-//    if (numberA >= numberB) {
-//        maxNumber = numberA;
-//    }
-//    else {
-//        maxNumber = numberB;
-//    }
-//    return maxNumber;
-//}
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
