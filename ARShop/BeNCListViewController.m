@@ -48,7 +48,6 @@
     
     editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(editList:)];
     arrayButtonItem =  [[NSMutableArray arrayWithObjects:editButton,refreshButtonItem, nil]retain];
-
     [self setTitle:@"List Bar"];
     
     self.view.bounds = CGRectMake(0, 0, 480, 320);
@@ -68,11 +67,19 @@
     }
     [super viewDidLoad];
 }
-
+-(void)addDoneButton{
+    done = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [done setTitle:@"X" forState:UIControlStateNormal];
+    
+    [done setFrame:CGRectMake(470, -5, 40, 40)];
+    [done addTarget:self action:@selector(closeListViewInMap:) forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationController.view addSubview:done];
+}
 
 
 -(IBAction)closeListViewInMap:(id)sender{
     NSLog(@"Close list view");
+    [done setHidden:YES];
     self.navigationController.navigationBar.hidden = YES;
     [self.delegate animationScaleOff:self.navigationController];
 }
@@ -192,10 +199,20 @@
         
     }
     else {
-    BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:indexPath.row];
-    BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:shopEntity];
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
+        
+        
+        
+        if (listType == MainList) {
+            BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:indexPath.row];
+            BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:shopEntity];
+            [self.navigationController pushViewController:detailViewController animated:YES];
+            [detailViewController release];
+        }
+        else{
+            BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:indexPath.row];
+            [self.delegate showDetailInMapView:shopEntity];
+        }
+    
    }
 }
 

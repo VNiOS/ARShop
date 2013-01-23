@@ -67,21 +67,21 @@ bool firstUpdate = 1;
     
     
     
-    zoomSlider = [[UISlider alloc]initWithFrame:CGRectMake(-40, 120, 150, 40)] ;
-    zoomSlider.maximumValue = 10;
-    zoomSlider.value = 7;
-    zoomSlider.minimumValue = 1;
-    [zoomSlider addTarget:self action:@selector(sliderChange:) forControlEvents:UIControlEventValueChanged];
-    
-    
-    zoomlabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 40, 60, 20)];
-    zoomlabel.text = [NSString stringWithFormat:@"1 km"];
-    zoomlabel.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:zoomlabel];
-    
-    CGAffineTransform rotate = CGAffineTransformMakeRotation(-M_PI * 0.5);
-    zoomSlider.transform = rotate;
-    [self.view addSubview:zoomSlider];
+//    zoomSlider = [[UISlider alloc]initWithFrame:CGRectMake(-40, 120, 150, 40)] ;
+//    zoomSlider.maximumValue = 10;
+//    zoomSlider.value = 7;
+//    zoomSlider.minimumValue = 1;
+//    [zoomSlider addTarget:self action:@selector(sliderChange:) forControlEvents:UIControlEventValueChanged];
+//    
+//    
+//    zoomlabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 40, 60, 20)];
+//    zoomlabel.text = [NSString stringWithFormat:@"1 km"];
+//    zoomlabel.backgroundColor = [UIColor clearColor];
+//    [self.view addSubview:zoomlabel];
+//    
+//    CGAffineTransform rotate = CGAffineTransformMakeRotation(-M_PI * 0.5);
+//    zoomSlider.transform = rotate;
+//    [self.view addSubview:zoomSlider];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
 
     [self getShopData];
@@ -160,8 +160,7 @@ bool firstUpdate = 1;
 - (void)mapView:(MKMapView *)mv regionDidChangeAnimated:(BOOL)animated {
     [self checkOverride];
     float span = self.mapView.region.span.latitudeDelta;
-    NSLog(@"Span %f",span);
-    //zoomSlider.value = span;
+    
 }    
 -(void)zoomMap:(float)regionRadial{
     MKCoordinateRegion region;
@@ -175,9 +174,7 @@ bool firstUpdate = 1;
 }
 -  (void)mapView:(MKMapView *)mapview didSelectAnnotationView:(MKAnnotationView *)view
 {
-    
-    
-    if ([view.annotation isKindOfClass:[BeNCShopAnnotation class]]) {
+     if ([view.annotation isKindOfClass:[BeNCShopAnnotation class]]) {
         
         BeNCShopAnnotation *shopAnnotation = (BeNCShopAnnotation *)view.annotation;
         selectedAnnotation = shopAnnotation;
@@ -251,13 +248,16 @@ bool firstUpdate = 1;
         UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:listShopViewController];
         [listShopViewController setListType:1];
         [listShopViewController getShopDataFromMap:selectedShops];
+        [listShopViewController addDoneButton];
         CGAffineTransform scale = CGAffineTransformMakeScale(0.8, 0.8);
         navigation.view.transform = scale;
         [navigation.view.layer setShadowRadius:6];
         [navigation.view.layer setShadowOpacity:0.9];
         [navigation.view.layer setShadowColor:[UIColor blackColor].CGColor];
         
-        [navigation.view setFrame:CGRectMake(220, 110, 4, 2)];
+        [navigation.view setFrame:CGRectMake(220, 110, 400, 200)];
+        CGAffineTransform scaleBegin = CGAffineTransformMakeScale(0.01, 0.01);
+        navigation.view.transform = scaleBegin;
         [self.view addSubview:navigation.view];
         [self animationScaleOn:navigation];
         [listShopViewController release];
@@ -268,16 +268,24 @@ bool firstUpdate = 1;
     
 }
 -(void)animationScaleOn:(UINavigationController *)navigation{
-    
+    navigation.view.center = CGPointMake(240 , 140);
     [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveLinear
                      animations:^{
-                         navigation.view.frame = CGRectMake(40, 20, 400, 200);
+                         
+                         CGAffineTransform scaleBegin = CGAffineTransformMakeScale(0.8, 0.8);
+                         navigation.view.transform = scaleBegin;
                      }
                      completion:^(BOOL finished) { 
                          
                      }];
 }
 #pragma mark subView delegate;
+-(void)showDetailInMapView:(BeNCShopEntity *)shop{
+    BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:shop];
+    detailViewController.delegate = self;
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController release];
+}
 -(void)animationScaleOff:(UINavigationController *)listview{
     NSLog(@"Close");
     [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveLinear
@@ -369,75 +377,7 @@ bool firstUpdate = 1;
     int valueInt = (int)slider.value;
     int zoomValue = 1000;
     NSLog(@"Slider value : %d",valueInt);
-    switch (valueInt) {
-        case 10:
-        
-            zoomlabel.text = [NSString stringWithFormat:@"100 m",valueInt];
-            zoomValue = 100;
-        
-            break;
-        case 9:
-        
-            zoomlabel.text = [NSString stringWithFormat:@"200 m",valueInt];
-            zoomValue = 200;
-            break;
-        
-        case 8:
-        
-            zoomlabel.text = [NSString stringWithFormat:@"500 m",valueInt];
-            zoomValue = 500;
-            break;
-        case 7:
-        
-            zoomlabel.text = [NSString stringWithFormat:@"1 km",valueInt];
-            zoomValue = 1000;
-        
-            break;
-        case 6:
-        
-            zoomlabel.text = [NSString stringWithFormat:@"2 km",valueInt];
-            zoomValue = 2000;
-            break;
-        case 5:
-        
-            zoomlabel.text = [NSString stringWithFormat:@"5 km",valueInt];
-            zoomValue = 5000;
-            break;
-        case 4:
-        {
-            zoomlabel.text = [NSString stringWithFormat:@"10 km",valueInt];
-            zoomValue = 10000;
-        }
-            break;
-        case 3:
-        
-            zoomlabel.text = [NSString stringWithFormat:@"20 km",valueInt];
-            zoomValue = 20000;
-            break;
-        case 2:
-        
-            zoomlabel.text = [NSString stringWithFormat:@"50 km",valueInt];
-            zoomValue = 50000;
-            break;
-        case 1:
-        
-            zoomlabel.text = [NSString stringWithFormat:@"100 km",valueInt];
-            zoomValue = 100000;
-            break;
-    
 
-        default:
-        
-            zoomlabel.text = [NSString stringWithFormat:@"1 km",valueInt];
-            zoomValue = 1000;
-          
-            break;
-    }
-    
-    
-    
-    NSLog(@"Value int %d",zoomValue);
-    [self zoomMap:(float)zoomValue];
 }
 -(IBAction)toUserLocation:(id)sender{
     

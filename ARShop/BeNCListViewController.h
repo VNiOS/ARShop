@@ -17,7 +17,8 @@
 @class BeNCListViewController;
 
 @protocol ListViewOnMapDelegate 
--(void)animationScaleOff:(UINavigationController *)listview;  
+-(void)animationScaleOff:(UINavigationController *)listview;
+-(void)showDetailInMapView:(BeNCShopEntity *)shop;
 @end
 
 
@@ -32,6 +33,7 @@
     UIBarButtonItem *editButton;
     UIBarButtonItem *refreshButtonItem;
     NSMutableArray *arrayButtonItem;
+    UIButton *done;
     
 }
 @property(nonatomic,strong) id<ListViewOnMapDelegate> delegate;
@@ -48,5 +50,6 @@
 -(void)getShopDataFromMap:(NSArray *)shopArray;
 -(void)sortShopByDistance;
 -(IBAction)closeListViewInMap:(id)sender;
+-(void)addDoneButton;
 
 @end
