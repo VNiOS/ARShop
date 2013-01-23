@@ -10,14 +10,14 @@
 #import <AVFoundation/AVFoundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "BeNCShopEntity.h"
-#import "BeNCDetailInCameraViewController.h"
+#import "BeNCDetailInCamera.h"
 @interface BeNCOneShopARViewController : UIViewController{
     AVCaptureSession *captureSession;
     AVCaptureDeviceInput *deviceInput;
     CLLocation *userLocation ;
     double rotationAngleArrow;
     BeNCShopEntity *shop;
-    BeNCDetailInCameraViewController *detailView;
+    BeNCDetailInCamera *detailView;
     float centerX;
     float centerY;
 }

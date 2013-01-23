@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "BeNCDetailInCameraViewController.h"
+#import "BeNCDetailInCamera.h"
 #import "BeNCShopEntity.h"
 #import "BeNCArrow.h"
 #import "BeNCDetailShopInCamera.h"
@@ -19,11 +19,11 @@
 #define max 100000
 
 
-@interface BeNCDetailInCameraViewController ()
+@interface BeNCDetailInCamera ()
 
 @end
 
-@implementation BeNCDetailInCameraViewController
+@implementation BeNCDetailInCamera
 @synthesize shop,delegate,index,userLocation;
 
 - (id)initWithShop:(BeNCShopEntity *)shopEntity
@@ -37,7 +37,7 @@
         [self setContentForView:shopEntity];
         UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTouchesToView)];
         recognizer.delegate = self;
-        [self.view addGestureRecognizer:recognizer];
+        [self addGestureRecognizer:recognizer];
     }
     return self;
 }
@@ -46,42 +46,21 @@
 - (void)setContentForView:(BeNCShopEntity *)shopEntity
 {
     float sizeWith = [self calculateSizeFrame:shopEntity];
-//    CGRect frame ;
-//    frame.size.height = 110;
-//    frame.size.width = sizeWith;
-//    self.view.frame = frame;  
-    self.view.frame = CGRectMake(0, 0, sizeWith, 110);
+    self.frame = CGRectMake(0, 0, sizeWith, 110);
     
     detailShop = [[BeNCDetailShopInCamera alloc]initWithShop:shopEntity];
     detailShop.delegate = self;
     detailShop.frame = CGRectMake(0, 30, sizeWith, 30);
-    [self.view addSubview:detailShop];
+    [self addSubview:detailShop];
     
     arrowImage = [[BeNCArrow alloc]initWithShop:shopEntity];
     float tdoX = sizeWith/2 - 15;
     arrowImage.frame = CGRectMake(tdoX , 0 , 20, 30);
-    [self.view addSubview:arrowImage];
+    [self addSubview:arrowImage];
     
-    [self.view setBackgroundColor:[UIColor clearColor]];
+    [self setBackgroundColor:[UIColor clearColor]];
 }
 
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 -(void)setIndexForView:(int )aIndex
 {
     index = aIndex;
@@ -89,7 +68,6 @@
 - (void)didTouchesToView
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(didSeclectView:)]) {
-        NSLog(@"test delegate co den k");
         [self.delegate didSeclectView:self.index];
     }
 }
@@ -121,7 +99,12 @@
 
 - (void)dealloc
 {
-    [timer release];
+    [motionManager release];
+    [shop release];
+    [arrowImage release];
+    [distanceToShop release];
+    [detailShop release];
+    [userLocation release];
     [super dealloc];
 }
 

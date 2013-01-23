@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "BeNCShopCellCell.h"
+#import "BeNCShopCell.h"
 #import "BeNCShopEntity.h"
 
-@implementation BeNCShopCellCell
+@implementation BeNCShopCell
 @synthesize distanceToShop,delegate,userLocation;
 @synthesize icon;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

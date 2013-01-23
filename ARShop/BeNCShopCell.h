@@ -1,5 +1,5 @@
 //
-//  BeNCShopCellCell.h
+//  BeNCShopCell.h
 //  ARShop
 //
 //  Created by Administrator on 12/10/12.
@@ -10,15 +10,15 @@
 #import <CoreLocation/CoreLocation.h>
 #import "BeNCShopEntity.h"
 #import "EGOImageView.h"
-@class BeNCShopCellCell;
+@class BeNCShopCell;
 @protocol BeNCShopCellDelegate <NSObject>
 
 @optional
-- (void)bnShoptCellDidClickedAtCell:(BeNCShopCellCell *)shopCell;
-- (void)beNCShopCellDidCleckCheckButton:(BeNCShopCellCell *)shopCell;
+- (void)bnShoptCellDidClickedAtCell:(BeNCShopCell *)shopCell;
+- (void)beNCShopCellDidCleckCheckButton:(BeNCShopCell *)shopCell;
 @end
 
-@interface BeNCShopCellCell : UITableViewCell{
+@interface BeNCShopCell: UITableViewCell{
     UIButton *checkbox ;
     UIButton *distanceToShop;
     EGOImageView *icon ;

@@ -10,7 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "BeNCShopEntity.h"
-#import "BeNCDetailInCameraViewController.h"
+#import "BeNCDetailInCamera.h"
 @interface BeNCAR3DViewController : UIViewController{
     AVCaptureSession *captureSession;
     AVCaptureDeviceInput *deviceInput;

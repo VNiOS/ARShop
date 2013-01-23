@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #include <AVFoundation/AVFoundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import "BeNCDetailInCameraViewController.h"
+#import "BeNCDetailInCamera.h"
 
 @interface BeNCCameraViewController : UIViewController<CLLocationManagerDelegate,BeNCDetailInCameraDelegate>{
     AVCaptureSession *captureSession;
@@ -27,15 +27,15 @@
     BeNCShopEntity *shopEntity3;
     BeNCShopEntity *shopEntity4;
     BeNCShopEntity *shopEntity5;
-    BeNCDetailInCameraViewController *detaitlView1;
-    BeNCDetailInCameraViewController *detaitlView2;
-    BeNCDetailInCameraViewController *detaitlView3;
-    BeNCDetailInCameraViewController *detaitlView4;
-    BeNCDetailInCameraViewController *detaitlView5;
+    BeNCDetailInCamera *detaitlView1;
+    BeNCDetailInCamera *detaitlView2;
+    BeNCDetailInCamera *detaitlView3;
+    BeNCDetailInCamera *detaitlView4;
+    BeNCDetailInCamera *detaitlView5;
 }
 - (void)addVideoInput;
 - (void )getDatabase;
 -(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity;
-- (void)setNewCenterForView:(float )angleToHeading  withDetailView:(BeNCDetailInCameraViewController *)detailViewInCamera;
+- (void)setNewCenterForView:(float )angleToHeading  withDetailView:(BeNCDetailInCamera *)detailViewInCamera;
 -(double)caculateRotationAngleToHeading:(double)angleToShop withAngleTonorth:(double )angleToNorth;
 @end

@@ -10,7 +10,7 @@
 #import "LocationService.h"
 #import "BeNCShopEntity.h"
 #import "BeNCProcessDatabase.h"
-#import "BeNCDetailInCameraViewController.h"
+#import "BeNCDetailInCamera.h"
 #define rotationRate 0.0174532925
 
 @interface BeNCAR3DViewController ()
@@ -26,8 +26,8 @@
     if (self) {
         [self getDatabase];
         userLocation = [[LocationService sharedLocation]getOldLocation];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
+//        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
+//        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
     }
     return self;
 }
@@ -37,9 +37,9 @@
     [self setTitle:@"AR 3D"];
     self.view.bounds = CGRectMake(0, 0, 480, 320);        
     [self addVideoInput];
-    shopInViewAngle = [[NSMutableArray alloc]init];
-    distanceToShop = [[NSMutableArray alloc]init];
-    [self calculateValueDistanceToShop];
+    shopInViewAngle = [[[NSMutableArray alloc]init]retain];
+//    distanceToShop = [[NSMutableArray alloc]init];
+//    [self calculateValueDistanceToShop];
     [super viewDidLoad];
 }
 
@@ -140,25 +140,25 @@
 //}
 -(void)setContentForView
 {
-    for (int i = 0; i < [shopInViewAngle count]; i ++) {
-        BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopInViewAngle  objectAtIndex:i];
-        BeNCDetailInCameraViewController *detailView = [[BeNCDetailInCameraViewController alloc]initWithShop:shopEntity];
-        if (i < 3) {
-            CGRect frame = detailView.view.frame;
-            frame.origin.x =  5;
-            frame.origin.y = 85 * (i % 3) + 5;
-            detailView.view.frame = frame;
-            
-        }
-        
-        else if (i >=3 && i < 5 ) {
-            CGRect frame = detailView.view.frame;
-            frame.origin.x =  480 - frame.size.width -5;
-            frame.origin.y = 103 * (i % 3) + 35;
-            detailView.view.frame = frame;
-        }
-//        [self.view addSubview:detailView.view];
-    }
+//    for (int i = 0; i < [shopInViewAngle count]; i ++) {
+//        BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopInViewAngle  objectAtIndex:i];
+//        BeNCDetailInCameraViewController *detailView = [[[BeNCDetailInCameraViewController alloc]initWithShop:shopEntity]autorelease];
+////        if (i < 3) {
+////            CGRect frame = detailView.view.frame;
+////            frame.origin.x =  5;
+////            frame.origin.y = 85 * (i % 3) + 5;
+////            detailView.view.frame = frame;
+////            
+////        }
+////        
+////        else if (i >=3 && i < 5 ) {
+////            CGRect frame = detailView.view.frame;
+////            frame.origin.x =  480 - frame.size.width -5;
+////            frame.origin.y = 103 * (i % 3) + 35;
+////            detailView.view.frame = frame;
+////        }
+//////        [self.view addSubview:detailView.view];
+//    }
 //    [shopTest release];
 //    shopTest = [shopInViewAngle objectAtIndex:0];
 //    NSLog(@"ten cua shop la %@",shopTest.shop_name);

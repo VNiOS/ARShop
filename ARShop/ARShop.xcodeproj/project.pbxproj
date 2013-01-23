@@ -49,12 +49,11 @@
 		C32035391675804C00CA3D8C /* BeNCDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035371675804C00CA3D8C /* BeNCDetailViewController.m */; };
 		C320353A1675804C00CA3D8C /* BeNCDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32035381675804C00CA3D8C /* BeNCDetailViewController.xib */; };
 		C320353D167580B600CA3D8C /* BeNCShopEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C320353C167580B600CA3D8C /* BeNCShopEntity.m */; };
-		C3203540167580EA00CA3D8C /* BeNCShopCellCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C320353F167580EA00CA3D8C /* BeNCShopCellCell.m */; };
+		C3203540167580EA00CA3D8C /* BeNCShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C320353F167580EA00CA3D8C /* BeNCShopCell.m */; };
 		C32035431675819800CA3D8C /* BeNCUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035421675819800CA3D8C /* BeNCUtility.m */; };
 		C3203546167581AF00CA3D8C /* BeNCGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = C3203545167581AF00CA3D8C /* BeNCGlobal.m */; };
 		C3203549167582D400CA3D8C /* BeNCArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = C3203548167582D400CA3D8C /* BeNCArrow.m */; };
-		C320354D1675836700CA3D8C /* BeNCDetailInCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C320354B1675836700CA3D8C /* BeNCDetailInCameraViewController.m */; };
-		C320354E1675836700CA3D8C /* BeNCDetailInCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C320354C1675836700CA3D8C /* BeNCDetailInCameraViewController.xib */; };
+		C320354D1675836700CA3D8C /* BeNCDetailInCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = C320354B1675836700CA3D8C /* BeNCDetailInCamera.m */; };
 		C32035511675853200CA3D8C /* BeNCDetailShopInCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035501675853200CA3D8C /* BeNCDetailShopInCamera.m */; };
 		C32035541675859000CA3D8C /* BeNCProcessDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035531675859000CA3D8C /* BeNCProcessDatabase.m */; };
 		C33504C116759AEF00E4139A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = C33504B816759AEF00E4139A /* FMDatabase.m */; };
@@ -145,17 +144,16 @@
 		C32035381675804C00CA3D8C /* BeNCDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeNCDetailViewController.xib; sourceTree = "<group>"; };
 		C320353B167580B600CA3D8C /* BeNCShopEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCShopEntity.h; sourceTree = "<group>"; };
 		C320353C167580B600CA3D8C /* BeNCShopEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCShopEntity.m; sourceTree = "<group>"; };
-		C320353E167580EA00CA3D8C /* BeNCShopCellCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCShopCellCell.h; sourceTree = "<group>"; };
-		C320353F167580EA00CA3D8C /* BeNCShopCellCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCShopCellCell.m; sourceTree = "<group>"; };
+		C320353E167580EA00CA3D8C /* BeNCShopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCShopCell.h; sourceTree = "<group>"; };
+		C320353F167580EA00CA3D8C /* BeNCShopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCShopCell.m; sourceTree = "<group>"; };
 		C32035411675819800CA3D8C /* BeNCUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCUtility.h; sourceTree = "<group>"; };
 		C32035421675819800CA3D8C /* BeNCUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCUtility.m; sourceTree = "<group>"; };
 		C3203544167581AF00CA3D8C /* BeNCGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCGlobal.h; sourceTree = "<group>"; };
 		C3203545167581AF00CA3D8C /* BeNCGlobal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCGlobal.m; sourceTree = "<group>"; };
 		C3203547167582D400CA3D8C /* BeNCArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCArrow.h; sourceTree = "<group>"; };
 		C3203548167582D400CA3D8C /* BeNCArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCArrow.m; sourceTree = "<group>"; };
-		C320354A1675836700CA3D8C /* BeNCDetailInCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCDetailInCameraViewController.h; sourceTree = "<group>"; };
-		C320354B1675836700CA3D8C /* BeNCDetailInCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCDetailInCameraViewController.m; sourceTree = "<group>"; };
-		C320354C1675836700CA3D8C /* BeNCDetailInCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeNCDetailInCameraViewController.xib; sourceTree = "<group>"; };
+		C320354A1675836700CA3D8C /* BeNCDetailInCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCDetailInCamera.h; sourceTree = "<group>"; };
+		C320354B1675836700CA3D8C /* BeNCDetailInCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCDetailInCamera.m; sourceTree = "<group>"; };
 		C320354F1675853200CA3D8C /* BeNCDetailShopInCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCDetailShopInCamera.h; sourceTree = "<group>"; };
 		C32035501675853200CA3D8C /* BeNCDetailShopInCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCDetailShopInCamera.m; sourceTree = "<group>"; };
 		C32035521675859000CA3D8C /* BeNCProcessDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCProcessDatabase.h; sourceTree = "<group>"; };
@@ -345,7 +343,6 @@
 				C351768016A93702009A2EAA /* BeNCAR3DViewController.xib */,
 				C318F71B16A6AE7F002185A6 /* BeNCRadarViewController.xib */,
 				C30B2CFC1695336200B56235 /* BeNCOneShopARViewController.xib */,
-				C320354C1675836700CA3D8C /* BeNCDetailInCameraViewController.xib */,
 				C3FFA3FB1681B034007B7963 /* BeNCWebViewController.xib */,
 				C32035381675804C00CA3D8C /* BeNCDetailViewController.xib */,
 				C32035331675803500CA3D8C /* BeNCCameraViewController.xib */,
@@ -424,12 +421,12 @@
 		C320352116757CC500CA3D8C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C320354A1675836700CA3D8C /* BeNCDetailInCameraViewController.h */,
-				C320354B1675836700CA3D8C /* BeNCDetailInCameraViewController.m */,
+				C320354A1675836700CA3D8C /* BeNCDetailInCamera.h */,
+				C320354B1675836700CA3D8C /* BeNCDetailInCamera.m */,
 				C3FFA3F91681B034007B7963 /* BeNCWebViewController.h */,
 				C3FFA3FA1681B034007B7963 /* BeNCWebViewController.m */,
-				C320353E167580EA00CA3D8C /* BeNCShopCellCell.h */,
-				C320353F167580EA00CA3D8C /* BeNCShopCellCell.m */,
+				C320353E167580EA00CA3D8C /* BeNCShopCell.h */,
+				C320353F167580EA00CA3D8C /* BeNCShopCell.m */,
 				C3203547167582D400CA3D8C /* BeNCArrow.h */,
 				C3203548167582D400CA3D8C /* BeNCArrow.m */,
 				C320354F1675853200CA3D8C /* BeNCDetailShopInCamera.h */,
@@ -545,7 +542,6 @@
 				C32035301675801C00CA3D8C /* BeNCMapViewController.xib in Resources */,
 				C32035351675803500CA3D8C /* BeNCCameraViewController.xib in Resources */,
 				C320353A1675804C00CA3D8C /* BeNCDetailViewController.xib in Resources */,
-				C320354E1675836700CA3D8C /* BeNCDetailInCameraViewController.xib in Resources */,
 				C310BDA1167886CF00DA1D55 /* ARShopDatabase.sqlite in Resources */,
 				A77936241679BC16006603C7 /* cameraoff.png in Resources */,
 				A77936251679BC16006603C7 /* cameraon.png in Resources */,
@@ -588,11 +584,11 @@
 				C32035341675803500CA3D8C /* BeNCCameraViewController.m in Sources */,
 				C32035391675804C00CA3D8C /* BeNCDetailViewController.m in Sources */,
 				C320353D167580B600CA3D8C /* BeNCShopEntity.m in Sources */,
-				C3203540167580EA00CA3D8C /* BeNCShopCellCell.m in Sources */,
+				C3203540167580EA00CA3D8C /* BeNCShopCell.m in Sources */,
 				C32035431675819800CA3D8C /* BeNCUtility.m in Sources */,
 				C3203546167581AF00CA3D8C /* BeNCGlobal.m in Sources */,
 				C3203549167582D400CA3D8C /* BeNCArrow.m in Sources */,
-				C320354D1675836700CA3D8C /* BeNCDetailInCameraViewController.m in Sources */,
+				C320354D1675836700CA3D8C /* BeNCDetailInCamera.m in Sources */,
 				C32035511675853200CA3D8C /* BeNCDetailShopInCamera.m in Sources */,
 				C32035541675859000CA3D8C /* BeNCProcessDatabase.m in Sources */,
 				C33504C116759AEF00E4139A /* FMDatabase.m in Sources */,

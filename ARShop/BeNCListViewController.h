@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "BeNCShopEntity.h"
-#import "BeNCShopCellCell.h"
+#import "BeNCShopCell.h"
 
 @class BeNCListViewController;
 
