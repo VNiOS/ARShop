@@ -18,5 +18,6 @@
 - (float)giaiPhuongTrinhB2:(float )a withIndexB:(float)b withIndexC:(float )c withAngle:(float)angle;
 -(void)setFrameForView:(float )angleToHeading;
 - (float)caculateDistanceShop:(BeNCShopEntity *)shopEntity;
+- (void)scaleViewWithDistace;
 
 @end

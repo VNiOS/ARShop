@@ -159,7 +159,7 @@ bool firstUpdate = 1;
 }
 - (void)mapView:(MKMapView *)mv regionDidChangeAnimated:(BOOL)animated {
     [self checkOverride];
-    float span = self.mapView.region.span.latitudeDelta;
+//    float span = self.mapView.region.span.latitudeDelta;
     
 }    
 -(void)zoomMap:(float)regionRadial{
@@ -375,7 +375,7 @@ bool firstUpdate = 1;
 -(IBAction)sliderChange:(id)sender{
     UISlider *slider = (UISlider *)sender;
     int valueInt = (int)slider.value;
-    int zoomValue = 1000;
+//    int zoomValue = 1000;
     NSLog(@"Slider value : %d",valueInt);
 
 }
