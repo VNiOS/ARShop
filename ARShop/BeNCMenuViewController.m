@@ -124,7 +124,6 @@ bool backToRootView;
 #pragma mark -
 #pragma mark GTabTabItemDelegate action
 - (void)selectedItem:(BeNCTabbarItem *)button {
-    NSLog(@"swith tab");
 	int indexC = 0;
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSUInteger tabIndex;
@@ -134,9 +133,7 @@ bool backToRootView;
 			
             tabIndex = indexC;
 			[defaults setInteger:tabIndex forKey:kSelectedTab];
-            NSLog(@"tabIndex %d",tabIndex);
             if (tabIndex ==  selectedTab) {
-                NSLog(@"AAAAAAA");
                 backToRootView = 1;
             }
             [self activateController:indexC];

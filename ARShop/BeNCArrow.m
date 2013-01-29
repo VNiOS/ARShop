@@ -23,8 +23,9 @@
         userLocation = [[LocationService sharedLocation]getOldLocation];
         shop = shopEntity;
         rotationAngleArrow = [self caculateRotationAngle:shopEntity];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
+
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
         UIImage *arrowImage = [UIImage imageNamed:@"arrow.png"];
         self.image = arrowImage;
         self.frame = CGRectMake(10,0,30, 45);

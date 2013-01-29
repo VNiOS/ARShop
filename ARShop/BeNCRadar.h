@@ -10,13 +10,21 @@
 #import <CoreLocation/CoreLocation.h>
 #import "BeNCShopEntity.h"
 
-@interface BeNCRadarViewController : UIViewController{
-    NSMutableArray *shopArray;
+@interface BeNCRadar:UIView{
+    NSArray *shopArray;
     CLLocation *userLocation;
+    int radiusSearching;
+    NSMutableArray *shopInRadarArray;
+
 }
-@property (nonatomic, retain)NSMutableArray *shopArray;
 @property (nonatomic, retain) CLLocation *userLocation;
+@property (nonatomic, retain)NSMutableArray *shopInRadarArray;
+@property int radiusSearching;
+@property (nonatomic, retain)NSArray *shopArray;
 - (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity;
--(void)setcontentForView;
+- (void)sortShopInRadar;
+-(void)getDatasebase;
+- (id)init;
+- (void)removeShopInRadar;
 
 @end

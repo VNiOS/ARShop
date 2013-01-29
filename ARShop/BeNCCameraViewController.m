@@ -14,7 +14,7 @@
 #import "BeNCDetailViewController.h"
 #import "BeNCListViewController.h"
 #import "BeNCShopInRadar.h"
-#import "BeNCRadarViewController.h"
+#import "BeNCRadar.h"
 #define rotationRate 0.0174532925
 
 @interface BeNCCameraViewController ()
@@ -61,9 +61,9 @@
         [self.view addSubview:detaitlView3];
         [self.view addSubview:detaitlView2];
         [self.view addSubview:detaitlView1];
-        BeNCRadarViewController *radarController = [[BeNCRadarViewController alloc]initWithNibName:@"BeNCRadarViewController" bundle:nil];
-        radarController.view.frame = CGRectMake(380, 0, 100, 100);
-        [self.view addSubview:radarController.view];
+        BeNCRadar *radar = [[BeNCRadar alloc]init];
+        radar.frame = CGRectMake(380, 0, 100, 100);
+        [self.view addSubview:radar];
 //        UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Radar.png"]];
 //        imageView.frame = CGRectMake(380, 0, 100, 100);
 //        [self.view addSubview:imageView];
@@ -304,7 +304,6 @@
 
 }
 
-
 - (void)didSeclectView:(int)index
 {
     BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:index];
@@ -312,7 +311,6 @@
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];
 }
-
 
 - (void)dealloc
 {

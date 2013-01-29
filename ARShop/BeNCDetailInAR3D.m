@@ -8,16 +8,20 @@
 
 #import "BeNCDetailInAR3D.h"
 #import "LocationService.h"
+#import "BeNCAR3DViewController.h"
 #define rotationRate 0.0174532925
 
 
 @implementation BeNCDetailInAR3D
+@synthesize radiusSearching;
 
 - (id)initWithShop:(BeNCShopEntity *)shopEntity
 {
     self = [super init];
     if (self) {
+        radiusSearching = 2000;
         shop = shopEntity;
+         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateRadius:) name:@"UpdateRadius" object:nil];
         userLocation = [[LocationService sharedLocation]getOldLocation];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
@@ -33,7 +37,11 @@
     }
     return self;
 }
+-(void)didUpdateRadius:(NSNotification *)notification{
+    self.radiusSearching = ([[notification object]intValue] *  1000);
+    distanceShop = [self caculateDistanceShop:shop];
 
+}
 - (void)setContentForView:(BeNCShopEntity *)shopEntity
 {
     float sizeWith = [self calculateSizeFrame:shopEntity];
@@ -41,15 +49,8 @@
     
     detailShop = [[BeNCDetailShopInCamera alloc]initWithShop:shopEntity];
     detailShop.delegate = self;
-    detailShop.frame = CGRectMake(0, 30, sizeWith, 30);
+    detailShop.frame = CGRectMake(0, 0, sizeWith, 30);
     [self addSubview:detailShop];
-    
-//    arrowImage = [[BeNCArrow alloc]initWithShop:shopEntity];
-//    float tdoX = sizeWith/2 - 15;
-//    arrowImage.frame = CGRectMake(tdoX , 0 , 20, 30);
-//    [self addSubview:arrowImage];
-//    
-//    [self setBackgroundColor:[UIColor blueColor]];
 }
 
 - (void)scaleViewWithDistace
@@ -63,7 +64,6 @@
 -(void)setFrameForView:(float )angleToHeading
 {
     float a = tanf(angleToHeading);
-//    NSLog(@"gia tri cua a = %f",a);
     float b = 235 - 240 * a;
     float newCenterX;
     float newCenterY;
@@ -73,58 +73,10 @@
     else {
         newCenterY = 250 + distanceShop + 200;
     }
-
     newCenterX = (newCenterY - b)/a ;
-
-
     self.center = CGPointMake(newCenterX, newCenterY);
-    
-    
-//    NSLog(@"gia tri cua b = %f",b);
-//    float indexA = (1 + a * a);
-//    NSLog(@"gia tri cua indexA = %f",indexA);
-//    float indexB = (2 * a * b - 480 - 500 * a);
-//    NSLog(@"gia tri cua indexB = %f",indexB);
 
-//    float indexC = (120100 - 500 * b + b * b - distanceShop * distanceShop );
-//    NSLog(@"gia tri cua indexC = %f",indexC);
-
-//    float newCenterX;
-//    float newCenterY;
-//
-//    newCenterX = [self giaiPhuongTrinhB2:indexA withIndexB:indexB withIndexC:indexC withAngle:angleToHeading];
-//    newCenterY = a * newCenterX + b;
-//    if (0 < newCenterY && newCenterY < 270) {
-//        newCenterY = 100;
-//    }
-
-//    frame.origin.x = originX;
-//    frame.origin.y = originY;
-//    self.frame = frame;
-//    self.center = CGPointMake(newCenterX, newCenterY);
 }
-
-- (float)giaiPhuongTrinhB2:(float )a withIndexB:(float)b withIndexC:(float )c withAngle:(float)angle
-{
-    float x;
-    float delta = (b * b) - ( 4 * a * c );
-//    NSLog(@"gia tri cua delta = %f",delta);
-    float x1;
-    float x2;
-    x1 = (- b +  (sqrtf(delta))) / (2 * a);
-    x2 = (- b -  (sqrtf(delta))) / (2 * a);
-//    NSLog(@"nghiem cua phuong trinh la %f va %f",x1,x2);
-
-    if ((M_PI_2 <= angle && angle <= M_PI ) || (-M_PI <= angle && angle <= -M_PI_2)) {
-        x = MAX(x1, x2);
-    }
-    else {
-        x = MIN(x1, x2);
-    }
-//    NSLog(@"nghiem cua phuong trinh la %f",x);
-    return x;
-}
-
 
 -(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity{
     CLLocation *shopLocation = [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute];
@@ -175,8 +127,7 @@
 {
     CLLocation *shoplocation = [[[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute]autorelease];
     float distance = (float)[shoplocation distanceFromLocation: self.userLocation];
-    float tiLe = 300.0/5000.0;
-//    NSLog(@"khoang cach den shop la %f",distance * tiLe);
+    float tiLe = 250.0/radiusSearching;
     return distance * tiLe;
 
 }
@@ -185,7 +136,6 @@
     CLHeading *newHeading = [notification object];
     double newAngleToNorth =   newHeading.magneticHeading * rotationRate ;
     float angleToHeading = [self caculateRotationAngleToHeading:angleRotation withAngleTonorth:newAngleToNorth];
-//    NSLog(@"goc cua shop so voi device la %f",angleToHeading);
     [self setFrameForView:angleToHeading];
 }
 
@@ -195,7 +145,8 @@
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     distanceToShop = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:shop]];
     distanceShop = [self caculateDistanceShop:shop];
-    [self scaleViewWithDistace];
     angleRotation = [self caculateRotationAngle:shop];
+    [self scaleViewWithDistace];
+
 }
 @end

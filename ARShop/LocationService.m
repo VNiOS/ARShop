@@ -13,15 +13,11 @@
 
 -(id)init{
     if (self = [super init]) {
-        
         self.locationManager = [[CLLocationManager alloc]init];
-        
         self.locationManager.delegate=self;
         self.locationManager.headingFilter = kCLHeadingFilterNone;
-        
         [self.locationManager setDistanceFilter:3];
         [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];        
-        
         userLocation = [[CLLocation alloc]init];        
         [[NSNotificationCenter defaultCenter]postNotificationName:@"init" object:nil];
 

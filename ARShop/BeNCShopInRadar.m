@@ -9,36 +9,45 @@
 #import "BeNCShopInRadar.h"
 #import "BeNCShopEntity.h"
 #import "LocationService.h"
+#import "BeNCAR3DViewController.h"
 #import <math.h>
 #define rotationRate 0.0174532925
 
 
 @implementation BeNCShopInRadar
-@synthesize userLocation,shop;
-- (id)initWithShop:(BeNCShopEntity *)shopEntity
+@synthesize userLocation,shop,radiusSearching;
+- (id)initWithShop:(BeNCShopEntity *)shopEntity withRadius:(int )radius
 {
     self = [super init];
     if (self) {
+        shop = shopEntity;
+        radiusSearching = radius;
         frame.size.width = 5;
         frame.size.height = 5;
         shop = shopEntity;
+//        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateRadius:) name:@"UpdateRadius" object:nil];
         userLocation = [[LocationService sharedLocation]getOldLocation];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
         distanceToShop = [self caculateDistanceToShop:shopEntity];
-//        NSLog(@"khoang cach da duoc xet ti le la %f",distanceToShop);
         angleRotation = [self caculateRotationAngle:shopEntity];
         UIImage *arrowImage = [UIImage imageNamed:@"ShopInRadar.png"];
         self.image = arrowImage;
-    }
+           }
     return self;
 }
+
+//-(void)didUpdateRadius:(NSNotification *)notification{
+//    self.radiusSearching = ([[notification object]intValue] *  1000);
+//    distanceToShop = [self caculateDistanceToShop:shop];
+//
+//}
  
 -(void)didUpdateHeading:(NSNotification *)notification{
     CLHeading *newHeading = [notification object];
     double newAngleToNorth =   newHeading.magneticHeading * rotationRate ;
     float angleToHeading = [self caculateRotationAngleToHeading:angleRotation withAngleTonorth:newAngleToNorth];
-    [self setFrameForView:angleToHeading];
+    [self setFrameForView:angleToHeading withScaleDistance:distanceToShop];
 }
 -(void)didUpdateLocation:(NSNotification *)notification {
     CLLocation *newLocation = (CLLocation *)[notification object];
@@ -48,13 +57,14 @@
     angleRotation = [self caculateRotationAngle:shop];
 }
 
--(void)setFrameForView:(float )angleToHeading
+-(void)setFrameForView:(float )angleToHeading withScaleDistance:(float)scaleDistace
 {
+//    NSLog(@"khoang cach den shop %d la %f",shop.shop_id ,scaleDistace);
     float a = tanf(angleToHeading);
     float b = 50 - 50 * a;
     float indexA = (1 + a * a);
     float indexB = (2 * a * b - 100 - 100 * a);
-    float indexC = (5000 - 100 * b + b * b - distanceToShop * distanceToShop );
+    float indexC = (5000 - 100 * b + b * b - scaleDistace * scaleDistace );
     float originX = [self giaiPhuongTrinhB2:indexA withIndexB:indexB withIndexC:indexC withAngle:angleToHeading];
     float originY = a * originX + b;
     frame.origin.x = originX;
@@ -82,8 +92,8 @@
 - (float)caculateDistanceToShop:(BeNCShopEntity *)shopEntity
 {
     CLLocation *shoplocation = [[[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute]autorelease];
-    float distance = (float)[shoplocation distanceFromLocation: self.userLocation];
-    float tiLe = 38.0/5000.0;
+    float distance = (float)[shoplocation distanceFromLocation:self.userLocation];
+    float tiLe = 50.0/radiusSearching;
     return distance * tiLe;
 }
 

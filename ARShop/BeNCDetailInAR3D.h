@@ -11,11 +11,12 @@
     double angleRotation;
     CGRect frame;
     float distanceShop;
+    int radiusSearching;
 }
+@property int radiusSearching;
 - (id)initWithShop:(BeNCShopEntity *)shopEntity;
 -(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity;
 -(double)caculateRotationAngleToHeading:(double)angleToShop withAngleTonorth:(double )angleToNorth;
-- (float)giaiPhuongTrinhB2:(float )a withIndexB:(float)b withIndexC:(float )c withAngle:(float)angle;
 -(void)setFrameForView:(float )angleToHeading;
 - (float)caculateDistanceShop:(BeNCShopEntity *)shopEntity;
 - (void)scaleViewWithDistace;
