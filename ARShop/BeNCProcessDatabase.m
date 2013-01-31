@@ -23,7 +23,7 @@ static BeNCProcessDatabase *shareDatabase = nil;
 	@synchronized([BeNCProcessDatabase class])
 	{
 		if (!shareDatabase)
-			[[self alloc] init] ;
+			[[[self alloc] init]autorelease] ;
         
 		return shareDatabase;
 	}

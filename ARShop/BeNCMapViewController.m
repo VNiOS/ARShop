@@ -114,6 +114,7 @@ bool firstUpdate = 1;
         [shopAnnotation.overideAnnotation addObject:shop];
         [shopsAnnotations addObject:shopAnnotation];
         [mapView addAnnotation:shopAnnotation];
+        [shopAnnotation release];
     }
     
 }
@@ -209,7 +210,7 @@ bool firstUpdate = 1;
         
         BeNCAnnotationView *annotationView = (BeNCAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
         if (annotationView == nil) {
-            annotationView = [[BeNCAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+            annotationView = [[[BeNCAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier]autorelease];
             
         } else {
             annotationView.annotation = annotation;
@@ -260,7 +261,7 @@ bool firstUpdate = 1;
         navigation.view.transform = scaleBegin;
         [self.view addSubview:navigation.view];
         [self animationScaleOn:navigation];
-        [listShopViewController release];
+        [navigation release];
         
         
     }

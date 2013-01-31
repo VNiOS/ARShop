@@ -84,8 +84,8 @@
     float angle2 = M_PI - angle1;
     float a = tan(angleToHeading);
     float b = 125 - 240 * a ;
-    float valueX ;
-    float valueY;
+    float valueX = 0;
+    float valueY = 0;
     if ((0 <= angleToHeading && angleToHeading < angle1 )||( angleToHeading < 0 &&   -angle1 < angleToHeading)) {
         valueX = originX;
         valueY =  b;
@@ -121,7 +121,7 @@
 
 -(void)didUpdateHeading:(NSNotification *)notification{
     CLHeading *newHeading = [notification object];
-    float angleToHeading;
+    float angleToHeading = 0;
     double angleToNorth =   newHeading.magneticHeading * rotationRate ;
     if (rotationAngleArrow >= 0) {
         angleToHeading = rotationAngleArrow - angleToNorth;
@@ -153,7 +153,8 @@
     CLLocation *point =  [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:userLocation.coordinate.longitude];
     CLLocationDistance distance1 = [userLocation distanceFromLocation:point];
     double rotationAngle;
-    
+    [point release];
+    [shopLocation release];
     double angle=acos(distance1/distance);
     if (userLocation.coordinate.latitude<=shopEntity.shop_latitude) {
         if (userLocation.coordinate.longitude<=shopEntity.shop_longitute) {

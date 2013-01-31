@@ -46,7 +46,7 @@
     BeNCMapViewController *mapViewController = [[BeNCMapViewController alloc]initWithNibName:@"BeNCMapViewController" bundle:nil];
     
     
-    NSMutableArray *viewControllersArray = [[NSMutableArray alloc] init];
+    NSMutableArray *viewControllersArray = [[[NSMutableArray alloc] init]autorelease];
     UINavigationController *listNavigation = [[UINavigationController alloc]initWithRootViewController:listViewController];
     UINavigationController *cameraNavigation = [[UINavigationController alloc]initWithRootViewController:cameraViewController];
     UINavigationController *aR3DNavigation = [[UINavigationController alloc]initWithRootViewController:aR3DViewController];
@@ -76,7 +76,7 @@
     [mapNavigation release];
     
 	
-	NSMutableArray *tabItemsArray = [[NSMutableArray alloc] init];
+	NSMutableArray *tabItemsArray = [[[NSMutableArray alloc] init]autorelease];
 	[tabItemsArray addObject:tabItem1];
 	[tabItemsArray addObject:tabItem2];
 	[tabItemsArray addObject:tabItem3];
@@ -93,7 +93,7 @@
 
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    self.viewController = [[BeNCMenuViewController alloc]initWithTabViewControllers:viewControllersArray tabItems:tabItemsArray initialTab:0];
+    self.viewController = [[[BeNCMenuViewController alloc]initWithTabViewControllers:viewControllersArray tabItems:tabItemsArray initialTab:0]autorelease];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
 

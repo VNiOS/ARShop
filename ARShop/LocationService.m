@@ -13,7 +13,7 @@
 
 -(id)init{
     if (self = [super init]) {
-        self.locationManager = [[CLLocationManager alloc]init];
+        self.locationManager = [[[CLLocationManager alloc]init]autorelease];
         self.locationManager.delegate=self;
         self.locationManager.headingFilter = kCLHeadingFilterNone;
         [self.locationManager setDistanceFilter:3];
@@ -27,7 +27,7 @@
 
 +(id)sharedLocation{
     LocationService *service = nil;
-    service = [[LocationService alloc]init];
+    service = [[[LocationService alloc]init]autorelease];
     
     return service;
 }
@@ -63,7 +63,7 @@
     float latitude = (float)[userDefault floatForKey:@"userLatitude"];
     float longitude = (float)[userDefault floatForKey:@"userLongitude"];
 
-    CLLocation *oldLocation = [[CLLocation alloc]initWithLatitude:latitude longitude:longitude];
+    CLLocation *oldLocation = [[[CLLocation alloc]initWithLatitude:latitude longitude:longitude]autorelease];
     return oldLocation;
 }
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
