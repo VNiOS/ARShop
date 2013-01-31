@@ -36,6 +36,7 @@
         [self addSubview:imageViewRadar];
         [self setBackgroundColor:[UIColor clearColor]];
         [self removeShopInRadar];
+        [imageViewRadar release];
 
             }
     return self;
@@ -60,6 +61,7 @@
             BeNCShopInRadar *shopTest = [[BeNCShopInRadar alloc]initWithShop:shopEntity withRadius:self.radiusSearching];
             [self addSubview:shopTest];
             [shopInRadarArray addObject:shopTest];
+            [shopTest release];
         }
     }
 }

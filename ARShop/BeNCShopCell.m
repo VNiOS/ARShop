@@ -17,8 +17,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         distanceToShop = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        self.icon = [[EGOImageView alloc]initWithPlaceholderImage:[UIImage imageNamed:@"images.png"]];
-        self.icon.frame = CGRectMake(5, 5, 50, 50);
+        icon = [[EGOImageView alloc]initWithPlaceholderImage:[UIImage imageNamed:@"images.png"]];
+        icon.frame = CGRectMake(5, 5, 50, 50);
         [self addSubview:self.icon];
             }
     return self;
@@ -55,7 +55,9 @@
 {
     CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:shop.shop_latitude longitude:shop.shop_longitute];
     int distance = (int)[shoplocation distanceFromLocation:location];
+    [shoplocation release];
     return distance;
+
 }
 
 
@@ -69,6 +71,7 @@
 //}
 - (void)dealloc
 {
+    [icon release];
     [distanceToShop release];
     [super dealloc];
 }

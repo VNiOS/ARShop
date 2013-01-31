@@ -96,6 +96,7 @@
         BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
         BeNCDetailInAR3D *testView = [[BeNCDetailInAR3D alloc]initWithShop:shopEntity];
         [self.view addSubview:testView];
+        [testView release];
         
     }
 }

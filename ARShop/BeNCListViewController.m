@@ -98,27 +98,29 @@
 -(void)getShopDataFromMap:(NSArray *)shopArray{
     NSLog(@"get shop data from map");
     shopsArray = [[NSMutableArray alloc]initWithArray:shopArray];
-    if (self.userLocation==nil) {
-       self.userLocation = [[LocationService sharedLocation]getOldLocation]; 
+    if (userLocation==nil) {
+       userLocation = [[LocationService sharedLocation]getOldLocation]; 
     }
     [self.listShopView reloadData];
 }
 
 -(void)getShopData{
     [[BeNCProcessDatabase sharedMyDatabase]getDatebase];
-    self.shopsArray = [[NSMutableArray alloc]initWithArray:[[BeNCProcessDatabase sharedMyDatabase] arrayShop]];
+    shopsArray = [[NSMutableArray alloc]initWithArray:[[BeNCProcessDatabase sharedMyDatabase] arrayShop]];
     [self.listShopView reloadData];
 }
 -(int)calculeDistance:(BeNCShopEntity *)shop{
 
     CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:shop.shop_latitude longitude:shop.shop_longitute];
-    int distance = (int)[shoplocation distanceFromLocation: self.userLocation];
+    int distance = (int)[shoplocation distanceFromLocation: userLocation];
+    [shoplocation release];
     return distance;
 }
 
 -(void)didUpdateLocation:(NSNotification *)notifi{
     CLLocation *newLocation = (CLLocation *)[notifi object];
-    self.userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
+    [userLocation release];
+    userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     [self sortShopByDistance];
     [self.listShopView reloadData];
 }
@@ -218,9 +220,8 @@
         BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:indexPathCell.row];
         BeNCOneShopARViewController *oneShopAR = [[BeNCOneShopARViewController alloc]initWithShop:shopEntity];
         [self.navigationController pushViewController:oneShopAR animated:YES];
+        [oneShopAR release];
     }
-
-
 }
 
 

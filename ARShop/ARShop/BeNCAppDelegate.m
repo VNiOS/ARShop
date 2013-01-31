@@ -51,6 +51,10 @@
     UINavigationController *cameraNavigation = [[UINavigationController alloc]initWithRootViewController:cameraViewController];
     UINavigationController *aR3DNavigation = [[UINavigationController alloc]initWithRootViewController:aR3DViewController];
     UINavigationController *mapNavigation = [[UINavigationController alloc]initWithRootViewController:mapViewController];
+    [listViewController release];
+    [mapViewController release];
+    [aR3DViewController release];
+    [cameraViewController release];
     
     [listNavigation.navigationBar setHidden:NO];
     [listNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
@@ -66,6 +70,11 @@
     [viewControllersArray addObject:aR3DNavigation];
 	[viewControllersArray addObject:mapNavigation];
     
+    [listNavigation release];
+    [cameraNavigation release];
+    [aR3DNavigation release];
+    [mapNavigation release];
+    
 	
 	NSMutableArray *tabItemsArray = [[NSMutableArray alloc] init];
 	[tabItemsArray addObject:tabItem1];
@@ -73,7 +82,11 @@
 	[tabItemsArray addObject:tabItem3];
     [tabItemsArray addObject:tabItem4];
     
-   
+    [tabItem1 release];
+    [tabItem2 release];
+    [tabItem3 release];
+    [tabItem4 release];
+    
     [[BeNCProcessDatabase sharedMyDatabase] getDatebase ];
     
   

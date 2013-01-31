@@ -23,7 +23,7 @@ static BeNCProcessDatabase *shareDatabase = nil;
 	@synchronized([BeNCProcessDatabase class])
 	{
 		if (!shareDatabase)
-			[[self alloc] init];
+			[[self alloc] init] ;
         
 		return shareDatabase;
 	}
@@ -104,8 +104,13 @@ static BeNCProcessDatabase *shareDatabase = nil;
         [shop setObject:shop_icon_link forKey:BeNCShopProperiesShopIcon];
         
         BeNCShopEntity *newShop = [[BeNCShopEntity alloc]initWithDictionary:shop];
+        [shop release];
         [shops addObject:newShop];
         [newShop release];
+        [shop_id release];
+        [shop_longitude release];
+        [shop_latitude release];
+        [shop_type release];
         }
     [database close];
     arrayShop = shops;

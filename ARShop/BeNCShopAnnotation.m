@@ -21,9 +21,7 @@
         self.index=0;
         self.isChecked=NO;
         self.locationInView =CGPointMake(0, 0);
-        self.overideAnnotation = [[NSMutableArray alloc]init];
-        
-        
+        self.overideAnnotation = [[[NSMutableArray alloc]init]autorelease];
     }
     return self;
     

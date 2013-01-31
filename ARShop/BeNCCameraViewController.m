@@ -64,11 +64,7 @@
         BeNCRadar *radar = [[BeNCRadar alloc]init];
         radar.frame = CGRectMake(380, 0, 100, 100);
         [self.view addSubview:radar];
-//        UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Radar.png"]];
-//        imageView.frame = CGRectMake(380, 0, 100, 100);
-//        [self.view addSubview:imageView];
-
-        // Custom initialization
+        [radar  release];
     }
     return self;
 }
@@ -120,6 +116,7 @@
 {
     BeNCListViewController *listViewController = [[BeNCListViewController alloc]initWithNibName:@"BeNCListViewController" bundle:nil];
     shopsArray = [[[NSMutableArray alloc]initWithArray:listViewController.shopsArray]retain];
+    [listViewController release];
 
 }
 
@@ -127,6 +124,7 @@
 {
     CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute];
     int distance = (int)[shoplocation distanceFromLocation: userLocation];
+    [shoplocation release];
     return distance;
 }
 
@@ -222,8 +220,8 @@
     float angle2 = M_PI - angle1;
     float a = tan(angleToHeading);
     float b = 125 - 240 * a ;
-    float valueX ;
-    float valueY;
+    float valueX = 0;
+    float valueY = 0;
     if ((0 <= angleToHeading && angleToHeading < angle1 )||( - angle1 <= angleToHeading && angleToHeading < 0)) {
         valueX = originX;
         valueY =  b;
@@ -262,7 +260,9 @@
     CLLocationDistance distance = [shopLocation distanceFromLocation:userLocation];
     CLLocation *point =  [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:userLocation.coordinate.longitude];
     CLLocationDistance distance1 = [userLocation distanceFromLocation:point];
-    double rotationAngle;
+    double rotationAngle = 0;
+    [shopLocation release];
+    [point release];
     
     double angle=acos(distance1/distance);
     if (userLocation.coordinate.latitude<=shopEntity.shop_latitude) {
@@ -286,7 +286,7 @@
 
 -(double)caculateRotationAngleToHeading:(double)angleToShop withAngleTonorth:(double )angleToNorth
 {
-    float angleToHeading;
+    float angleToHeading = 0;
     if (angleToShop >= 0) {
         angleToHeading = angleToShop - angleToNorth;
         if (angleToHeading < - M_PI) {

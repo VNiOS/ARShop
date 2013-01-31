@@ -69,7 +69,7 @@
     logoImgaeView.frame = CGRectMake(5, 5, 60, 60);
     logoImgaeView.imageURL = [NSURL URLWithString:shopEntity.shop_icon_link];
     [self.view addSubview:logoImgaeView];
-    
+    [logoImgaeView release];
     UILabel *labelShopName = [[UILabel alloc]init];
     labelShopName.numberOfLines = 0;
     [labelShopName setBackgroundColor:[UIColor grayColor]];
@@ -80,6 +80,8 @@
     CGSize labelShopNameSize = [shopEntity.shop_name sizeWithFont:[UIFont systemFontOfSize:textSize + 4] constrainedToSize:CGSizeMake(320, max) lineBreakMode:UILineBreakModeCharacterWrap];
     labelShopName.frame = CGRectMake(80, 5, 320, labelShopNameSize.height);
     [self.view addSubview:labelShopName];
+    [labelShopName release];
+
     
     UILabel *labelShopAddress = [[UILabel alloc]init];
     labelShopAddress.numberOfLines = 0;
@@ -91,7 +93,8 @@
     CGSize labelShopAddressSize = [shopEntity.shop_address sizeWithFont:[UIFont systemFontOfSize:textSize +2 ] constrainedToSize:CGSizeMake(320, max) lineBreakMode:UILineBreakModeCharacterWrap];
     labelShopAddress.frame = CGRectMake(80, labelShopNameSize.height + 5, 320 ,labelShopAddressSize.height);
     [self.view addSubview:labelShopAddress];
-    
+    [labelShopAddress release];
+
 
     UILabel *labelAddressDetail = [[UILabel alloc]init];
     [labelAddressDetail setBackgroundColor:[UIColor clearColor]];
@@ -101,6 +104,8 @@
     labelAddressDetail.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + 15, 300, labelShopAddressDetailSize.height);
     labelAddressDetail.numberOfLines = 0;
     [self.view addSubview:labelAddressDetail];
+    [labelAddressDetail release];
+
     
     UILabel *labelShopDescription = [[UILabel alloc]init];
     [labelShopDescription setBackgroundColor:[UIColor clearColor]];
@@ -110,6 +115,8 @@
     labelShopDescription.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + 15, 300, labelShopDescriptionSize.height);
     labelShopDescription.numberOfLines = 0;
     [self.view addSubview:labelShopDescription];
+    [labelShopDescription release];
+
 
     
     UILabel *labelShopPhone = [[UILabel alloc]init];
@@ -118,6 +125,8 @@
     [labelShopPhone setFont:[UIFont systemFontOfSize:textSize ]];
     labelShopPhone.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + labelShopDescriptionSize.height + 20, 320, 20);
     [self.view addSubview:labelShopPhone];
+    [labelShopPhone release];
+
     
     UILabel *labelTimeOpen = [[UILabel alloc]init];
     [labelTimeOpen setBackgroundColor:[UIColor clearColor]];
@@ -125,6 +134,8 @@
     [labelTimeOpen setFont:[UIFont systemFontOfSize:textSize ]];
     labelTimeOpen.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height + labelShopAddressDetailSize.height + labelShopDescriptionSize.height + 45, 250, 20);
     [self.view addSubview:labelTimeOpen];
+    [labelTimeOpen release];
+
 
     
     UIButton *buttonToMenuSite = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -142,9 +153,11 @@
     BeNCArrow *arrowImage = [[BeNCArrow alloc]initWithShop:shopEntity];
     arrowImage.frame = CGRectMake(430,10,20, 30);
     [self.view addSubview:arrowImage];
+    [arrowImage release];
     
     UIBarButtonItem *cameraButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"ARShop" style:UIBarButtonItemStyleBordered target:self action:@selector(goToCamera:)];//[[UIBarButtonItem alloc]initWithTitle:@"ARShop" style:UIBarButtonSystemItemCamera target:self action:@selector(goToCamera:)];
     self.navigationItem.rightBarButtonItem = cameraButtonItem;
+    [cameraButtonItem release];
     
 //    UIButton *buttonFindMap = [UIButton buttonWithType:UIButtonTypeCustom];
 //    buttonFindMap.frame = CGRectMake(50, 250, 60, 60);
@@ -156,6 +169,7 @@
 {
     CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute];
     int distance = (int)[shoplocation distanceFromLocation: self.userLocation];
+    [shoplocation release];
     return distance;
 }
 
@@ -172,6 +186,7 @@
     BeNCWebViewController *webView = [[BeNCWebViewController alloc]initWithNibName:@"BeNCWebViewController" bundle:nil];
     [webView loadWebView:shop.shop_menu_link];
     [self.navigationController pushViewController:webView animated:YES];
+    [webView release];
 }
 
 - (IBAction)goToCouponSite:(id)sender
@@ -179,6 +194,7 @@
     BeNCWebViewController *webView = [[BeNCWebViewController alloc]initWithNibName:@"BeNCWebViewController" bundle:nil];
     [webView loadWebView:shop.shop_coupon_link];
     [self.navigationController pushViewController:webView animated:YES];
+    [webView release];
     
 }
                                          
@@ -186,6 +202,7 @@
 {
     BeNCOneShopARViewController *oneShopAR = [[BeNCOneShopARViewController alloc]initWithShop:shop];
     [self.navigationController pushViewController:oneShopAR animated:YES];
+    [oneShopAR release];
         
 }
 -(void)viewWillDisappear:(BOOL)animated{

@@ -55,10 +55,7 @@
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     [userDefault setFloat:userLocation.coordinate.latitude forKey:@"userLatitude"];
     [userDefault setFloat:userLocation.coordinate.longitude forKey:@"userLongitude"];
-    
-    
-    
-      [[NSNotificationCenter defaultCenter]postNotificationName:@"UpdateLocation" object:newLocation];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"UpdateLocation" object:newLocation];
 }
 -(CLLocation *)getOldLocation{
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];

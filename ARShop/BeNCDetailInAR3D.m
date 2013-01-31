@@ -83,7 +83,9 @@
     CLLocationDistance distance = [shopLocation distanceFromLocation:userLocation];
     CLLocation *point =  [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:userLocation.coordinate.longitude];
     CLLocationDistance distance1 = [userLocation distanceFromLocation:point];
-    double rotationAngle;
+    double rotationAngle = 0;
+    [shopLocation release];
+    [point release];
     
     double angle=acos(distance1/distance);
     if (userLocation.coordinate.latitude<=shopEntity.shop_latitude) {
@@ -107,7 +109,7 @@
 
 -(double)caculateRotationAngleToHeading:(double)angleToShop withAngleTonorth:(double )angleToNorth
 {
-    float angleToHeading;
+    float angleToHeading = 0;
     if (angleToShop >= 0) {
         angleToHeading = angleToShop - angleToNorth;
         if (angleToHeading < - M_PI) {

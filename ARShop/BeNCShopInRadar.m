@@ -100,8 +100,10 @@
 -(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity{
     CLLocation *shopLocation = [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute];
     CLLocationDistance distance = [shopLocation distanceFromLocation:userLocation];
+    [shopLocation release];
     CLLocation *point =  [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:userLocation.coordinate.longitude];
     CLLocationDistance distance1 = [userLocation distanceFromLocation:point];
+    [point release];
     double rotationAngle;
     
     double angle=acos(distance1/distance);
@@ -127,7 +129,7 @@
 
 -(double)caculateRotationAngleToHeading:(double)angleToShop withAngleTonorth:(double )angleToNorth
 {
-    float angleToHeading;
+    float angleToHeading = 0;
     if (angleToShop >= 0) {
         angleToHeading = angleToShop - angleToNorth;
         if (angleToHeading < - M_PI) {
